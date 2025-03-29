@@ -1,0 +1,34 @@
+package com.example.tomatomall.exception;
+
+import lombok.Getter;
+
+@Getter
+public class TomatoMallException extends RuntimeException {
+  private final String code;
+  private final String msg;
+
+  public TomatoMallException(String code, String msg){
+    super(msg);
+    this.code = code;
+    this.msg = msg;
+  }
+
+
+    public static TomatoMallException usernameAlreadyExists(){
+    return new TomatoMallException("400","用户已经存在!");
+  }
+
+  public static TomatoMallException userDoNotExist(){
+    return new TomatoMallException("400","用户不存在!");
+  }
+
+  public static TomatoMallException notLogin(){
+    return new TomatoMallException("400","未登录!");
+  }
+
+  public static TomatoMallException phoneOrPasswordError(){
+    return new TomatoMallException("400","手机号或密码错误!");
+  }
+
+  public static TomatoMallException passwordIncorrectError() { return new TomatoMallException("400","密码错误!");}
+}
