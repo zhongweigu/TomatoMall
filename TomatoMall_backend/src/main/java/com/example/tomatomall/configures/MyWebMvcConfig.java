@@ -12,11 +12,13 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(loginInterceptor)
-                .addPathPatterns("/api/**")
-                .excludePathPatterns("/api/accounts/register")
-                .excludePathPatterns("/api/accounts/login")
-                .order(1);
+        registry.addInterceptor(new LoginInterceptor())
+                .addPathPatterns("/**")
+                .excludePathPatterns(
+                        "/api/user/login",
+                        "/api/user/register",
+                        "/api/stockpiles/**"
+                ); // 放行登录注册等无需认证的接口
     }
 
 }
