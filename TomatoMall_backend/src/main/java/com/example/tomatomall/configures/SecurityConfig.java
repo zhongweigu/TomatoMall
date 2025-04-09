@@ -22,8 +22,19 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth -> auth
+                        .antMatchers(HttpMethod.GET, "/api/stockpiles/products/*").permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/api/stockpiles/products/stockpile/**", "PATCH")).permitAll()
 
-            .csrf(csrf -> csrf.disable());
+                        .anyRequest().authenticated() // Ensure this is last
+                )
+                .formLogin()
+                .loginPage("/login") // Custom login page
+                .permitAll()
+                .and()
+                .logout()
+                .permitAll(); // Allow users to logout
 
         return http.build();
     }
