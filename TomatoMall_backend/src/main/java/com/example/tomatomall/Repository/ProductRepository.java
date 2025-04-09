@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface ProductRepository extends JpaRepository<Product, Integer> {
     Product findById(int id);
+    Boolean deleteById(int id);
     List<Product> findAll();
 }

@@ -17,14 +17,15 @@ public class SpecificationVO {
 
     private String value;
 
-    private Product product;
+    private ProductVO product;
+
+    private Integer product_id;
 
     public Specification toPO(){
         Specification spec = new Specification();
-        spec.setId(id);
-        spec.setItem(item);
-        spec.setValue(value);
-        spec.setProduct(product);
+        spec.setId(this.id);
+        spec.setItem(this.item);
+        spec.setValue(this.value);
         return spec;
     }
 }

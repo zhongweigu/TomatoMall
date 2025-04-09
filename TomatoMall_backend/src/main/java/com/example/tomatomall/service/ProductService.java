@@ -1,5 +1,6 @@
 package com.example.tomatomall.service;
 
+import com.example.tomatomall.po.Product;
 import com.example.tomatomall.vo.ProductVO;
 
 import java.util.List;
@@ -13,5 +14,5 @@ public interface ProductService {
 
     Boolean deleteProductById(int id);
 
-    ProductVO addProduct(ProductVO productVO);
+    Product addProduct(ProductVO productVO);
 }

@@ -38,10 +38,11 @@ public class Specification {
 
     public SpecificationVO toVO(){
         SpecificationVO specVO = new SpecificationVO();
-        specVO.setId(id);
         specVO.setItem(item);
         specVO.setValue(value);
-        specVO.setProduct(product);
+        if (this.product != null) {
+            specVO.setProduct_id(this.product.getId()); // 需在SpecificationVO中添加productId字段
+        }
         return specVO;
     }
 }

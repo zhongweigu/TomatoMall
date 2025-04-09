@@ -8,7 +8,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -31,21 +33,21 @@ public class ProductVO {
 
     private TypeEnum type;
 
-    private List<Specification> specifications;
+    private Set<SpecificationVO> specifications;
 
     public Product toPO(){
         Product product = new Product();
-        product.setId(id);
-        product.setTitle(title);
-        product.setPrice(price);
-        product.setRate(rate);
-        product.setDescription(description);
-        product.setCover(cover);
-        product.setDetail(detail);
-        product.setType(type);
-        product.setSpecifications(specifications);
+        product.setId(this.id);
+        product.setTitle(this.title);
+        product.setPrice(this.price);
+        product.setRate(this.rate);
+        product.setDescription(this.description);
+        product.setCover(this.cover);
+        product.setDetail(this.detail);
+        product.setType(this.type);
         return product;
     }
+
 
 
 }

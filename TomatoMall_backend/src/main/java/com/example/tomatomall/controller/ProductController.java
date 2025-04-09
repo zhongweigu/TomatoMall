@@ -1,5 +1,6 @@
 package com.example.tomatomall.controller;
 
+import com.example.tomatomall.po.Product;
 import com.example.tomatomall.service.ProductService;
 import com.example.tomatomall.vo.ProductVO;
 import com.example.tomatomall.vo.Response;
@@ -31,7 +32,7 @@ public class ProductController {
     }
 
     @PostMapping()
-    public Response<ProductVO> addProduct(@RequestBody ProductVO productVO){
+    public Response<Product> addProduct(@RequestBody ProductVO productVO){
         return Response.buildSuccess(productService.addProduct(productVO));
     }
 

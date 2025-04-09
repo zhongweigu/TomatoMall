@@ -34,4 +34,6 @@ public class TomatoMallException extends RuntimeException {
 
   public static TomatoMallException productDoNotExist() { return new TomatoMallException("400","商品不存在!");}
 
+  public static TomatoMallException addProductFail() { return new TomatoMallException("400","商品添加失败!");}
+
 }
