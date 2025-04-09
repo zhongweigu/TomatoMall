@@ -22,9 +22,6 @@ public class AccountServiceImpl implements AccountService {
     TokenUtil tokenUtil;
 
     @Autowired
-    SecurityUtil securityUtil;
-
-    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Override
@@ -70,7 +67,7 @@ public class AccountServiceImpl implements AccountService {
         if (accountVO.getPassword()!=null){
             String rawPassword = accountVO.getPassword();
             String encoderPassword = passwordEncoder.encode(rawPassword);
-            accountVO.setPassword(encoderPassword);
+            account.setPassword(encoderPassword);
         }
         if (accountVO.getName()!=null){
             account.setName(accountVO.getName());

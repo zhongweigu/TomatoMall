@@ -17,6 +17,14 @@ public class LoginInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+        String method = request.getMethod(); // 获取请求方法（GET/POST/PUT等）
+        String path = request.getRequestURI(); // 获取请求路径
+
+        // 示例：放行 /api/accounts 的所有POST请求
+        if ("/api/accounts".equals(path) && "POST".equalsIgnoreCase(method)) {
+            return true;
+        }
+
         System.out.println(request.getHeader("token"));
         String token = request.getHeader("token");
         System.out.println(token);

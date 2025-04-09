@@ -18,25 +18,27 @@ public class AccountController {
     /**
      * 更新用户信息
      */
-    @PostMapping()
+    @PutMapping()
     public Response<Boolean> updateInformation(@RequestBody AccountVO accountVO){
         return Response.buildSuccess(accountService.updateInformation(accountVO));
     }
     /**
      * 创建新的用户
      */
-    @PostMapping("/register")
-    public Response<String> register(@RequestBody AccountVO userVO){
-        return Response.buildSuccess(accountService.register(userVO) ? "注册成功" :null);
+    @PostMapping()
+    public Response<String> register(@RequestBody AccountVO accountVO){
+        return Response.buildSuccess(accountService.register(accountVO) ? "注册成功" :null);
     }
 
     /**
      * 登录
      */
     @PostMapping("/login")
-    public Response<String> login(@RequestParam("username") String username, @RequestParam("password") String password){
+    public Response<String> login(@RequestBody AccountVO accountVO){
+        String rawPassword = accountVO.getPassword();
+        String username = accountVO.getUsername();
         System.out.println(username);
-        return Response.buildSuccess(accountService.login(username, password));
+        return Response.buildSuccess(accountService.login(username, rawPassword));
     }
 
     /**

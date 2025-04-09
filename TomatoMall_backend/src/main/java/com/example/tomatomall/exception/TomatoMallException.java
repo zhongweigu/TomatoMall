@@ -31,4 +31,7 @@ public class TomatoMallException extends RuntimeException {
   }
 
   public static TomatoMallException passwordIncorrectError() { return new TomatoMallException("400","密码错误!");}
+
+  public static TomatoMallException productDoNotExist() { return new TomatoMallException("400","商品不存在!");}
+
 }
