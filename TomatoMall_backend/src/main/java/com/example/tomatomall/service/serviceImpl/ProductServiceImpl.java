@@ -71,6 +71,17 @@ public class ProductServiceImpl implements ProductService {
             product.setDetail(productVO.getDetail());
         }
         // TODO : updateSpecs
+        if (productVO.getSpecifications() != null) {
+            product.getSpecifications().clear();
+
+            for (SpecificationVO specVO : productVO.getSpecifications()) {
+                Specification spec = new Specification();
+                spec.setItem(specVO.getItem());
+                spec.setValue(specVO.getValue());
+                spec.setProduct(product);
+                product.getSpecifications().add(spec);
+            }
+        }
 
         productRepository.save(product);
         return true;
@@ -78,28 +89,25 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Boolean deleteProductById(int id) {
-        return productRepository.deleteById(id);
+        if (productRepository.findById(id)!=null) { // 检查是否存在
+            productRepository.deleteById(id);   // 存在则删除
+            return productRepository.findById(id) == null;
+        }
+        return false; // 不存在返回 false
     }
 
     @Override
-    public Product addProduct(ProductVO productVO) {
-        // 1. 转换 ProductVO → Product（不包含关联）
+    public ProductVO addProduct(ProductVO productVO) {
         Product product = productVO.toPO();
-
-        // 2. 处理 Specifications 关联
-        if (productVO.getSpecifications() != null) {
-            Set<Specification> specs = productVO.getSpecifications().stream()
-                    .map(specVO -> {
-                        Specification spec = specVO.toPO(); // 转换 SpecificationVO → Specification
-                        spec.setProduct(product); // 手动建立双向关联
-                        return spec;
-                    })
-                    .collect(Collectors.toSet());
-            product.setSpecifications(specs); // 设置关联
+        if(productVO.getSpecifications()!=null){
+            for (SpecificationVO specVO : productVO.getSpecifications()) {
+                Specification spec = new Specification();
+                spec.setItem(specVO.getItem());
+                spec.setValue(specVO.getValue());
+                product.addSpecification(spec); // 调用双向绑定方法
+            }
         }
-
-        // 3. 级联保存（由于配置了 cascade = CascadeType.ALL，会自动保存 specs）
-        // 4. 返回带 ID 的 VO
-        return productRepository.save(product);
+        Product newProduct = productRepository.save(product);
+        return getProductById(newProduct.getId());
     }
 }

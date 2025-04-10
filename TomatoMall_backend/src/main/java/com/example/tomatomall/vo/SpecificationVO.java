@@ -17,8 +17,6 @@ public class SpecificationVO {
 
     private String value;
 
-    private ProductVO product;
-
     private Integer product_id;
 
     public Specification toPO(){

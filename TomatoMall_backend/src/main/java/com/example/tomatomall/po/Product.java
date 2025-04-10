@@ -4,6 +4,7 @@ package com.example.tomatomall.po;
 import com.example.tomatomall.enums.TypeEnum;
 import com.example.tomatomall.vo.ProductVO;
 import com.example.tomatomall.vo.SpecificationVO;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,7 +12,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -61,10 +62,27 @@ public class Product {
     private TypeEnum type;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private Set<Specification> specifications;
+
+
+    public void addSpecification(Specification spec) {
+        if (specifications == null) {
+            specifications = new HashSet<>();
+        }
+        spec.setProduct(this);
+        specifications.add(spec);
+         // 关键：设置子对父的引用
+    }
+
+    public void removeSpecification(Specification spec) {
+        specifications.remove(spec);
+        spec.setProduct(null); // 清理引用
+    }
 
     public ProductVO toVO() {
         ProductVO productVO = new ProductVO();
+        productVO.setId(this.id);
         productVO.setTitle(this.title);
         productVO.setPrice(this.price);
         productVO.setRate(this.rate);
@@ -72,19 +90,18 @@ public class Product {
         productVO.setCover(this.cover);
         productVO.setDetail(this.detail);
         productVO.setType(this.type);
-        // 转换 Specifications → SpecificationVO（避免循环引用）
-        if (this.specifications != null) {
-            Set<SpecificationVO> specVOs = this.specifications.stream()
-                    .map(spec -> {
-                        SpecificationVO specVO = new SpecificationVO();
-                        specVO.setId(spec.getId());
-                        specVO.setItem(spec.getItem());
-                        specVO.setValue(spec.getValue());
-                        // 不设置 specVO.setProduct()，避免循环引用
-                        return specVO;
-                    })
-                    .collect(Collectors.toSet());
-            productVO.setSpecifications(specVOs);
+
+        if(specifications!=null){
+            Set<SpecificationVO> specificationVOS = new HashSet<>();
+            for (Specification spec : specifications){
+                SpecificationVO specificationVO = new SpecificationVO();
+                specificationVO.setId(spec.getId());
+                specificationVO.setItem(spec.getItem());
+                specificationVO.setValue(spec.getValue());
+                specificationVO.setProduct_id(spec.getProduct().getId());
+                specificationVOS.add(specificationVO);
+            }
+            productVO.setSpecifications(specificationVOS);
         }
         return productVO;
     }

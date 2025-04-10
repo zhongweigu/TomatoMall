@@ -14,5 +14,5 @@ public interface ProductService {
 
     Boolean deleteProductById(int id);
 
-    Product addProduct(ProductVO productVO);
+    ProductVO addProduct(ProductVO productVO);
 }

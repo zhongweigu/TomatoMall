@@ -1,6 +1,7 @@
 package com.example.tomatomall.po;
 
 import com.example.tomatomall.vo.SpecificationVO;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -31,6 +32,7 @@ public class Specification {
     private String value;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
     @JoinColumn(name = "product_id", nullable = false,
             referencedColumnName = "id",
             foreignKey = @ForeignKey(name = "fk_specification_product"))
@@ -40,9 +42,6 @@ public class Specification {
         SpecificationVO specVO = new SpecificationVO();
         specVO.setItem(item);
         specVO.setValue(value);
-        if (this.product != null) {
-            specVO.setProduct_id(this.product.getId()); // 需在SpecificationVO中添加productId字段
-        }
         return specVO;
     }
 }

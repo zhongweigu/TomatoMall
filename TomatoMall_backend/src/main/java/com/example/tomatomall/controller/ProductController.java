@@ -32,7 +32,7 @@ public class ProductController {
     }
 
     @PostMapping()
-    public Response<Product> addProduct(@RequestBody ProductVO productVO){
+    public Response<ProductVO> addProduct(@RequestBody ProductVO productVO){
         return Response.buildSuccess(productService.addProduct(productVO));
     }
 
