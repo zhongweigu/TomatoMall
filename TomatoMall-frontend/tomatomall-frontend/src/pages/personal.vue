@@ -14,7 +14,7 @@ const identity = sessionStorage.getItem("role");
 const telephone = ref('')
 const storeId = ref();
 const location = ref('')
-const storeName = ref();
+const avatar = ref('');
 
 // 昵称修改相关
 const nicknameDialogVisible = ref(false)
@@ -27,6 +27,8 @@ function getUserInfo() {
     telephone.value = res.data.data.telephone
     storeId.value = res.data.data.storeId
     location.value = res.data.data.address
+    email.value = res.data.data.email
+    avatar.value = res.data.data.avatar
   })
 }
 
@@ -102,15 +104,12 @@ const updatePassword = async(newPassword) => {
 </script>
 
 <template>
-  <NavigationBar v-if="router.currentRoute.value.meta.showNavbar"></NavigationBar>
+  <NavigationBar></NavigationBar>
   <el-container class="container">
-    <el-header height="auto">
-      个人中心
-    </el-header>
 
     <el-main class="main">
 
-       <el-card class="person-card" style="width: 380px;height: 450px">
+       <el-card class="person-card" style="margin-top: 50px">
          <h1>个人名片</h1>
 
          <hr>
@@ -119,7 +118,7 @@ const updatePassword = async(newPassword) => {
          <h2>身份：{{identity}}</h2>
 
        </el-card>
-       <el-card class="detail-card" style="width: 1000px;height: 700px">
+       <el-card class="detail-card" style="margin-top: 50px">
          <h1>账户详情信息</h1>
          <hr>
          <h2>注册手机号：{{telephone}}</h2>
@@ -127,9 +126,6 @@ const updatePassword = async(newPassword) => {
          <h2>用户名：{{username}}</h2>
          <h2>昵称：{{name}}  <el-button type="text" @click="showNicknameDialog">修改</el-button></h2>
          <h2>密码： **********  <el-button type="text" @click="showPasswordDialog">修改</el-button>   </h2>
-
-
-
        </el-card>
 
       <el-dialog
@@ -194,28 +190,31 @@ const updatePassword = async(newPassword) => {
 </template>
 
 <style scoped>
-.person-card {
-
-  background-color: rgba(228, 203, 174, 0.79);
-  margin: 80px;
+.container {
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
-.container{
-  min-height: 100vh;
-  width: 100vw;
 
-  background-image:url("../photo/background.png") ;
-  background-size: cover;
-  background-position: center; /* 图片居中 */
-  background-repeat: no-repeat;
-  background-attachment: fixed; /* 固定背景（可选） */
-
-}
-.detail-card {
-  margin-top: 80px;
-  background-color: rgba(228, 203, 174, 0.79);
-}
-.main{
+.main {
   display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.person-card {
+  width: 400px; /* 固定宽度 */
+  flex-shrink: 0; /* 禁止缩小 */
+  background-color: rgba(228, 203, 174, 0.1);
+}
+
+/* 自动填充剩余空间 */
+.detail-card {
+  flex: 1; /* 关键：自动拉伸填充剩余宽度 */
+  min-width: 0; /* 修复 flex 容器溢出问题 */
+  background-color: rgba(228, 203, 174, 0.1);
 }
 
 </style>

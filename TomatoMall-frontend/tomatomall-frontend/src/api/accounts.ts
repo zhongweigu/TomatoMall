@@ -31,7 +31,8 @@ type UpdateInfo = {
 
 // 用户登录
 export const userLogin = (loginInfo: LoginInfo) => {
-    return axios.post(`${USER_MODULE}/login`, null, {params: loginInfo})
+    return axios.post(`${USER_MODULE}/login`, loginInfo,
+        {headers: {'Content-Type': 'application/json'}})
         .then(res => {
             console.log("res",res)
             return res
@@ -41,7 +42,7 @@ export const userLogin = (loginInfo: LoginInfo) => {
 // 用户注册
 export const userRegister = (registerInfo: RegisterInfo) => {
     console.log(registerInfo)
-    return axios.post(`/api/accounts/register`, registerInfo,
+    return axios.post(`/api/accounts`, registerInfo,
         {headers: {'Content-Type': 'application/json'}})
         .then(res => {
             console.log(res)

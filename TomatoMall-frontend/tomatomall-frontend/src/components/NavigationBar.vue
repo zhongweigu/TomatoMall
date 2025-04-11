@@ -1,5 +1,9 @@
-<script setup >
-import { ElMenu, ElMenuItem } from "element-plus";
+<script setup>
+import {ElMenu, ElMenuItem} from "element-plus";
+import Icon from "@/components/Ico.vue";
+
+const identity = sessionStorage.getItem("role");
+
 </script>
 
 <template>
@@ -9,10 +13,26 @@ import { ElMenu, ElMenuItem } from "element-plus";
         mode="horizontal"
         :router="true"
     >
-      <el-menu-item index="/home">番茄书城</el-menu-item>
-      <el-menu-item index="/cart">购物车</el-menu-item>
-      <el-menu-item index="/warehouse">库存管理</el-menu-item>
-      <el-menu-item index="/personal">个人中心</el-menu-item>
+      <el-menu-item index="/home">
+        <Icon iconName="icon-shouyeA" />
+        <span>番茄书城</span>
+      </el-menu-item>
+      <el-menu-item index="/cart">
+        <Icon iconName="icon-gouwuche" />
+        <span>购物车</span>
+      </el-menu-item>
+      <el-menu-item index="/warehouse">
+        <Icon iconName="icon-cangku" />
+        <span>库存管理</span>
+      </el-menu-item>
+      <el-menu-item index="/personal">
+        <Icon iconName="icon-geren" />
+        <span>个人中心</span>
+      </el-menu-item>
+      <el-menu-item v-if="identity === 'staff'" index="/product-management">
+        <Icon iconName="icon-kufang" />
+        <span>商品管理</span>
+      </el-menu-item>
     </el-menu>
   </div>
 </template>
@@ -32,5 +52,7 @@ import { ElMenu, ElMenuItem } from "element-plus";
   width: 100%;
   margin: 0 auto;
   height: 100%;
+  background-color: rgba(243, 200, 172, 0.8);
+
 }
 </style>

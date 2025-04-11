@@ -1,4 +1,5 @@
 import {createRouter, createWebHashHistory} from "vue-router"
+import ProductManagement from '@/pages/ProductManagement.vue'
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -22,6 +23,15 @@ const router = createRouter({
         path: '/personal',
         component: () => import('../pages/personal.vue'),
         meta: {title: '个人中心'}
+    }, {
+        path: '/product-management',
+        name: 'ProductManagement',
+        component: ProductManagement,
+        meta: {
+            showNavbar: true,
+            requiresAuth: true,
+            adminOnly: true  // 可选：仅管理员可访问
+        }
     }
     ]
 })

@@ -59,12 +59,6 @@
   min-height: 100vh;
   width: 100vw;
 
-  background-image:url("../photo/back.png") ;
-  background-size: cover;
-  background-position: center; /* 图片居中 */
-  background-repeat: no-repeat;
-  background-attachment: fixed; /* 固定背景（可选） */
-
   /* 内容居中 */
   display: flex;
   justify-content: center;
