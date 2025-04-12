@@ -5,7 +5,7 @@
     <el-container class="container">
       <el-header style="display: flex; justify-content: space-between; align-items: center;">
         <h2>商品管理</h2>
-        <el-button type="primary" @click="handleAddProduct">添加商品</el-button>
+        <el-button type="danger" round @click="handleAddProduct">添加商品</el-button>
       </el-header>
 
       <el-main>
@@ -32,7 +32,7 @@
           <el-table-column prop="rate" label="评分" width="90" />
           <el-table-column label="库存" width="120">
             <template #default="scope">
-              <el-button link type="primary" @click="handleViewStock(scope.row)">
+              <el-button link type="danger" @click="handleViewStock(scope.row)">
                 查看库存
               </el-button>
             </template>
@@ -160,7 +160,7 @@ import {
   getProductStock,
   updateProductStock
 } from '@/api/products'
-import { uploadProductImage } from '@/api/image'
+import { uploadImage } from '@/api/image'
 
 // 假数据
 import { mockProducts, mockStockData } from '@/mock/productData'
@@ -198,10 +198,9 @@ onMounted(() => {
 const fetchProducts = async () => {
   loading.value = true
   try {
-
     // 使用假数据时,可以注释掉
     const response = await getAllProducts()
-    if (response.data.code === 200) {
+    if (response.data.code === '200') {
       products.value = response.data.data
     } else {
       ElMessage.error(response.data.msg || '获取商品列表失败')
@@ -253,11 +252,11 @@ const handleUpload = async (options) => {
   }, 300)
 
   try {
-    const response = await uploadProductImage(file)
+    const response = await uploadImage(file,"BookCover",sessionStorage.getItem("token"))
     clearInterval(progressInterval)
     uploadProgress.value = 100
 
-    if (response.data.code === 200) {
+    if (response.data.code === '200') {
       productForm.cover = response.data.data
       ElMessage.success('图片上传成功')
     } else {
@@ -324,7 +323,7 @@ const handleDeleteProduct = (product) => {
   ).then(async () => {
     try {
       const response = await deleteProduct(product.id)
-      if (response.data.code === 200) {
+      if (response.data.code === '200') {
         ElMessage.success('删除成功')
         fetchProducts() // 重新获取商品列表
       } else {
@@ -349,7 +348,7 @@ const handleViewStock = async (product) => {
   try {
     // 使用假数据时,可以注释掉
     const response = await getProductStock(product.id)
-    if (response.data.code === 200) {
+    if (response.data.code === '200') {
       currentStock.value = response.data.data
       newStockAmount.value = currentStock.value.amount
     } else {
@@ -401,7 +400,7 @@ const submitProductForm = async () => {
       response = await addProduct(productForm)
     }
 
-    if (response.data.code === 200) {
+    if (response.data.code === '200') {
       ElMessage.success(isEditing.value ? '商品更新成功' : '商品添加成功')
       productDialogVisible.value = false
       fetchProducts() // 刷新商品列表
@@ -422,8 +421,8 @@ const updateStock = async () => {
   }
 
   try {
-    const response = await updateProductStock(currentProduct.value.id, newStockAmount.value)
-    if (response.data.code === 200) {
+    const response = await updateProductStock(currentProduct.value.id, {amount: newStockAmount.value})
+    if (response.data.code === '200') {
       ElMessage.success('库存更新成功')
       stockDialogVisible.value = false
     } else {
@@ -443,9 +442,12 @@ const updateStock = async () => {
 }
 
 .container {
-  min-height: calc(100vh - 60px);
+  min-height: calc(100vh - 50px);
+  min-width: calc(100vw - 50px);
   width: 100%;
   padding: 20px;
+  text-align: center;
+  justify-content: center;
 }
 
 .el-header {

@@ -61,7 +61,8 @@ export const userInfo = (username: String) => {
 
 // 更新用户信息
 export const userInfoUpdate = (updateInfo: UpdateInfo, token : String) => {
-    return axios.post(`${USER_MODULE}`, updateInfo, {headers: {'Content-Type': 'application/json', "token": `${token}`}})
+    console.log(updateInfo)
+    return axios.put(`${USER_MODULE}`, updateInfo, {headers: {'Content-Type': 'application/json', "token": `${token}`}})
         .then(res => {
             return res
         })
