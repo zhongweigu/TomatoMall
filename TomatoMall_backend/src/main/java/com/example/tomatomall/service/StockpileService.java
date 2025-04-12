@@ -12,5 +12,5 @@ public interface StockpileService {
     StockpileVO updateStockpile(String id, Stockpile stockpile);
     Boolean deleteStockpile(String id);
     StockpileVO getStockpileByProductId(String productId);
-    boolean updateStockpileByProductId(String productId, Integer amount);
+    boolean updateStockpileByProductId(String productId, Integer amount, Integer frozen);
 }

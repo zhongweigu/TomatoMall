@@ -36,4 +36,7 @@ public class TomatoMallException extends RuntimeException {
 
   public static TomatoMallException addProductFail() { return new TomatoMallException("400","商品添加失败!");}
 
+  public static TomatoMallException NoFile() { return new TomatoMallException("400","文件为空!");}
+
+  public static TomatoMallException fileUploadFail() { return new TomatoMallException("400","文件上传失败!");}
 }

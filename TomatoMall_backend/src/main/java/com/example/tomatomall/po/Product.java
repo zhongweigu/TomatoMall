@@ -66,6 +66,11 @@ public class Product {
     private Set<Specification> specifications;
 
 
+    // 反向关联：一对一关系
+    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private Stockpile stockpile;
+
     public void addSpecification(Specification spec) {
         if (specifications == null) {
             specifications = new HashSet<>();
@@ -73,6 +78,11 @@ public class Product {
         spec.setProduct(this);
         specifications.add(spec);
          // 关键：设置子对父的引用
+    }
+
+    public void addStockpile(Stockpile stockpile) {
+        stockpile.setProduct(this);
+        this.stockpile = stockpile;
     }
 
     public void removeSpecification(Specification spec) {

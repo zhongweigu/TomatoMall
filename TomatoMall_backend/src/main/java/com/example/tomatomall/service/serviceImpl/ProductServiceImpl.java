@@ -5,6 +5,7 @@ import com.example.tomatomall.Repository.SpecRepository;
 import com.example.tomatomall.exception.TomatoMallException;
 import com.example.tomatomall.po.Product;
 import com.example.tomatomall.po.Specification;
+import com.example.tomatomall.po.Stockpile;
 import com.example.tomatomall.service.ProductService;
 import com.example.tomatomall.service.SpecService;
 import com.example.tomatomall.utils.TokenUtil;
@@ -70,6 +71,9 @@ public class ProductServiceImpl implements ProductService {
         if(productVO.getDetail() != null){
             product.setDetail(productVO.getDetail());
         }
+        if(productVO.getType() != null){
+            product.setType(productVO.getType());
+        }
         // TODO : updateSpecs
         if (productVO.getSpecifications() != null) {
             product.getSpecifications().clear();
@@ -107,6 +111,10 @@ public class ProductServiceImpl implements ProductService {
                 product.addSpecification(spec); // 调用双向绑定方法
             }
         }
+        Stockpile stockpile = new Stockpile();
+        stockpile.setAmount(0);
+        stockpile.setFrozen(0);
+        product.addStockpile(stockpile);
         Product newProduct = productRepository.save(product);
         return getProductById(newProduct.getId());
     }

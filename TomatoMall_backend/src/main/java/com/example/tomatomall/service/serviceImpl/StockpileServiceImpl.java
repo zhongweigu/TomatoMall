@@ -77,7 +77,7 @@ public class StockpileServiceImpl implements StockpileService {
 
 
     @Override
-    public boolean updateStockpileByProductId(String productId, Integer amount) {
+    public boolean updateStockpileByProductId(String productId, Integer amount, Integer frozen) {
         logger.debug("Attempting to update stockpile for productId: {}", productId);
 
         // 将 productId 从 String 转换为 Integer
@@ -86,7 +86,12 @@ public class StockpileServiceImpl implements StockpileService {
         Stockpile stockpile = stockpileRepository.findByProductId(pid); // 这里传递的是 Integer
         if (stockpile != null) {
             logger.debug("Found stockpile: {}", stockpile);
-            stockpile.setAmount(amount);
+            if(amount!=null ) {
+                stockpile.setAmount(amount);
+            }
+            if(frozen!=null ) {
+                stockpile.setFrozen(frozen);
+            }
             stockpileRepository.save(stockpile);
             return true;
         } else {

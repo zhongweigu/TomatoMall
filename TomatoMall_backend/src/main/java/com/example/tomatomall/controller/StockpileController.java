@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/stockpiles")
+@RequestMapping("/api/products/stockpile")
 public class StockpileController {
 
     @Resource
@@ -27,7 +27,7 @@ public class StockpileController {
     /**
      * 根据ID获取库存
      */
-    @GetMapping("/{id}")
+    @GetMapping("/stock/{id}")
     public Response<StockpileVO> getStockpileById(@PathVariable String id) {
         return Response.buildSuccess(stockpileService.getStockpileById(id));
     }
@@ -43,7 +43,7 @@ public class StockpileController {
     /**
      * 更新库存
      */
-    @PutMapping("/{id}")
+    @PutMapping("/stock/{id}")
     public Response<StockpileVO> updateStockpile(@PathVariable String id, @RequestBody Stockpile stockpile) {
         return Response.buildSuccess(stockpileService.updateStockpile(id, stockpile));
     }
@@ -51,7 +51,7 @@ public class StockpileController {
     /**
      * 删除库存
      */
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/stock/{id}")
     public Response<Boolean> deleteStockpile(@PathVariable String id) {
         return Response.buildSuccess(stockpileService.deleteStockpile(id));
     }
@@ -59,16 +59,16 @@ public class StockpileController {
     /**
      * 根据商品ID获取库存
      */
-    @GetMapping("/products/{productId}")
+    @GetMapping("/{productId}")
     public Response<StockpileVO> getStockpileByProductId(@PathVariable String productId) {
         return Response.buildSuccess(stockpileService.getStockpileByProductId(productId));
     }
 
 
 
-    @PatchMapping("/products/stockpile/{productId}")
-    public Response<String> updateStockpileByProductId(@PathVariable String productId, @RequestParam Integer amount) {
-        boolean success = stockpileService.updateStockpileByProductId(productId, amount);
+    @PatchMapping("/{productId}")
+    public Response<String> updateStockpileByProductId(@PathVariable String productId, @RequestBody StockpileVO stockpileVO) {
+        boolean success = stockpileService.updateStockpileByProductId(productId, stockpileVO.getAmount(), stockpileVO.getFrozen());
         if (success) {
             return Response.buildSuccess("调整库存成功");
         } else {

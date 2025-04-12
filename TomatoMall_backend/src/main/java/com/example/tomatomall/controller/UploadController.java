@@ -1,7 +1,11 @@
 
 package com.example.tomatomall.controller;
 
+import com.example.tomatomall.exception.TomatoMallException;
+import com.example.tomatomall.service.UploadService;
+import com.example.tomatomall.utils.OssUtil;
 import com.example.tomatomall.vo.Response;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -11,23 +15,17 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/api/upload")
 public class UploadController {
+    @Autowired
+    UploadService uploadService;
 
     @PostMapping("/image")
-    public Response<String> uploadImage(@RequestParam("file") MultipartFile file) {
+    public Response<String> uploadImage(@RequestParam("file") MultipartFile file, @RequestParam("type") String type) {
         if (file.isEmpty()) {
-            return Response.buildFailure("文件为空", null);
+            throw TomatoMallException.NoFile();
         }
 
-        String fileName = file.getOriginalFilename();
-        String filePath = "path/to/save/images/"; // 请根据实际情况修改路径
-        File dest = new File(filePath + fileName);
+        return Response.buildSuccess(uploadService.upload(file, type));
 
-        try {
-            file.transferTo(dest);
-            return Response.buildSuccess("文件上传成功: " + fileName);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return Response.buildFailure("文件上传失败", null);
-        }
+
     }
 }
