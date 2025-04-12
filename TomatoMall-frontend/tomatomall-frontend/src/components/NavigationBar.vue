@@ -53,6 +53,6 @@ const identity = sessionStorage.getItem("role");
   margin: 0 auto;
   height: 100%;
   background-color: rgba(243, 200, 172, 0.8);
-
 }
+
 </style>

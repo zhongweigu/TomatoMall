@@ -1,9 +1,10 @@
 <script setup >
 
+import NavigationBar from "@/components/NavigationBar.vue";
 </script>
 
 <template>
-  <h1>购物车</h1>
+  <NavigationBar ></NavigationBar>
 </template>
 
 <style scoped>

@@ -24,15 +24,19 @@ export const getProductById = (id: string) => {
 }
 
 // 添加商品
-export const addProduct = (product: any) => {
-  return axios.post(`${PRODUCT_MODULE}`, product).then(res => {
+export const addProduct = (product: any,token:string) => {
+  return axios.post(`${PRODUCT_MODULE}`, product,{headers: {
+          "token": `${token}`
+      }}).then(res => {
       return res
   })
 }
 
 // 更新商品
-export const updateProduct = (product: any) => {
-  return axios.put(`${PRODUCT_MODULE}`, product).then(res => {
+export const updateProduct = (product: any,token:string) => {
+  return axios.put(`${PRODUCT_MODULE}`, product,{headers: {
+          "token": `${token}`
+      }}).then(res => {
       return res
   })
 }

@@ -1,9 +1,11 @@
 <script setup >
 
+import {router} from "@/router/index.js";
+import NavigationBar from "@/components/NavigationBar.vue";
 </script>
 
 <template>
-  <h1>库存管理</h1>
+  <NavigationBar ></NavigationBar>
 </template>
 
 <style scoped>

@@ -8,6 +8,7 @@ import {
   Edit,
 } from '@element-plus/icons-vue'
 import {uploadImage} from "@/api/image.js";
+import {router} from "@/router/index.js";
 
 
 const username = sessionStorage.getItem("username");
@@ -229,6 +230,11 @@ const updateAvatar = async(options) => {
   }
 }
 
+const handleLogout = () => {
+  sessionStorage.removeItem("token");
+  router.push("/login");
+}
+
 </script>
 
 <template>
@@ -261,7 +267,10 @@ const updateAvatar = async(options) => {
 
           <div class="profile-main">
             <h1 class="title-gradient">{{ name }}</h1>
-            <div class="identity-tag">{{ identity }}</div>
+            <div class="identity-tag">
+              <span v-if="identity === 'staff'">管理员</span>
+              <span v-else-if="identity === 'customer'">顾客</span>
+            </div>
           </div>
         </div>
 
@@ -319,6 +328,8 @@ const updateAvatar = async(options) => {
             <el-button type="danger" :icon="Edit" circle @click="showEmailDialog"/>
           </div>
         </div>
+        <el-divider />
+        <div><el-button type="danger" round @click="handleLogout">退出登录</el-button></div>
       </el-card>
 
       <el-dialog

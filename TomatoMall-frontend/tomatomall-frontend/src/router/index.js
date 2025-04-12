@@ -16,9 +16,16 @@ const router = createRouter({
         meta: {title: '用户注册'}
     }, {
         path: '/home',
-        redirect: '/personal',
-        component: () => import('../pages/personal.vue'),
-        meta: {title: '个人中心'}
+        component: () => import('../pages/index.vue'),
+        meta: {title: '主页'}
+    },  {
+        path: '/cart',
+        component: () => import('../pages/CartPage.vue'),
+        meta: {title: '购物车'}
+    },  {
+        path: '/warehouse',
+        component: () => import('../pages/WarehousePage.vue'),
+        meta: {title: '购物车'}
     }, {
         path: '/personal',
         component: () => import('../pages/personal.vue'),
@@ -28,10 +35,16 @@ const router = createRouter({
         name: 'ProductManagement',
         component: ProductManagement,
         meta: {
+            title: '商品管理',
             showNavbar: true,
             requiresAuth: true,
             adminOnly: true  // 可选：仅管理员可访问
         }
+    },{
+        path: '/product/:id', // 动态路由参数 :id
+        name: 'ProductDetail',
+        component: () => import('../pages/detail.vue'),
+        meta: {title: '商品详情页'}
     }
     ]
 })

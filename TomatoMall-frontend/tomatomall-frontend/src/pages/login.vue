@@ -2,6 +2,8 @@
 
 <el-container class="main-frame">
 
+  <h1 class="art-title"><Icon iconName="icon-fanqie" style="width: 70px; height: 70px;"  />番茄书城</h1>
+
 <el-main class="login" >
     <el-card  style="max-width: 480px ;max-height: 340px;flex: auto;margin-right: auto" >
       <h1>番茄书城</h1>
@@ -9,14 +11,14 @@
       <hr>
       <br>
         <el-form style="width: 480px;height: 180px;">
-            <el-form-item label="Username" label-width="100px">
+            <el-form-item label="用户名" label-width="100px">
                 <el-input v-model="username"
                 placeholder="请输入用户名"
                 style="width: 300px"
                 >
                 </el-input>
             </el-form-item>
-          <el-form-item label="Password" label-width="100px">
+          <el-form-item label="密码" label-width="100px">
             <el-input v-model="password"
             type="password"
             style="width: 300px"
@@ -25,9 +27,9 @@
           </el-form-item>
           <el-form-item >
             <span class="center-button">
-              <el-button @click="handleLogin" type="success" round size="large">登录</el-button>
+              <el-button @click="handleLogin" type="danger" round size="large">登录</el-button>
               <router-link to="/register" v-slot="{navigate}">
-                <el-button @click="navigate" type="success" round size="large">注册</el-button>
+                <el-button @click="navigate" type="danger" round size="large">注册</el-button>
               </router-link>
               </span>
           </el-form-item>
@@ -64,6 +66,22 @@
   justify-content: center;
   align-items: center;
 }
+
+.art-title {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  font-size: 5vw;
+  color: #f47a1a;
+  text-shadow:
+      2px 2px 0 #6a7506;
+  font-family:"阿里妈妈刀隶体 Regular",cursive !important;
+  letter-spacing: 4px;
+  z-index: 1;
+  white-space: nowrap;
+}
+
 .login{
   padding-left: 1000px;
 }
@@ -76,6 +94,7 @@ import {ref, reactive, computed} from "vue"
 import {router} from "../router/index.js"
 import axios from "axios"
 import {userInfo, userLogin} from "@/api/accounts.js";
+import Icon from "@/components/Ico.vue";
 
 // 输入框值（需要在前端拦截不合法输入：是否为空+额外规则）
 const username = ref('')

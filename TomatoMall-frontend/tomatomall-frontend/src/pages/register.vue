@@ -1,8 +1,9 @@
 <template>
 <el-container class="main-frame">
-
+  <h1 class="art-title"><Icon iconName="icon-fanqie" style="width: 70px; height: 70px;"  />番茄书城</h1>
   <el-main class="register">
-    <el-card style="max-width: 480px ;max-height: 650px; background-color: rgba(234,141,103,0.8)">
+
+    <el-card style="max-width: 480px ;max-height: 650px;">
       <h1>番茄书城</h1>
 
       <h2>注册</h2>
@@ -76,7 +77,7 @@
         </el-form-item>
         <el-form-item >
             <span class="center-button">
-              <el-button @click="handleRegister" type="success" round size="large" style="width: 100px ;font-size: 25px">注册</el-button>
+              <el-button @click="handleRegister" type="danger" round size="large" style="width: 100px ;font-size: 25px">注册</el-button>
               </span>
         </el-form-item>
 
@@ -96,12 +97,17 @@
 </template>
 <style scoped>
 .center-button{
-  padding-left: 160px;
+  padding-top: 10px;
+  padding-left: 130px;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+  justify-content: right;
 }
 .main-frame{
   min-height: 100vh;
   width: 100vw;
-
 
   /* 内容居中 */
   display: flex;
@@ -113,7 +119,25 @@
   width: 100%;
   display: flex;
   margin-left: 1000px;
+  min-height: 650px;
 }
+
+
+.art-title {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  font-size: 5vw;
+  color: #f47a1a;
+  text-shadow:
+      2px 2px 0 #6a7506;
+  font-family:"阿里妈妈刀隶体 Regular",cursive !important;
+  letter-spacing: 4px;
+  z-index: 1;
+  white-space: nowrap;
+}
+
 </style>
 
 
@@ -123,6 +147,7 @@ import {computed, reactive, ref} from "vue"
 import { ElMessage } from 'element-plus'
 import {router} from "../router/index.js"
 import {userRegister} from "@/api/accounts.js";
+import Icon from "@/components/Ico.vue";
 
 const options =reactive([{
       label:"顾客",

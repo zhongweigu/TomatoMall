@@ -60,6 +60,16 @@
         <el-form-item label="商品名称" required>
           <el-input v-model="productForm.title" />
         </el-form-item>
+        <el-form-item label="类型" required>
+          <el-select v-model="productForm.type" placeholder="请选择商品类型">
+            <el-option
+                v-for="item in typeOptions"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+            />
+          </el-select>
+        </el-form-item>
         <el-form-item label="价格" required>
           <el-input-number v-model="productForm.price" :min="0" :precision="2" />
         </el-form-item>
@@ -162,8 +172,11 @@ import {
 } from '@/api/products'
 import { uploadImage } from '@/api/image'
 
-// 假数据
-import { mockProducts, mockStockData } from '@/mock/productData'
+const typeOptions = [
+  { label: '科学技术', value: 'science' },
+  { label: '文学小说', value: 'literature' },
+  { label: '历史经典', value: 'history' }
+]
 
 // 状态管理
 const loading = ref(false)
@@ -183,6 +196,7 @@ const productForm = reactive({
   title: '',
   price: 0,
   rate: 0,
+  type: '',
   description: '',
   cover: '',
   detail: '',
@@ -258,6 +272,7 @@ const handleUpload = async (options) => {
 
     if (response.data.code === '200') {
       productForm.cover = response.data.data
+      console.log(response.data.data)
       ElMessage.success('图片上传成功')
     } else {
       ElMessage.error(response.data.msg || '图片上传失败')
@@ -394,10 +409,10 @@ const submitProductForm = async () => {
     let response
     if (isEditing.value) {
       // 更新商品
-      response = await updateProduct(productForm)
+      response = await updateProduct(productForm, sessionStorage.getItem("token"))
     } else {
       // 添加新商品
-      response = await addProduct(productForm)
+      response = await addProduct(productForm,sessionStorage.getItem("token"))
     }
 
     if (response.data.code === '200') {
