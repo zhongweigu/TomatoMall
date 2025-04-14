@@ -21,9 +21,9 @@ const identity = sessionStorage.getItem("role");
         <Icon iconName="icon-gouwuche" />
         <span>购物车</span>
       </el-menu-item>
-      <el-menu-item index="/warehouse">
+      <el-menu-item index="/orders">
         <Icon iconName="icon-cangku" />
-        <span>库存管理</span>
+        <span>订单管理</span>
       </el-menu-item>
       <el-menu-item index="/personal">
         <Icon iconName="icon-geren" />

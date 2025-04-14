@@ -103,6 +103,8 @@ import { ref } from 'vue'
 import Navigation from "@/components/NavigationBar.vue";
 import { getProductById } from "@/api/products.js";
 import { ElMessage } from "element-plus";
+import {pay} from "@/api/order.js";
+import {checkout} from "@/api/carts.js";
 import { useRoute } from 'vue-router'
 import {
   Reading,
@@ -138,6 +140,11 @@ const loadData = async () => {
   }
 }
 loadData()
+
+// TODO: 立即购买，同样是 确认订单-支付-返回 流程，cartPage写完了应该很好写。
+//    不同之处在于: cartPage的checkout需要统计cartItemIds和总金额，这里cartItemIds就一个当前页书的id，金额就是该书的金额
+//    建议风格统一，显示订单模态框。
+
 </script>
 
 <style scoped>

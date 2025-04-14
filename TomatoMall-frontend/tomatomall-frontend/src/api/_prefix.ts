@@ -5,3 +5,7 @@ export const API_MODULE = '/api'
 export const USER_MODULE = `${API_MODULE}/accounts`
 
 export const IMAGE_MODULE = `${API_MODULE}/upload`
+
+export const CART_MODULE = `${API_MODULE}/cart`
+
+export const ORDER_MODULE = `${API_MODULE}/orders`

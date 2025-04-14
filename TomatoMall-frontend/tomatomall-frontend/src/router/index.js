@@ -23,9 +23,9 @@ const router = createRouter({
         component: () => import('../pages/CartPage.vue'),
         meta: {title: '购物车'}
     },  {
-        path: '/warehouse',
-        component: () => import('../pages/WarehousePage.vue'),
-        meta: {title: '购物车'}
+        path: '/orders',
+        component: () => import('../pages/OrdersPage.vue'),
+        meta: {title: '我的订单'}
     }, {
         path: '/personal',
         component: () => import('../pages/personal.vue'),
