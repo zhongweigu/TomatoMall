@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 public class CartItemDTO {
-    @JsonProperty("product_id")
+    @JsonProperty("productId")
     private Integer productId;
 
     @JsonProperty("quantity")

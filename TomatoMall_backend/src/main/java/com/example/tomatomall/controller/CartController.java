@@ -24,10 +24,10 @@ public class CartController {
 
     @PostMapping
     public Response<CartItemVO> addToCart(@RequestBody CartItemDTO cartItemDTO) {
+        System.out.println("Received CartItemDTO: " + cartItemDTO);
         CartItemVO vo = cartService.addToCart(cartItemDTO);
         return Response.buildSuccess(vo);
     }
-
     @GetMapping
     public Response<List<CartItemVO>> getCartItems() {
         List<CartItemVO> cartItems = cartService.getCartItems();
@@ -57,8 +57,8 @@ public class CartController {
 
     @PatchMapping("/{cartItemId}")
     public Response<String> updateCartItemQuantity(@PathVariable Integer cartItemId,
-                                                   @RequestBody CartItem cartItem) {
-        boolean updated = cartService.updateCartItemQuantity(cartItemId, cartItem.getQuantity()); // 使用 Integer 类型
+                                                   @RequestBody CartItemDTO cartItemDTO) {
+        boolean updated = cartService.updateCartItemQuantity(cartItemId, cartItemDTO.getQuantity()); // 使用 DTO 提取数量
         if (updated) {
             return Response.buildSuccess("修改数量成功");
         } else {

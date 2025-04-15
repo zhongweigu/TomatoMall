@@ -6,6 +6,7 @@ import com.example.tomatomall.Repository.ProductRepository;
 import com.example.tomatomall.dto.CartItemDTO;
 import com.example.tomatomall.po.Account;
 import com.example.tomatomall.po.CartItem;
+import com.example.tomatomall.po.Product;
 import com.example.tomatomall.service.CartService;
 import com.example.tomatomall.vo.CartItemVO;
 import com.example.tomatomall.vo.CartResponseVO;
@@ -32,23 +33,57 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public CartItemVO addToCart(CartItemDTO cartItemDTO) {
-        // 将 CartItemDTO 转换为 CartItem
+        // 添加日志来确认传入的 productId
+        System.out.println("Product ID: " + cartItemDTO.getProductId());
+
+        // 检查商品 ID 是否为空
+        if (cartItemDTO.getProductId() == null) {
+            throw new IllegalArgumentException("Product ID cannot be null");
+        }
+
+        // 获取商品信息
+        Optional<Product> optionalProduct = productRepository.findById(cartItemDTO.getProductId());
+        if (!optionalProduct.isPresent()) {
+            throw new IllegalArgumentException("Product does not exist");
+        }
+        Product product = optionalProduct.get();
+
+        // 获取当前用户信息
+        Integer userId = getCurrentUserId();
+        if (userId == null) {
+            throw new IllegalStateException("User is not logged in");
+        }
+
+        Optional<Account> optionalAccount = accountRepository.findById(userId);
+        if (!optionalAccount.isPresent()) {
+            throw new IllegalStateException("User does not exist");
+        }
+        Account account = optionalAccount.get();
+
+        // 创建 CartItem 实例
         CartItem cartItem = new CartItem();
         cartItem.setQuantity(cartItemDTO.getQuantity());
-        // 假设有方法获取 Product 和 User 对象
-        // cartItem.setProduct(productService.getProductById(cartItemDTO.getProductId()));
-        // cartItem.setUser(userService.getUserById(cartItemDTO.getUserId()));
+        cartItem.setProduct(product);
+        cartItem.setUser(account);
 
-        // 保存逻辑（省略）
+        // 保存到数据库
+        CartItem savedCartItem = cartItemRepository.save(cartItem);
+
+        // 打印保存的 CartItem ID
+        System.out.println("Saved CartItem ID: " + savedCartItem.getCartItemId());
 
         // 转换为 CartItemVO 并返回
         CartItemVO cartItemVO = new CartItemVO();
-        cartItemVO.setQuantity(cartItem.getQuantity());
-        // 设置其他字段
+        cartItemVO.setCartItemId(savedCartItem.getCartItemId());
+        cartItemVO.setProductId(savedCartItem.getProduct().getId());
+        cartItemVO.setQuantity(savedCartItem.getQuantity());
+        cartItemVO.setPrice(savedCartItem.getProduct().getPrice());
+        cartItemVO.setTitle(savedCartItem.getProduct().getTitle());
+        cartItemVO.setDescription(savedCartItem.getProduct().getDescription());
+        cartItemVO.setCover(savedCartItem.getProduct().getCover());
+
         return cartItemVO;
     }
-
-
     @Override
     public List<CartItemVO> getCartItems() {
         Integer userId = getCurrentUserId();
