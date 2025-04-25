@@ -67,3 +67,4 @@ export const userInfoUpdate = (updateInfo: UpdateInfo, token : String) => {
             return res
         })
 }
+

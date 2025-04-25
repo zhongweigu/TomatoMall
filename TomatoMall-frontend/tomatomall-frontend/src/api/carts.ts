@@ -59,3 +59,8 @@ export const checkout = (checkoutInfo: CheckoutInfo) => {
         return res
     })
 }
+export const getCartByCartItemId = (cartItemId: string) => {
+    return axios.get(`${CART_MODULE}/${cartItemId}`).then(res => {
+        return res
+    })
+}

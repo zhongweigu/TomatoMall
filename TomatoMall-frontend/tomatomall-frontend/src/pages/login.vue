@@ -92,7 +92,6 @@ import {ElForm, ElFormItem, ElButton, ElMessage} from "element-plus"
 import {ElCard,ElMain,ElInput,ElContainer} from 'element-plus'
 import {ref, reactive, computed} from "vue"
 import {router} from "../router/index.js"
-import axios from "axios"
 import {userInfo, userLogin} from "@/api/accounts.js";
 import Icon from "@/components/Ico.vue";
 
@@ -121,7 +120,7 @@ function handleLogin() {
         console.log(res);
         sessionStorage.setItem('username', res.data.data.username)
         sessionStorage.setItem('role', res.data.data.role)
-        sessionStorage.setItem('storeId', res.data.data.storeId)
+        sessionStorage.setItem('userId', res.data.data.id)
         router.push({path:"/personal"});
       })
     } else if (res.data.code === '400') {
