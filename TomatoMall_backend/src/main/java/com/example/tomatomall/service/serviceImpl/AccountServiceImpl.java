@@ -4,10 +4,9 @@ import com.example.tomatomall.Repository.AccountRepository;
 import com.example.tomatomall.exception.TomatoMallException;
 import com.example.tomatomall.po.Account;
 import com.example.tomatomall.service.AccountService;
-import com.example.tomatomall.utils.SecurityUtil;
 import com.example.tomatomall.utils.TokenUtil;
 import com.example.tomatomall.vo.AccountVO;
-import com.example.tomatomall.vo.SimpleAccountVO;
+import com.example.tomatomall.vo.AccountResponseVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -52,7 +51,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public SimpleAccountVO getInformation(String username) {
+    public AccountResponseVO getInformation(String username) {
         Account targetUser = accountRepository.findByUsername(username);
         if(targetUser == null){
             throw TomatoMallException.userDoNotExist();

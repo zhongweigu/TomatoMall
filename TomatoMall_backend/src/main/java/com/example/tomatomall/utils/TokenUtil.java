@@ -20,7 +20,6 @@ public class TokenUtil {
 
     public String getToken(Account account) {
         Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
-        System.out.println(account.getId());
         return JWT.create()
                 .withAudience(String.valueOf(account.getId()))
                 .withExpiresAt(date)
@@ -31,7 +30,6 @@ public class TokenUtil {
         try {
             DecodedJWT decodedJWT = JWT.decode(token);
             Integer accountId=Integer.parseInt(decodedJWT.getAudience().get(0));
-            System.out.println(accountId);
             Account account= accountRepository.findById(accountId).get();
             JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(account.getPassword())).build();
             jwtVerifier.verify(token);

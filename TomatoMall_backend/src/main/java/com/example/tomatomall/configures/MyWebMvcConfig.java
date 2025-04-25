@@ -16,6 +16,7 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
                 .addPathPatterns("/api/**")
                 .excludePathPatterns("/api/accounts/**")
                 .excludePathPatterns("/api/accounts/login")
+                .excludePathPatterns("/api/orders/**")
                 .order(1);
     }
 
