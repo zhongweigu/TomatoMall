@@ -85,12 +85,12 @@
               </el-icon>
               加入购物车
             </el-button>
-            <el-button type="danger" round size="large" class="action-btn" @click="handleBuyNow">
-              <el-icon :size="20" class="btn-icon">
-                <Wallet />
-              </el-icon>
-              立即购买
-            </el-button>
+<!--            <el-button type="danger" round size="large" class="action-btn" @click="handleBuyNow">-->
+<!--              <el-icon :size="20" class="btn-icon">-->
+<!--                <Wallet />-->
+<!--              </el-icon>-->
+<!--              立即购买-->
+<!--            </el-button>-->
           </div>
         </div>
       </transition>
@@ -107,9 +107,10 @@
               :src="productData.cover || defaultImage"
               fit="cover"
               class="product-preview-image"
+              style="scale: min(76%, 100%)"
           ></el-image>
           <div class="product-preview-info">
-            <h4>{{ productData.title }}</h4>
+            <h1>{{ productData.title }}</h1>
             <p class="product-price">单价: ¥{{ productData.price }}</p>
             <el-input-number
                 v-model="buyQuantity"
@@ -202,7 +203,6 @@ import {
   DocumentCopy
 } from '@element-plus/icons-vue';
 import { addCart } from "@/api/carts.js";
-import {router} from "@/router/index.js";
 import {userInfo} from "@/api/accounts.js";
 
 const route = useRoute()
@@ -336,7 +336,7 @@ const handleAddToCart = async () => {
           Number(item.productId) === Number(id)
       );
       console.log(existingItem);
-      if(existingItem) {
+      if(existingItem && existingItem.status === "PENDING") {
         const newQuantity = existingItem.quantity + 1;
 
         if (newQuantity > availableStock) {
@@ -372,7 +372,6 @@ const handleAddToCart = async () => {
         ElMessage.error(response.data.msg || "添加失败");
       }
 
-      // ElMessage.success("已添加到购物车");
     } else {
       ElMessage.error("获取库存信息失败");
     }
@@ -391,12 +390,14 @@ const submitOrder = async () => {
   }
 
   try {
+    const cartData = {
+      productId: productData.value.id,
+      quantity: buyQuantity.value  // 默认添加1件，也可以设置变量让用户选择数量
+    };
+    await addCart(cartData, sessionStorage.getItem("token"));
     // 直接购买时，使用一个特殊的结构传给后端
     const checkoutData = {
-      items: [{
-        productId: productData.value.id,
-        quantity: buyQuantity.value
-      }],
+      cartItemIds: Array.from({ length: buyQuantity.value }, () => productData.value.id),
       shipping_address: orderInfo.shipping,
       paymentMethod: orderInfo.paymentMethod
     };
@@ -418,14 +419,27 @@ const submitOrder = async () => {
 
 // 处理支付
 const handlePay = () => {
-  if (!currentOrder.value || !currentOrder.value.orderNo) {
+  if (!currentOrder.value || !currentOrder.value.orderId) {
     ElMessage.error("订单信息不完整");
     return;
   }
 
   // 打开支付宝沙箱支付页面，以查询参数方式传递订单号
-  window.open(`http://localhost:8080/alipay/pay?orderNo=${currentOrder.value.orderNo}`);
+  // 动态创建表单
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = `http://localhost:8080/api/orders/${currentOrder.value.orderId}/pay`; // 你的支付接口
+  form.target = '_blank'; // 关键：在新窗口打开
+  console.log(form);
+
+// 将表单插入页面并自动提交
+  document.body.appendChild(form);
+  form.submit();
+  document.body.removeChild(form); // 提交后清理
+
+
   orderConfirmDialogVisible.value = false;
+
 };
 // DONE: 立即购买，同样是 确认订单-支付-返回 流程，cartPage写完了应该很好写。
 //    不同之处在于: cartPage的checkout需要统计cartItemIds和总金额，这里cartItemIds就一个当前页书的id，金额就是该书的金额

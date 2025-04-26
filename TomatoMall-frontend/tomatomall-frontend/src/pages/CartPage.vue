@@ -10,6 +10,7 @@ import { parseTime } from "@/utils/index";
 import { getProductStock } from "@/api/products.js";
 import {userInfo} from "@/api/accounts.js";
 
+const currentUserId = sessionStorage.getItem("userId");
 const username = sessionStorage.getItem("username");
 const email = ref('')
 const name = ref('')
@@ -52,7 +53,12 @@ const fetchCarts = async () => {
   try {
     const response = await getAllCarts();
     if (response.data.code === "200") {
-      cartItems.value = response.data.data;
+
+      cartItems.value = response.data.data.filter(item =>
+          item.userId == currentUserId &&
+          item.status === "PENDING"
+      );
+
       calculateTotal();
       ElMessage.success("购物车加载成功");
     } else {

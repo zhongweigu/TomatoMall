@@ -67,8 +67,11 @@ const fetchOrdersRelation =  async () => {
          return null;
        });
 
-       // 等待所有请求完成并过滤无效项
-       allRows.value = (await Promise.all(promises)).filter(Boolean);
+       allRows.value = (await Promise.all(promises))
+           .filter(row =>
+               row &&
+               row.accountId == currentUserId // 账户ID校验
+           );
      }
    }
    catch(error){
