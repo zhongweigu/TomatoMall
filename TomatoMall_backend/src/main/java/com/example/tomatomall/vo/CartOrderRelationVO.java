@@ -11,4 +11,5 @@ public class CartOrderRelationVO {
     private Integer id;
     private Integer orderId;
     private Integer cartItemId;
+    private Integer accountId;
 }

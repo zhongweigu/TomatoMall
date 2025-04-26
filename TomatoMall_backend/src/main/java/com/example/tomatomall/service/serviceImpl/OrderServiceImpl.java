@@ -48,8 +48,10 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void updateOrderStatus(String orderId, String alipayTradeNo, String amount) {
-
+    public void updateOrderStatus(String orderId, OrderStatusEnum status) {
+        Order order = orderRepository.findByOrderId(Integer.parseInt(orderId));
+        order.setStatus(status);
+        orderRepository.save(order);
     }
 
     @Override
@@ -83,6 +85,7 @@ public class OrderServiceImpl implements OrderService {
             CartOrderRelation cartOrderRelation = new CartOrderRelation();
             cartOrderRelation.setCartItem(cartItemRepository.findByCartItemId(Integer.parseInt(cartItemId)));
             cartOrderRelation.setOrder(savedOrder);
+            cartOrderRelation.setAccount(account);
             cartOrderRelationRepository.save(cartOrderRelation);
         }
 

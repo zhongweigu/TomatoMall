@@ -29,4 +29,10 @@ public class CartOrderRelation {
     @JoinColumn(name = "order_id", referencedColumnName = "orderId",
             foreignKey = @ForeignKey(name = "fk_relation_order"))
     private Order order;
+
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_id", referencedColumnName = "id",
+            foreignKey = @ForeignKey(name = "fk_relation_account"))
+    private Account account;
 }

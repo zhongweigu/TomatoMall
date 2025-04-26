@@ -1,5 +1,6 @@
 package com.example.tomatomall.vo;
 
+import com.example.tomatomall.enums.OrderStatusEnum;
 import lombok.Data;
 import java.math.BigDecimal;
 
@@ -14,4 +15,5 @@ public class CartItemVO {
     private BigDecimal price;
     private Integer quantity;
     private Integer userId;
+    private OrderStatusEnum status;
 }

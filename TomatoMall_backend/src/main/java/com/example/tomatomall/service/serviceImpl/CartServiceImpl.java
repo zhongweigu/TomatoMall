@@ -4,6 +4,7 @@ import com.example.tomatomall.Repository.AccountRepository;
 import com.example.tomatomall.Repository.CartItemRepository;
 import com.example.tomatomall.Repository.ProductRepository;
 import com.example.tomatomall.dto.CartItemDTO;
+import com.example.tomatomall.enums.OrderStatusEnum;
 import com.example.tomatomall.exception.TomatoMallException;
 import com.example.tomatomall.po.Account;
 import com.example.tomatomall.po.CartItem;
@@ -69,6 +70,7 @@ public class CartServiceImpl implements CartService {
         cartItem.setQuantity(cartItemDTO.getQuantity());
         cartItem.setProduct(product);
         cartItem.setUser(account);
+        cartItem.setStatus(OrderStatusEnum.PENDING);
 
         // 保存到数据库
         CartItem savedCartItem = cartItemRepository.save(cartItem);
@@ -101,7 +103,9 @@ public class CartServiceImpl implements CartService {
     @Override
     public boolean deleteCartItem(Integer cartItemId) {
         try {
-            cartItemRepository.deleteById(cartItemId);
+            CartItem cartItem = cartItemRepository.findByCartItemId(cartItemId);
+            cartItem.setStatus(OrderStatusEnum.valueOf("SUCCESS"));
+            cartItemRepository.save(cartItem);
             return true;
         } catch (Exception e) {
             return false;

@@ -47,6 +47,7 @@ public class OrderController {
             vo.setId(order.getId());
             vo.setOrderId(order.getOrder().getOrderId());
             vo.setCartItemId(order.getCartItem().getCartItemId());
+            vo.setAccountId(order.getAccount().getId());
             vos.add(vo);
         }
         return Response.buildSuccess(vos);
