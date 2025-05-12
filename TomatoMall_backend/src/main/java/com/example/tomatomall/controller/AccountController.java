@@ -1,9 +1,11 @@
 package com.example.tomatomall.controller;
 
+import com.example.tomatomall.Repository.AccountRepository;
 import com.example.tomatomall.service.AccountService;
 import com.example.tomatomall.vo.AccountVO;
 import com.example.tomatomall.vo.Response;
-import com.example.tomatomall.vo.SimpleAccountVO;
+import com.example.tomatomall.vo.AccountResponseVO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -14,6 +16,8 @@ public class AccountController {
 
     @Resource
     AccountService accountService;
+    @Autowired
+    private AccountRepository accountRepository;
 
     /**
      * 更新用户信息
@@ -45,7 +49,8 @@ public class AccountController {
      * 获取用户详情
      */
     @GetMapping("/{username}")
-    public Response<SimpleAccountVO> getInformation(@PathVariable String username){
+    public Response<AccountResponseVO> getInformation(@PathVariable String username){
         return Response.buildSuccess(accountService.getInformation(username));
     }
+
 }

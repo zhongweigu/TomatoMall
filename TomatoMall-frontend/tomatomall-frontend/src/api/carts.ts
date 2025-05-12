@@ -55,7 +55,13 @@ export const addCart = (cart: AddCartInfo,token:string) => {
 }
 
 export const checkout = (checkoutInfo: CheckoutInfo) => {
+    console.log(checkoutInfo)
     return axios.post(`${CART_MODULE}/checkout`, checkoutInfo, {headers: {'Content-Type': 'application/json'}}).then(res => {
+        return res
+    })
+}
+export const getCartByCartItemId = (cartItemId: string) => {
+    return axios.get(`${CART_MODULE}/${cartItemId}`).then(res => {
         return res
     })
 }

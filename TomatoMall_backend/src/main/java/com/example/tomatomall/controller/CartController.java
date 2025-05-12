@@ -1,13 +1,14 @@
 package com.example.tomatomall.controller;
 
+import com.example.tomatomall.Repository.CartItemRepository;
 import com.example.tomatomall.po.CartItem;
 import com.example.tomatomall.service.CartService;
-import com.example.tomatomall.vo.CartItemVO;
-import com.example.tomatomall.vo.CartResponseVO;
-import com.example.tomatomall.vo.Response;
+import com.example.tomatomall.service.OrderService;
+import com.example.tomatomall.vo.*;
 
 import com.example.tomatomall.dto.CartItemDTO;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -21,6 +22,10 @@ public class CartController {
 
     @Resource
     private CartService cartService;
+    @Autowired
+    private OrderService orderService;
+    @Autowired
+    private CartItemRepository cartItemRepository;
 
     @PostMapping
     public Response<CartItemVO> addToCart(@RequestBody CartItemDTO cartItemDTO) {
@@ -56,13 +61,22 @@ public class CartController {
     }
 
     @PatchMapping("/{cartItemId}")
-    public Response<String> updateCartItemQuantity(@PathVariable Integer cartItemId,
-                                                   @RequestBody CartItemDTO cartItemDTO) {
-        boolean updated = cartService.updateCartItemQuantity(cartItemId, cartItemDTO.getQuantity()); // 使用 DTO 提取数量
+    public Response<String> updateCartItemQuantity(@RequestBody CartItemDTO cartItemDTO) {
+        boolean updated = cartService.updateCartItemQuantity(cartItemDTO.getCartItemId(), cartItemDTO.getQuantity()); // 使用 DTO 提取数量
         if (updated) {
             return Response.buildSuccess("修改数量成功");
         } else {
             return Response.buildFailure("购物车商品不存在", null);
         }
+    }
+
+    @GetMapping("/{cartItemId}")
+    public Response<CartItemVO> getCartItemByCartItemId(@PathVariable Integer cartItemId) {
+        return Response.buildSuccess(cartItemRepository.findByCartItemId(cartItemId).toVO());
+    }
+
+    @PostMapping("/checkout")
+    public Response<CheckoutResponse> checkout(@RequestBody CheckoutInfo checkoutInfo) {
+        return Response.buildSuccess(orderService.checkout(checkoutInfo));
     }
 }

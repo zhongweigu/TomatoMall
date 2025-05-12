@@ -1,107 +1,120 @@
 package com.example.tomatomall.service.serviceImpl;
 
-import com.example.tomatomall.po.Order;
+import com.example.tomatomall.Repository.AccountRepository;
+import com.example.tomatomall.Repository.CartItemRepository;
+import com.example.tomatomall.Repository.CartOrderRelationRepository;
 import com.example.tomatomall.Repository.OrderRepository;
+import com.example.tomatomall.enums.OrderStatusEnum;
+import com.example.tomatomall.enums.PaymentEnum;
+import com.example.tomatomall.exception.TomatoMallException;
+import com.example.tomatomall.po.*;
 import com.example.tomatomall.service.CartService;
 import com.example.tomatomall.service.OrderService;
-import com.example.tomatomall.vo.CartItemVO;
-import com.example.tomatomall.vo.OrderVO;
+import com.example.tomatomall.vo.CartResponseVO;
+import com.example.tomatomall.vo.CheckoutInfo;
+import com.example.tomatomall.vo.CheckoutResponse;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 @Service
 public class OrderServiceImpl implements OrderService {
 
     @Autowired
-    private OrderRepository orderRepository;
+    OrderRepository orderRepository;
 
     @Autowired
-    private CartService cartService;
+    private HttpServletRequest request;
+
+    @Autowired
+    AccountRepository accountRepository;
+
+    @Autowired
+    CartItemRepository cartItemRepository;
+
+    @Autowired
+    CartOrderRelationRepository cartOrderRelationRepository;
 
     @Override
-    public OrderVO createOrder(String paymentMethod) {
-        Integer userId = getCurrentUserId();
-
-        BigDecimal totalAmount = cartService.calculateTotalAmount(userId);
-
-        Order order = new Order();
-        order.setUserId(userId);
-        order.setPaymentMethod(paymentMethod);
-        order.setTotalAmount(totalAmount);
-        order.setStatus("PENDING");
-        order = orderRepository.save(order);
-
-        List<CartItemVO> cartItems = cartService.getCartItemsByUserId(userId).stream()
-                .map(cartItem -> cartItem.toVO()) // 使用 toVO 方法
-                .collect(Collectors.toList());
-
-        OrderVO orderVO = new OrderVO();
-        orderVO.setOrderId(order.getOrderId());
-        orderVO.setUserId(userId);
-        orderVO.setTotalAmount(order.getTotalAmount());
-        orderVO.setPaymentMethod(order.getPaymentMethod());
-        orderVO.setStatus(order.getStatus());
-        orderVO.setItems(cartItems);
-
-        return orderVO;
+    public Order selectByOrderId(String orderId) {
+        return orderRepository.findByOrderId(Integer.parseInt(orderId));
     }
 
     @Override
-    public List<OrderVO> getUserOrders() {
-        Integer userId = getCurrentUserId();
-
-        List<Order> orders = orderRepository.findByUserId(userId);
-
-        return orders.stream().map(order -> {
-            OrderVO orderVO = new OrderVO();
-            orderVO.setOrderId(order.getOrderId());
-            orderVO.setUserId(order.getUserId());
-            orderVO.setTotalAmount(order.getTotalAmount());
-            orderVO.setPaymentMethod(order.getPaymentMethod());
-            orderVO.setStatus(order.getStatus());
-            return orderVO;
-        }).collect(Collectors.toList());
-    }
-
-    @Override
-    public OrderVO getOrderById(Integer orderId) {
-        Order order = orderRepository.findById(orderId).orElse(null);
-        if (order == null) {
-            return null;
-        }
-
-        OrderVO orderVO = new OrderVO();
-        orderVO.setOrderId(order.getOrderId());
-        orderVO.setUserId(order.getUserId());
-        orderVO.setTotalAmount(order.getTotalAmount());
-        orderVO.setPaymentMethod(order.getPaymentMethod());
-        orderVO.setStatus(order.getStatus());
-
-        List<CartItemVO> cartItems = cartService.getCartItemsByOrderId(orderId).stream()
-                .map(cartItem -> cartItem.toVO()) // 使用 toVO 方法
-                .collect(Collectors.toList());
-
-        orderVO.setItems(cartItems);
-        return orderVO;
-    }
-
-    @Override
-    public boolean updateOrderStatus(Integer orderId, String status) {
-        Order order = orderRepository.findById(orderId).orElse(null);
-        if (order == null) {
-            return false;
-        }
-
+    public void updateOrderStatus(String orderId, OrderStatusEnum status) {
+        Order order = orderRepository.findByOrderId(Integer.parseInt(orderId));
         order.setStatus(status);
         orderRepository.save(order);
-        return true;
+    }
+
+    @Override
+    public CheckoutResponse checkout(CheckoutInfo checkoutInfo) {
+
+        Integer userId = getCurrentUserId();
+        if (userId == null) {
+            throw new IllegalStateException("User is not logged in");
+        }
+
+        Optional<Account> optionalAccount = accountRepository.findById(userId);
+        if (!optionalAccount.isPresent()) {
+            throw new IllegalStateException("User does not exist");
+        }
+        Account account = optionalAccount.get();
+
+        Order order = new Order();
+        order.setAccount(account);
+        order.setStatus(OrderStatusEnum.PENDING);
+        order.setCreateTime(new Date());
+        order.setPayment_method(PaymentEnum.Alipay);
+        order.setTotal_amount(calculateTotalAmount(checkoutInfo.getCartItemIds()));
+        Order savedOrder = orderRepository.save(order);
+
+        List<String> containedIds = new ArrayList<>();
+        for (String cartItemId : checkoutInfo.getCartItemIds()){
+            if(containedIds.contains(cartItemId)){
+                continue;
+            }
+            containedIds.add(cartItemId);
+            CartOrderRelation cartOrderRelation = new CartOrderRelation();
+            cartOrderRelation.setCartItem(cartItemRepository.findByCartItemId(Integer.parseInt(cartItemId)));
+            cartOrderRelation.setOrder(savedOrder);
+            cartOrderRelation.setAccount(account);
+            cartOrderRelationRepository.save(cartOrderRelation);
+        }
+
+        CheckoutResponse checkoutResponse = new CheckoutResponse();
+        checkoutResponse.setUsername(savedOrder.getAccount().getUsername());
+        checkoutResponse.setOrderId(savedOrder.getOrderId().toString());
+        checkoutResponse.setPaymentMethod(String.valueOf(savedOrder.getPayment_method()));
+        checkoutResponse.setCreateTime(savedOrder.getCreateTime());
+        checkoutResponse.setStatus(savedOrder.getStatus());
+        checkoutResponse.setTotalAmount(savedOrder.getTotal_amount());
+        return checkoutResponse;
     }
 
     private Integer getCurrentUserId() {
-        return 1; // 示例实现
+        Account account = (Account) request.getSession().getAttribute("currentUser");
+        if (account == null) {
+            throw TomatoMallException.notLogin();
+        }
+        return account.getId();
+    }
+
+    private BigDecimal calculateTotalAmount(List<String> cartItemIds) {
+        BigDecimal totalAmount = BigDecimal.ZERO;
+        for (String cartItemId : cartItemIds) {
+            CartItem cartItem = cartItemRepository.findById(Integer.parseInt(cartItemId)).get();
+            Product product = cartItem.getProduct();
+            BigDecimal productPrice = product.getPrice();
+            totalAmount = totalAmount.add(productPrice);
+        }
+        return totalAmount;
     }
 }

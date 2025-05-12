@@ -21,26 +21,19 @@ public class AdvertisementController {
     }
 
     @PostMapping
-    public Response<AdvertisementVO> createAdvertisement(@RequestParam("title") String title,
-                                                         @RequestParam("content") String content,
-                                                         @RequestParam("imageUrl") String imageUrl,
-                                                         @RequestParam("productId") Integer productId) {
+    public Response<AdvertisementVO> createAdvertisement(@RequestBody AdvertisementVO advertisementVO) {
         try {
-            AdvertisementVO advertisementVO = advertisementService.createAdvertisement(title, content, imageUrl, productId);
-            return Response.buildSuccess(advertisementVO);
+            AdvertisementVO res = advertisementService.createAdvertisement(advertisementVO.getTitle(), advertisementVO.getContent(), advertisementVO.getImgUrl(), advertisementVO.getProductId());
+            return Response.buildSuccess(res);
         } catch (IllegalArgumentException e) {
             return Response.buildFailure("400", e.getMessage());
         }
     }
 
     @PutMapping
-    public Response<String> updateAdvertisement(@RequestParam("id") Integer id,
-                                                @RequestParam("title") String title,
-                                                @RequestParam("content") String content,
-                                                @RequestParam("imageUrl") String imageUrl,
-                                                @RequestParam("productId") Integer productId) {
+    public Response<String> updateAdvertisement(@RequestBody AdvertisementVO advertisementVO) {
         try {
-            advertisementService.updateAdvertisement(id, title, content, imageUrl, productId);
+            advertisementService.updateAdvertisement(advertisementVO.getId(), advertisementVO.getTitle(), advertisementVO.getContent(), advertisementVO.getImgUrl(), advertisementVO.getProductId());
             return Response.buildSuccess("更新成功");
         } catch (IllegalArgumentException e) {
             return Response.buildFailure("400", e.getMessage());

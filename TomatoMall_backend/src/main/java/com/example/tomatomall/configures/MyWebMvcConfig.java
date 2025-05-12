@@ -12,11 +12,13 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        //registry.addInterceptor(loginInterceptor)
-          //      .addPathPatterns("/api/**")
-            //    .excludePathPatterns("/api/accounts/**")
-              //  .excludePathPatterns("/api/accounts/login")
-                //.order(1);
+        registry.addInterceptor(loginInterceptor)
+                .addPathPatterns("/api/**")
+                .excludePathPatterns("/api/accounts/**")
+                .excludePathPatterns("/api/accounts/login")
+                .excludePathPatterns("/api/orders/**")
+                .excludePathPatterns("/api/alipay/notify")
+                .order(1);
     }
 
 }

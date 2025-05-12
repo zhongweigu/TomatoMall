@@ -1,18 +1,27 @@
 <script setup >
 import {ElButton, ElCard,  ElMain} from "element-plus";
-import {computed, onMounted, reactive, ref} from "vue"
+import {computed, onBeforeUnmount, onMounted, reactive, ref} from "vue"
 import { ElMessage } from 'element-plus'
 import {router} from "@/router/index.js";
 import NavigationBar from "@/components/NavigationBar.vue";
 
 import {getAllProducts} from "@/api/products.js";
+import {getAllAds} from "@/api/advertisement.js";
 const role =sessionStorage.getItem('role');
 const allProducts = ref([])
+const allAds = ref([])
+
+const currentIndex = ref(0)
+const touchStartX = ref(0)
+const autoPlayTimer = ref(null)
+
 const defaultImage = 'https://tomato-mall-milvelas.oss-cn-nanjing.aliyuncs.com/BookCover/defaultCover.png'
 onMounted(() => {
   fetchProducts()
+  fetchAds()
+  startAutoPlay()
 })
-
+onBeforeUnmount(() => {stopAutoPlay()})
 // 获取所有商品
 const fetchProducts = async () => {
   try {
@@ -30,6 +39,65 @@ const fetchProducts = async () => {
   }
 }
 
+const fetchAds = async () => {
+  try{
+    const response = await getAllAds();
+    if (response.data.code === '200') {
+      allAds.value = response.data.data
+    }else {
+      ElMessage.error(response.data.msg || '获取广告列表失败')
+    }
+  }catch(error){
+    ElMessage.error('获取广告错误')
+  }
+}
+
+
+// 触摸事件处理
+const touchStart = (e) => {
+  touchStartX.value = e.touches[0].clientX
+}
+
+const touchMove = (e) => {
+  e.preventDefault()
+}
+
+const touchEnd = (e) => {
+  const touchEndX = e.changedTouches[0].clientX
+  const diffX = touchStartX.value - touchEndX
+
+  if (Math.abs(diffX) > 50) { // 滑动阈值
+    diffX > 0 ? next() : prev()
+  }
+}
+
+const trackStyle = computed(() => ({
+  transform: `translateX(-${currentIndex.value * 100}%)`,
+  transition: 'transform 0.3s ease'
+}))
+
+
+// 轮播控制
+const next = () => {
+  currentIndex.value = (currentIndex.value + 1) % allAds.value.length
+}
+
+const prev = () => {
+  currentIndex.value = (currentIndex.value - 1 + allAds.value.length) % allAds.value.length
+}
+
+const setActiveIndex = (index) => {
+  currentIndex.value = index
+}
+
+// 自动播放控制
+const startAutoPlay = () => {
+  autoPlayTimer.value = setInterval(next, 5000)
+}
+
+const stopAutoPlay = () => {
+  clearInterval(autoPlayTimer.value)
+}
 
 const selectedCategory = ref('')
 const categories = ref([
@@ -107,6 +175,36 @@ function seeDetail(id) {
 
       <!-- 右侧商品列表 -->
       <el-card class="product-list-card">
+        <!-- 广告轮播容器 -->
+        <div class="carousel-container"
+             @touchstart="touchStart"
+             @touchmove="touchMove"
+             @touchend="touchEnd">
+          <!-- 广告项列表 -->
+          <div class="carousel-track" :style="trackStyle">
+            <div v-for="(ad, index) in allAds"
+                 :key="ad.id || index"
+                 class="carousel-item"
+                 @click="seeDetail(ad.productId)">
+              <img :src="ad.imgUrl" :alt="ad.title" class="ad-image" />
+              <div class="ad-info">
+                <h3>{{ ad.title }}</h3>
+                <p>{{ ad.content }}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 指示器 -->
+          <div class="indicators">
+            <div v-for="(_, index) in allAds"
+                 :key="index"
+                 :class="['indicator-dot', { active: currentIndex === index }]"
+                 @click="setActiveIndex(index)"></div>
+          </div>
+        </div>
+
+        <el-divider class="custom-divider"></el-divider>
+
         <div class="list-header">
           <h2 class="subtitle">产品列表</h2>
           <router-link to="/personal" v-slot="{ navigate }">
@@ -123,7 +221,6 @@ function seeDetail(id) {
           </router-link>
         </div>
 
-        <el-divider class="custom-divider"></el-divider>
 
         <div v-if="productList.length > 0" class="product-grid">
           <div
@@ -384,4 +481,66 @@ function seeDetail(id) {
     grid-template-columns: 1fr;
   }
 }
+
+
+
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  width: 90%;
+  height: 400px;
+  margin-left: 60px;
+}
+
+.carousel-track {
+  display: flex;
+  height: 100%;
+}
+
+.carousel-item {
+  flex: 0 0 100%;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.ad-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ad-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 1rem;
+}
+
+.indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.indicator-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.indicator-dot.active {
+  background-color: #fff;
+  transform: scale(1.2);
+}
+
 </style>

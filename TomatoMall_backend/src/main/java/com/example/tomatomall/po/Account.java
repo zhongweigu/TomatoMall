@@ -1,6 +1,6 @@
 package com.example.tomatomall.po;
 
-import com.example.tomatomall.vo.SimpleAccountVO;
+import com.example.tomatomall.vo.AccountResponseVO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -83,11 +83,12 @@ public class Account {
         AccountVO.setPassword(this.password);
         AccountVO.setAvatar(this.avatar);
         AccountVO.setEmail(this.email);
+
         return AccountVO;
     }
 
-    public SimpleAccountVO toSimpleVO(){
-        SimpleAccountVO vo = new SimpleAccountVO();
+    public AccountResponseVO toSimpleVO(){
+        AccountResponseVO vo = new AccountResponseVO();
         vo.setUsername(this.username);
         vo.setName(this.name);
         vo.setRole(this.role);
@@ -95,6 +96,8 @@ public class Account {
         vo.setTelephone(this.telephone);
         vo.setEmail(this.email);
         vo.setLocation(this.location);
+        vo.setId(this.id);
         return vo;
     }
+
 }

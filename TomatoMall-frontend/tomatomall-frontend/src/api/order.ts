@@ -22,7 +22,13 @@ export const getCartsOrdersRelation = (relationId: string) => {
     })
 }
 
-// 用于删除订单
+export const getOrderByOrderId = (orderId : number) => {
+    return axios.get(`${ORDER_MODULE}/${orderId}`).then(res => {
+        return res
+    })
+}
+
+
 export const deleteCartsOrdersRelation = (relationId: string) => {
     return axios.delete(`${ORDER_MODULE}/${relationId}`).then(res => {
         return res

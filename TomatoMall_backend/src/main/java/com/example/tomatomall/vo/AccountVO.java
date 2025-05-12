@@ -2,9 +2,12 @@ package com.example.tomatomall.vo;
 
 import com.example.tomatomall.enums.RoleEnum;
 import com.example.tomatomall.po.Account;
+import com.example.tomatomall.po.Order;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.Set;
 
 @Getter
 @Setter
@@ -30,6 +33,8 @@ public class AccountVO {
     private String avatar;
 
     private String email;
+
+    private Set<OrderVO> orderVOs;
 
     public Account toPO(){
         Account user=new Account();

@@ -1,5 +1,6 @@
 package com.example.tomatomall.po;
 
+import com.example.tomatomall.enums.OrderStatusEnum;
 import com.example.tomatomall.vo.CartItemVO;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
@@ -44,6 +45,8 @@ public class CartItem {
     @Min(1)
     private Integer quantity;
 
+    private OrderStatusEnum status;
+
     public Integer getProductId() {
         return product != null ? product.getId() : null;
     }
@@ -60,6 +63,8 @@ public class CartItem {
         vo.setCover(this.product.getCover());
         vo.setDetail(this.product.getDetail());
         vo.setQuantity(this.quantity);
+        vo.setUserId(this.user.getId());
+        vo.setStatus(this.status);
         return vo;
     }
 }

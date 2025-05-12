@@ -38,7 +38,7 @@ public class AdvertisementServiceImpl implements AdvertisementService {
         Advertisement advertisement = new Advertisement();
         advertisement.setTitle(title);
         advertisement.setContent(content);
-        advertisement.setImageUrl(imageUrl);
+        advertisement.setImgUrl(imageUrl);
         advertisement.setProduct(product);
 
         Advertisement savedAd = advertisementRepository.save(advertisement);
@@ -50,13 +50,22 @@ public class AdvertisementServiceImpl implements AdvertisementService {
         Advertisement existingAd = advertisementRepository.findById(id)
                 .orElseThrow(() -> TomatoMallException.productDoNotExist());
 
-        Product product = productRepository.findById(productId)
-                .orElseThrow(() -> new IllegalArgumentException("商品不存在"));
 
-        existingAd.setTitle(title);
-        existingAd.setContent(content);
-        existingAd.setImageUrl(imageUrl);
-        existingAd.setProduct(product);
+        if(productId!=null){
+            Product product = productRepository.findById(productId)
+                    .orElseThrow(() -> new IllegalArgumentException("商品不存在"));
+            existingAd.setProduct(product);
+        }
+
+        if(title != null){
+            existingAd.setTitle(title);
+        }
+        if(content != null){
+            existingAd.setContent(content);
+        }
+        if(imageUrl != null){
+            existingAd.setImgUrl(imageUrl);
+        }
 
         Advertisement updatedAd = advertisementRepository.save(existingAd);
         return toVO(updatedAd);
