@@ -45,6 +45,12 @@ const router = createRouter({
         name: 'ProductDetail',
         component: () => import('../pages/detail.vue'),
         meta: {title: '商品详情页'}
+    } ,{
+        path: '/forum',
+        component: () => import('@/pages/ForumPage.vue'),
+        meta: {
+            showNavbar: true
+        }
     }
     ]
 })

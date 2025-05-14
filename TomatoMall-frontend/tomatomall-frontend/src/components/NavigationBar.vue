@@ -33,6 +33,10 @@ const identity = sessionStorage.getItem("role");
         <Icon iconName="icon-kufang" />
         <span>商品管理</span>
       </el-menu-item>
+      <el-menu-item index="/forum">
+        <Icon iconName="icon-luntan" />
+        <span>番茄论坛</span>
+      </el-menu-item>
     </el-menu>
   </div>
 </template>
