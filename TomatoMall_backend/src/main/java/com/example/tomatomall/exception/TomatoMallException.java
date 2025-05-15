@@ -41,4 +41,8 @@ public class TomatoMallException extends RuntimeException {
   public static TomatoMallException fileUploadFail() { return new TomatoMallException("400","文件上传失败!");}
 
   public static TomatoMallException orderDoNotExist() { return new TomatoMallException("400","订单不存在!");}
+
+  public static TomatoMallException commentDoNotExist() {
+    return new TomatoMallException("400", "评论不存在!");
+  }
 }

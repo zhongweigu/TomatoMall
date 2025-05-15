@@ -45,12 +45,12 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductVO getProductById(int id) {
-        Product product = productRepository.findById(id);
-        if(product == null){
-            throw TomatoMallException.productDoNotExist();
-        }
+        // 使用 Optional<Product> 返回值类型
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> TomatoMallException.productDoNotExist()); // 如果找不到，抛出异常
         return product.toVO();
     }
+
 
     @Override
     public Boolean updateProduct(ProductVO productVO) {
@@ -118,4 +118,6 @@ public class ProductServiceImpl implements ProductService {
         Product newProduct = productRepository.save(product);
         return getProductById(newProduct.getId());
     }
+
+
 }
