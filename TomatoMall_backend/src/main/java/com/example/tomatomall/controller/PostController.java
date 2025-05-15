@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/posts")
+@RequestMapping("/api/forum/posts")
 public class PostController {
 
     @Autowired
@@ -26,7 +26,11 @@ public class PostController {
 
     @PostMapping
     public Response<String> createPost(@RequestBody PostCreateVO postCreateVO) {
-        return Response.buildSuccess(postService.createPost(postCreateVO));
+        try {
+            return Response.buildSuccess(postService.createPost(postCreateVO));
+        } catch (Exception e) {
+            return Response.buildFailure("400", e.getMessage());
+        }
     }
 
     @PutMapping

@@ -289,6 +289,11 @@ import {
 } from '@/api/forum'
 import { uploadImage } from '@/api/image'
 
+import { useRouter } from 'vue-router'
+
+// setup 中声明 router
+const router = useRouter()
+
 // 当前用户信息
 const username = sessionStorage.getItem('username')
 const role = sessionStorage.getItem('role')
@@ -485,12 +490,24 @@ const submitPost = async () => {
 
   submitting.value = true
   try {
+
+    // 从会话存储中获取用户ID
+    const userId = sessionStorage.getItem('userId');
+
+    if (!userId) {
+      // 如果没有用户ID，提示用户登录
+      alert('请先登录');
+      router.push('/login');
+      return;
+    }
+
     let response
     const postData = {
       title: postForm.title,
       content: postForm.content,
       category: postForm.category,
       imageUrl: postForm.imageUrl,
+      userId: parseInt(userId),
       rating: postForm.category === 'review' ? postForm.rating : undefined
     }
 
@@ -515,19 +532,13 @@ const submitPost = async () => {
   }
 }
 
-// 查看帖子详情
-const viewPostDetail = async (post) => {
-  currentPost.value = { ...post }
-  detailDialogVisible.value = true
 
-  try {
-    const response = await getPostById(post.id)
-    if (response.data.code === '200') {
-      currentPost.value = response.data.data
-    }
-  } catch (error) {
-    console.error('获取帖子详情出错:', error)
-  }
+
+// 帖子详情查看函数
+const viewPostDetail = (post) => {
+  router.push({
+    path: `/forum/post/${post.id}`
+  })
 }
 
 // 确认删除帖子
@@ -595,10 +606,12 @@ const toggleLike = async (post) => {
   padding-top: 60px;
   min-height: 100vh;
   background-color: #f5f7fa;
+  width: 100%;
+  overflow-x: hidden; /* 防止水平滚动 */
 }
 
 .main-content {
-  max-width: 1280px;
+  max-width: calc(100% - 40px);
   margin: 0 auto;
   padding: 20px;
 }
@@ -624,6 +637,7 @@ const toggleLike = async (post) => {
 
 /* 帖子列表容器 */
 .posts-container {
+  flex-grow: 1;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.05);

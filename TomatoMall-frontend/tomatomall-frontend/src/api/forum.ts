@@ -20,9 +20,15 @@ export const getPostById = (id: string) => {
 
 // 创建帖子
 export const createPost = (postData: any) => {
-    return axios.post(`${FORUM_MODULE}/posts`, postData).then(res => {
-        return res
-    })
+    console.log('提交的帖子数据:', postData);
+    return axios.post(`${FORUM_MODULE}/posts`, postData)
+        .then(res => {
+            return res;
+        })
+        .catch(err => {
+            console.error('创建帖子错误:', err.response?.data || err);
+            throw err;
+        });
 }
 
 // 更新帖子

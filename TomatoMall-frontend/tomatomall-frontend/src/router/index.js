@@ -51,6 +51,14 @@ const router = createRouter({
         meta: {
             showNavbar: true
         }
+    }, {
+        path: '/forum/post/:id',
+        name: 'ForumDetailPage',
+        component: () => import('../pages/ForumDetailPage.vue'),
+        meta: {
+            title: '帖子详情',
+            showNavbar: true
+        }
     }
     ]
 })
