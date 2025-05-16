@@ -45,7 +45,12 @@ const router = createRouter({
         name: 'ProductDetail',
         component: () => import('../pages/detail.vue'),
         meta: {title: '商品详情页'}
-    }
+    },
+        {
+            path: '/forum/post/:id',
+            name: 'PostDetail',
+            component: () => import('../pages/postDetail.vue'),
+        }
     ]
 })
 
