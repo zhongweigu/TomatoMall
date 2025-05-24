@@ -21,10 +21,17 @@ public class ProductController {
         return Response.buildSuccess(productService.getProductList());
     }
 
+
+    @GetMapping("/search/{keywords}")
+    public Response<List<ProductVO>> searchProducts(@PathVariable String keywords){
+        return Response.buildSuccess(productService.searchProducts(keywords));
+    }
     @GetMapping("/{id}")
     public Response<ProductVO> getProductById(@PathVariable String id){
         return Response.buildSuccess(productService.getProductById(Integer.parseInt(id)));
     }
+
+
 
     @PutMapping()
     public Response<String> updateProduct(@RequestBody ProductVO productVO){

@@ -15,7 +15,8 @@ const initEmptyRow = () => ({
   total: 0,
   time: '',
   paymentMethod: '',
-  price: ''
+  price: '',
+  accountId: ''
 })
 const userId = sessionStorage.getItem('userId')
 const username = sessionStorage.getItem("username");
@@ -35,6 +36,9 @@ const fetchOrdersRelation =  async () => {
          row.id = item.id;
          row.cartItemId = item.cartItemId;
          row.orderId = item.orderId;
+
+         console.log('item:',item)
+         console.log('row:',row)
 
          // 并行获取订单和购物车项
          const [orderRes, cartItemRes] = await Promise.all([
@@ -59,7 +63,8 @@ const fetchOrdersRelation =  async () => {
                quantity: cartItemRes.data.data.quantity,
                title: cartItemRes.data.data.title,
                cover: cartItemRes.data.data.cover,
-               price: cartItemRes.data.data.price
+               price: cartItemRes.data.data.price,
+               accountId: cartItemRes.data.data.userId
              });
              return row;
            }
@@ -70,7 +75,7 @@ const fetchOrdersRelation =  async () => {
        allRows.value = (await Promise.all(promises))
            .filter(row =>
                row &&
-               row.accountId == currentUserId // 账户ID校验
+               row.accountId == userId // 账户ID校验
            );
      }
    }

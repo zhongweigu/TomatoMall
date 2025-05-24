@@ -45,10 +45,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductVO getProductById(int id) {
-        Product product = productRepository.findById(id);
-        if(product == null){
-            throw TomatoMallException.productDoNotExist();
-        }
+        // 使用 Optional<Product> 返回值类型
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> TomatoMallException.productDoNotExist()); // 如果找不到，抛出异常
         return product.toVO();
     }
 
@@ -117,5 +116,13 @@ public class ProductServiceImpl implements ProductService {
         product.addStockpile(stockpile);
         Product newProduct = productRepository.save(product);
         return getProductById(newProduct.getId());
+    }
+
+    @Override
+    public List<ProductVO> searchProducts(String keyword) {
+        List<ProductVO> productVOS;
+        List<Product> products = productRepository.findAllByTitleContaining(keyword);
+        productVOS = products.stream().map(Product::toVO).collect(Collectors.toList());
+        return productVOS;
     }
 }

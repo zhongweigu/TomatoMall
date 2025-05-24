@@ -5,12 +5,12 @@
   <h1 class="art-title"><Icon iconName="icon-fanqie" style="width: 70px; height: 70px;"  />番茄书城</h1>
 
 <el-main class="login" >
-    <el-card  style="max-width: 480px ;max-height: 340px;flex: auto;margin-right: auto" >
+    <el-card  style="width: 35vw; height: 45vh; ">
       <h1>番茄书城</h1>
         <h1>登录</h1>
       <hr>
       <br>
-        <el-form style="width: 480px;height: 180px;">
+        <el-form style="width: 30vw;height: 20vh;">
             <el-form-item label="用户名" label-width="100px">
                 <el-input v-model="username"
                 placeholder="请输入用户名"
@@ -83,7 +83,7 @@
 }
 
 .login{
-  padding-left: 1000px;
+  padding-left: 100vh;
 }
 </style>
 

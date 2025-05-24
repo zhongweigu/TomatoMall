@@ -1,6 +1,7 @@
 <script setup>
 import {ElMenu, ElMenuItem} from "element-plus";
 import Icon from "@/components/Ico.vue";
+import {Search} from "@element-plus/icons-vue";
 
 const identity = sessionStorage.getItem("role");
 
@@ -32,6 +33,14 @@ const identity = sessionStorage.getItem("role");
       <el-menu-item v-if="identity === 'staff'" index="/product-management">
         <Icon iconName="icon-kufang" />
         <span>商品管理</span>
+      </el-menu-item>
+      <el-menu-item index="/forum">
+        <Icon iconName="icon-luntan" />
+        <span>番茄论坛</span>
+      </el-menu-item>
+      <el-menu-item index="/search">
+        <Icon iconName="icon-sousuo" />
+        <span>搜索</span>
       </el-menu-item>
     </el-menu>
   </div>

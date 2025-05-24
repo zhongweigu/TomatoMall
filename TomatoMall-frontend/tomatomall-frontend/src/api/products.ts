@@ -16,6 +16,13 @@ export const getAllProducts = () => {
       })
 }
 
+export const getSearchedProducts = (keywords:string) => {
+    return axios.get(`${PRODUCT_MODULE}/search/${keywords}`)
+        .then(res => {
+            return res
+        })
+}
+
 // 获取单个商品详情
 export const getProductById = (id: string) => {
   return axios.get(`${PRODUCT_MODULE}/${id}`).then(res => {
@@ -61,3 +68,4 @@ export const updateProductStock = (productId: string, stockInfo: StockInfo) => {
       return res
   })
 }
+

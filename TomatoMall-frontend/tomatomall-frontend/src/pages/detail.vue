@@ -17,7 +17,7 @@
       <transition name="slide-fade">
         <div class="product-info">
           <h1 class="product-title">
-            <el-icon :size="24" color="#409EFC" class="title-icon">
+            <el-icon :size="28" color="#409EFC" class="title-icon">
               <Reading />
             </el-icon>
             {{ productData.title }}
@@ -200,7 +200,7 @@ import {
   User,
   School,
   Collection,
-  DocumentCopy
+  DocumentCopy, Clock
 } from '@element-plus/icons-vue';
 import { addCart } from "@/api/carts.js";
 import {userInfo} from "@/api/accounts.js";
@@ -212,8 +212,9 @@ const productData = ref({})
 const specIcons = ref({
   '作者': User,
   '出版社': School,
-  'ISBN': Collection,
-  '分类': DocumentCopy
+  '商品编码（ISBN）': Collection,
+  '页数': DocumentCopy,
+  '出版时间': Clock,
 })
 
 const loadData = async () => {
@@ -478,12 +479,13 @@ const handlePay = () => {
 }
 
 .image-wrapper {
-  width: 100%;
-  height: 40%;
+  margin-left: 2vw;
+  width: 20vw;
+  height: 40vh;
   border-radius: 12px;
   overflow: hidden;
   margin-top: 20px;
-  background: rgba(223, 180, 154, 0.13);
+  background: rgb(255, 255, 255);
   padding: 20px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
@@ -503,7 +505,7 @@ const handlePay = () => {
 /* 内容容器 - 精确间距控制 */
 .content-container {
   position: relative;
-  margin-left: 500px;
+  margin-left: 23vw;
   margin-top: 70px;
   padding-right: 40px; /* 距离屏幕右侧固定距离 */
   max-width: calc(100% - 440px - 40px); /* 100% - 左边距 - 右边距 */
@@ -517,8 +519,8 @@ const handlePay = () => {
 
 
 .product-info {
-  background: rgba(223, 180, 154, 0.13);
-  margin-left: -200px;
+  background: rgb(255, 255, 255);
+  margin-left: 0vh;
   min-width: calc(80vw - 300px);
   padding: 30px;
   border-radius: 12px;
@@ -526,7 +528,7 @@ const handlePay = () => {
 }
 
 .product-title {
-  font-size: 28px;
+  font-size: 38px;
   color: #303133;
   margin-bottom: 20px;
   display: flex;
@@ -548,7 +550,7 @@ const handlePay = () => {
 }
 
 .product-price {
-  font-size: 32px;
+  font-size: 28px;
   color: #ff4500;
   font-weight: 700;
 }
@@ -566,6 +568,8 @@ const handlePay = () => {
   margin-top: 12px;
   color: #606266;
   line-height: 1.8;
+  white-space: pre-wrap; /* 关键样式 */
+  word-break: break-word;
 }
 
 .detail-description {
@@ -576,6 +580,7 @@ const handlePay = () => {
   display: flex;
   align-items: center;
   gap: 8px;
+  width: 15vw;
 }
 
 .spec-value {

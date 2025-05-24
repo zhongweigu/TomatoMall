@@ -3,13 +3,13 @@
   <h1 class="art-title"><Icon iconName="icon-fanqie" style="width: 70px; height: 70px;"  />番茄书城</h1>
   <el-main class="register">
 
-    <el-card style="max-width: 480px ;max-height: 650px;">
+    <el-card style="max-width: 35vw ;max-height: 80vh;">
       <h1>番茄书城</h1>
 
       <h2>注册</h2>
       <hr>
       <br>
-      <el-form :model="userRegister" style="width: 480px;height: 380px;">
+      <el-form :model="userRegister" style="width: 35vw;height: 60vh;">
         <el-form-item label="名称" label-width="100px">
           <el-input v-model="name"
                     placeholder="请输入昵称"
@@ -115,10 +115,9 @@
   align-items: center;
 }
 .register{
-  padding-right: 100px;
-  width: 100%;
+  padding-left: 10vw;
   display: flex;
-  margin-left: 1000px;
+  margin-left: 45vw;
   min-height: 650px;
 }
 

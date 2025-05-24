@@ -443,10 +443,9 @@ const handleLogout = () => {
 
 <style scoped>
 .container {
-  height: 100vh;
+  height: auto;
   width: 100%;
   overflow-x: hidden;
-  overflow-y: hidden;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
@@ -465,14 +464,14 @@ const handleLogout = () => {
   width: 400px; /* 固定宽度 */
   height: 200px;
   flex-shrink: 0; /* 禁止缩小 */
-  background-color: rgba(228, 203, 174, 0.1);
+  background-color: rgb(255, 255, 255);
 }
 
 /* 自动填充剩余空间 */
 .detail-card {
   flex: 1; /* 关键：自动拉伸填充剩余宽度 */
   min-width: 0; /* 修复 flex 容器溢出问题 */
-  background-color: rgba(228, 203, 174, 0.1);
+  background-color: rgb(255, 255, 255);
 }
 
 .animated-card {

@@ -73,9 +73,6 @@
         <el-form-item label="价格" required>
           <el-input-number v-model="productForm.price" :min="0" :precision="2" />
         </el-form-item>
-        <el-form-item label="评分" required>
-          <el-rate v-model="productForm.rate" :max="10" :allow-half="true" />
-        </el-form-item>
 
         <!-- 替换为图片上传组件 -->
         <el-form-item label="商品封面">
@@ -195,7 +192,7 @@ const productForm = reactive({
   id: '',
   title: '',
   price: 0,
-  rate: 0,
+  rate: 5,
   type: '',
   description: '',
   cover: '',
@@ -293,7 +290,7 @@ const resetProductForm = () => {
   productForm.id = ''
   productForm.title = ''
   productForm.price = 0
-  productForm.rate = 0
+  productForm.rate = 5
   productForm.description = ''
   productForm.cover = ''
   productForm.detail = ''

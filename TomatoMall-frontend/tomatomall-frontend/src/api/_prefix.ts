@@ -11,3 +11,11 @@ export const CART_MODULE = `${API_MODULE}/cart`
 export const ORDER_MODULE = `${API_MODULE}/orders`
 
 export const ADVER_MODULE = `${API_MODULE}/advertisements`
+
+export const POST_MODULE = `${API_MODULE}/posts`
+
+export const COMMENTS_MODULE = `${API_MODULE}/comments`
+
+export const LIKES_MODULE = `${API_MODULE}/likes`
+
+export const RATE_MODULE = `${API_MODULE}/rates`
