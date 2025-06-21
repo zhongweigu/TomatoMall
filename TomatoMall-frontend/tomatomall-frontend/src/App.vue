@@ -10,7 +10,7 @@ body {
       to bottom,
       #FFFFFF 0%,
       #FFFFFF 15%,
-      #FFF0EB 100%
+      rgba(250, 241, 239, 0.72) 100%
   );
   overflow-x: hidden;
   max-width: 100vw;

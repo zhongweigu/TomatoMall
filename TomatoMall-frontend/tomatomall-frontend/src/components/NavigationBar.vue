@@ -42,6 +42,10 @@ const identity = sessionStorage.getItem("role");
         <Icon iconName="icon-sousuo" />
         <span>搜索</span>
       </el-menu-item>
+      <el-menu-item index="/rankinglist">
+        <Icon iconName="icon-paixingbang" />
+        <span>排行榜</span>
+      </el-menu-item>
     </el-menu>
   </div>
 </template>

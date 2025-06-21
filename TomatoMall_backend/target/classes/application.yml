@@ -32,7 +32,7 @@ aliyun:
 
 alipay:
   appId: 2021000147699442
-  notifyUrl: http://6my8je.natappfree.cc/api/alipay/notify
+  notifyUrl: http://e9de7696.natappfree.cc/api/alipay/notify
   returnUrl: http://localhost:5173/#/carts
   serverUrl: https://openapi-sandbox.dl.alipaydev.com/gateway.do
   signType: RSA2

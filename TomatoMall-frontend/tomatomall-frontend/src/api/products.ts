@@ -69,3 +69,9 @@ export const updateProductStock = (productId: string, stockInfo: StockInfo) => {
   })
 }
 
+export const getContent = (id: string) => {
+    return axios.get(`${API_MODULE}/content/${id}`).then(res => {
+        return res
+    })
+}
+

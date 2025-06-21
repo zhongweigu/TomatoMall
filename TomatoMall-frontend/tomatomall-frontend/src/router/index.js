@@ -62,6 +62,15 @@ const router = createRouter({
         path: '/search',
         component: () => import('../pages/searchPage.vue'),
         meta: {title: '搜索',showNavbar: true}
+    },{
+        path: '/rankinglist',
+        component: () => import('../pages/RankingListPage.vue'),
+        meta: {title: '排行榜',showNavbar: true}
+    },{
+        path: '/reading/:id',
+        name: 'ReadingPage',
+        component: () => import('../pages/ReadingPage.vue'),
+        meta: {title: '试读',showNavbar: true}
     }
     ]
 })

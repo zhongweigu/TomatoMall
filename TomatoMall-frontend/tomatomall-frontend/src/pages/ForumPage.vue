@@ -202,7 +202,25 @@
         </el-form-item>
 
         <el-form-item v-if="postForm.category === 'BookComment'" label="评分">
-          <el-input v-model="postForm.bookId" placeholder="请输入书籍id" maxlength="20" show-word-limit />
+          <el-autocomplete
+              v-model="query"
+              :fetch-suggestions="fetchBookSuggestions"
+              placeholder="搜索书籍标题"
+              @select="handleSelect"
+              clearable
+              class="w-full"
+          >
+            <template #default="{ item }">
+              <div class="flex items-center">
+                <div>
+                  <div class="font-medium">{{ item.title }}</div>
+                </div>
+              </div>
+            </template>
+            <template #prefix>
+              <el-icon class="search-icon"><search /></el-icon>
+            </template>
+          </el-autocomplete>
           <div class="rating-input">
             <el-rate
                 v-model="postForm.rating"
@@ -289,6 +307,7 @@ import {
 import { uploadImage } from '@/api/image'
 
 import { useRouter } from 'vue-router'
+import {getSearchedProducts} from "@/api/products.js";
 
 // setup 中声明 router
 const router = useRouter()
@@ -435,6 +454,38 @@ const handleImageUpload = async (options) => {
     console.error('上传图片出错:', error)
     ElMessage.error('网络错误，请重试')
   }
+}
+
+const query = ref('')
+const selectedBook = ref(null)
+
+// 获取书籍建议
+const fetchBookSuggestions = async (queryString, cb) => {
+  if (queryString) {
+    try {
+      const response = await getSearchedProducts(queryString)
+      const results = response.data.data.map(book => ({
+        value: book.title, // 必须字段
+        ...book
+      }))
+      cb(results)
+    } catch (error) {
+      ElMessage.error('搜索失败: ' + error.message)
+      cb([])
+    }
+  } else {
+    cb([])
+  }
+}
+
+// 处理选择事件
+const handleSelect = (item) => {
+  selectedBook.value = item
+  // 这里可以将选中的书籍ID传递给父组件或表单
+  console.log('选中的书籍ID:', item.id)
+
+  // 如果需要将选中的书籍ID设置到表单中
+  postForm.bookId = item.id
 }
 
 // 移除已上传图片

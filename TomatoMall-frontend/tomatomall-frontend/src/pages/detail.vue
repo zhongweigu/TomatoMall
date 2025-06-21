@@ -91,6 +91,12 @@
 <!--              </el-icon>-->
 <!--              立即购买-->
 <!--            </el-button>-->
+            <el-button type="danger" round size="large" class="action-btn" @click="handleReading">
+              <el-icon :size="20" class="btn-icon">
+                <Reading />
+              </el-icon>
+              在线试读
+            </el-button>
           </div>
         </div>
       </transition>
@@ -204,6 +210,7 @@ import {
 } from '@element-plus/icons-vue';
 import { addCart } from "@/api/carts.js";
 import {userInfo} from "@/api/accounts.js";
+import {router} from "@/router/index.js";
 
 const route = useRoute()
 const id = route.params.id
@@ -318,6 +325,13 @@ const handleBuyNow = async () => {
     ElMessage.error("网络错误，请重试");
   }
 };
+
+const handleReading = () => {
+  router.push({
+    name: 'ReadingPage', // 路由名称
+    params: { id: id } // 传递参数
+  })
+}
 
 // 添加到购物车
 const handleAddToCart = async () => {
