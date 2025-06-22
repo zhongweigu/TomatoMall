@@ -1,5 +1,6 @@
 package com.example.tomatomall.po;
 
+import com.example.tomatomall.vo.AdvertisementVO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,4 +31,14 @@ public class Advertisement {
     @JoinColumn(name = "product_id", nullable = false, referencedColumnName = "id",
             foreignKey = @ForeignKey(name = "fk_advertisement_product"))
     private Product product;
+
+    public AdvertisementVO toVO(){
+        AdvertisementVO vo = new AdvertisementVO();
+        vo.setTitle(title);
+        vo.setContent(content);
+        vo.setImgUrl(imgUrl);
+        vo.setId(id);
+        vo.setProductId(product.getId());
+        return vo;
+    }
 }

@@ -10,6 +10,7 @@ import com.example.tomatomall.exception.TomatoMallException;
 import com.example.tomatomall.po.*;
 import com.example.tomatomall.service.CartService;
 import com.example.tomatomall.service.OrderService;
+import com.example.tomatomall.utils.SecurityUtil;
 import com.example.tomatomall.vo.CartResponseVO;
 import com.example.tomatomall.vo.CheckoutInfo;
 import com.example.tomatomall.vo.CheckoutResponse;
@@ -42,6 +43,9 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     CartOrderRelationRepository cartOrderRelationRepository;
 
+    @Autowired
+    SecurityUtil securityUtil;
+
     @Override
     public Order selectByOrderId(String orderId) {
         return orderRepository.findByOrderId(Integer.parseInt(orderId));
@@ -59,12 +63,12 @@ public class OrderServiceImpl implements OrderService {
 
         Integer userId = getCurrentUserId();
         if (userId == null) {
-            throw new IllegalStateException("User is not logged in");
+            throw TomatoMallException.notLogin();
         }
 
         Optional<Account> optionalAccount = accountRepository.findById(userId);
         if (!optionalAccount.isPresent()) {
-            throw new IllegalStateException("User does not exist");
+            throw TomatoMallException.userDoNotExist();
         }
         Account account = optionalAccount.get();
 
@@ -100,7 +104,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     private Integer getCurrentUserId() {
-        Account account = (Account) request.getSession().getAttribute("currentUser");
+        Account account = securityUtil.getCurrentUser();
         if (account == null) {
             throw TomatoMallException.notLogin();
         }

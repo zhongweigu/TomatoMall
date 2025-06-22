@@ -94,7 +94,7 @@ public class ProductServiceImpl implements ProductService {
     public Boolean deleteProductById(int id) {
         if (productRepository.findById(id)!=null) { // 检查是否存在
             productRepository.deleteById(id);   // 存在则删除
-            return productRepository.findById(id) == null;
+            return true;
         }
         return false; // 不存在返回 false
     }

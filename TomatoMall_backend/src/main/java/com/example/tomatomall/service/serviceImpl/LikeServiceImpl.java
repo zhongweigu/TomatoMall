@@ -4,6 +4,7 @@ import com.example.tomatomall.Repository.CommentRepository;
 import com.example.tomatomall.Repository.PostLikesRepository;
 import com.example.tomatomall.Repository.CommentLikesRepository;
 import com.example.tomatomall.Repository.PostRepository;
+import com.example.tomatomall.exception.TomatoMallException;
 import com.example.tomatomall.po.Comment;
 import com.example.tomatomall.po.Post;
 import com.example.tomatomall.po.PostLikes;
@@ -32,7 +33,7 @@ public class LikeServiceImpl implements LikeService {
     public String addLike(Integer userId, Integer postId, Integer commentId) {
         if (postId != null) {
             if (postLikesRepository.existsByUserIdAndPostId(userId, postId)) {
-                throw new RuntimeException("已点赞该帖子！");
+                throw TomatoMallException.likeAlreadyExists();
             }
             PostLikes like = new PostLikes();
             like.setUserId(userId);
@@ -46,7 +47,7 @@ public class LikeServiceImpl implements LikeService {
 
         } else if (commentId != null) {
             if (commentLikesRepository.existsByUserIdAndCommentId(userId, commentId)) {
-                throw new RuntimeException("已点赞该评论！");
+                throw TomatoMallException.likeAlreadyExists();
             }
             CommentLikes like = new CommentLikes();
             like.setUserId(userId);
@@ -83,7 +84,7 @@ public class LikeServiceImpl implements LikeService {
             comment.setLikesCount(likes-1);
             commentRepository.save(comment);
         } else {
-            throw new IllegalArgumentException("post_id 和 comment_id 不能同时为空！");
+            throw TomatoMallException.addLikeFail();
         }
         return "取消点赞成功";
     }
@@ -95,7 +96,7 @@ public class LikeServiceImpl implements LikeService {
         } else if (commentId != null) {
             return commentLikesRepository.countByCommentId(commentId);
         } else {
-            throw new IllegalArgumentException("post_id 和 comment_id 不能同时为空！");
+            throw TomatoMallException.addLikeFail();
         }
     }
 
@@ -107,7 +108,7 @@ public class LikeServiceImpl implements LikeService {
         } else if (commentId != null) {
             commentLikesRepository.deleteAllByCommentId(commentId);
         } else {
-            throw new IllegalArgumentException("post_id 和 comment_id 不能同时为空！");
+            throw TomatoMallException.addLikeFail();
         }
         return "删除相关点赞成功！";
     }

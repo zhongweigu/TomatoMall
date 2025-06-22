@@ -45,4 +45,12 @@ public class TomatoMallException extends RuntimeException {
   public static TomatoMallException commentDoNotExist() {
     return new TomatoMallException("400", "评论不存在!");
   }
+
+  public static TomatoMallException likeAlreadyExists(){return new TomatoMallException("400","已点赞!");}
+
+  public static TomatoMallException addLikeFail(){return new TomatoMallException("400","post_id 和 comment_id 不能同时为空!");}
+
+  public static TomatoMallException contentAlreadyExists(){return new TomatoMallException("400","该内容已经存在!");}
+
+  public static TomatoMallException contentDoNotExists(){return new TomatoMallException("400","该内容不存在!");}
 }

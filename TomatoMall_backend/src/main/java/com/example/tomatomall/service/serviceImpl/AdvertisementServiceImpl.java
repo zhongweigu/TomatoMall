@@ -11,6 +11,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,9 +26,16 @@ public class AdvertisementServiceImpl implements AdvertisementService {
 
     @Override
     public List<AdvertisementVO> getAllAdvertisements() {
-        return advertisementRepository.findAll().stream()
-                .map(this::toVO)
-                .collect(Collectors.toList());
+        List<AdvertisementVO> advertisements = new ArrayList<>();
+        for (Advertisement advertisement : advertisementRepository.findAll()) {
+            advertisements.add(advertisement.toVO());
+        }
+        List<AdvertisementVO> Reversed_advertisements = new ArrayList<>();
+        int len = advertisements.size();
+        for (int i = len-1; i >=0; i--) {
+            Reversed_advertisements.add(advertisements.get(i));
+        }
+        return Reversed_advertisements;
     }
 
     @Override

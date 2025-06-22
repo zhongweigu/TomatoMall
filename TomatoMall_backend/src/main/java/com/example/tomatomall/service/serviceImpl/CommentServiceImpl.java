@@ -9,6 +9,7 @@ import com.example.tomatomall.po.Comment;
 import com.example.tomatomall.po.Post;
 import com.example.tomatomall.po.Account;
 import com.example.tomatomall.service.CommentService;
+import com.example.tomatomall.utils.SecurityUtil;
 import com.example.tomatomall.vo.CommentCreateVO;
 import com.example.tomatomall.vo.CommentResponseVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,9 @@ public class CommentServiceImpl implements CommentService {
     CommentLikesRepository commentLikesRepository;
 
     @Autowired
-    private HttpServletRequest request;
+    SecurityUtil securityUtil;
+
+
 
     @Override
     public String addComment(CommentCreateVO commentCreateVO) {
@@ -74,8 +77,6 @@ public class CommentServiceImpl implements CommentService {
         // 更新帖子评论数
         post.setCommentsNumber(post.getCommentsNumber() - 1);
         postRepository.save(post);
-
-
 
         return "删除成功";
     }
@@ -136,7 +137,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     private Integer getCurrentUserId() {
-        Account account = (Account) request.getSession().getAttribute("currentUser");
+        Account account = securityUtil.getCurrentUser();
         if (account == null) {
             throw TomatoMallException.notLogin();
         }
