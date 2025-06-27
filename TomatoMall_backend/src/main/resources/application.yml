@@ -4,8 +4,8 @@ server:
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/TomatoMall?characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
-    username: root
-    password: Gwg7910081434
+    username: 
+    password: 
   jpa:
     hibernate:
       ddl-auto: update
@@ -25,17 +25,17 @@ logging:
 
 aliyun:
   oss:
-    endpoint: oss-cn-nanjing.aliyuncs.com
-    accessKeyId: LTAI5t6hRmAjXfVN97hGxrmo
-    accessKeySecret: hHqSjwUdpXKVdhIvhj3D1v8BJyEu6c
-    bucketName: tomato-mall-milvelas
+    endpoint: 
+    accessKeyId: 
+    accessKeySecret: 
+    bucketName: 
 
 alipay:
-  appId: 2021000147699442
-  notifyUrl: http://e9de7696.natappfree.cc/api/alipay/notify
+  appId: 
+  notifyUrl: 
   returnUrl: http://localhost:5173/#/carts
   serverUrl: https://openapi-sandbox.dl.alipaydev.com/gateway.do
   signType: RSA2
   charset: utf-8
-  merchant-private-key: MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCK3gdG9VvEuz94pjnEFtf88Mw+BXiec8jOOHEbnBuaMi1n6f+HNb8rgtD8XnDj77o9a2FxF/qaPQfFYfyMcaAq3ajGZFffjr26Ip50hMBFwJxFMybKLRMBRp2FQLidk8AJlogsroICadGEld394Jp/I7qDuX4SYo0n2iqbGRBq1lrMyaZnj/69DqUkTlBJO2zAm9O4QPMi7dnJOGBhHi3x1KoePNuRehC2l1vG6bh3CMXIoMRVRIq71n+nbfIBkQXs9eKBJ6eEfPrDSLl/meGc6SrWiGtCQkbMJcuFlANt6swBQcNMubDRll+QQb3AN3KDlac8/XVY9Gyu0ZEK+ZWNAgMBAAECggEAc0Ijch7VwyzTWpVFHt8C+Dr4moW5/nIFejxYjNz9//ajvzr1zsiqWjfis4TDWDyyLKZCozaO1pPPLmHM1ti8YrfFjJzeXnxANwzizb0dRQe/7KOvD2FoA8gTl/UHBisK2ipp7gQNfmlL8CrfrQdN1DbYaNp9rE7F8AzhDgg4myL/5JDAOeMx7n6tr57rNnM/iuT35NUwK1LqkGGa47/uHrCeqZVpL5tl4RyhDnmH6W2zcNjq4DCzWXlNhwU3qnPnFf1Z2mFYiww9BbAdod9cQ3BeiRkON2oQmM3F1q22Tjxg6qOVhFI1E68Rms2vDu75dAk4uboF+RmKTHFRXpwEAQKBgQDd6/h3IaPcfsQX2GAllocSrvsx0DbFFF/Hj3dZmCx2eTrmAm+M8Gghd4HO7vTon78vOWir/LtID1wr6aTp2I4z/A1JRGnPLXwdffbTorhf8ccj6kvS07QnmPYxxKi+qamQczjdkrrOnle9hRyPv0LJ1KlPExYRmnJmOcmF3H1xAQKBgQCgMRSOeWOAOaXeIrRzBxYok5qkbg+k2Lbdtg08DdYKGgYVvk5U9FJv4ISOpnsSYj0Pfrsw2K6Ejn7b+m1mwjjwruaE5dkTgEdei0/Dse0nbQQYUeGDPLMpF95mR0u76XR70v1Eb9brn2sq4CM3wwBp2WdpM2cDHkUD8HmkEQpYjQKBgBeraW7baazE4IlijK61pWZ6v1QKzyyqBaU1SheGQYfJWlzZ+afgpFqdcnztw7VkBHI2/1EIvbjr2nrcirheXpxwz8H2yApO4aQLoV3lRyEEmqbcAIZWCisHB4s7XHwpgGplv7TyR3ZuMRGHtwol7iu0wPIsKPhrrrP0ief7Im4BAoGBAIiuuBqFCthK1/M863lGb6q5nvZ0DpcabpWok4xNRfcik1SUJ6QnP/vDt3c8J8Dc37rL6I7aI7ZpG2c5O4W1bP44TerRb7JK/xp1hd61f2Pnidnya5gd/8StYA8nAEDbBo/szDtLrjcntDpGOuaGVWD7plfGCzxG5J5i3neWLpy1AoGBANjkfODT0T5bSBQUodolR6WqjtgDJiCCG+UipYvaFcdTZ60E1edB9cz+/7snSCf3PX1LVls8jeMGBeDOlS5MLY0wQC+pta59+SaTEeI+SHywBf8tJuHjfwM+vY7cVl62Q5hbtMxSsUg7AvP4zacXZjrOagGM8dncJAeYXofK93Vm
-  alipay-public-key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhvgxv1LTRI1RHxmiuIHahq/yhhflWG5bnpmL2tNNvLS2B9Fzil1Otz2ErCspDvHFfbmlxQD7MTVQBipfhK2l5XEtiJ2QEY28BkAvFuR/1OAWBNC9sseVaNx+jO5RKrgi1VPy/Azmw11AvK+hrWk5iN8GfaA5HT/KE/DeGdI9C/iUJKgqidYfDxFVpMOHsHQZ4VerZdOIRNmAXXbz8kts+dOEpQiJchUnKI/DqNBtyJEb0ypzbGB7891BcHd2+tl9R0/sxz/Dq4IGZW0RHHCn2l1MLR/ZR96J4QTzBwBSvBw1be3ygoqMjAn9lbE9+8OTnxgiR6XHLsws9T3w0SetOQIDAQAB
+  merchant-private-key: 
+  alipay-public-key: 
