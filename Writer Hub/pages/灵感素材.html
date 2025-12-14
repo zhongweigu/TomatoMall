@@ -70,64 +70,78 @@
     </div>
 <!-- 导航链接 - 桌面版 -->
 <nav class='hidden md:flex items-center space-x-6'>
-        <a href='javascript:void(0);' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+        <a href='首页.html' class='font-medium text-gray-600 hover:text-primary transition-colors'>
         首页
     </a>
-<a href='javascript:void(0);' class='font-medium text-primary border-b-2 border-primary pb-1'>
+<a href='灵感素材.html' class='font-medium text-primary border-b-2 border-primary pb-1'>
         灵感素材
     </a>
-<a href='javascript:void(0);' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+<a href='作家资讯.html' class='font-medium text-gray-600 hover:text-primary transition-colors'>
         作家资讯
     </a>
-<a href='javascript:void(0);' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+<a href='话题社区.html' class='font-medium text-gray-600 hover:text-primary transition-colors'>
         话题社区
     </a>
-<a href='javascript:void(0);' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+<a href='投稿中心.html' class='font-medium text-gray-600 hover:text-primary transition-colors'>
         投稿中心
     </a>
-<a href='javascript:void(0);' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+<a href='AI助手.html' class='font-medium text-gray-600 hover:text-primary transition-colors'>
         AI助手
     </a>
     </nav>
 <!-- 用户区域 -->
-<div class='flex items-center space-x-4'>
-        <button class='hidden md:flex items-center space-x-1 text-gray-600 hover:text-primary transition-colors'>
-        <i class='fas fa-bell'>
-        </i>
-<span class='bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center'>
+            <div class='flex items-center space-x-4'>
+                <button class='hidden md:flex items-center space-x-1 text-gray-600 hover:text-primary transition-colors'>
+                    <i class='fas fa-bell'>
+                    </i>
+                    <span class='bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center'>
         3
     </span>
-    </button>
-<div class='relative group'>
-        <button class='flex items-center space-x-2 focus:outline-none'>
-        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/a6f7958bc1c69ae8ce9414161938e6b4.png' alt='用户头像' class='w-8 h-8 rounded-full object-cover border-2 border-gray-200'/>
-<span class='hidden md:inline font-medium'>
-        林作家
-    </span>
-<i class='fas fa-chevron-down text-xs text-gray-500'>
-        </i>
-    </button>
-<!-- 下拉菜单 -->
-<div class='absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-10 hidden group-hover:block transition-all duration-300'>
-        <a href='javascript:void(0);' class='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'>
-        <i class='fas fa-user mr-2 text-gray-500'>
-        </i>
-个人中心
-    </a>
-<a href='javascript:void(0);' class='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'>
-        <i class='fas fa-cog mr-2 text-gray-500'>
-        </i>
-设置
-    </a>
-<div class='border-t border-gray-100 my-1'>
-        </div>
-<a href='javascript:void(0);' class='block px-4 py-2 text-sm text-red-600 hover:bg-gray-100'>
-        <i class='fas fa-sign-out-alt mr-2'>
-        </i>
-退出登录
-    </a>
-    </div>
-    </div>
+                </button>
+                <div class="relative group inline-block">
+                    <!-- hover 容器内容整体 -->
+                    <div class="flex items-center space-x-2 cursor-pointer">
+                        <img
+                                src="https://design.gemcoder.com/staticResource/echoAiSystemImages/a6f7958bc1c69ae8ce9414161938e6b4.png"
+                                alt="用户头像"
+                                class="w-8 h-8 rounded-full object-cover border-2 border-gray-200" />
+
+                        <span class="hidden md:inline font-medium">
+            林作家
+        </span>
+
+                        <i class="fas fa-chevron-down text-xs text-gray-500"></i>
+                    </div>
+
+                    <!-- 下拉菜单：不再用 mt-2 -->
+                    <div
+                            class="absolute right-0 top-full pt-2
+               w-48 bg-white rounded-lg shadow-lg py-2 z-50
+               opacity-0 invisible
+               group-hover:opacity-100 group-hover:visible
+               transition-opacity duration-200">
+
+                        <a href="个人中心.html"
+                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            <i class="fas fa-user mr-2 text-gray-500"></i>
+                            个人中心
+                        </a>
+
+                        <a href="#"
+                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            <i class="fas fa-cog mr-2 text-gray-500"></i>
+                            设置
+                        </a>
+
+                        <div class="border-t border-gray-100 my-1"></div>
+
+                        <a href="#"
+                           class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
+                            <i class="fas fa-sign-out-alt mr-2"></i>
+                            退出登录
+                        </a>
+                    </div>
+                </div>
 <!-- 移动端菜单按钮 -->
 <button id='mobile-menu-button' class='md:hidden text-gray-700 focus:outline-none'>
         <i class='fas fa-bars text-xl'>
@@ -138,22 +152,22 @@
 <!-- 移动端导航菜单 -->
 <div id='mobile-menu' class='md:hidden hidden bg-white border-t border-gray-100'>
         <div class='container mx-auto px-4 py-2 flex flex-col space-y-3'>
-        <a href='javascript:void(0);' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+        <a href='首页.html' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
         首页
     </a>
-<a href='javascript:void(0);' class='font-medium text-primary py-2 border-l-4 border-primary pl-3'>
+<a href='灵感素材.html' class='font-medium text-primary py-2 border-l-4 border-primary pl-3'>
         灵感素材
     </a>
-<a href='javascript:void(0);' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+<a href='作家资讯.html' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
         作家资讯
     </a>
-<a href='javascript:void(0);' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+<a href='话题社区.html' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
         话题社区
     </a>
-<a href='javascript:void(0);' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+<a href='投稿中心.html' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
         投稿中心
     </a>
-<a href='javascript:void(0);' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+<a href='AI助手.html' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
         AI助手
     </a>
 <div class='border-t border-gray-100 my-1 pt-2 flex items-center space-x-2'>
