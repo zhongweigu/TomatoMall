@@ -2,6 +2,7 @@ package com.example.tomatomall.controller;
 
 import com.example.tomatomall.Repository.CartOrderRelationRepository;
 import com.example.tomatomall.Repository.OrderRepository;
+import com.example.tomatomall.enums.OrderStatusEnum;
 import com.example.tomatomall.po.CartOrderRelation;
 import com.example.tomatomall.vo.CartOrderRelationVO;
 import com.example.tomatomall.vo.OrderVO;
@@ -25,15 +26,6 @@ public class OrderController {
     @Autowired
     private CartOrderRelationRepository cartOrderRelationRepository;
 
-    /**
-     * 提交订单
-     */
-    @PostMapping
-    public Response<OrderVO> submitOrder(@RequestParam String paymentMethod) {
-//        OrderVO vo = orderService.createOrder(paymentMethod);
-//        return Response.buildSuccess(vo);
-        return null;
-    }
 
     /**
      * 获取当前用户的所有订单
@@ -72,12 +64,7 @@ public class OrderController {
     @PatchMapping("/{orderId}/status")
     public Response<String> updateOrderStatus(@PathVariable Integer orderId,
                                               @RequestParam String status) {
-//        boolean success = orderService.updateOrderStatus(orderId, status);
-//        if (success) {
-//            return Response.buildSuccess("订单状态更新成功");
-//        } else {
-//            return Response.buildFailure("订单不存在或状态更新失败", null);
-//        }
+        orderService.updateOrderStatus(orderId.toString(), OrderStatusEnum.valueOf(status));
         return null;
     }
 }

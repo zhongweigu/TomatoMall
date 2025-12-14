@@ -1,0 +1,1320 @@
+<html lang='zh-CN'>
+        <head >
+        <meta charset='UTF-8'/>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+<title >作家助手 - 个人中心</title>
+<script src='https://res.gemcoder.com/js/reload.js'></script>
+<script src='https://cdn.tailwindcss.com'></script>
+<link href='https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'/>
+<script >tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#3B82F6',
+        secondary: '#10B981',
+        accent: '#8B5CF6',
+        dark: '#1E293B',
+        light: '#F8FAFC',
+        'neutral-100': '#F3F4F6',
+        'neutral-200': '#E5E7EB',
+        'neutral-300': '#D1D5DB',
+        'neutral-400': '#9CA3AF',
+        'neutral-500': '#6B7280',
+        'neutral-600': '#4B5563',
+        'neutral-700': '#374151',
+        'neutral-800': '#1F2937',
+        'neutral-900': '#111827'
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        serif: ['Georgia', 'serif']
+      },
+      spacing: {
+        '72': '18rem',
+        '80': '20rem',
+        '96': '24rem',
+        '104': '26rem',
+        '112': '28rem',
+        '120': '30rem'
+      }
+    }
+  }
+};</script>
+<style type='text/tailwindcss'>
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+            }
+            .btn-primary {
+                @apply bg-primary text-white px-4 py-2 rounded-lg transition-all duration-300 hover:bg-primary/90 focus:ring-2 focus:ring-primary/50 focus:outline-none;
+            }
+            .btn-secondary {
+                @apply bg-secondary text-white px-4 py-2 rounded-lg transition-all duration-300 hover:bg-secondary/90 focus:ring-2 focus:ring-secondary/50 focus:outline-none;
+            }
+            .btn-outline {
+                @apply border border-gray-300 text-gray-700 px-4 py-2 rounded-lg transition-all duration-300 hover:bg-gray-50 focus:ring-2 focus:ring-gray-200 focus:outline-none;
+            }
+            .progress-bar {
+                @apply h-2 bg-neutral-200 rounded-full overflow-hidden;
+            }
+            .progress-value {
+                @apply h-full bg-primary rounded-full transition-all duration-500 ease-out;
+            }
+            .badge {
+                @apply px-2 py-1 rounded-full text-xs font-medium;
+            }
+            .stat-card {
+                @apply bg-white rounded-xl shadow-sm p-4 card-hover;
+            }
+            .section-title {
+                @apply text-lg font-bold text-neutral-800 mb-4 flex items-center justify-between;
+            }
+        }
+    </style>
+    </head>
+<body class='bg-neutral-100 text-neutral-800'>
+        <!-- [MODULE] abc_顶部导航栏 -->
+<header class='bg-white shadow-sm sticky top-0 z-50'>
+        <div class='container mx-auto px-4 py-3 flex items-center justify-between'>
+        <!-- Logo区域 -->
+<div class='flex items-center space-x-2'>
+        <i class='fas fa-feather-alt text-primary text-2xl'>
+        </i>
+<h1 class='text-xl font-bold text-dark'>
+        作家助手
+    </h1>
+    </div>
+<!-- 导航链接 - 桌面版 -->
+<nav class='hidden md:flex items-center space-x-6'>
+        <a href='javascript:void(0);' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+        首页
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+        灵感素材
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+        作家资讯
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+        话题社区
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+        投稿中心
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+        AI助手
+    </a>
+    </nav>
+<!-- 用户区域 -->
+<div class='flex items-center space-x-4'>
+        <button class='hidden md:flex items-center space-x-1 text-gray-600 hover:text-primary transition-colors'>
+        <i class='fas fa-bell'>
+        </i>
+<span class='bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center'>
+        3
+    </span>
+    </button>
+<div class='relative group'>
+        <button class='flex items-center space-x-2 focus:outline-none'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/a6f7958bc1c69ae8ce9414161938e6b4.png' alt='用户头像' class='w-8 h-8 rounded-full object-cover border-2 border-gray-200'/>
+<span class='hidden md:inline font-medium'>
+        林作家
+    </span>
+<i class='fas fa-chevron-down text-xs text-gray-500'>
+        </i>
+    </button>
+<!-- 下拉菜单 -->
+<div class='absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-10 hidden group-hover:block transition-all duration-300'>
+        <a href='javascript:void(0);' class='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'>
+        <i class='fas fa-user mr-2 text-gray-500'>
+        </i>
+个人中心
+    </a>
+<a href='javascript:void(0);' class='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'>
+        <i class='fas fa-cog mr-2 text-gray-500'>
+        </i>
+设置
+    </a>
+<div class='border-t border-gray-100 my-1'>
+        </div>
+<a href='javascript:void(0);' class='block px-4 py-2 text-sm text-red-600 hover:bg-gray-100'>
+        <i class='fas fa-sign-out-alt mr-2'>
+        </i>
+退出登录
+    </a>
+    </div>
+    </div>
+<!-- 移动端菜单按钮 -->
+<button class='md:hidden text-gray-700 focus:outline-none' id='mobile-menu-button'>
+        <i class='fas fa-bars text-xl'>
+        </i>
+    </button>
+    </div>
+    </div>
+<!-- 移动端导航菜单 -->
+<div class='md:hidden hidden bg-white border-t border-gray-100' id='mobile-menu'>
+        <div class='container mx-auto px-4 py-2 flex flex-col space-y-3'>
+        <a href='javascript:void(0);' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+        首页
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+        灵感素材
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+        作家资讯
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+        话题社区
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+        投稿中心
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+        AI助手
+    </a>
+<div class='border-t border-gray-100 my-1 pt-2 flex items-center space-x-2'>
+        <i class='fas fa-bell text-gray-500'>
+        </i>
+<span class='text-sm text-gray-700'>
+        通知
+    </span>
+<span class='bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center'>
+        3
+    </span>
+    </div>
+    </div>
+    </div>
+    </header>
+<!-- [/MODULE] abc_顶部导航栏 -->
+<!-- [MODULE] def_主内容区域 -->
+<main class='container mx-auto px-4 py-6'>
+        <!-- [MODULE] ghi_个人中心页面 -->
+<div class='grid grid-cols-1 lg:grid-cols-4 gap-6'>
+        <!-- [MODULE] jkl_侧边栏导航 -->
+<div class='lg:col-span-1'>
+        <div class='bg-white rounded-xl shadow-sm p-5 sticky top-24'>
+        <div class='flex flex-col items-center mb-6'>
+        <div class='relative mb-3'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/c3a201450bf7faece07514669553b4cc.png' alt='用户头像' class='w-24 h-24 rounded-full object-cover border-4 border-white shadow-md'/>
+<button class='absolute bottom-0 right-0 bg-primary text-white rounded-full p-2 shadow-md hover:bg-primary/90 transition-colors'>
+        <i class='fas fa-camera text-sm'>
+        </i>
+    </button>
+    </div>
+<h2 class='text-xl font-bold text-center'>
+        林作家
+    </h2>
+<p class='text-neutral-500 text-sm text-center'>
+        资深小说创作者
+    </p>
+    </div>
+<nav class='space-y-1'>
+        <a href='javascript:void(0);' class='flex items-center space-x-3 px-4 py-3 rounded-lg bg-primary/10 text-primary font-medium'>
+        <i class='fas fa-user-circle w-5 text-center'>
+        </i>
+<span >
+        个人中心
+    </span>
+    </a>
+<a href='javascript:void(0);' class='flex items-center space-x-3 px-4 py-3 rounded-lg text-neutral-700 hover:bg-neutral-100 transition-colors'>
+        <i class='fas fa-book w-5 text-center'>
+        </i>
+<span >
+        我的作品
+    </span>
+    </a>
+<a href='javascript:void(0);' class='flex items-center space-x-3 px-4 py-3 rounded-lg text-neutral-700 hover:bg-neutral-100 transition-colors'>
+        <i class='fas fa-lightbulb w-5 text-center'>
+        </i>
+<span >
+        灵感素材
+    </span>
+    </a>
+<a href='javascript:void(0);' class='flex items-center space-x-3 px-4 py-3 rounded-lg text-neutral-700 hover:bg-neutral-100 transition-colors'>
+        <i class='fas fa-pen w-5 text-center'>
+        </i>
+<span >
+        我的随笔
+    </span>
+    </a>
+<a href='javascript:void(0);' class='flex items-center space-x-3 px-4 py-3 rounded-lg text-neutral-700 hover:bg-neutral-100 transition-colors'>
+        <i class='fas fa-star w-5 text-center'>
+        </i>
+<span >
+        我的收藏
+    </span>
+    </a>
+<a href='javascript:void(0);' class='flex items-center space-x-3 px-4 py-3 rounded-lg text-neutral-700 hover:bg-neutral-100 transition-colors'>
+        <i class='fas fa-trophy w-5 text-center'>
+        </i>
+<span >
+        我的成就
+    </span>
+    </a>
+<a href='javascript:void(0);' class='flex items-center space-x-3 px-4 py-3 rounded-lg text-neutral-700 hover:bg-neutral-100 transition-colors'>
+        <i class='fas fa-cog w-5 text-center'>
+        </i>
+<span >
+        账户设置
+    </span>
+    </a>
+    </nav>
+    </div>
+    </div>
+<!-- [/MODULE] jkl_侧边栏导航 -->
+<!-- [MODULE] mno_个人中心内容 -->
+<div class='lg:col-span-3 space-y-6'>
+        <!-- [MODULE] pqr_基本信息 -->
+<div class='bg-white rounded-xl shadow-sm overflow-hidden'>
+        <!-- 背景大图 -->
+<div class='relative h-48'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/bd621f8ce0fc138c9d3470bbffdee791.png' alt='个人背景' class='w-full h-full object-cover'/>
+<button class='absolute bottom-4 right-4 bg-black/50 text-white rounded-lg px-3 py-1.5 text-sm hover:bg-black/70 transition-colors'>
+        <i class='fas fa-image mr-1'>
+        </i>
+更换封面
+    </button>
+    </div>
+<!-- 个人资料卡片 -->
+<div class='p-6'>
+        <div class='flex flex-col md:flex-row md:items-center justify-between mb-6'>
+        <div >
+        <h2 class='text-2xl font-bold'>
+        个人资料
+    </h2>
+<p class='text-neutral-500'>
+        管理您的个人信息和偏好
+    </p>
+    </div>
+<button class='mt-4 md:mt-0 btn-primary'>
+        <i class='fas fa-edit mr-2'>
+        </i>
+编辑资料
+    </button>
+    </div>
+<div class='grid grid-cols-1 md:grid-cols-2 gap-6'>
+        <div >
+        <h3 class='text-sm font-medium text-neutral-500 mb-1'>
+        昵称
+    </h3>
+<p class='font-medium'>
+        林作家
+    </p>
+    </div>
+<div >
+        <h3 class='text-sm font-medium text-neutral-500 mb-1'>
+        头衔
+    </h3>
+<p class='font-medium'>
+        资深小说创作者
+    </p>
+    </div>
+<div >
+        <h3 class='text-sm font-medium text-neutral-500 mb-1'>
+        阅历
+    </h3>
+<p class='font-medium'>
+        5年创作经验
+    </p>
+    </div>
+<div >
+        <h3 class='text-sm font-medium text-neutral-500 mb-1'>
+        IP属地
+    </h3>
+<p class='font-medium'>
+        中国 · 北京
+    </p>
+    </div>
+<div >
+        <h3 class='text-sm font-medium text-neutral-500 mb-1'>
+        注册时间
+    </h3>
+<p class='font-medium'>
+        2018年6月15日
+    </p>
+    </div>
+<div >
+        <h3 class='text-sm font-medium text-neutral-500 mb-1'>
+        最后登录
+    </h3>
+<p class='font-medium'>
+        今天 09:42
+    </p>
+    </div>
+<div class='md:col-span-2'>
+        <h3 class='text-sm font-medium text-neutral-500 mb-1'>
+        个人简介
+    </h3>
+<p class='text-neutral-700'>
+        热爱文学创作，擅长都市情感与悬疑推理类小说。已出版《城市微光》《迷雾追踪》等作品，累计创作字数超过200万字。
+    </p>
+    </div>
+    </div>
+    </div>
+    </div>
+<!-- [/MODULE] pqr_基本信息 -->
+<!-- [MODULE] stu_数据统计 -->
+<div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
+        <div class='stat-card'>
+        <div class='flex items-start justify-between'>
+        <div >
+        <p class='text-neutral-500 text-sm'>
+        作品总数
+    </p>
+<h3 class='text-2xl font-bold mt-1'>
+        8
+    </h3>
+    </div>
+<div class='bg-primary/10 p-2 rounded-lg'>
+        <i class='fas fa-book text-primary'>
+        </i>
+    </div>
+    </div>
+<div class='mt-4'>
+        <div class='flex justify-between text-xs mb-1'>
+        <span class='text-neutral-500'>
+        完成进度
+    </span>
+<span class='font-medium'>
+        80%
+    </span>
+    </div>
+<div class='progress-bar'>
+        <div class='progress-value' style='width: 80%'>
+        </div>
+    </div>
+    </div>
+    </div>
+<div class='stat-card'>
+        <div class='flex items-start justify-between'>
+        <div >
+        <p class='text-neutral-500 text-sm'>
+        累计字数
+    </p>
+<h3 class='text-2xl font-bold mt-1'>
+        246万
+    </h3>
+    </div>
+<div class='bg-secondary/10 p-2 rounded-lg'>
+        <i class='fas fa-file-alt text-secondary'>
+        </i>
+    </div>
+    </div>
+<div class='mt-4'>
+        <div class='flex justify-between text-xs mb-1'>
+        <span class='text-neutral-500'>
+        年度目标
+    </span>
+<span class='font-medium'>
+        62%
+    </span>
+    </div>
+<div class='progress-bar'>
+        <div class='progress-value bg-secondary' style='width: 62%'>
+        </div>
+    </div>
+    </div>
+    </div>
+<div class='stat-card'>
+        <div class='flex items-start justify-between'>
+        <div >
+        <p class='text-neutral-500 text-sm'>
+        粉丝数量
+    </p>
+<h3 class='text-2xl font-bold mt-1'>
+        12.5k
+    </h3>
+    </div>
+<div class='bg-accent/10 p-2 rounded-lg'>
+        <i class='fas fa-users text-accent'>
+        </i>
+    </div>
+    </div>
+<div class='mt-4 text-xs text-neutral-500'>
+        <span class='flex items-center'>
+        <i class='fas fa-arrow-up text-green-500 mr-1'>
+        </i>
+较上月增长 12%
+    </span>
+    </div>
+    </div>
+<div class='stat-card'>
+        <div class='flex items-start justify-between'>
+        <div >
+        <p class='text-neutral-500 text-sm'>
+        获得点赞
+    </p>
+<h3 class='text-2xl font-bold mt-1'>
+        45.8k
+    </h3>
+    </div>
+<div class='bg-amber-500/10 p-2 rounded-lg'>
+        <i class='fas fa-heart text-amber-500'>
+        </i>
+    </div>
+    </div>
+<div class='mt-4 text-xs text-neutral-500'>
+        <span class='flex items-center'>
+        <i class='fas fa-arrow-up text-green-500 mr-1'>
+        </i>
+较上月增长 8%
+    </span>
+    </div>
+    </div>
+    </div>
+<!-- [/MODULE] stu_数据统计 -->
+<!-- [MODULE] vwx_我的作品 -->
+<div class='bg-white rounded-xl shadow-sm p-6'>
+        <div class='section-title'>
+        <h2 >
+        我的作品
+    </h2>
+<a href='javascript:void(0);' class='text-primary text-sm font-medium hover:underline'>
+        查看全部
+    </a>
+    </div>
+<div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+        <!-- 作品卡片1 -->
+<div class='border border-neutral-200 rounded-lg overflow-hidden hover:shadow-md transition-shadow'>
+        <div class='relative'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/efe0a5e49b52c21cd15156cff5939f0d.png' alt='城市微光' class='w-full h-40 object-cover'/>
+<span class='absolute top-2 left-2 badge bg-green-500 text-white'>
+        已完结
+    </span>
+    </div>
+<div class='p-4'>
+        <h3 class='font-bold text-lg mb-1'>
+        城市微光
+    </h3>
+<p class='text-neutral-500 text-sm mb-3'>
+        都市情感 · 42万字
+    </p>
+<div class='flex justify-between items-center'>
+        <div class='flex items-center text-sm text-neutral-500'>
+        <span class='flex items-center mr-3'>
+        <i class='fas fa-eye mr-1'>
+        </i>
+125.3k
+    </span>
+<span class='flex items-center'>
+        <i class='fas fa-heart mr-1'>
+        </i>
+8.7k
+    </span>
+    </div>
+<button class='text-primary hover:text-primary/80'>
+        <i class='fas fa-ellipsis-v'>
+        </i>
+    </button>
+    </div>
+    </div>
+    </div>
+<!-- 作品卡片2 -->
+<div class='border border-neutral-200 rounded-lg overflow-hidden hover:shadow-md transition-shadow'>
+        <div class='relative'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/0c0568b47ba9450ef70292562b761017.png' alt='迷雾追踪' class='w-full h-40 object-cover'/>
+<span class='absolute top-2 left-2 badge bg-green-500 text-white'>
+        已完结
+    </span>
+    </div>
+<div class='p-4'>
+        <h3 class='font-bold text-lg mb-1'>
+        迷雾追踪
+    </h3>
+<p class='text-neutral-500 text-sm mb-3'>
+        悬疑推理 · 58万字
+    </p>
+<div class='flex justify-between items-center'>
+        <div class='flex items-center text-sm text-neutral-500'>
+        <span class='flex items-center mr-3'>
+        <i class='fas fa-eye mr-1'>
+        </i>
+210.5k
+    </span>
+<span class='flex items-center'>
+        <i class='fas fa-heart mr-1'>
+        </i>
+15.2k
+    </span>
+    </div>
+<button class='text-primary hover:text-primary/80'>
+        <i class='fas fa-ellipsis-v'>
+        </i>
+    </button>
+    </div>
+    </div>
+    </div>
+<!-- 作品卡片3 -->
+<div class='border border-neutral-200 rounded-lg overflow-hidden hover:shadow-md transition-shadow'>
+        <div class='relative'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/2d19f1b35454b014e69cfafa893ec515.png' alt='星辰之旅' class='w-full h-40 object-cover'/>
+<span class='absolute top-2 left-2 badge bg-blue-500 text-white'>
+        连载中
+    </span>
+    </div>
+<div class='p-4'>
+        <h3 class='font-bold text-lg mb-1'>
+        星辰之旅
+    </h3>
+<p class='text-neutral-500 text-sm mb-3'>
+        奇幻冒险 · 76万字
+    </p>
+<div class='flex justify-between items-center'>
+        <div class='flex items-center text-sm text-neutral-500'>
+        <span class='flex items-center mr-3'>
+        <i class='fas fa-eye mr-1'>
+        </i>
+89.2k
+    </span>
+<span class='flex items-center'>
+        <i class='fas fa-heart mr-1'>
+        </i>
+6.3k
+    </span>
+    </div>
+<button class='text-primary hover:text-primary/80'>
+        <i class='fas fa-ellipsis-v'>
+        </i>
+    </button>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+<!-- [/MODULE] vwx_我的作品 -->
+<!-- [MODULE] yza_素材与随笔 -->
+<div class='grid grid-cols-1 lg:grid-cols-2 gap-6'>
+        <!-- 我上传的素材 -->
+<div class='bg-white rounded-xl shadow-sm p-6'>
+        <div class='section-title'>
+        <h2 >
+        我上传的素材
+    </h2>
+<a href='javascript:void(0);' class='text-primary text-sm font-medium hover:underline'>
+        查看全部
+    </a>
+    </div>
+<div class='space-y-4'>
+        <div class='flex items-center p-3 border border-neutral-200 rounded-lg hover:border-primary/50 transition-colors'>
+        <div class='bg-blue-100 p-3 rounded mr-4'>
+        <i class='fas fa-image text-blue-500 text-xl'>
+        </i>
+    </div>
+<div class='flex-1 min-w-0'>
+        <h3 class='font-medium text-neutral-800 truncate'>
+        都市夜景摄影集
+    </h3>
+<p class='text-neutral-500 text-sm truncate'>
+        24张图片 · 上传于 3天前
+    </p>
+    </div>
+<button class='text-neutral-400 hover:text-neutral-600'>
+        <i class='fas fa-ellipsis-v'>
+        </i>
+    </button>
+    </div>
+<div class='flex items-center p-3 border border-neutral-200 rounded-lg hover:border-primary/50 transition-colors'>
+        <div class='bg-purple-100 p-3 rounded mr-4'>
+        <i class='fas fa-file-alt text-purple-500 text-xl'>
+        </i>
+    </div>
+<div class='flex-1 min-w-0'>
+        <h3 class='font-medium text-neutral-800 truncate'>
+        人物对话素材库
+    </h3>
+<p class='text-neutral-500 text-sm truncate'>
+        文本文档 · 上传于 1周前
+    </p>
+    </div>
+<button class='text-neutral-400 hover:text-neutral-600'>
+        <i class='fas fa-ellipsis-v'>
+        </i>
+    </button>
+    </div>
+<div class='flex items-center p-3 border border-neutral-200 rounded-lg hover:border-primary/50 transition-colors'>
+        <div class='bg-green-100 p-3 rounded mr-4'>
+        <i class='fas fa-map-marker-alt text-green-500 text-xl'>
+        </i>
+    </div>
+<div class='flex-1 min-w-0'>
+        <h3 class='font-medium text-neutral-800 truncate'>
+        老城区场景描写
+    </h3>
+<p class='text-neutral-500 text-sm truncate'>
+        12张图片 · 上传于 2周前
+    </p>
+    </div>
+<button class='text-neutral-400 hover:text-neutral-600'>
+        <i class='fas fa-ellipsis-v'>
+        </i>
+    </button>
+    </div>
+    </div>
+    </div>
+<!-- 我的随笔 -->
+<div class='bg-white rounded-xl shadow-sm p-6'>
+        <div class='section-title'>
+        <h2 >
+        我的随笔
+    </h2>
+<a href='javascript:void(0);' class='text-primary text-sm font-medium hover:underline'>
+        查看全部
+    </a>
+    </div>
+<div class='space-y-4'>
+        <div class='p-4 border border-neutral-200 rounded-lg hover:border-primary/50 transition-colors'>
+        <h3 class='font-medium text-neutral-800 mb-1'>
+        关于《星辰之旅》的创作思路
+    </h3>
+<p class='text-neutral-600 text-sm line-clamp-2 mb-3'>
+        本章将重点描写主角在神秘森林中的遭遇，引入新的角色和世界观设定，为后续剧情发展埋下伏笔...
+    </p>
+<div class='flex justify-between items-center text-xs text-neutral-500'>
+        <span >
+        2023-06-15
+    </span>
+<span >
+        关联作品: 星辰之旅
+    </span>
+    </div>
+    </div>
+<div class='p-4 border border-neutral-200 rounded-lg hover:border-primary/50 transition-colors'>
+        <h3 class='font-medium text-neutral-800 mb-1'>
+        人物塑造的几点思考
+    </h3>
+<p class='text-neutral-600 text-sm line-clamp-2 mb-3'>
+        好的角色应该有自己的成长弧线和内在矛盾，不是简单的"好人"或"坏人"，而是具有复杂性和多面性...
+    </p>
+<div class='flex justify-between items-center text-xs text-neutral-500'>
+        <span >
+        2023-06-10
+    </span>
+<span >
+        创作笔记
+    </span>
+    </div>
+    </div>
+<div class='p-4 border border-neutral-200 rounded-lg hover:border-primary/50 transition-colors'>
+        <h3 class='font-medium text-neutral-800 mb-1'>
+        新故事构思：时间旅行者
+    </h3>
+<p class='text-neutral-600 text-sm line-clamp-2 mb-3'>
+        一个能够在时间中穿梭的图书馆管理员，每次穿越都会改变历史，但必须付出相应的代价...
+    </p>
+<div class='flex justify-between items-center text-xs text-neutral-500'>
+        <span >
+        2023-06-05
+    </span>
+<span >
+        灵感随笔
+    </span>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+<!-- [/MODULE] yza_素材与随笔 -->
+<!-- [MODULE] bcd_审核与消息 -->
+<div class='grid grid-cols-1 lg:grid-cols-2 gap-6'>
+        <!-- 审核进度 -->
+<div class='bg-white rounded-xl shadow-sm p-6'>
+        <div class='section-title'>
+        <h2 >
+        审核进度
+    </h2>
+<a href='javascript:void(0);' class='text-primary text-sm font-medium hover:underline'>
+        查看全部
+    </a>
+    </div>
+<div class='space-y-6'>
+        <div >
+        <div class='flex justify-between mb-2'>
+        <h3 class='font-medium'>
+        《星辰之旅》第45章
+    </h3>
+<span class='badge bg-yellow-100 text-yellow-800'>
+        审核中
+    </span>
+    </div>
+<div class='progress-bar'>
+        <div class='progress-value bg-yellow-500' style='width: 65%'>
+        </div>
+    </div>
+<p class='text-neutral-500 text-xs mt-2'>
+        预计完成时间：2023-06-20 18:00
+    </p>
+    </div>
+<div >
+        <div class='flex justify-between mb-2'>
+        <h3 class='font-medium'>
+        短篇小说《雨夜》
+    </h3>
+<span class='badge bg-green-100 text-green-800'>
+        已通过
+    </span>
+    </div>
+<div class='progress-bar'>
+        <div class='progress-value bg-green-500' style='width: 100%'>
+        </div>
+    </div>
+<p class='text-neutral-500 text-xs mt-2'>
+        完成时间：2023-06-18 09:32
+    </p>
+    </div>
+<div >
+        <div class='flex justify-between mb-2'>
+        <h3 class='font-medium'>
+        新作品《时间旅行者》申请
+    </h3>
+<span class='badge bg-red-100 text-red-800'>
+        需修改
+    </span>
+    </div>
+<div class='progress-bar'>
+        <div class='progress-value bg-red-500' style='width: 40%'>
+        </div>
+    </div>
+<p class='text-neutral-500 text-xs mt-2'>
+        修改意见已发送，请于7天内完成修改
+    </p>
+    </div>
+    </div>
+    </div>
+<!-- 消息评论 -->
+<div class='bg-white rounded-xl shadow-sm p-6'>
+        <div class='section-title'>
+        <h2 >
+        消息评论
+    </h2>
+<a href='javascript:void(0);' class='text-primary text-sm font-medium hover:underline'>
+        查看全部
+    </a>
+    </div>
+<div class='space-y-4'>
+        <div class='flex items-start p-3 border border-neutral-200 rounded-lg hover:border-primary/50 transition-colors'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/bb181ac802adf0fae91d733b54d7948e.png' alt='用户头像' class='w-10 h-10 rounded-full object-cover mr-3'/>
+<div class='flex-1 min-w-0'>
+        <div class='flex items-center justify-between'>
+        <h3 class='font-medium text-neutral-800'>
+        张读者
+    </h3>
+<span class='text-neutral-400 text-xs'>
+        2小时前
+    </span>
+    </div>
+<p class='text-neutral-600 text-sm mt-1'>
+        《星辰之旅》最新章节太精彩了！期待后续发展！
+    </p>
+<div class='flex mt-2 space-x-3'>
+        <button class='text-sm text-primary hover:text-primary/80'>
+        回复
+    </button>
+<button class='text-sm text-neutral-500 hover:text-neutral-700'>
+        点赞
+    </button>
+    </div>
+    </div>
+    </div>
+<div class='flex items-start p-3 border border-neutral-200 rounded-lg hover:border-primary/50 transition-colors'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/524968d109044c761999d0c45c9c2c0e.png' alt='编辑头像' class='w-10 h-10 rounded-full object-cover mr-3'/>
+<div class='flex-1 min-w-0'>
+        <div class='flex items-center justify-between'>
+        <h3 class='font-medium text-neutral-800'>
+        李编辑
+    </h3>
+<span class='text-neutral-400 text-xs'>
+        昨天
+    </span>
+    </div>
+<p class='text-neutral-600 text-sm mt-1'>
+        您的短篇小说《雨夜》已通过审核，将在本周内发布。
+    </p>
+<div class='flex mt-2 space-x-3'>
+        <button class='text-sm text-primary hover:text-primary/80'>
+        回复
+    </button>
+    </div>
+    </div>
+    </div>
+<div class='flex items-start p-3 border border-neutral-200 rounded-lg hover:border-primary/50 transition-colors'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/866ca2dd2f3d7d813fc9004a54e7209b.png' alt='用户头像' class='w-10 h-10 rounded-full object-cover mr-3'/>
+<div class='flex-1 min-w-0'>
+        <div class='flex items-center justify-between'>
+        <h3 class='font-medium text-neutral-800'>
+        王读者
+    </h3>
+<span class='text-neutral-400 text-xs'>
+        3天前
+    </span>
+    </div>
+<p class='text-neutral-600 text-sm mt-1'>
+        请问《城市微光》会有续集吗？非常喜欢这个故事！
+    </p>
+<div class='flex mt-2 space-x-3'>
+        <button class='text-sm text-primary hover:text-primary/80'>
+        回复
+    </button>
+<button class='text-sm text-neutral-500 hover:text-neutral-700'>
+        点赞
+    </button>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+<!-- [/MODULE] bcd_审核与消息 -->
+<!-- [MODULE] efg_收藏与关注 -->
+<div class='grid grid-cols-1 lg:grid-cols-2 gap-6'>
+        <!-- 我的收藏 -->
+<div class='bg-white rounded-xl shadow-sm p-6'>
+        <div class='section-title'>
+        <h2 >
+        我的收藏
+    </h2>
+<a href='javascript:void(0);' class='text-primary text-sm font-medium hover:underline'>
+        查看全部
+    </a>
+    </div>
+<div class='grid grid-cols-2 sm:grid-cols-3 gap-3'>
+        <div class='group relative rounded-lg overflow-hidden'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/55d7a31f55388fe219dabb4ed0f80ad5.png' alt='写作灵感' class='w-full h-24 object-cover'/>
+<div class='absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center'>
+        <button class='text-white hover:text-primary transition-colors'>
+        <i class='fas fa-heart'>
+        </i>
+    </button>
+    </div>
+    </div>
+<div class='group relative rounded-lg overflow-hidden'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/7c6c2e4ae6a1fc45d79eb8c7ef5b8f3e.png' alt='角色设定模板' class='w-full h-24 object-cover'/>
+<div class='absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center'>
+        <button class='text-white hover:text-primary transition-colors'>
+        <i class='fas fa-heart'>
+        </i>
+    </button>
+    </div>
+    </div>
+<div class='group relative rounded-lg overflow-hidden'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/e7b3c2dbfab53bd6afd6efa54c4ea24f.png' alt='情节结构图' class='w-full h-24 object-cover'/>
+<div class='absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center'>
+        <button class='text-white hover:text-primary transition-colors'>
+        <i class='fas fa-heart'>
+        </i>
+    </button>
+    </div>
+    </div>
+<div class='group relative rounded-lg overflow-hidden'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/a8d50c9b6f47ef2690e7e96a5d126fd6.png' alt='古建筑参考' class='w-full h-24 object-cover'/>
+<div class='absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center'>
+        <button class='text-white hover:text-primary transition-colors'>
+        <i class='fas fa-heart'>
+        </i>
+    </button>
+    </div>
+    </div>
+<div class='group relative rounded-lg overflow-hidden'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/386624c7f9e3787468d812398314b114.png' alt='对话写作技巧' class='w-full h-24 object-cover'/>
+<div class='absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center'>
+        <button class='text-white hover:text-primary transition-colors'>
+        <i class='fas fa-heart'>
+        </i>
+    </button>
+    </div>
+    </div>
+<div class='group relative rounded-lg overflow-hidden'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/9edcf1294b74cd5989ea34976109b5c3.png' alt='世界观地图模板' class='w-full h-24 object-cover'/>
+<div class='absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center'>
+        <button class='text-white hover:text-primary transition-colors'>
+        <i class='fas fa-heart'>
+        </i>
+    </button>
+    </div>
+    </div>
+    </div>
+    </div>
+<!-- 我关注的 -->
+<div class='bg-white rounded-xl shadow-sm p-6'>
+        <div class='section-title'>
+        <h2 >
+        我关注的
+    </h2>
+<a href='javascript:void(0);' class='text-primary text-sm font-medium hover:underline'>
+        查看全部
+    </a>
+    </div>
+<div class='space-y-4'>
+        <div class='flex items-center justify-between'>
+        <div class='flex items-center'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/5fd67dc0f9bad1830d651ae55ba4b4f4.png' alt='陈作家' class='w-12 h-12 rounded-full object-cover mr-4'/>
+<div >
+        <h3 class='font-medium'>
+        陈作家
+    </h3>
+<p class='text-neutral-500 text-sm'>
+        悬疑小说作家
+    </p>
+    </div>
+    </div>
+<button class='btn-outline text-sm px-3 py-1'>
+        已关注
+    </button>
+    </div>
+<div class='flex items-center justify-between'>
+        <div class='flex items-center'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/f3323e630c1db0e5a0a21200885e8d6a.png' alt='王诗人' class='w-12 h-12 rounded-full object-cover mr-4'/>
+<div >
+        <h3 class='font-medium'>
+        王诗人
+    </h3>
+<p class='text-neutral-500 text-sm'>
+        现代诗人
+    </p>
+    </div>
+    </div>
+<button class='btn-outline text-sm px-3 py-1'>
+        已关注
+    </button>
+    </div>
+<div class='flex items-center justify-between'>
+        <div class='flex items-center'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/ce1c76924c8754e23f72c504a5ddffcc.png' alt='刘幻想' class='w-12 h-12 rounded-full object-cover mr-4'/>
+<div >
+        <h3 class='font-medium'>
+        刘幻想
+    </h3>
+<p class='text-neutral-500 text-sm'>
+        奇幻文学作家
+    </p>
+    </div>
+    </div>
+<button class='btn-outline text-sm px-3 py-1'>
+        已关注
+    </button>
+    </div>
+<div class='flex items-center justify-between'>
+        <div class='flex items-center'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/09de0febad52e76642b53d1bb575630c.png' alt='赵新锐' class='w-12 h-12 rounded-full object-cover mr-4'/>
+<div >
+        <h3 class='font-medium'>
+        赵新锐
+    </h3>
+<p class='text-neutral-500 text-sm'>
+        新锐作家
+    </p>
+    </div>
+    </div>
+<button class='btn-outline text-sm px-3 py-1'>
+        已关注
+    </button>
+    </div>
+    </div>
+    </div>
+    </div>
+<!-- [/MODULE] efg_收藏与关注 -->
+<!-- [MODULE] hij_我的成就 -->
+<div class='bg-white rounded-xl shadow-sm p-6'>
+        <div class='section-title'>
+        <h2 >
+        我的成就
+    </h2>
+<a href='javascript:void(0);' class='text-primary text-sm font-medium hover:underline'>
+        查看全部
+    </a>
+    </div>
+<div class='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4'>
+        <!-- 成就徽章1 -->
+<div class='flex flex-col items-center p-3 border border-neutral-200 rounded-lg'>
+        <div class='w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-2'>
+        <i class='fas fa-trophy text-yellow-500 text-2xl'>
+        </i>
+    </div>
+<h3 class='font-medium text-center text-sm'>
+        畅销书作家
+    </h3>
+<p class='text-neutral-500 text-xs text-center'>
+        作品阅读量超100万
+    </p>
+    </div>
+<!-- 成就徽章2 -->
+<div class='flex flex-col items-center p-3 border border-neutral-200 rounded-lg'>
+        <div class='w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-2'>
+        <i class='fas fa-pen-fancy text-blue-500 text-2xl'>
+        </i>
+    </div>
+<h3 class='font-medium text-center text-sm'>
+        prolific writer
+    </h3>
+<p class='text-neutral-500 text-xs text-center'>
+        累计创作超200万字
+    </p>
+    </div>
+<!-- 成就徽章3 -->
+<div class='flex flex-col items-center p-3 border border-neutral-200 rounded-lg'>
+        <div class='w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-2'>
+        <i class='fas fa-users text-green-500 text-2xl'>
+        </i>
+    </div>
+<h3 class='font-medium text-center text-sm'>
+        人气作者
+    </h3>
+<p class='text-neutral-500 text-xs text-center'>
+        粉丝数量超1万
+    </p>
+    </div>
+<!-- 成就徽章4 -->
+<div class='flex flex-col items-center p-3 border border-neutral-200 rounded-lg'>
+        <div class='w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-2'>
+        <i class='fas fa-calendar-check text-purple-500 text-2xl'>
+        </i>
+    </div>
+<h3 class='font-medium text-center text-sm'>
+        坚持不懈
+    </h3>
+<p class='text-neutral-500 text-xs text-center'>
+        连续创作365天
+    </p>
+    </div>
+<!-- 成就徽章5 -->
+<div class='flex flex-col items-center p-3 border border-neutral-300 rounded-lg opacity-50'>
+        <div class='w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-2'>
+        <i class='fas fa-award text-gray-400 text-2xl'>
+        </i>
+    </div>
+<h3 class='font-medium text-center text-sm'>
+        获奖作家
+    </h3>
+<p class='text-neutral-500 text-xs text-center'>
+        获得文学奖项
+    </p>
+    </div>
+<!-- 成就徽章6 -->
+<div class='flex flex-col items-center p-3 border border-neutral-300 rounded-lg opacity-50'>
+        <div class='w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-2'>
+        <i class='fas fa-globe-asia text-gray-400 text-2xl'>
+        </i>
+    </div>
+<h3 class='font-medium text-center text-sm'>
+        国际影响力
+    </h3>
+<p class='text-neutral-500 text-xs text-center'>
+        作品被翻译成3种语言
+    </p>
+    </div>
+    </div>
+    </div>
+<!-- [/MODULE] hij_我的成就 -->
+    </div>
+<!-- [/MODULE] mno_个人中心内容 -->
+    </div>
+<!-- [/MODULE] ghi_个人中心页面 -->
+    </main>
+<!-- [/MODULE] def_主内容区域 -->
+<!-- [MODULE] jkl_底部 -->
+<footer class='bg-dark text-white py-10 mt-12'>
+        <div class='container mx-auto px-4'>
+        <div class='grid grid-cols-1 md:grid-cols-4 gap-8'>
+        <div >
+        <div class='flex items-center space-x-2 mb-4'>
+        <i class='fas fa-feather-alt text-primary text-2xl'>
+        </i>
+<h2 class='text-xl font-bold'>
+        作家助手
+    </h2>
+    </div>
+<p class='text-gray-400 text-sm mb-4'>
+        为创作者提供灵感、素材和工具支持，让写作变得更简单。
+    </p>
+<div class='flex space-x-4'>
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        <i class='fab fa-weibo'>
+        </i>
+    </a>
+<a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        <i class='fab fa-wechat'>
+        </i>
+    </a>
+<a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        <i class='fab fa-twitter'>
+        </i>
+    </a>
+<a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        <i class='fab fa-instagram'>
+        </i>
+    </a>
+    </div>
+    </div>
+<div >
+        <h3 class='font-bold text-lg mb-4'>
+        功能导航
+    </h3>
+<ul class='space-y-2 text-sm'>
+        <li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        灵感素材
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        AI大纲生成
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        随笔管理
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        作家社区
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        投稿中心
+    </a>
+    </li>
+    </ul>
+    </div>
+<div >
+        <h3 class='font-bold text-lg mb-4'>
+        帮助支持
+    </h3>
+<ul class='space-y-2 text-sm'>
+        <li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        使用指南
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        常见问题
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        联系我们
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        意见反馈
+    </a>
+    </li>
+    </ul>
+    </div>
+<div >
+        <h3 class='font-bold text-lg mb-4'>
+        法律信息
+    </h3>
+<ul class='space-y-2 text-sm'>
+        <li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        服务条款
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        隐私政策
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        版权声明
+    </a>
+    </li>
+    </ul>
+    </div>
+    </div>
+<div class='border-t border-gray-800 mt-8 pt-6 text-center text-gray-500 text-sm'>
+        <p >
+        © 2023 作家助手 - 助力每一位创作者
+    </p>
+    </div>
+    </div>
+    </footer>
+<!-- [/MODULE] jkl_底部 -->
+<!-- [JSMOD] mobmenu_移动端菜单交互 -->
+<script id='mobile-menu-script'>document.addEventListener('DOMContentLoaded', function () {
+  // 移动端菜单切换
+  var mobileMenuButton = document.getElementById('mobile-menu-button');
+  var mobileMenu = document.getElementById('mobile-menu');
+  mobileMenuButton.addEventListener('click', function () {
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  // 点击页面其他地方关闭移动端菜单
+  document.addEventListener('click', function (e) {
+    if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+      mobileMenu.classList.add('hidden');
+    }
+  });
+
+  // 平滑滚动
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      var targetId = this.getAttribute('href');
+      if (targetId !== '#') {
+        var targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+
+          // 如果是移动端，点击后关闭菜单
+          if (window.innerWidth < 768) {
+            mobileMenu.classList.add('hidden');
+          }
+        }
+      }
+    });
+  });
+});</script>
+<!-- [/JSMOD] mobmenu_移动端菜单交互 -->
+<!-- [JSMOD] progress_进度条动画 -->
+<script id='progress-animation-script'>document.addEventListener('DOMContentLoaded', function () {
+  // 为进度条添加动画效果
+  var progressBars = document.querySelectorAll('.progress-value');
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        var width = entry.target.style.width;
+        entry.target.style.width = '0';
+        setTimeout(function () {
+          entry.target.style.width = width;
+        }, 300);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+  progressBars.forEach(function (bar) {
+    observer.observe(bar);
+  });
+});</script>
+<!-- [/JSMOD] progress_进度条动画 -->
+<!-- [JSMOD] hover_卡片悬停效果 -->
+<script id='hover-effects-script'>document.addEventListener('DOMContentLoaded', function () {
+  // 为卡片添加悬停效果
+  var cards = document.querySelectorAll('.card-hover');
+  cards.forEach(function (card) {
+    card.addEventListener('mouseenter', function () {
+      card.classList.add('shadow-lg', '-translate-y-1');
+    });
+    card.addEventListener('mouseleave', function () {
+      card.classList.remove('shadow-lg', '-translate-y-1');
+    });
+  });
+});</script>
+<!-- [/JSMOD] hover_卡片悬停效果 -->
+    </body>
+    </html>

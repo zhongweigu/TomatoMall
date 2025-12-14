@@ -1,0 +1,986 @@
+<html lang='zh-CN'>
+        <head >
+        <meta charset='UTF-8'/>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+<title >作家助手 - AI助手</title>
+<script src='https://res.gemcoder.com/js/reload.js'></script>
+<script src='https://cdn.tailwindcss.com'></script>
+<link href='https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'/>
+<script >tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#3B82F6',
+        secondary: '#10B981',
+        accent: '#8B5CF6',
+        dark: '#1E293B',
+        light: '#F8FAFC',
+        neutral: '#64748B'
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        serif: ['Georgia', 'serif']
+      },
+      spacing: {
+        '72': '18rem',
+        '80': '20rem',
+        '96': '24rem'
+      }
+    }
+  }
+};</script>
+<style type='text/tailwindcss'>
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+            }
+            .btn-primary {
+                @apply bg-primary text-white px-4 py-2 rounded-lg transition-all duration-300 hover:bg-primary/90 focus:ring-2 focus:ring-primary/50 focus:outline-none;
+            }
+            .btn-secondary {
+                @apply bg-secondary text-white px-4 py-2 rounded-lg transition-all duration-300 hover:bg-secondary/90 focus:ring-2 focus:ring-secondary/50 focus:outline-none;
+            }
+            .btn-outline {
+                @apply border border-gray-300 text-gray-700 px-4 py-2 rounded-lg transition-all duration-300 hover:bg-gray-50 focus:ring-2 focus:ring-gray-200 focus:outline-none;
+            }
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            .chat-bubble-user {
+                @apply bg-primary text-white rounded-lg rounded-tl-none p-4 max-w-[85%] shadow-sm;
+            }
+            .chat-bubble-ai {
+                @apply bg-gray-100 text-gray-800 rounded-lg rounded-tr-none p-4 max-w-[85%] shadow-sm;
+            }
+        }
+    </style>
+    </head>
+<body class='bg-gray-50 text-gray-800 font-sans'>
+        <!-- [MODULE] abc_主内容区域 -->
+<div class='flex flex-col min-h-screen'>
+        <!-- [MODULE] def_导航栏 -->
+<header class='bg-white shadow-sm sticky top-0 z-50'>
+        <div class='container mx-auto px-4 py-3 flex items-center justify-between'>
+        <!-- Logo区域 -->
+<div class='flex items-center space-x-2'>
+        <i class='fas fa-feather-alt text-primary text-2xl'>
+        </i>
+<h1 class='text-xl font-bold text-dark'>
+        作家助手
+    </h1>
+    </div>
+<!-- 导航链接 - 桌面版 -->
+<nav class='hidden md:flex items-center space-x-6'>
+        <a href='javascript:void(0);' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+        首页
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+        灵感素材
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+        作家资讯
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+        话题社区
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+        投稿中心
+    </a>
+<a href='javascript:void(0);' class='font-medium text-primary border-b-2 border-primary pb-1'>
+        AI助手
+    </a>
+    </nav>
+<!-- 用户区域 -->
+<div class='flex items-center space-x-4'>
+        <button class='hidden md:flex items-center space-x-1 text-gray-600 hover:text-primary transition-colors'>
+        <i class='fas fa-bell'>
+        </i>
+<span class='bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center'>
+        3
+    </span>
+    </button>
+<div class='relative group'>
+        <button class='flex items-center space-x-2 focus:outline-none'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/a6f7958bc1c69ae8ce9414161938e6b4.png' alt='用户头像' class='w-8 h-8 rounded-full object-cover border-2 border-gray-200'/>
+<span class='hidden md:inline font-medium'>
+        林作家
+    </span>
+<i class='fas fa-chevron-down text-xs text-gray-500'>
+        </i>
+    </button>
+<!-- 下拉菜单 -->
+<div class='absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-10 hidden group-hover:block transition-all duration-300'>
+        <a href='javascript:void(0);' class='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'>
+        <i class='fas fa-user mr-2 text-gray-500'>
+        </i>
+个人中心
+    </a>
+<a href='javascript:void(0);' class='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'>
+        <i class='fas fa-cog mr-2 text-gray-500'>
+        </i>
+设置
+    </a>
+<div class='border-t border-gray-100 my-1'>
+        </div>
+<a href='javascript:void(0);' class='block px-4 py-2 text-sm text-red-600 hover:bg-gray-100'>
+        <i class='fas fa-sign-out-alt mr-2'>
+        </i>
+退出登录
+    </a>
+    </div>
+    </div>
+<!-- 移动端菜单按钮 -->
+<button class='md:hidden text-gray-700 focus:outline-none' id='mobile-menu-button'>
+        <i class='fas fa-bars text-xl'>
+        </i>
+    </button>
+    </div>
+    </div>
+<!-- 移动端导航菜单 -->
+<div class='md:hidden hidden bg-white border-t border-gray-100' id='mobile-menu'>
+        <div class='container mx-auto px-4 py-2 flex flex-col space-y-3'>
+        <a href='javascript:void(0);' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+        首页
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+        灵感素材
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+        作家资讯
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+        话题社区
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+        投稿中心
+    </a>
+<a href='javascript:void(0);' class='font-medium text-primary py-2 border-l-4 border-primary pl-3'>
+        AI助手
+    </a>
+<div class='border-t border-gray-100 my-1 pt-2 flex items-center space-x-2'>
+        <i class='fas fa-bell text-gray-500'>
+        </i>
+<span class='text-sm text-gray-700'>
+        通知
+    </span>
+<span class='bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center'>
+        3
+    </span>
+    </div>
+    </div>
+    </div>
+    </header>
+<!-- [/MODULE] def_导航栏 -- 网站顶部导航栏，包含logo、导航链接和用户信息 -->
+<!-- [MODULE] ghi_AI助手页面 -->
+<main class='flex-grow container mx-auto px-4 py-6 md:py-8'>
+        <!-- [MODULE] jkl_AI助手页面:页面标题 -->
+<div class='mb-6'>
+        <h2 class='text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-2'>
+        AI写作助手
+    </h2>
+<p class='text-gray-600 max-w-3xl'>
+        让AI帮助你生成大纲、描写场景、构思剧情，激发创作灵感，提升写作效率
+    </p>
+    </div>
+<!-- [/MODULE] jkl_AI助手页面:页面标题 -- 包含页面标题和简短描述 -->
+<!-- [MODULE] mno_AI助手页面:主要内容区 -->
+<div class='grid grid-cols-1 lg:grid-cols-4 gap-6'>
+        <!-- [MODULE] pqr_AI助手页面:功能选项 -->
+<div class='lg:col-span-1 space-y-4'>
+        <!-- 功能选择卡片 -->
+<div class='bg-white rounded-xl shadow-sm p-5 transition-all duration-300 hover:shadow-md'>
+        <h3 class='font-bold text-lg mb-4 flex items-center'>
+        <i class='fas fa-magic text-primary mr-2'>
+        </i>
+功能选择
+    </h3>
+<div class='space-y-3'>
+        <button class='w-full text-left px-4 py-3 rounded-lg bg-primary/10 text-primary font-medium transition-all duration-200 hover:bg-primary/20 flex items-center justify-between' data-function='outline'>
+        <span >
+        生成大纲
+    </span>
+<i class='fas fa-list-ol'>
+        </i>
+    </button>
+<button class='w-full text-left px-4 py-3 rounded-lg bg-gray-50 text-gray-700 font-medium transition-all duration-200 hover:bg-gray-100 flex items-center justify-between' data-function='description'>
+        <span >
+        场景描写
+    </span>
+<i class='fas fa-image'>
+        </i>
+    </button>
+<button class='w-full text-left px-4 py-3 rounded-lg bg-gray-50 text-gray-700 font-medium transition-all duration-200 hover:bg-gray-100 flex items-center justify-between' data-function='plot'>
+        <span >
+        剧情构思
+    </span>
+<i class='fas fa-sitemap'>
+        </i>
+    </button>
+<button class='w-full text-left px-4 py-3 rounded-lg bg-gray-50 text-gray-700 font-medium transition-all duration-200 hover:bg-gray-100 flex items-center justify-between' data-function='character'>
+        <span >
+        角色塑造
+    </span>
+<i class='fas fa-user-circle'>
+        </i>
+    </button>
+<button class='w-full text-left px-4 py-3 rounded-lg bg-gray-50 text-gray-700 font-medium transition-all duration-200 hover:bg-gray-100 flex items-center justify-between' data-function='custom'>
+        <span >
+        自定义需求
+    </span>
+<i class='fas fa-sliders-h'>
+        </i>
+    </button>
+    </div>
+    </div>
+<!-- 参数设置卡片 -->
+<div class='bg-white rounded-xl shadow-sm p-5 transition-all duration-300 hover:shadow-md'>
+        <h3 class='font-bold text-lg mb-4 flex items-center'>
+        <i class='fas fa-sliders-h text-primary mr-2'>
+        </i>
+参数设置
+    </h3>
+<!-- 风格选择 -->
+<div class='mb-4'>
+        <label class='block text-sm font-medium text-gray-700 mb-2'>
+        写作风格
+    </label>
+<select id='writing-style' class='w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors'>
+        <option value='default'>
+        默认风格
+    </option>
+<option value='literary'>
+        文学性
+    </option>
+<option value='concise'>
+        简洁明了
+    </option>
+<option value='vivid'>
+        生动形象
+    </option>
+<option value='philosophical'>
+        哲理性
+    </option>
+<option value='humorous'>
+        幽默风趣
+    </option>
+    </select>
+    </div>
+<!-- 长度选择 -->
+<div class='mb-4'>
+        <label class='block text-sm font-medium text-gray-700 mb-2'>
+        内容长度
+    </label>
+<div class='flex space-x-2'>
+        <button class='flex-1 py-2 border border-gray-300 rounded-l-lg bg-primary text-white transition-colors' data-length='short'>
+        简短
+    </button>
+<button class='flex-1 py-2 border-t border-b border-gray-300 bg-gray-50 text-gray-700 transition-colors' data-length='medium'>
+        中等
+    </button>
+<button class='flex-1 py-2 border border-gray-300 rounded-r-lg bg-gray-50 text-gray-700 transition-colors' data-length='long'>
+        详细
+    </button>
+    </div>
+    </div>
+<!-- 创意程度 -->
+<div class='mb-4'>
+        <label class='block text-sm font-medium text-gray-700 mb-2 flex justify-between'>
+        <span >
+        创意程度
+    </span>
+<span id='creativity-value' class='text-primary font-medium'>
+        中等
+    </span>
+    </label>
+<input type='range' id='creativity-level' min='1' max='5' value='3' class='w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary'/>
+<div class='flex justify-between text-xs text-gray-500 mt-1'>
+        <span >
+        保守
+    </span>
+<span >
+        平衡
+    </span>
+<span >
+        创新
+    </span>
+    </div>
+    </div>
+<!-- 保存设置按钮 -->
+<button id='save-settings' class='w-full py-2.5 bg-secondary text-white rounded-lg font-medium transition-all duration-300 hover:bg-secondary/90 flex items-center justify-center'>
+        <i class='fas fa-save mr-2'>
+        </i>
+保存当前设置
+    </button>
+    </div>
+<!-- 使用提示卡片 -->
+<div class='bg-blue-50 border border-blue-100 rounded-xl p-5'>
+        <h3 class='font-bold text-lg mb-3 flex items-center text-blue-700'>
+        <i class='fas fa-lightbulb mr-2'>
+        </i>
+使用提示
+    </h3>
+<ul class='text-sm text-blue-700 space-y-2'>
+        <li class='flex items-start'>
+        <i class='fas fa-check-circle mt-1 mr-2 text-blue-500'>
+        </i>
+<span >
+        提供详细的需求描述可以获得更精准的结果
+    </span>
+    </li>
+<li class='flex items-start'>
+        <i class='fas fa-check-circle mt-1 mr-2 text-blue-500'>
+        </i>
+<span >
+        可以多次追问，让AI逐步完善生成内容
+    </span>
+    </li>
+<li class='flex items-start'>
+        <i class='fas fa-check-circle mt-1 mr-2 text-blue-500'>
+        </i>
+<span >
+        生成的内容可以保存到您的随笔集中
+    </span>
+    </li>
+    </ul>
+    </div>
+    </div>
+<!-- [/MODULE] pqr_AI助手页面:功能选项 -- 包含功能选择、参数设置和使用提示 -->
+<!-- [MODULE] stu_AI助手页面:对话区域 -->
+<div class='lg:col-span-3 flex flex-col bg-white rounded-xl shadow-sm overflow-hidden'>
+        <!-- 对话历史区域 -->
+<div id='chat-history' class='flex-grow p-5 overflow-y-auto scrollbar-hide space-y-6'>
+        <!-- 欢迎消息 -->
+<div class='flex items-start'>
+        <div class='flex-shrink-0 mr-3'>
+        <div class='w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary'>
+        <i class='fas fa-robot'>
+        </i>
+    </div>
+    </div>
+<div class='chat-bubble-ai'>
+        <p class='mb-3'>
+        你好！我是你的AI写作助手，我可以帮你：
+    </p>
+<ul class='list-disc pl-5 space-y-1 text-gray-700 mb-3'>
+        <li >
+        生成故事大纲
+    </li>
+<li >
+        描写场景和人物
+    </li>
+<li >
+        构思剧情发展
+    </li>
+<li >
+        塑造生动角色
+    </li>
+    </ul>
+<p >
+        请选择左侧功能或直接告诉我你的需求，我会尽力协助你创作！
+    </p>
+    </div>
+    </div>
+    </div>
+<!-- 输入区域 -->
+<div class='border-t border-gray-100 p-4 bg-gray-50'>
+        <div class='mb-3'>
+        <textarea id='user-input' placeholder='请输入你的需求描述...' class='w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors resize-none min-h-[100px]'>
+        </textarea>
+    </div>
+<div class='flex items-center justify-between'>
+        <div class='flex items-center space-x-3'>
+        <button id='clear-input' class='text-gray-500 hover:text-gray-700 transition-colors p-2 rounded-full hover:bg-gray-200'>
+        <i class='fas fa-eraser'>
+        </i>
+    </button>
+<button id='expand-input' class='text-gray-500 hover:text-gray-700 transition-colors p-2 rounded-full hover:bg-gray-200'>
+        <i class='fas fa-expand-alt'>
+        </i>
+    </button>
+    </div>
+<button id='send-message' class='btn-primary flex items-center'>
+        <span >
+        发送请求
+    </span>
+<i class='fas fa-paper-plane ml-2'>
+        </i>
+    </button>
+    </div>
+    </div>
+    </div>
+<!-- [/MODULE] stu_AI助手页面:对话区域 -- 包含对话历史和输入区域，用户可以与AI进行交互 -->
+    </div>
+<!-- [/MODULE] mno_AI助手页面:主要内容区 -- 包含功能选项和对话区域 -->
+    </main>
+<!-- [/MODULE] ghi_AI助手页面 -- AI助手功能页面，提供大纲生成、场景描写等AI辅助写作功能 -->
+<!-- [MODULE] vwx_底部 -->
+<footer class='bg-dark text-white py-10 mt-12'>
+        <div class='container mx-auto px-4'>
+        <div class='grid grid-cols-1 md:grid-cols-4 gap-8'>
+        <div >
+        <div class='flex items-center space-x-2 mb-4'>
+        <i class='fas fa-feather-alt text-primary text-2xl'>
+        </i>
+<h2 class='text-xl font-bold'>
+        作家助手
+    </h2>
+    </div>
+<p class='text-gray-400 text-sm mb-4'>
+        为创作者提供灵感、素材和工具支持，让写作变得更简单。
+    </p>
+<div class='flex space-x-4'>
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        <i class='fab fa-weibo'>
+        </i>
+    </a>
+<a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        <i class='fab fa-wechat'>
+        </i>
+    </a>
+<a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        <i class='fab fa-twitter'>
+        </i>
+    </a>
+<a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        <i class='fab fa-instagram'>
+        </i>
+    </a>
+    </div>
+    </div>
+<div >
+        <h3 class='font-bold text-lg mb-4'>
+        功能导航
+    </h3>
+<ul class='space-y-2 text-sm'>
+        <li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        灵感素材
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        AI大纲生成
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-.400 hover:text-white transition-colors'>
+        随笔管理
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        作家社区
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        投稿中心
+    </a>
+    </li>
+    </ul>
+    </div>
+<div >
+        <h3 class='font-bold text-lg mb-4'>
+        帮助支持
+    </h3>
+<ul class='space-y-2 text-sm'>
+        <li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        使用指南
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        常见问题
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        联系我们
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        意见反馈
+    </a>
+    </li>
+    </ul>
+    </div>
+<div >
+        <h3 class='font-bold text-lg mb-4'>
+        法律信息
+    </h3>
+<ul class='space-y-2 text-sm'>
+        <li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        服务条款
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        隐私政策
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        版权声明
+    </a>
+    </li>
+    </ul>
+    </div>
+    </div>
+<div class='border-t border-gray-800 mt-8 pt-6 text-center text-gray-500 text-sm'>
+        <p >
+        © 2023 作家助手 - 助力每一位创作者
+    </p>
+    </div>
+    </div>
+    </footer>
+<!-- [/MODULE] vwx_底部 -- 网站底部信息，包含功能导航、帮助支持等链接 -->
+    </div>
+<!-- [/MODULE] abc_主内容区域 -- 网站整体内容，包含导航栏、AI助手页面和底部 -->
+<!-- 模态框：保存到随笔集 -->
+<div id='save-modal' class='fixed inset-0 bg-black/50 z-50 flex items-center justify-center hidden'>
+        <div class='bg-white rounded-xl shadow-lg max-w-md w-full mx-4 transform transition-all duration-300 scale-95 opacity-0' id='modal-content'>
+        <div class='p-6'>
+        <div class='flex items-center justify-between mb-4'>
+        <h3 class='text-xl font-bold text-dark'>
+        保存到随笔集
+    </h3>
+<button id='close-modal' class='text-gray-500 hover:text-gray-700 transition-colors'>
+        <i class='fas fa-times'>
+        </i>
+    </button>
+    </div>
+<div class='mb-4'>
+        <label class='block text-sm font-medium text-gray-700 mb-2'>
+        随笔集
+    </label>
+<select id='notebook-select' class='w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors'>
+        <option value='new'>
+        + 创建新随笔集
+    </option>
+<option value='1'>
+        灵感记录
+    </option>
+<option value='2'>
+        小说草稿
+    </option>
+<option value='3'>
+        短篇故事
+    </option>
+<option value='4'>
+        人物设定
+    </option>
+    </select>
+    </div>
+<div id='new-notebook' class='mb-4 hidden'>
+        <label class='block text-sm font-medium text-gray-700 mb-2'>
+        新随笔集名称
+    </label>
+<input type='text' id='notebook-name' placeholder='输入随笔集名称' class='w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors'/>
+    </div>
+<div class='mb-4'>
+        <label class='block text-sm font-medium text-gray-700 mb-2'>
+        标题
+    </label>
+<input type='text' id='save-title' placeholder='输入标题' class='w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors'/>
+    </div>
+<div class='flex justify-end space-x-3 mt-6'>
+        <button id='cancel-save' class='btn-outline'>
+        取消
+    </button>
+<button id='confirm-save' class='btn-primary'>
+        保存
+    </button>
+    </div>
+    </div>
+    </div>
+    </div>
+<!-- [JSMOD] abc_移动端菜单交互 -->
+<script id='mobile-menu-script'>// 移动端菜单交互
+document.addEventListener('DOMContentLoaded', function () {
+  var mobileMenuButton = document.getElementById('mobile-menu-button');
+  var mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', function () {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+});</script>
+<!-- [/JSMOD] abc_移动端菜单交互 -- 处理移动端菜单的显示和隐藏 -->
+<!-- [JSMOD] def_功能选择交互 -->
+<script id='function-selection-script'>// 功能选择交互
+document.addEventListener('DOMContentLoaded', function () {
+  var functionButtons = document.querySelectorAll('[data-function]');
+  var userInput = document.getElementById('user-input');
+  functionButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      // 重置所有按钮样式
+      functionButtons.forEach(function (btn) {
+        btn.classList.remove('bg-primary/10', 'text-primary');
+        btn.classList.add('bg-gray-50', 'text-gray-700');
+      });
+
+      // 设置当前按钮样式
+      button.classList.remove('bg-gray-50', 'text-gray-700');
+      button.classList.add('bg-primary/10', 'text-primary');
+
+      // 根据选择的功能设置输入框提示
+      var functionType = button.getAttribute('data-function');
+      var placeholderText = '';
+      switch (functionType) {
+        case 'outline':
+          placeholderText = '请描述你想要生成的大纲主题、类型或基本设定...';
+          break;
+        case 'description':
+          placeholderText = '请描述你想要描写的场景、人物或物品...';
+          break;
+        case 'plot':
+          placeholderText = '请描述你当前的剧情进展和需要构思的方向...';
+          break;
+        case 'character':
+          placeholderText = '请描述你想要塑造的角色基本信息和特点...';
+          break;
+        case 'custom':
+          placeholderText = '请详细描述你的自定义需求...';
+          break;
+      }
+      userInput.setAttribute('placeholder', placeholderText);
+      userInput.focus();
+    });
+  });
+});</script>
+<!-- [/JSMOD] def_功能选择交互 -- 处理功能选择按钮的点击事件，更新输入框提示 -->
+<!-- [JSMOD] ghi_参数设置交互 -->
+<script id='parameter-settings-script'>// 参数设置交互
+document.addEventListener('DOMContentLoaded', function () {
+  // 内容长度选择
+  var lengthButtons = document.querySelectorAll('[data-length]');
+  lengthButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      lengthButtons.forEach(function (btn) {
+        btn.classList.remove('bg-primary', 'text-white');
+        btn.classList.add('bg-gray-50', 'text-gray-700');
+      });
+      button.classList.remove('bg-gray-50', 'text-gray-700');
+      button.classList.add('bg-primary', 'text-white');
+    });
+  });
+
+  // 创意程度滑块
+  var creativitySlider = document.getElementById('creativity-level');
+  var creativityValue = document.getElementById('creativity-value');
+  if (creativitySlider && creativityValue) {
+    var updateCreativityValue = function updateCreativityValue() {
+      var value = creativitySlider.value;
+      var text = '';
+      switch (parseInt(value)) {
+        case 1:
+          valueText = '保守';
+          break;
+        case 2:
+          valueText = '较低';
+          break;
+        case 3:
+          valueText = '中等';
+          break;
+        case 4:
+          valueText = '较高';
+          break;
+        case 5:
+          valueText = '创新';
+          break;
+      }
+      creativityValue.textContent = valueText;
+    };
+    creativitySlider.addEventListener('input', updateCreativityValue);
+    updateCreativityValue(); // 初始化
+  }
+
+  // 保存设置按钮
+  var saveSettingsBtn = document.getElementById('save-settings');
+  if (saveSettingsBtn) {
+    saveSettingsBtn.addEventListener('click', function () {
+      // 显示保存成功提示
+      var originalText = saveSettingsBtn.innerHTML;
+      saveSettingsBtn.disabled = true;
+      saveSettingsBtn.innerHTML = '<i class="fas fa-check mr-2"></i> 设置已保存';
+      setTimeout(function () {
+        saveSettingsBtn.disabled = false;
+        saveSettingsBtn.innerHTML = originalText;
+      }, 2000);
+    });
+  }
+});</script>
+<!-- [/JSMOD] ghi_参数设置交互 -- 处理内容长度选择和创意程度滑块交互 -->
+<!-- [JSMOD] jkl_聊天交互 -->
+<script id='chat-interaction-script'>// 聊天交互功能
+document.addEventListener('DOMContentLoaded', function () {
+  var chatHistory = document.getElementById('chat-history');
+  var userInput = document.getElementById('user-input');
+  var sendMessageBtn = document.getElementById('send-message');
+  var clearInputBtn = document.getElementById('clear-input');
+  var expandInputBtn = document.getElementById('expand-input');
+
+  // 示例AI回复数据
+  var aiResponses = {
+    outline: "# \u79D1\u5E7B\u5C0F\u8BF4\u300A\u661F\u9645\u62D3\u8352\u8005\u300B\u5927\u7EB2\n## \u6545\u4E8B\u6897\u6982\n\u57282242\u5E74\uFF0C\u5730\u7403\u8D44\u6E90\u67AF\u7AED\uFF0C\u4E00\u652F\u7531\u79D1\u5B66\u5BB6\u548C\u5DE5\u7A0B\u5E08\u7EC4\u6210\u7684\u62D3\u8352\u961F\u8E0F\u4E0A\u4E86\u5BFB\u627E\u65B0\u5BB6\u56ED\u7684\u65C5\u7A0B\u3002\u4ED6\u4EEC\u7684\u76EE\u6807\u662F\u9065\u8FDC\u7684\u5F00\u666E\u52D2452b\u884C\u661F\uFF0C\u4F46\u5728\u65C5\u9014\u4E2D\uFF0C\u4ED6\u4EEC\u906D\u9047\u4E86\u672A\u77E5\u7684\u5B87\u5B99\u73B0\u8C61\uFF0C\u88AB\u8FEB\u964D\u843D\u5728\u4E00\u9897\u795E\u79D8\u7684\u661F\u7403\u4E0A\uFF0C\u53D1\u73B0\u4E86\u4E00\u4E2A\u53E4\u8001\u6587\u660E\u7684\u9057\u8FF9\uFF0C\u8FD9\u5F7B\u5E95\u6539\u53D8\u4E86\u4ED6\u4EEC\u5BF9\u5B87\u5B99\u548C\u4EBA\u7C7B\u8D77\u6E90\u7684\u8BA4\u77E5\u3002\n## \u4E3B\u8981\u4EBA\u7269\n1. **\u4F0A\u8299\u7433\xB7\u5F20**\uFF1A\u8239\u957F\uFF0C\u524DNASA\u5B87\u822A\u5458\uFF0C\u575A\u97E7\u679C\u65AD\uFF0C\u6709\u9886\u5BFC\u624D\u80FD\n2. **\u9A6C\u5E93\u65AF\xB7\u7EA6\u7FF0\u900A**\uFF1A\u9996\u5E2D\u79D1\u5B66\u5BB6\uFF0C\u597D\u5947\u5FC3\u5F3A\uFF0C\u7406\u6027\u4E0E\u611F\u6027\u5E76\u5B58\n3. **\u963F\u745E\u65AF\xB7\u7D22\u6069**\uFF1A\u5B89\u5168\u4E3B\u7BA1\uFF0C\u524D\u7279\u79CD\u90E8\u961F\u6210\u5458\uFF0C\u52A1\u5B9E\u4E3B\u4E49\u8005\n4. **\u8389\u5A1C\xB7\u4F69\u7279\u6D1B\u5A03**\uFF1A\u5916\u661F\u8BED\u8A00\u5B66\u5BB6\uFF0C\u5584\u4E8E\u6C9F\u901A\uFF0C\u5BCC\u6709\u540C\u60C5\u5FC3\n## \u6545\u4E8B\u7ED3\u6784\n### \u7B2C\u4E00\u90E8\u5206\uFF1A\u542F\u7A0B\u4E0E\u5371\u673A\n- \u4ECB\u7ECD\u5730\u7403\u73B0\u72B6\u548C\u62D3\u8352\u8BA1\u5212\n- \u98DE\u8239\"\u5E0C\u671B\u53F7\"\u51FA\u53D1\uFF0C\u8239\u5458\u95F4\u5EFA\u7ACB\u5173\u7CFB\n- \u906D\u9047\u5B87\u5B99\u5F02\u5E38\u73B0\u8C61\uFF0C\u98DE\u8239\u53D7\u635F\n- \u7D27\u6025\u964D\u843D\u5728\u672A\u77E5\u661F\u7403\n### \u7B2C\u4E8C\u90E8\u5206\uFF1A\u63A2\u7D22\u4E0E\u53D1\u73B0\n- \u63A2\u7D22\u661F\u7403\u8868\u9762\uFF0C\u5BFB\u627E\u8D44\u6E90\n- \u53D1\u73B0\u53E4\u8001\u6587\u660E\u9057\u8FF9\n- \u5F00\u59CB\u7834\u8BD1\u5916\u661F\u6587\u5B57\u548C\u6280\u672F\n- \u56E2\u961F\u5185\u90E8\u51FA\u73B0\u5206\u6B67\u548C\u7D27\u5F20\u5173\u7CFB\n### \u7B2C\u4E09\u90E8\u5206\uFF1A\u771F\u76F8\u4E0E\u6289\u62E9\n- \u63ED\u793A\u661F\u7403\u7684\u79D8\u5BC6\uFF1A\u8FD9\u662F\u4E00\u4E2A\u53E4\u8001\u5916\u661F\u79CD\u65CF\u7684\u89C2\u6D4B\u7AD9\n- \u53D1\u73B0\u4EBA\u7C7B\u53EF\u80FD\u662F\u5916\u661F\u6587\u660E\u7684\u5B9E\u9A8C\u4EA7\u7269\n- \u9762\u4E34\u91CD\u5927\u6289\u62E9\uFF1A\u8FD4\u56DE\u5730\u7403\u63ED\u793A\u771F\u76F8\u8FD8\u662F\u7EE7\u7EED\u5BFB\u627E\u65B0\u5BB6\u56ED\n- \u9AD8\u6F6E\uFF1A\u9057\u8FF9\u542F\u52A8\u9632\u5FA1\u673A\u5236\uFF0C\u56E2\u961F\u5FC5\u987B\u5408\u4F5C\u6C42\u751F\n### \u7B2C\u56DB\u90E8\u5206\uFF1A\u5F52\u9014\u4E0E\u65B0\u8D77\u70B9\n- \u4FEE\u590D\u98DE\u8239\uFF0C\u51C6\u5907\u79BB\u5F00\n- \u505A\u51FA\u6700\u7EC8\u51B3\u5B9A\uFF0C\u8BBE\u5B9A\u65B0\u822A\u7EBF\n- \u8FD4\u56DE\u592A\u9633\u7CFB\uFF0C\u9762\u5BF9\u5730\u7403\u7684\u53CD\u5E94\n- \u5F00\u653E\u5F0F\u7ED3\u5C40\uFF1A\u4EBA\u7C7B\u7684\u672A\u6765\u4E0E\u5B87\u5B99\u6587\u660E\u7684\u63A5\u89E6\n## \u4E3B\u9898\u63A2\u8BA8\n- \u4EBA\u7C7B\u5728\u5B87\u5B99\u4E2D\u7684\u4F4D\u7F6E\n- \u63A2\u7D22\u672A\u77E5\u7684\u52C7\u6C14\u4E0E\u6050\u60E7\n- \u771F\u76F8\u4E0E\u5E78\u798F\u7684\u6743\u8861\n- \u56E2\u961F\u5408\u4F5C\u4E0E\u9886\u5BFC\u529B\n- \u6587\u660E\u7684\u5FAA\u73AF\u4E0E\u4F20\u627F",
+    description: "\u5915\u9633\u897F\u4E0B\uFF0C\u91D1\u8272\u7684\u4F59\u6656\u6D12\u5728\u53E4\u8001\u7684\u9752\u77F3\u5C0F\u5DF7\u4E0A\uFF0C\u4E3A\u6591\u9A73\u7684\u5899\u58C1\u9540\u4E0A\u4E86\u4E00\u5C42\u6E29\u6696\u7684\u5149\u6655\u3002\u5DF7\u5B50\u4E24\u65C1\u662F\u9CDE\u6B21\u6809\u6BD4\u7684\u8001\u5F0F\u74E6\u623F\uFF0C\u9ED1\u74E6\u7070\u5899\uFF0C\u98DE\u6A90\u7FD8\u89D2\uFF0C\u8BC9\u8BF4\u7740\u767E\u5E74\u7684\u6CA7\u6851\u3002\u5076\u5C14\u6709\u51E0\u53EA\u9EBB\u96C0\u843D\u5728\u5C4B\u6A90\u4E0A\uFF0C\u53FD\u53FD\u55B3\u55B3\u5730\u53EB\u7740\uFF0C\u6253\u7834\u4E86\u5348\u540E\u7684\u5B81\u9759\u3002\n\u5DF7\u5B50\u6DF1\u5904\uFF0C\u4E00\u4F4D\u767D\u53D1\u82CD\u82CD\u7684\u8001\u8005\u5750\u5728\u7AF9\u6905\u4E0A\uFF0C\u624B\u91CC\u6447\u7740\u84B2\u6247\uFF0C\u772F\u7740\u773C\u775B\u770B\u7740\u8FDC\u65B9\u3002\u4ED6\u811A\u8FB9\u5367\u7740\u4E00\u53EA\u9EC4\u8272\u7684\u8001\u72D7\uFF0C\u6175\u61D2\u5730\u6253\u7740\u76F9\uFF0C\u5C3E\u5DF4\u5076\u5C14\u8F7B\u8F7B\u6446\u52A8\u4E00\u4E0B\u3002\u4E0D\u8FDC\u5904\uFF0C\u4E00\u4E2A\u7A7F\u7740\u788E\u82B1\u88D9\u7684\u5C0F\u5973\u5B69\u6B63\u8FFD\u9010\u7740\u4E00\u53EA\u5F69\u8272\u7684\u8774\u8776\uFF0C\u94F6\u94C3\u822C\u7684\u7B11\u58F0\u5728\u5DF7\u5B50\u91CC\u56DE\u8361\u3002\n\u7A7A\u6C14\u4E2D\u5F25\u6F2B\u7740\u6DE1\u6DE1\u7684\u6842\u82B1\u9999\u6C14\uFF0C\u6DF7\u5408\u7740\u6CE5\u571F\u7684\u82AC\u82B3\u548C\u90BB\u5BB6\u53A8\u623F\u98D8\u6765\u7684\u996D\u83DC\u9999\u3002\u5076\u5C14\u6709\u81EA\u884C\u8F66\u53EE\u94C3\u94C3\u5730\u9A76\u8FC7\uFF0C\u9A91\u8F66\u4EBA\u653E\u6162\u901F\u5EA6\uFF0C\u5C0F\u5FC3\u7FFC\u7FFC\u5730\u907F\u5F00\u8DEF\u4E0A\u73A9\u800D\u7684\u5B69\u5B50\u3002\u5899\u89D2\u7684\u9752\u82D4\u5728\u6E7F\u6DA6\u7684\u7A7A\u6C14\u4E2D\u663E\u5F97\u683C\u5916\u7FE0\u7EFF\uFF0C\u51E0\u682A\u987D\u5F3A\u7684\u91CE\u8349\u4ECE\u77F3\u7F1D\u4E2D\u63A2\u51FA\u5934\u6765\uFF0C\u5C55\u793A\u7740\u751F\u547D\u7684\u529B\u91CF\u3002\n\u8FDC\u5904\u4F20\u6765\u4E86\u5BFA\u5E99\u7684\u949F\u58F0\uFF0C\u60A0\u626C\u800C\u6DF1\u8FDC\uFF0C\u4EFF\u4F5B\u6765\u81EA\u53E6\u4E00\u4E2A\u65F6\u7A7A\u3002\u5915\u9633\u6E10\u6E10\u6C89\u5165\u897F\u5C71\uFF0C\u5929\u7A7A\u7684\u989C\u8272\u4ECE\u91D1\u9EC4\u53D8\u6210\u4E86\u6A58\u7EA2\uFF0C\u53C8\u6162\u6162\u8FC7\u6E21\u5230\u6DF1\u84DD\u3002\u8DEF\u706F\u6B21\u7B2C\u4EAE\u8D77\uFF0C\u660F\u9EC4\u7684\u5149\u7EBF\u7167\u4EAE\u4E86\u5C0F\u5DF7\u7684\u8F6E\u5ED3\uFF0C\u4E3A\u8FD9\u4E2A\u53E4\u8001\u7684\u5730\u65B9\u589E\u6DFB\u4E86\u4E00\u4E1D\u6E29\u6696\u548C\u795E\u79D8\u3002",
+    plot: "**\u5267\u60C5\u53D1\u5C55\u6784\u601D\uFF1A**\n\u5728\u7B2C\u4E09\u7AE0\u7ED3\u5C3E\uFF0C\u4E3B\u89D2\u827E\u8389\u4E9A\u53D1\u73B0\u4E86\u7236\u4EB2\u7559\u4E0B\u7684\u795E\u79D8\u65E5\u8BB0\uFF0C\u63ED\u793A\u4E86\u5BB6\u65CF\u4E0E\"\u5B88\u671B\u8005\"\u7EC4\u7EC7\u7684\u6E0A\u6E90\u3002\u4E3A\u4E86\u8FDB\u4E00\u6B65\u53D1\u5C55\u5267\u60C5\uFF0C\u6211\u5EFA\u8BAE\u4EE5\u4E0B\u51E0\u4E2A\u53EF\u80FD\u7684\u65B9\u5411\uFF1A\n### \u5173\u952E\u8F6C\u6298\u70B9\n1. **\u65E5\u8BB0\u7684\u79D8\u5BC6**\uFF1A\u827E\u8389\u4E9A\u5728\u65E5\u8BB0\u4E2D\u53D1\u73B0\u4E00\u5F20\u5730\u56FE\uFF0C\u6307\u5411\u57CE\u5E02\u90CA\u5916\u7684\u4E00\u5EA7\u5E9F\u5F03\u5929\u6587\u53F0\u3002\u5F53\u5979\u6DF1\u591C\u524D\u5F80\u63A2\u7D22\u65F6\uFF0C\u53D1\u73B0\u5929\u6587\u53F0\u5730\u4E0B\u5BA4\u9690\u85CF\u7740\u4E00\u4E2A\u79D8\u5BC6\u5B9E\u9A8C\u5BA4\uFF0C\u91CC\u9762\u6709\u5173\u4E8E\"\u661F\u5C18\u8BA1\u5212\"\u7684\u7814\u7A76\u8D44\u6599\u3002\n2. **\u610F\u5916\u76DF\u53CB**\uFF1A\u5728\u5929\u6587\u53F0\uFF0C\u827E\u8389\u4E9A\u9047\u5230\u4E86\u540C\u6837\u5728\u8C03\u67E5\"\u5B88\u671B\u8005\"\u7EC4\u7EC7\u7684\u8BB0\u8005\u6770\u514B\u3002\u4E24\u4EBA\u4ECE\u4E92\u76F8\u6000\u7591\u5230\u9010\u6E10\u4FE1\u4EFB\uFF0C\u51B3\u5B9A\u8054\u624B\u63ED\u5F00\u771F\u76F8\u3002\u6770\u514B\u900F\u9732\u4ED6\u7684\u59B9\u59B9\u66FE\u662F\"\u661F\u5C18\u8BA1\u5212\"\u7684\u53C2\u4E0E\u8005\uFF0C\u540E\u6765\u795E\u79D8\u5931\u8E2A\u3002\n3. **\u7EC4\u7EC7\u7684\u6CE8\u610F**\uFF1A\u827E\u8389\u4E9A\u548C\u6770\u514B\u7684\u8C03\u67E5\u5F15\u8D77\u4E86\"\u5B88\u671B\u8005\"\u7EC4\u7EC7\u7684\u6CE8\u610F\u3002\u5728\u4E00\u6B21\u6863\u6848\u9986\u67E5\u9605\u8D44\u6599\u65F6\uFF0C\u4ED6\u4EEC\u906D\u5230\u9ED1\u8863\u4EBA\u7684\u88AD\u51FB\uFF0C\u4FA5\u5E78\u9003\u8131\u4F46\u4E22\u5931\u4E86\u90E8\u5206\u65E5\u8BB0\u5185\u5BB9\u3002\u8FD9\u6B21\u88AD\u51FB\u8BA9\u4ED6\u4EEC\u610F\u8BC6\u5230\u81EA\u5DF1\u6B63\u9762\u4E34\u5DE8\u5927\u5371\u9669\u3002\n### \u89D2\u8272\u53D1\u5C55\n- **\u827E\u8389\u4E9A**\uFF1A\u4ECE\u88AB\u52A8\u5377\u5165\u4E8B\u4EF6\u8F6C\u53D8\u4E3A\u4E3B\u52A8\u5BFB\u6C42\u771F\u76F8\uFF0C\u5F00\u59CB\u5B66\u4E60\u7236\u4EB2\u7559\u4E0B\u7684\u5BC6\u7801\u5B66\u7B14\u8BB0\uFF0C\u5C55\u73B0\u51FA\u60CA\u4EBA\u7684\u5929\u8D4B\u3002\u540C\u65F6\uFF0C\u5979\u9700\u8981\u9762\u5BF9\u7236\u4EB2\u53EF\u80FD\u5E76\u975E\u5B8C\u5168\u65E0\u8F9C\u7684\u4E8B\u5B9E\u3002\n- **\u6770\u514B**\uFF1A\u8868\u9762\u73A9\u4E16\u4E0D\u606D\uFF0C\u5B9E\u5219\u5185\u5FC3\u80CC\u8D1F\u7740\u5BFB\u627E\u59B9\u59B9\u7684\u6C89\u91CD\u8D1F\u62C5\u3002\u968F\u7740\u5267\u60C5\u53D1\u5C55\uFF0C\u63ED\u793A\u4ED6\u66FE\u662F\u8B66\u6821\u5B66\u751F\uFF0C\u56E0\u8C03\u67E5\"\u5B88\u671B\u8005\"\u800C\u88AB\u5F00\u9664\u3002\n### \u60AC\u5FF5\u8BBE\u7F6E\n1. \u65E5\u8BB0\u4E2D\u63D0\u5230\u7684\"\u661F\u5C18\u8BA1\u5212\"\u7A76\u7ADF\u662F\u4EC0\u4E48\uFF1F\u5B83\u4E0E\u5341\u5E74\u524D\u7684\u90A3\u573A\"\u610F\u5916\"\u6709\u4F55\u5173\u8054\uFF1F\n2. \u827E\u8389\u4E9A\u7684\u6BCD\u4EB2\u662F\u5426\u77E5\u9053\u66F4\u591A\u79D8\u5BC6\uFF1F\u5979\u7684\"\u75C5\u901D\"\u662F\u5426\u53E6\u6709\u9690\u60C5\uFF1F\n3. \"\u5B88\u671B\u8005\"\u7EC4\u7EC7\u7684\u771F\u5B9E\u76EE\u7684\u662F\u4EC0\u4E48\uFF1F\u4ED6\u4EEC\u4E3A\u4F55\u5982\u6B64\u6267\u7740\u4E8E\u6293\u6355\u827E\u8389\u4E9A\uFF1F\n### \u4E0B\u4E00\u7AE0\u5EFA\u8BAE\n\u4EE5\u827E\u8389\u4E9A\u548C\u6770\u514B\u8EB2\u907F\u8FFD\u6740\u5F00\u59CB\uFF0C\u4E24\u4EBA\u6682\u65F6\u8EB2\u5728\u6770\u514B\u7684\u79D8\u5BC6 safe house\u3002\u5728\u6574\u7406\u5269\u4F59\u7684\u65E5\u8BB0\u5185\u5BB9\u65F6\uFF0C\u4ED6\u4EEC\u53D1\u73B0\"\u661F\u5C18\u8BA1\u5212\"\u6D89\u53CA\u4E00\u79CD\u80FD\u591F\u9884\u6D4B\u672A\u6765\u7684\u7B97\u6CD5\uFF0C\u800C\u827E\u8389\u4E9A\u7684\u7236\u4EB2\u53EF\u80FD\u5DF2\u7ECF\u6210\u529F\u9884\u6D4B\u5230\u4E86\u4E00\u573A\u5373\u5C06\u5230\u6765\u7684\u707E\u96BE...",
+    character: "**\u4EBA\u7269\u5851\u9020\uFF1A\u827E\u7433\u5A1C\xB7\u6C83\u65AF\u79D1\u5A03**\n### \u57FA\u672C\u4FE1\u606F\n- **\u5E74\u9F84**\uFF1A32\u5C81\n- **\u804C\u4E1A**\uFF1A\u53E4\u8463\u4E66\u5E97\u8001\u677F\uFF0C\u517C\u804C\u827A\u672F\u54C1\u4FEE\u590D\u5E08\n- **\u5916\u8C8C**\uFF1A\u4E2D\u7B49\u8EAB\u6750\uFF0C\u6A44\u6984\u8272\u76AE\u80A4\uFF0C\u6DF1\u68D5\u8272\u5377\u53D1\u901A\u5E38\u968F\u610F\u633D\u8D77\uFF0C\u7425\u73C0\u8272\u773C\u775B\u9510\u5229\u800C\u5BCC\u6709\u6D1E\u5BDF\u529B\u3002\u53F3\u624B\u98DF\u6307\u6709\u4E00\u9053\u660E\u663E\u7684\u75A4\u75D5\uFF08\u7AE5\u5E74\u4FEE\u590D\u53E4\u8463\u65F6\u88AB\u788E\u74F7\u7247\u5212\u4F24\uFF09\u3002\u5E38\u7A7F\u7740\u5BBD\u677E\u8212\u9002\u7684\u68C9\u9EBB\u8863\u7269\uFF0C\u4F69\u6234\u590D\u53E4\u94F6\u9970\u3002\n### \u6027\u683C\u7279\u70B9\n- **\u8868\u9762\u7279\u8D28**\uFF1A\u5B89\u9759\u5185\u655B\uFF0C\u89C2\u5BDF\u529B\u654F\u9510\uFF0C\u5BF9\u964C\u751F\u4EBA\u4FDD\u6301\u8DDD\u79BB\uFF0C\u8BF4\u8BDD\u76F4\u7387\u4F46\u4E0D\u5931\u793C\u8C8C\u3002\n- **\u5185\u5728\u7279\u8D28**\uFF1A\u5185\u5FC3\u6E29\u6696\uFF0C\u5BF9\u4FE1\u4EFB\u7684\u4EBA\u6781\u4E3A\u5FE0\u8BDA\uFF0C\u6709\u5F3A\u70C8\u7684\u6B63\u4E49\u611F\uFF0C\u5076\u5C14\u4F1A\u5C55\u73B0\u51FA\u610F\u60F3\u4E0D\u5230\u7684\u5E7D\u9ED8\u611F\u3002\n- **\u77DB\u76FE\u70B9**\uFF1A\u6E34\u671B\u4E0E\u4EBA\u5EFA\u7ACB\u6DF1\u539A\u5173\u7CFB\uFF0C\u5374\u56E0\u8FC7\u53BB\u7684\u7ECF\u5386\u800C\u5BB3\u6015\u655E\u5F00\u5FC3\u6249\uFF1B\u8868\u9762\u4E0A\u5BF9\u4E16\u4E8B\u6F20\u4E0D\u5173\u5FC3\uFF0C\u5B9E\u5219\u6697\u4E2D\u5E2E\u52A9\u6709\u9700\u8981\u7684\u4EBA\u3002\n### \u80CC\u666F\u6545\u4E8B\n\u827E\u7433\u5A1C\u51FA\u751F\u4E8E\u5723\u5F7C\u5F97\u5821\u4E00\u4E2A\u827A\u672F\u4E16\u5BB6\uFF0C\u7956\u7236\u662F\u8457\u540D\u7684\u6587\u7269\u4FEE\u590D\u5E08\u300212\u5C81\u65F6\uFF0C\u5BB6\u65CF\u6536\u85CF\u7684\u4E00\u6279\u73CD\u8D35\u624B\u7A3F\u88AB\u76D7\uFF0C\u7236\u4EB2\u56E0\u6D89\u5ACC\u76D1\u5B88\u81EA\u76D7\u800C\u8EAB\u8D25\u540D\u88C2\uFF0C\u4E0D\u4E45\u540E\u6291\u90C1\u800C\u7EC8\u3002\u827E\u7433\u5A1C\u548C\u6BCD\u4EB2\u79FB\u5C45\u5DF4\u9ECE\uFF0C\u5728\u90A3\u91CC\u5B8C\u6210\u5B66\u4E1A\u5E76\u7EE7\u627F\u4E86\u7956\u7236\u7684\u4FEE\u590D\u6280\u827A\u3002\n25\u5C81\u65F6\uFF0C\u5979\u5728\u4FEE\u590D\u4E00\u5E4517\u4E16\u7EAA\u6CB9\u753B\u65F6\uFF0C\u53D1\u73B0\u753B\u4E2D\u9690\u85CF\u7740\u5173\u4E8E\u5F53\u5E74\u624B\u7A3F\u76D7\u7A83\u6848\u7684\u7EBF\u7D22\uFF0C\u8BC1\u660E\u4E86\u7236\u4EB2\u7684\u6E05\u767D\u3002\u8FD9\u4E00\u53D1\u73B0\u8BA9\u5979\u51B3\u5FC3\u5F00\u8BBE\u81EA\u5DF1\u7684\u53E4\u8463\u4E66\u5E97\uFF0C\u4E00\u65B9\u9762\u7EE7\u7EED\u4FEE\u590D\u5DE5\u4F5C\uFF0C\u53E6\u4E00\u65B9\u9762\u6697\u4E2D\u8C03\u67E5\u90A3\u4E9B\u88AB\u5386\u53F2\u5C18\u5C01\u7684\u771F\u76F8\u3002\n### \u80FD\u529B\u4E0E\u6280\u80FD\n- **\u6587\u7269\u4FEE\u590D**\uFF1A\u62E5\u6709\u8FD1\u4E4E\u795E\u5947\u7684\u4FEE\u590D\u5929\u8D4B\uFF0C\u80FD\u8BA9\u7834\u635F\u7684\u827A\u672F\u54C1\u6062\u590D\u539F\u8C8C\n- **\u5386\u53F2\u77E5\u8BC6**\uFF1A\u5BF9\u6B27\u6D32\u827A\u672F\u53F2\u548C\u53E4\u8463\u9274\u5B9A\u6709\u6E0A\u535A\u7684\u77E5\u8BC6\n- **\u8BED\u8A00\u80FD\u529B**\uFF1A\u7CBE\u901A\u4FC4\u8BED\u3001\u6CD5\u8BED\u3001\u82F1\u8BED\u3001\u610F\u5927\u5229\u8BED\uFF0C\u7565\u61C2\u62C9\u4E01\u8BED\u548C\u53E4\u5E0C\u814A\u8BED\n- **\u89C2\u5BDF\u5165\u5FAE**\uFF1A\u80FD\u6CE8\u610F\u5230\u5E38\u4EBA\u5FFD\u7565\u7684\u7EC6\u8282\uFF0C\u5584\u4E8E\u4ECE\u7269\u54C1\u4E2D\u8BFB\u53D6\u5386\u53F2\u4FE1\u606F\n### \u5185\u5FC3\u51B2\u7A81\n\u827E\u7433\u5A1C\u4E00\u76F4\u65E0\u6CD5\u5B8C\u5168\u6446\u8131\u7236\u4EB2\u51A4\u6848\u5E26\u6765\u7684\u9634\u5F71\uFF0C\u5BF9\u6743\u5A01\u673A\u6784\u6301\u6000\u7591\u6001\u5EA6\u3002\u5979\u6E34\u671B\u63ED\u9732\u771F\u76F8\uFF0C\u5374\u53C8\u5BB3\u6015\u771F\u76F8\u53EF\u80FD\u5E26\u6765\u7684\u540E\u679C\u3002\u5728\u5E2E\u52A9\u4ED6\u4EBA\u89E3\u5F00\u5386\u53F2\u8C1C\u56E2\u7684\u540C\u65F6\uFF0C\u5979\u4E5F\u5728\u5BFB\u627E\u81EA\u6211\u6551\u8D4E\u7684\u9053\u8DEF\u3002\n### \u4EBA\u7269\u5F27\u5149\n\u4ECE\u4E00\u4E2A\u5C01\u95ED\u81EA\u6211\u3001\u53EA\u4E3A\u8BC1\u660E\u7236\u4EB2\u6E05\u767D\u800C\u6D3B\u7684\u4FEE\u590D\u5E08\uFF0C\u9010\u6E10\u6210\u957F\u4E3A\u4E00\u4E2A\u613F\u610F\u655E\u5F00\u5FC3\u6249\u3001\u7528\u81EA\u5DF1\u7684\u624D\u80FD\u5E2E\u52A9\u4ED6\u4EBA\u3001\u5E76\u6700\u7EC8\u627E\u5230\u5185\u5FC3\u5E73\u9759\u7684\u4EBA\u3002",
+    default: "\u611F\u8C22\u4F60\u7684\u53CD\u9988\uFF01\u6211\u7406\u89E3\u4F60\u9700\u8981\u66F4\u5177\u4F53\u7684\u5E2E\u52A9\u6765\u63A8\u8FDB\u4F60\u7684\u5199\u4F5C\u3002\u4E3A\u4E86\u7ED9\u4F60\u66F4\u7CBE\u51C6\u7684\u534F\u52A9\uFF0C\u8BF7\u63D0\u4F9B\u4EE5\u4E0B\u4FE1\u606F\uFF1A\n1. \u4F60\u6B63\u5728\u521B\u4F5C\u7684\u4F5C\u54C1\u7C7B\u578B\uFF08\u5C0F\u8BF4\u3001\u6563\u6587\u3001\u8BD7\u6B4C\u7B49\uFF09\n2. \u5F53\u524D\u9047\u5230\u7684\u5177\u4F53\u56F0\u96BE\u6216\u74F6\u9888\n3. \u4F60\u5E0C\u671BAI\u63D0\u4F9B\u4EC0\u4E48\u6837\u7684\u5E2E\u52A9\uFF08\u60C5\u8282\u5EFA\u8BAE\u3001\u89D2\u8272\u5851\u9020\u3001\u8BED\u8A00\u6DA6\u8272\u7B49\uFF09\n4. \u4EFB\u4F55\u76F8\u5173\u7684\u80CC\u666F\u4FE1\u606F\u6216\u5DF2\u5B8C\u6210\u7684\u5185\u5BB9\u7247\u6BB5\n\u63D0\u4F9B\u7684\u4FE1\u606F\u8D8A\u8BE6\u7EC6\uFF0C\u6211\u5C31\u80FD\u7ED9\u51FA\u8D8A\u6709\u9488\u5BF9\u6027\u7684\u5EFA\u8BAE\u3002\u671F\u5F85\u4F60\u7684\u56DE\u590D\uFF0C\u8BA9\u6211\u4EEC\u4E00\u8D77\u628A\u4F60\u7684\u521B\u4F5C\u63A8\u5411\u524D\u8FDB\uFF01"
+  };
+  // 清空输入框
+  if (clearInputBtn && userInput) {
+    clearInputBtn.addEventListener('click', function () {
+      userInput.value = '';
+      userInput.focus();
+    });
+  }
+  // 展开/收缩输入框
+  if (expandInputBtn && userInput) {
+    expandInputBtn.addEventListener('click', function () {
+      if (userInput.classList.contains('min-h-[100px]')) {
+        userInput.classList.remove('min-h-[100px]');
+        userInput.classList.add('min-h-[200px]');
+        expandInputBtn.innerHTML = '<i class="fas fa-compress-alt"></i>';
+      } else {
+        userInput.classList.remove('min-h-[200px]');
+        userInput.classList.add('min-h-[100px]');
+        expandInputBtn.innerHTML = '<i class="fas fa-expand-alt"></i>';
+      }
+    });
+  }
+  // 添加消息到聊天历史
+  var addMessageToHistory = function addMessageToHistory(content) {
+    var isUser = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    var messageDiv = document.createElement('div');
+    messageDiv.className = "flex items-start".concat(isUser ? 'justify-end' : '', "mb-6");
+    if (isUser) {
+      messageDiv.innerHTML = "<div class=\"chat-bubble-user\">".concat(content, "</div>\n                        <div class=\"flex-shrink-0 ml-3\">\n                            <img src=\"https://design.gemcoder.com/staticResource/echoAiSystemImages/a6f7958bc1c69ae8ce9414161938e6b4.png\" alt=\"\u7528\u6237\u5934\u50CF\" class=\"w-10 h-10 rounded-full object-cover\">\n                        </div>");
+    } else {
+      messageDiv.innerHTML = "<div class=\"flex-shrink-0 mr-3\">\n                            <div class=\"w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary\">\n                                <i class=\"fas fa-robot\"></i>\n                            </div>\n                        </div>\n                        <div class=\"chat-bubble-ai\">\n                            <div class=\"ai-message-content\">".concat(content, "</div>\n                            <div class=\"mt-4 flex justify-end space-x-2\">\n                                <button class=\"text-gray-500 hover:text-primary transition-colors p-1.5 rounded-full hover:bg-gray-100 save-to-notebook\">\n                                    <i class=\"fas fa-bookmark\"></i>\n                                </button>\n                                <button class=\"text-gray-500 hover:text-primary transition-colors p-1.5 rounded-full hover:bg-gray-100 copy-message\">\n                                    <i class=\"fas fa-copy\"></i>\n                                </button>\n                            </div>\n                        </div>");
+    }
+    if (chatHistory) {
+      chatHistory.appendChild(messageDiv);
+      chatHistory.scrollTop = chatHistory.scrollHeight;
+
+      // 添加消息后绑定保存和复制按钮事件
+      if (!isUser) {
+        bindMessageActions(messageDiv);
+      }
+    }
+  };
+  // 绑定消息操作按钮事件
+  var bindMessageActions = function bindMessageActions(messageElement) {
+    var saveButton = messageElement.querySelector('.save-to-notebook');
+    var copyButton = messageElement.querySelector('.copy-message');
+    var messageContent = messageElement.querySelector('.ai-message-content').textContent;
+    if (saveButton) {
+      saveButton.addEventListener('click', function () {
+        // 设置默认标题
+        var titleInput = document.getElementById('save-title');
+        if (titleInput) {
+          // 从消息内容提取前30个字符作为默认标题
+          titleInput.value = messageContent.length > 30 ? messageContent.substring(0, 30) + '...' : messageContent;
+        }
+
+        // 显示模态框
+        showModal();
+      });
+    }
+    if (copyButton) {
+      copyButton.addEventListener('click', function () {
+        navigator.clipboard.writeText(messageContent).then(function () {
+          // 显示复制成功反馈
+          var originalIcon = copyButton.innerHTML;
+          copyButton.innerHTML = '<i class="fas fa-check"></i>';
+          copyButton.classList.add('text-green-500');
+          setTimeout(function () {
+            copyButton.innerHTML = originalIcon;
+            copyButton.classList.remove('text-green-500');
+          }, 2000);
+        });
+      });
+    }
+  };
+  // 发送消息
+  var sendMessage = function sendMessage() {
+    var message = userInput.value.trim();
+    if (!message) return;
+
+    // 添加用户消息
+    addMessageToHistory(message, true);
+    userInput.value = '';
+
+    // 显示正在输入提示
+    var typingIndicator = document.createElement('div');
+    typingIndicator.className = 'flex items-start mb-6';
+    typingIndicator.innerHTML = "<div class=\"flex-shrink-0 mr-3\">\n                        <div class=\"w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary\">\n                            <i class=\"fas fa-robot\"></i>\n                        </div>\n                    </div>\n                    <div class=\"bg-gray-100 text-gray-800 rounded-lg rounded-tr-none p-4 max-w-[85%] shadow-sm\">\n                        <div class=\"flex space-x-1\">\n                            <div class=\"w-2 h-2 bg-gray-500 rounded-full animate-bounce\" style=\"animation-delay: 0ms\"></div>\n                            <div class=\"w-2 h-2 bg-gray-500 rounded-full animate-bounce\" style=\"animation-delay: 150ms\"></div>\n                            <div class=\"w-2 h-2 bg-gray-500 rounded-full animate-bounce\" style=\"animation-delay: 300ms\"></div>\n                        </div>\n                    </div>";
+    if (chatHistory) {
+      chatHistory.appendChild(typingIndicator);
+      chatHistory.scrollTop = chatHistory.scrollHeight;
+
+      // 模拟AI思考延迟
+      setTimeout(function () {
+        // 移除正在输入提示
+        if (typingIndicator.parentNode === chatHistory) {
+          chatHistory.removeChild(typingIndicator);
+        }
+
+        // 确定当前选中的功能类型
+        var selectedFunction = 'default';
+        functionButtons.forEach(function (btn) {
+          if (btn.classList.contains('bg-primary/10')) {
+            selectedFunction = btn.getAttribute('data-function');
+          }
+        });
+
+        // 获取AI回复
+        var response = aiResponses[selectedFunction] || aiResponses.default;
+
+        // 添加AI回复
+        addMessageToHistory(formatAIResponse(response));
+      }, 1500);
+    }
+  };
+  // 格式化AI回复
+  var formatAIResponse = function formatAIResponse(text) {
+    // 处理标题
+    text = text.replace(/#{1,2} (.*?)\n/g, '<h4 class="font-bold text-lg mb-2 mt-4">$1</h4>');
+
+    // 处理列表项
+    text = text.replace(/\n- (.*?)\n/g, "<ul class=\"list-disc pl-5 mb-3\"><li>$1</li></ul>");
+    text = text.replace(/<\/ul>\n<ul class="list-disc pl-5 mb-3">/g, '');
+
+    // 处理换行
+    text = text.replace(/\n/g, '<br>');
+    return text;
+  };
+  // 发送按钮点击事件
+  if (sendMessageBtn) {
+    sendMessageBtn.addEventListener('click', sendMessage);
+  }
+  // 回车键发送消息
+  if (userInput) {
+    userInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+  }
+  // 模态框相关
+  var modal = document.getElementById('save-modal');
+  var modalContent = document.getElementById('modal-content');
+  var closeModalBtn = document.getElementById('close-modal');
+  var cancelSaveBtn = document.getElementById('cancel-save');
+  var confirmSaveBtn = document.getElementById('confirm-save');
+  var notebookSelect = document.getElementById('notebook-select');
+  var newNotebookInput = document.getElementById('new-notebook');
+  // 显示模态框
+  var showModal = function showModal() {
+    if (modal && modalContent) {
+      modal.classList.remove('hidden');
+      setTimeout(function () {
+        modalContent.classList.remove('scale-95', 'opacity-0');
+        modalContent.classList.add('scale-100', 'opacity-100');
+      }, 10);
+    }
+  };
+  // 隐藏模态框
+  var hideModal = function hideModal() {
+    if (modal && modalContent) {
+      modalContent.classList.remove('scale-100', 'opacity-100');
+      modalContent.classList.add('scale-95', 'opacity-0');
+      setTimeout(function () {
+        modal.classList.add('hidden');
+      }, 300);
+    }
+  };
+  // 关闭模态框按钮事件
+  if (closeModalBtn) closeModalBtn.addEventListener('click', hideModal);
+  if (cancelSaveBtn) cancelSaveBtn.addEventListener('click', hideModal);
+  // 点击模态框外部关闭
+  if (modal) {
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) {
+        hideModal();
+      }
+    });
+  }
+  // 笔记本选择变化事件
+  if (notebookSelect && newNotebookInput) {
+    notebookSelect.addEventListener('change', function () {
+      if (notebookSelect.value === 'new') {
+        newNotebookInput.classList.remove('hidden');
+      } else {
+        newNotebookInput.classList.add('hidden');
+      }
+    });
+  }
+  // 确认保存按钮事件
+  if (confirmSaveBtn) {
+    confirmSaveBtn.addEventListener('click', function () {
+      var notebookSelect = document.getElementById('notebook-select');
+      var notebookNameInput = document.getElementById('notebook-name');
+      var titleInput = document.getElementById('save-title');
+      if (notebookSelect && titleInput) {
+        var notebookId = notebookSelect.value;
+        var notebookName = '';
+        var title = titleInput.value.trim();
+        if (!title) {
+          alert('请输入标题');
+          return;
+        }
+
+        // 处理新建随笔集
+        if (notebookId === 'new' && notebookNameInput) {
+          notebookName = notebookNameInput.value.trim();
+          if (!notebookName) {
+            alert('请输入随笔集名称');
+            return;
+          }
+          // 在实际应用中，这里会发送请求创建新随笔集
+          notebookId = 'new-' + Date.now();
+        }
+
+        // 模拟保存成功
+        hideModal();
+
+        // 显示保存成功提示
+        var notification = document.createElement('div');
+        notification.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-[clamp(1rem,2vw,1.5rem)] py-3 rounded-lg shadow-lg flex items-center z-50 transform translate-y-10 opacity-0 transition-all duration-300';
+        notification.innerHTML = "<i class=\"fas fa-check-circle mr-2\"></i>\n                            <span>\u6210\u529F\u4FDD\u5B58\u5230\u968F\u7B14\u96C6</span>";
+        document.body.appendChild(notification);
+
+        // 显示通知
+        setTimeout(function () {
+          notification.classList.remove('translate-y-10', 'opacity-0');
+        }, 10);
+
+        // 3秒后隐藏通知
+        setTimeout(function () {
+          notification.classList.add('translate-y-10', 'opacity-0');
+          setTimeout(function () {
+            document.body.removeChild(notification);
+          }, 300);
+        }, 3000);
+      }
+    });
+  }
+});</script>
+<!-- [/JSMOD] jkl_聊天交互 -- 处理用户与AI的聊天交互，包括发送消息、显示回复、保存和复制功能 -->
+    </body>
+    </html>

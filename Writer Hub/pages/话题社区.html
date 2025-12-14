@@ -1,0 +1,1557 @@
+<html lang='zh-CN'>
+        <head >
+        <meta charset='UTF-8'/>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+<title >作家助手 - 话题社区</title>
+<link href='https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'/>
+<script src='https://res.gemcoder.com/js/reload.js'></script>
+<script src='https://cdn.tailwindcss.com'></script>
+<script src='https://cdn.bootcdn.net/ajax/libs/echarts/5.4.3/echarts.min.js'></script>
+<script >tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#3B82F6',
+        secondary: '#10B981',
+        accent: '#8B5CF6',
+        dark: '#1E293B',
+        light: '#F8FAFC',
+        'neutral-100': '#F3F4F6',
+        'neutral-200': '#E5E7EB',
+        'neutral-300': '#D1D5DB',
+        'neutral-400': '#9CA3AF',
+        'neutral-500': '#6B7280',
+        'neutral-600': '#4B5563',
+        'neutral-700': '#374151',
+        'neutral-800': '#1F2937',
+        'neutral-900': '#111827'
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        serif: ['Georgia', 'serif']
+      },
+      spacing: {
+        '72': '18rem',
+        '80': '20rem',
+        '96': '24rem'
+      }
+    }
+  }
+};</script>
+<style type='text/tailwindcss'>
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+            }
+            .btn-primary {
+                @apply bg-primary text-white px-4 py-2 rounded-lg transition-all duration-300 hover:bg-primary/90 focus:ring-2 focus:ring-primary/50 focus:outline-none;
+            }
+            .btn-secondary {
+                @apply bg-secondary text-white px-4 py-2 rounded-lg transition-all duration-300 hover:bg-secondary/90 focus:ring-2 focus:ring-secondary/50 focus:outline-none;
+            }
+            .btn-outline {
+                @apply border border-gray-300 text-gray-700 px-4 py-2 rounded-lg transition-all duration-300 hover:bg-gray-50 focus:ring-2 focus:ring-gray-200 focus:outline-none;
+            }
+            .topic-tag {
+                @apply inline-block px-2 py-1 text-xs rounded-full bg-primary/10 text-primary mr-2 mb-2 cursor-pointer hover:bg-primary/20 transition-colors;
+            }
+            .topic-card {
+                @apply bg-white rounded-xl shadow-sm p-5 mb-4 transition-all duration-300 hover:shadow-md;
+            }
+            .badge {
+                @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+            }
+            .badge-hot {
+                @apply bg-red-100 text-red-800;
+            }
+            .badge-new {
+                @apply bg-blue-100 text-blue-800;
+            }
+            .badge-popular {
+                @apply bg-amber-100 text-amber-800;
+            }
+        }
+    </style>
+    </head>
+<body class='bg-gray-50 text-neutral-800'>
+        <!-- [MODULE] abc_主内容区域 -->
+<div class='flex flex-col min-h-screen'>
+        <!-- [MODULE] d23_导航栏 -->
+<header class='bg-white shadow-sm sticky top-0 z-50'>
+        <div class='container mx-auto px-4 py-3 flex items-center justify-between'>
+        <!-- Logo区域 -->
+<div class='flex items-center space-x-2'>
+        <i class='fas fa-feather-alt text-primary text-2xl'>
+        </i>
+<h1 class='text-xl font-bold text-dark'>
+        作家助手
+    </h1>
+    </div>
+<!-- 导航链接 - 桌面版 -->
+<nav class='hidden md:flex items-center space-x-6'>
+        <a href='首页.html' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+        首页
+    </a>
+<a href='灵感素材.html' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+        灵感素材
+    </a>
+<a href='作家资讯.html' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+        作家资讯
+    </a>
+<a href='话题社区.html' class='font-medium text-primary border-b-2 border-primary pb-1'>
+        话题社区
+    </a>
+<a href='投稿中心.html' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+        投稿中心
+    </a>
+<a href='AI助手.html' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+        AI助手
+    </a>
+    </nav>
+<!-- 用户区域 -->
+<div class='flex items-center space-x-4'>
+        <button class='hidden md:flex items-center space-x-1 text-gray-600 hover:text-primary transition-colors'>
+        <i class='fas fa-bell'>
+        </i>
+<span class='bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center'>
+        3
+    </span>
+    </button>
+    <div class="relative group inline-block">
+        <!-- hover 容器内容整体 -->
+        <div class="flex items-center space-x-2 cursor-pointer">
+            <img
+                    src="https://design.gemcoder.com/staticResource/echoAiSystemImages/a6f7958bc1c69ae8ce9414161938e6b4.png"
+                    alt="用户头像"
+                    class="w-8 h-8 rounded-full object-cover border-2 border-gray-200" />
+
+            <span class="hidden md:inline font-medium">
+            林作家
+        </span>
+
+            <i class="fas fa-chevron-down text-xs text-gray-500"></i>
+        </div>
+
+        <!-- 下拉菜单：不再用 mt-2 -->
+        <div
+                class="absolute right-0 top-full pt-2
+               w-48 bg-white rounded-lg shadow-lg py-2 z-50
+               opacity-0 invisible
+               group-hover:opacity-100 group-hover:visible
+               transition-opacity duration-200">
+
+            <a href="个人中心.html"
+               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                <i class="fas fa-user mr-2 text-gray-500"></i>
+                个人中心
+            </a>
+
+            <a href="#"
+               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                <i class="fas fa-cog mr-2 text-gray-500"></i>
+                设置
+            </a>
+
+            <div class="border-t border-gray-100 my-1"></div>
+
+            <a href="#"
+               class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
+                <i class="fas fa-sign-out-alt mr-2"></i>
+                退出登录
+            </a>
+        </div>
+    </div>
+<!-- 移动端菜单按钮 -->
+<button class='md:hidden text-gray-700 focus:outline-none' id='mobile-menu-button'>
+        <i class='fas fa-bars text-xl'>
+        </i>
+    </button>
+    </div>
+    </div>
+<!-- 移动端导航菜单 -->
+<div class='md:hidden hidden bg-white border-t border-gray-100' id='mobile-menu'>
+        <div class='container mx-auto px-4 py-2 flex flex-col space-y-3'>
+        <a href='首页.html' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+        首页
+    </a>
+<a href='灵感素材.html' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+        灵感素材
+    </a>
+<a href='作家资讯.html' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+        作家资讯
+    </a>
+<a href='话题社区.html' class='font-medium text-primary py-2 border-l-4 border-primary pl-3'>
+        话题社区
+    </a>
+<a href='投稿中心.html' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+        投稿中心
+    </a>
+<a href='AI助手.html' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+        AI助手
+    </a>
+<div class='border-t border-gray-100 my-1 pt-2 flex items-center space-x-2'>
+        <i class='fas fa-bell text-gray-500'>
+        </i>
+<span class='text-sm text-gray-700'>
+        通知
+    </span>
+<span class='bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center'>
+        3
+    </span>
+    </div>
+    </div>
+    </div>
+    </header>
+<!-- [/MODULE] d23_导航栏 -->
+<!-- [MODULE] efg_话题社区页面 -->
+<main class='flex-grow container mx-auto px-4 py-6'>
+        <!-- [MODULE] 33f_话题社区页面:页面标题 -->
+<div class='mb-8'>
+        <div class='flex flex-col md:flex-row md:items-center md:justify-between mb-6'>
+        <div >
+        <h2 class='text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-neutral-800'>
+        话题社区
+    </h2>
+<p class='text-neutral-500 mt-1'>
+        与作家同行交流创作心得，分享写作经验
+    </p>
+    </div>
+<button id='create-topic-btn' class='mt-4 md:mt-0 bg-primary hover:bg-primary/90 text-white font-medium py-2 px-5 rounded-lg transition-all duration-300 flex items-center shadow-sm hover:shadow'>
+        <i class='fas fa-pen-fancy mr-2'>
+        </i>
+发布新话题
+    </button>
+    </div>
+<!-- 搜索和筛选 -->
+<div class='bg-white rounded-xl shadow-sm p-4 mb-6'>
+        <div class='flex flex-col md:flex-row gap-4'>
+        <div class='relative flex-grow'>
+        <i class='fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400'>
+        </i>
+<input type='text' placeholder='搜索话题、标签或内容...' class='w-full pl-10 pr-4 py-3 rounded-lg border border-neutral-200 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all'/>
+    </div>
+<div class='flex flex-wrap gap-2'>
+        <select class='border border-neutral-200 rounded-lg px-4 py-3 bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all'>
+        <option >
+        最新发布
+    </option>
+<option >
+        最多回复
+    </option>
+<option >
+        热门讨论
+    </option>
+<option >
+        精华话题
+    </option>
+    </select>
+<select class='border border-neutral-200 rounded-lg px-4 py-3 bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all'>
+        <option >
+        全部分类
+    </option>
+<option >
+        小说创作
+    </option>
+<option >
+        散文随笔
+    </option>
+<option >
+        诗歌创作
+    </option>
+<option >
+        剧本写作
+    </option>
+<option >
+        非虚构写作
+    </option>
+    </select>
+    </div>
+    </div>
+<!-- 热门标签 -->
+<div class='mt-4'>
+        <p class='text-sm font-medium text-neutral-500 mb-2'>
+        热门标签:
+    </p>
+<div class='flex flex-wrap'>
+        <span class='topic-tag'>
+        小说创作
+    </span>
+<span class='topic-tag'>
+        人物塑造
+    </span>
+<span class='topic-tag'>
+        情节构思
+    </span>
+<span class='topic-tag'>
+        写作技巧
+    </span>
+<span class='topic-tag'>
+        灵感枯竭
+    </span>
+<span class='topic-tag'>
+        科幻
+    </span>
+<span class='topic-tag'>
+        言情
+    </span>
+<span class='topic-tag'>
+        悬疑
+    </span>
+<span class='topic-tag'>
+        出版经验
+    </span>
+<span class='topic-tag'>
+        读者反馈
+    </span>
+    </div>
+    </div>
+    </div>
+    </div>
+<!-- [/MODULE] 33f_话题社区页面:页面标题 -- 包含页面标题、发布新话题按钮、搜索框、筛选下拉菜单和热门标签 -->
+<div class='grid grid-cols-1 lg:grid-cols-4 gap-6'>
+        <!-- 左侧内容区 -->
+<div class='lg:col-span-3 space-y-6'>
+        <!-- [MODULE] a1b_话题社区页面:热门话题 -->
+<section >
+        <div class='flex items-center justify-between mb-4'>
+        <h3 class='text-lg font-bold text-neutral-800 flex items-center'>
+        <i class='fas fa-fire-alt text-red-500 mr-2'>
+        </i>
+热门话题
+    </h3>
+<a href='javascript:void(0);' class='text-sm text-primary hover:text-primary/80 transition-colors'>
+        查看全部
+    </a>
+    </div>
+<!-- 热门话题列表 -->
+<div class='space-y-4'>
+        <!-- 话题1 -->
+<div class='topic-card'>
+        <div class='flex items-start'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/36efd8ce7c63645831be7706fd7e18eb.png' alt='用户头像' class='w-12 h-12 rounded-full object-cover mr-4'/>
+<div class='flex-grow'>
+        <div class='flex flex-wrap items-center gap-2 mb-1'>
+        <span class='badge badge-hot'>
+        <i class='fas fa-fire mr-1'>
+        </i>
+热门
+    </span>
+<span class='topic-tag'>
+        人物塑造
+    </span>
+    </div>
+<h4 class='font-bold text-lg mb-2 hover:text-primary transition-colors cursor-pointer'>
+        如何塑造令人难忘的小说角色？
+    </h4>
+<p class='text-neutral-600 line-clamp-2 mb-3'>
+        在创作过程中，我发现很多读者对角色的记忆往往比情节更深刻。那么如何创造出立体、真实、令人难忘的角色呢？我想分享一些我的经验...
+    </p>
+<div class='flex items-center justify-between text-sm text-neutral-500'>
+        <div class='flex items-center'>
+        <span class='font-medium text-neutral-700 mr-1'>
+        陈雪
+    </span>
+<span class='text-xs bg-neutral-100 text-neutral-600 px-2 py-0.5 rounded-full'>
+        签约作家
+    </span>
+    </div>
+<div class='flex items-center space-x-4'>
+        <span class='flex items-center'>
+        <i class='far fa-eye mr-1'>
+        </i>
+2.4k
+    </span>
+<span class='flex items-center'>
+        <i class='far fa-comment mr-1'>
+        </i>
+156
+    </span>
+<span class='flex items-center'>
+        <i class='far fa-heart mr-1'>
+        </i>
+328
+    </span>
+<span >
+        3天前
+    </span>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+<!-- 话题2 -->
+<div class='topic-card'>
+        <div class='flex items-start'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/89e3e5c87e80efd8396cb7b3cb20f839.png' alt='用户头像' class='w-12 h-12 rounded-full object-cover mr-4'/>
+<div class='flex-grow'>
+        <div class='flex flex-wrap items-center gap-2 mb-1'>
+        <span class='badge badge-popular'>
+        <i class='fas fa-chart-line mr-1'>
+        </i>
+热议
+    </span>
+<span class='topic-tag'>
+        情节构思
+    </span>
+<span class='topic-tag'>
+        悬疑
+    </span>
+    </div>
+<h4 class='font-bold text-lg mb-2 hover:text-primary transition-colors cursor-pointer'>
+        悬疑小说的情节设计技巧分享
+    </h4>
+<p class='text-neutral-600 line-clamp-2 mb-3'>
+        作为一名悬疑小说作者，我发现很多新手在情节设计上容易陷入俗套。我想分享一些避免情节漏洞、设计精彩反转的实用技巧...
+    </p>
+<div class='flex items-center justify-between text-sm text-neutral-500'>
+        <div class='flex items-center'>
+        <span class='font-medium text-neutral-700 mr-1'>
+        李明
+    </span>
+<span class='text-xs bg-neutral-100 text-neutral-600 px-2 py-0.5 rounded-full'>
+        新锐作家
+    </span>
+    </div>
+<div class='flex items-center space-x-4'>
+        <span class='flex items-center'>
+        <i class='far fa-eye mr-1'>
+        </i>
+1.8k
+    </span>
+<span class='flex items-center'>
+        <i class='far fa-comment mr-1'>
+        </i>
+98
+    </span>
+<span class='flex items-center'>
+        <i class='far fa-heart mr-1'>
+        </i>
+215
+    </span>
+<span >
+        5天前
+    </span>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+<!-- 话题3 -->
+<div class='topic-card'>
+        <div class='flex items-start'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/69beae33feda53ed3b24f777776a0765.png' alt='用户头像' class='w-12 h-12 rounded-full object-cover mr-4'/>
+<div class='flex-grow'>
+        <div class='flex flex-wrap items-center gap-2 mb-1'>
+        <span class='topic-tag'>
+        写作经验
+    </span>
+<span class='topic-tag'>
+        出版
+    </span>
+    </div>
+<h4 class='font-bold text-lg mb-2 hover:text-primary transition-colors cursor-pointer'>
+        从写作到出版：我的十年创作之路
+    </h4>
+<p class='text-neutral-600 line-clamp-2 mb-3'>
+        作为一名出版过多部作品的作家，我想分享我从写作新手到签约作家的历程，包括如何找到合适的出版社、与编辑沟通的技巧...
+    </p>
+<div class='flex items-center justify-between text-sm text-neutral-500'>
+        <div class='flex items-center'>
+        <span class='font-medium text-neutral-700 mr-1'>
+        王建国
+    </span>
+<span class='text-xs bg-neutral-100 text-neutral-600 px-2 py-0.5 rounded-full'>
+        资深作家
+    </span>
+    </div>
+<div class='flex items-center space-x-4'>
+        <span class='flex items-center'>
+        <i class='far fa-eye mr-1'>
+        </i>
+3.2k
+    </span>
+<span class='flex items-center'>
+        <i class='far fa-comment mr-1'>
+        </i>
+203
+    </span>
+<span class='flex items-center'>
+        <i class='far fa-heart mr-1'>
+        </i>
+456
+    </span>
+<span >
+        1周前
+    </span>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+<!-- [/MODULE] a1b_话题社区页面:热门话题 -- 展示热门话题列表，包含话题标题、标签、作者信息、阅读量、评论数和点赞数 -->
+<!-- [MODULE] c2d_话题社区页面:最新话题 -->
+<section >
+        <div class='flex items-center justify-between mb-4'>
+        <h3 class='text-lg font-bold text-neutral-800 flex items-center'>
+        <i class='fas fa-clock text-blue-500 mr-2'>
+        </i>
+最新话题
+    </h3>
+<div class='flex space-x-2'>
+        <button class='px-3 py-1 text-sm rounded-md bg-primary text-white'>
+        最新
+    </button>
+<button class='px-3 py-1 text-sm rounded-md hover:bg-neutral-100 transition-colors'>
+        热门
+    </button>
+<button class='px-3 py-1 text-sm rounded-md hover:bg-neutral-100 transition-colors'>
+        精华
+    </button>
+    </div>
+    </div>
+<!-- 最新话题列表 -->
+<div class='space-y-4'>
+        <!-- 话题1 -->
+<div class='topic-card'>
+        <div class='flex items-start'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/803a8a6968529bf8d62dadc471632618.png' alt='用户头像' class='w-12 h-12 rounded-full object-cover mr-4'/>
+<div class='flex-grow'>
+        <div class='flex flex-wrap items-center gap-2 mb-1'>
+        <span class='badge badge-new'>
+        <i class='fas fa-bolt mr-1'>
+        </i>
+新发布
+    </span>
+<span class='topic-tag'>
+        灵感枯竭
+    </span>
+<span class='topic-tag'>
+        写作动力
+    </span>
+    </div>
+<h4 class='font-bold text-lg mb-2 hover:text-primary transition-colors cursor-pointer'>
+        如何克服创作瓶颈期？分享我的经验
+    </h4>
+<p class='text-neutral-600 line-clamp-2 mb-3'>
+        最近遇到了严重的创作瓶颈，小说写不下去，灵感枯竭。经过一个月的调整，我终于找回了状态。想分享一些实用的方法给同样遇到困境的朋友...
+    </p>
+<div class='flex items-center justify-between text-sm text-neutral-500'>
+        <div class='flex items-center'>
+        <span class='font-medium text-neutral-700 mr-1'>
+        张雨晴
+    </span>
+<span class='text-xs bg-neutral-100 text-neutral-600 px-2 py-0.5 rounded-full'>
+        新锐作家
+    </span>
+    </div>
+<div class='flex items-center space-x-4'>
+        <span class='flex items-center'>
+        <i class='far fa-eye mr-1'>
+        </i>
+328
+    </span>
+<span class='flex items-center'>
+        <i class='far fa-comment mr-1'>
+        </i>
+42
+    </span>
+<span class='flex items-center'>
+        <i class='far fa-heart mr-1'>
+        </i>
+87
+    </span>
+<span >
+        2小时前
+    </span>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+<!-- 话题2 -->
+<div class='topic-card'>
+        <div class='flex items-start'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/3267b8284afe182c82bc05023f16aa2a.png' alt='用户头像' class='w-12 h-12 rounded-full object-cover mr-4'/>
+<div class='flex-grow'>
+        <div class='flex flex-wrap items-center gap-2 mb-1'>
+        <span class='topic-tag'>
+        科幻
+    </span>
+<span class='topic-tag'>
+        世界观构建
+    </span>
+    </div>
+<h4 class='font-bold text-lg mb-2 hover:text-primary transition-colors cursor-pointer'>
+        科幻小说的世界观构建方法探讨
+    </h4>
+<p class='text-neutral-600 line-clamp-2 mb-3'>
+        正在创作一部科幻长篇，发现世界观构建是最大的挑战。如何创造既独特又自洽的科幻世界？欢迎大家分享经验...
+    </p>
+<div class='flex items-center justify-between text-sm text-neutral-500'>
+        <div class='flex items-center'>
+        <span class='font-medium text-neutral-700 mr-1'>
+        刘星辰
+    </span>
+<span class='text-xs bg-neutral-100 text-neutral-600 px-2 py-0.5 rounded-full'>
+        科幻作家
+    </span>
+    </div>
+<div class='flex items-center space-x-4'>
+        <span class='flex items-center'>
+        <i class='far fa-eye mr-1'>
+        </i>
+562
+    </span>
+<span class='flex items-center'>
+        <i class='far fa-comment mr-1'>
+        </i>
+68
+    </span>
+<span class='flex items-center'>
+        <i class='far fa-heart mr-1'>
+        </i>
+124
+    </span>
+<span >
+        昨天
+    </span>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+<!-- 话题3 -->
+<div class='topic-card'>
+        <div class='flex items-start'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/8c4f4960a3a1b2fbf02d63ac699a4597.png' alt='用户头像' class='w-12 h12 rounded-full object-cover mr-4'/>
+<div class='flex-grow'>
+        <div class='flex flex-wrap items-center gap-2 mb-1'>
+        <span class='topic-tag'>
+        历史小说
+    </span>
+<span class='topic-tag'>
+        资料研究
+    </span>
+    </div>
+<h4 class='font-bold text-lg mb-2 hover:text-primary transition-colors cursor-pointer'>
+        历史小说创作中的史料考证方法
+    </h4>
+<p class='text-neutral-600 line-clamp-2 mb-3'>
+        历史小说创作需要大量的史料支撑，但如何高效地查找和筛选史料？如何在尊重历史的同时进行艺术创作？分享一些我的研究方法...
+    </p>
+<div class='flex items-center justify-between text-sm text-neutral-500'>
+        <div class='flex items-center'>
+        <span class='font-medium text-neutral-700 mr-1'>
+        赵文静
+    </span>
+<span class='text-xs bg-neutral-100 text-neutral-600 px-2 py-0.5 rounded-full'>
+        历史作家
+    </span>
+    </div>
+<div class='flex items-center space-x-4'>
+        <span class='flex items-center'>
+        <i class='far fa-eye mr-1'>
+        </i>
+785
+    </span>
+<span class='flex items-center'>
+        <i class='far fa-comment mr-1'>
+        </i>
+93
+    </span>
+<span class='flex items-center'>
+        <i class='far fa-heart mr-1'>
+        </i>
+187
+    </span>
+<span >
+        2天前
+    </span>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+<!-- 话题4 -->
+<div class='topic-card'>
+        <div class='flex items-start'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/ca3eb8098065a089fc2316760546183c.png' alt='用户头像' class='w-12 h-12 rounded-full object-cover mr-4'/>
+<div class='flex-grow'>
+        <div class='flex flex-wrap items-center gap-2 mb-1'>
+        <span class='topic-tag'>
+        诗歌创作
+    </span>
+<span class='topic-tag'>
+        现代诗
+    </span>
+    </div>
+<h4 class='font-bold text-lg mb-2 hover:text-primary transition-colors cursor-pointer'>
+        现代诗歌的意象营造技巧分享
+    </h4>
+<p class='text-neutral-600 line-clamp-2 mb-3'>
+        意象是诗歌的灵魂，如何创造新颖而深刻的意象？我总结了一些个人经验，包括观察生活的方法、隐喻的构建技巧等，希望能与大家交流...
+    </p>
+<div class='flex items-center justify-between text-sm text-neutral-500'>
+        <div class='flex items-center'>
+        <span class='font-medium text-neutral-700 mr-1'>
+        陈思远
+    </span>
+<span class='text-xs bg-neutral-100 text-neutral-600 px-2 py-0.5 rounded-full'>
+        诗人
+    </span>
+    </div>
+<div class='flex items-center space-x-4'>
+        <span class='flex items-center'>
+        <i class='far fa-eye mr-1'>
+        </i>
+432
+    </span>
+<span class='flex items-center'>
+        <i class='far fa-comment mr-1'>
+        </i>
+56
+    </span>
+<span class='flex items-center'>
+        <i class='far fa-heart mr-1'>
+        </i>
+103
+    </span>
+<span >
+        3天前
+    </span>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+<!-- 分页 -->
+<div class='flex justify-center mt-8'>
+        <nav class='inline-flex rounded-md shadow-sm' aria-label='分页'>
+        <a href='javascript:void(0);' class='relative inline-flex items-center px-2 py-2 rounded-l-md border border-neutral-200 bg-white text-sm font-medium text-neutral-500 hover:bg-neutral-50'>
+        <i class='fas fa-chevron-left text-xs'>
+        </i>
+    </a>
+<a href='javascript:void(0);' class='relative inline-flex items-center px-4 py-2 border border-neutral-200 bg-primary text-sm font-medium text-white'>
+        1
+    </a>
+<a href='javascript:void(0);' class='relative inline-flex items-center px-4 py-2 border border-neutral-200 bg-white text-sm font-medium text-neutral-700 hover:bg-neutral-50'>
+        2
+    </a>
+<a href='javascript:void(0);' class='relative inline-flex items-center px-4 py-2 border border-neutral-200 bg-white text-sm font-medium text-neutral-700 hover:bg-neutral-50'>
+        3
+    </a>
+<span class='relative inline-flex items-center px-4 py-2 border border-neutral-200 bg-white text-sm font-medium text-neutral-700'>
+        ...
+    </span>
+<a href='javascript:void(0);' class='relative inline-flex items-center px-4 py-2 border border-neutral-200 bg-white text-sm font-medium text-neutral-700 hover:bg-neutral-50'>
+        8
+    </a>
+<a href='javascript:void(0);' class='relative inline-flex items-center px-2 py-2 rounded-r-md border border-neutral-200 bg-white text-sm font-medium text-neutral-500 hover:bg-neutral-50'>
+        <i class='fas fa-chevron-right text-xs'>
+        </i>
+    </a>
+    </nav>
+    </div>
+    </section>
+<!-- [/MODULE] c2d_话题社区页面:最新话题 -- 展示最新话题列表，包含分页功能 -->
+    </div>
+<!-- 右侧边栏 -->
+<div class='space-y-6'>
+        <!-- [MODULE] e3f_话题社区页面:创作风向 -->
+<div class='bg-white rounded-xl shadow-sm p-5'>
+        <h3 class='text-lg font-bold text-neutral-800 mb-4 flex items-center'>
+        <i class='fas fa-chart-pie text-purple-500 mr-2'>
+        </i>
+创作风向
+    </h3>
+<div class='h-64'>
+        <canvas id='writing-trends-chart'>
+        </canvas>
+    </div>
+<div class='mt-4 grid grid-cols-2 gap-3'>
+        <div class='bg-neutral-50 rounded-lg p-3'>
+        <div class='text-sm text-neutral-500 mb-1'>
+        最热门题材
+    </div>
+<div class='font-medium'>
+        都市情感
+    </div>
+<div class='text-xs text-green-500 mt-1 flex items-center'>
+        <i class='fas fa-arrow-up mr-1'>
+        </i>
+上升12%
+    </div>
+    </div>
+<div class='bg-neutral-50 rounded-lg p-3'>
+        <div class='text-sm text-neutral-500 mb-1'>
+        增长最快
+    </div>
+<div class='font-medium'>
+        科幻悬疑
+    </div>
+<div class='text-xs text-green-500 mt-1 flex items-center'>
+        <i class='fas fa-arrow-up mr-1'>
+        </i>
+上升28%
+    </div>
+    </div>
+    </div>
+    </div>
+<!-- [/MODULE] e3f_话题社区页面:创作风向 -- 展示创作趋势图表和热门题材数据 -->
+<!-- [MODULE] g4h_话题社区页面:读者调研 -->
+<div class='bg-white rounded-xl shadow-sm p-5'>
+        <h3 class='text-lg font-bold text-neutral-800 mb-4 flex items-center'>
+        <i class='fas fa-users text-blue-500 mr-2'>
+        </i>
+读者调研
+    </h3>
+<div class='space-y-4'>
+        <div >
+        <div class='flex justify-between mb-1'>
+        <span class='text-sm font-medium'>
+        每周阅读时间
+    </span>
+<span class='text-sm text-neutral-500'>
+        65%
+    </span>
+    </div>
+<div class='w-full bg-neutral-200 rounded-full h-2'>
+        <div class='bg-blue-500 h-2 rounded-full' style='width: 65%'>
+        </div>
+    </div>
+<div class='text-xs text-neutral-500 mt-1'>
+        3-5小时/周
+    </div>
+    </div>
+<div >
+        <div class='flex justify-between mb-1'>
+        <span class='text-sm font-medium'>
+        偏好阅读平台
+    </span>
+<span class='text-sm text-neutral-500'>
+        48%
+    </span>
+    </div>
+<div class='w-full bg-neutral-200 rounded-full h-2'>
+        <div class='bg-green-500 h-2 rounded-full' style='width: 48%'>
+        </div>
+    </div>
+<div class='text-xs text-neutral-500 mt-1'>
+        手机阅读APP
+    </div>
+    </div>
+<div >
+        <div class='flex justify-between mb-1'>
+        <span class='text-sm font-medium'>
+        付费意愿
+    </span>
+<span class='text-sm text-neutral-500'>
+        72%
+    </span>
+    </div>
+<div class='w-full bg-neutral-200 rounded-full h-2'>
+        <div class='bg-amber-500 h-2 rounded-full' style='width: 72%'>
+        </div>
+    </div>
+<div class='text-xs text-neutral-500 mt-1'>
+        愿意为优质内容付费
+    </div>
+    </div>
+<div >
+        <div class='flex justify-between mb-1'>
+        <span class='text-sm font-medium'>
+        最关注要素
+    </span>
+<span class='text-sm text-neutral-500'>
+        83%
+    </span>
+    </div>
+<div class='w-full bg-neutral-200 rounded-full h-2'>
+        <div class='bg-purple-500 h-2 rounded-full' style='width: 83%'>
+        </div>
+    </div>
+<div class='text-xs text-neutral-500 mt-1'>
+        故事情节
+    </div>
+    </div>
+    </div>
+<a href='javascript:void(0);' class='mt-4 block text-center text-sm text-primary hover:text-primary/80 transition-colors'>
+        查看完整调研报告
+    </a>
+    </div>
+<!-- [/MODULE] g4h_话题社区页面:读者调研 -- 展示读者阅读习惯和偏好数据 -->
+<!-- [MODULE] i5j_话题社区页面:热门书评 -->
+<div class='bg-white rounded-xl shadow-sm p-5'>
+        <h3 class='text-lg font-bold text-neutral-800 mb-4 flex items-center'>
+        <i class='fas fa-star text-yellow-500 mr-2'>
+        </i>
+热门书评
+    </h3>
+<div class='space-y-4'>
+        <div class='flex gap-3'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/33136cf031c7acaf2441c4018ea87df9.png' alt='书评封面' class='w-14 h-20 object-cover rounded-md flex-shrink-0'/>
+<div >
+        <h4 class='font-medium text-sm line-clamp-2 hover:text-primary transition-colors cursor-pointer'>
+        《沉默的告别》：细腻入微的情感描写，让人沉浸其中
+    </h4>
+<div class='flex items-center mt-1'>
+        <div class='flex text-yellow-400 text-xs'>
+        <i class='fas fa-star'>
+        </i>
+<i class='fas fa-star'>
+        </i>
+<i class='fas fa-star'>
+        </i>
+<i class='fas fa-star'>
+        </i>
+<i class='fas fa-star-half-alt'>
+        </i>
+    </div>
+<span class='text-xs text-neutral-500 ml-1'>
+        4.5
+    </span>
+    </div>
+<div class='text-xs text-neutral-500 mt-1'>
+        by 读者李华
+    </div>
+    </div>
+    </div>
+<div class='flex gap-3'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/351e002e98190fb948ea9a239203c1c0.png' alt='书评封面' class='w-14 h-20 object-cover rounded-md flex-shrink-0'/>
+<div >
+        <h4 class='font-medium text-sm line-clamp-2 hover:text-primary transition-colors cursor-pointer'>
+        《星际边界》：宏大的世界观构建，令人叹为观止
+    </h4>
+<div class='flex items-center mt-1'>
+        <div class='flex text-yellow-400 text-xs'>
+        <i class='fas fa-star'>
+        </i>
+<i class='fas fa-star'>
+        </i>
+<i class='fas fa-star'>
+        </i>
+<i class='fas fa-star'>
+        </i>
+<i class='far fa-star'>
+        </i>
+    </div>
+<span class='text-xs text-neutral-500 ml-1'>
+        4.0
+    </span>
+    </div>
+<div class='text-xs text-neutral-500 mt-1'>
+        by 读者王明
+    </div>
+    </div>
+    </div>
+<div class='flex gap-3'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/abe639fbd6a7f063b7e251c3ed062571.png' alt='书评封面' class='w-14 h-20 object-cover rounded-md flex-shrink-0'/>
+<div >
+        <h4 class='font-medium text-sm line-clamp-2 hover:text-primary transition-colors cursor-pointer'>
+        《消失的线索》：情节紧凑，反转不断，值得一读
+    </h4>
+<div class='flex items-center mt-1'>
+        <div class='flex text-yellow-400 text-xs'>
+        <i class='fas fa-star'>
+        </i>
+<i class='fas fa-star'>
+        </i>
+<i class='fas fa-star'>
+        </i>
+<i class='fas fa-star'>
+        </i>
+<i class='fas fa-star'>
+        </i>
+    </div>
+<span class='text-xs text-neutral-500 ml-1'>
+        5.0
+    </span>
+    </div>
+<div class='text-xs text-neutral-500 mt-1'>
+        by 读者张丽
+    </div>
+    </div>
+    </div>
+    </div>
+<a href='javascript:void(0);' class='mt-4 block text-center text-sm text-primary hover:text-primary/80 transition-colors'>
+        查看更多书评
+    </a>
+    </div>
+<!-- [/MODULE] i5j_话题社区页面:热门书评 -- 展示热门书籍的精选评论 -->
+<!-- [MODULE] k6l_话题社区页面:活跃作者 -->
+<div class='bg-white rounded-xl shadow-sm p-5'>
+        <h3 class='text-lg font-bold text-neutral-800 mb-4 flex items-center'>
+        <i class='fas fa-user-friends text-green-500 mr-2'>
+        </i>
+活跃作者
+    </h3>
+<div class='space-y-4'>
+        <div class='flex items-center justify-between'>
+        <div class='flex items-center'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/07305986f02569fcc35afbd223092805.png' alt='作者头像' class='w-10 h-10 rounded-full object-cover mr-3'/>
+<div >
+        <div class='font-medium text-sm'>
+        林婉仪
+    </div>
+<div class='text-xs text-neutral-500'>
+        《星辰不语》作者
+    </div>
+    </div>
+    </div>
+<button class='text-xs bg-primary/10 text-primary px-3 py-1 rounded-full hover:bg-primary/20 transition-colors'>
+        关注
+    </button>
+    </div>
+<div class='flex items-center justify-between'>
+        <div class='flex items-center'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/3e8d0ca35a4ddde5f218060da78e7ca2.png' alt='作者头像' class='w-10 h-10 rounded-full object-cover mr-3'/>
+<div >
+        <div class='font-medium text-sm'>
+        陈浩然
+    </div>
+<div class='text-xs text-neutral-500'>
+        《城市微光》作者
+    </div>
+    </div>
+    </div>
+<button class='text-xs bg-primary/10 text-primary px-3 py-1 rounded-full hover:bg-primary/20 transition-colors'>
+        关注
+    </button>
+    </div>
+<div class='flex items-center justify-between'>
+        <div class='flex items-center'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/eed90252e73e7866e839cb76cef25727.png' alt='作者头像' class='w-10 h-10 rounded-full object-cover mr-3'/>
+<div >
+        <div class='font-medium text-sm'>
+        苏晓
+    </div>
+<div class='text-xs text-neutral-500'>
+        新锐科幻作家
+    </div>
+    </div>
+    </div>
+<button class='text-xs bg-neutral-100 text-neutral-700 px-3 py-1 rounded-full hover:bg-neutral-200 transition-colors'>
+        已关注
+    </button>
+    </div>
+<div class='flex items-center justify-between'>
+        <div class='flex items-center'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/2868e579ef4c256f548c45d2f3e3441d.png' alt='作者头像' class='w-10 h-10 rounded-full object-cover mr-3'/>
+<div >
+        <div class='font-medium text-sm'>
+        郑明远
+    </div>
+<div class='text-xs text-neutral-500'>
+        《暗夜追凶》系列
+    </div>
+    </div>
+    </div>
+<button class='text-xs bg-primary/10 text-primary px-3 py-1 rounded-full hover:bg-primary/20 transition-colors'>
+        关注
+    </button>
+    </div>
+    </div>
+    </div>
+<!-- [/MODULE] k6l_话题社区页面:活跃作者 -- 展示社区内活跃的作家列表 -->
+    </div>
+    </div>
+    </main>
+<!-- [/MODULE] efg_话题社区页面 -->
+<!-- [MODULE] hij_底部 -->
+<footer class='bg-dark text-white py-10 mt-12'>
+        <div class='container mx-auto px-4'>
+        <div class='grid grid-cols-1 md:grid-cols-4 gap-8'>
+        <div >
+        <div class='flex items-center space-x-2 mb-4'>
+        <i class='fas fa-feather-alt text-primary text-2xl'>
+        </i>
+<h2 class='text-xl font-bold'>
+        作家助手
+    </h2>
+    </div>
+<p class='text-gray-400 text-sm mb-4'>
+        为创作者提供灵感、素材和工具支持，让写作变得更简单。
+    </p>
+<div class='flex space-x-4'>
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        <i class='fab fa-weibo'>
+        </i>
+    </a>
+<a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        <i class='fab fa-wechat'>
+        </i>
+    </a>
+<a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        <i class='fab fa-twitter'>
+        </i>
+    </a>
+<a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        <i class='fab fa-instagram'>
+        </i>
+    </a>
+    </div>
+    </div>
+<div >
+        <h3 class='font-bold text-lg mb-4'>
+        功能导航
+    </h3>
+<ul class='space-y-2 text-sm'>
+        <li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        灵感素材
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        AI大纲生成
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        随笔管理
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        作家社区
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        投稿中心
+    </a>
+    </li>
+    </ul>
+    </div>
+<div >
+        <h3 class='font-bold text-lg mb-4'>
+        帮助支持
+    </h3>
+<ul class='space-y-2 text-sm'>
+        <li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        使用指南
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        常见问题
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        联系我们
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        意见反馈
+    </a>
+    </li>
+    </ul>
+    </div>
+<div >
+        <h3 class='font-bold text-lg mb-4'>
+        法律信息
+    </h3>
+<ul class='space-y-2 text-sm'>
+        <li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        服务条款
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        隐私政策
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        版权声明
+    </a>
+    </li>
+    </ul>
+    </div>
+    </div>
+<div class='border-t border-gray-800 mt-8 pt-6 text-center text-gray-500 text-sm'>
+        <p >
+        © 2023 作家助手 - 助力每一位创作者
+    </p>
+    </div>
+    </div>
+    </footer>
+<!-- [/MODULE] hij_底部 -->
+    </div>
+<!-- [/MODULE] abc_主内容区域 -->
+<!-- [MODULE] xyz_发布话题弹窗 -->
+<div id='create-topic-modal' class='fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden'>
+        <div class='bg-white rounded-xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto transform transition-all'>
+        <div class='p-6 border-b border-neutral-200 flex justify-between items-center sticky top-0 bg-white z-10'>
+        <h3 class='text-xl font-bold text-neutral-800'>
+        发布新话题
+    </h3>
+<button id='close-modal-btn' class='text-neutral-500 hover:text-neutral-700 transition-colors'>
+        <i class='fas fa-times text-xl'>
+        </i>
+    </button>
+    </div>
+<div class='p-6'>
+        <form id='create-topic-form'>
+        <div class='mb-4'>
+        <label for='topic-title' class='block text-sm font-medium text-neutral-700 mb-1'>
+        话题标题
+    </label>
+<input type='text' id='topic-title' class='w-full px-4 py-3 rounded-lg border border-neutral-200 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all' placeholder='请输入话题标题，吸引更多作家参与讨论...'/>
+    </div>
+<div class='mb-4'>
+        <label for='topic-category' class='block text-sm font-medium text-neutral-700 mb-1'>
+        所属分类
+    </label>
+<select id='topic-category' class='w-full px-4 py-3 rounded-lg border border-neutral->200 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all'>
+        <option value>
+        请选择分类
+    </option>
+<option value='novel'>
+        小说创作
+    </option>
+<option value='prose'>
+        散文随笔
+    </option>
+<option value='poetry'>
+        诗歌创作
+    </option>
+<option value='script'>
+        剧本写作
+    </option>
+<option value='nonfiction'>
+        非虚构写作
+    </option>
+<option value='experience'>
+        创作经验
+    </option>
+<option value='publishing'>
+        出版交流
+    </option>
+<option value='other'>
+        其他话题
+    </option>
+    </select>
+    </div>
+<div class='mb-4'>
+        <label class='block text-sm font-medium text-neutral-700 mb-1'>
+        添加标签
+    </label>
+<div class='flex flex-wrap gap-2 mb-2'>
+        <span class='topic-tag flex items-center'>
+        小说创作
+<button type='button' class='ml-1 text-primary hover:text-primary/80'>
+        <i class='fas fa-times-circle text-xs'>
+        </i>
+    </button>
+    </span>
+<span class='topic-tag flex items-center'>
+        人物塑造
+<button type='button' class='ml-1 text-primary hover:text-primary/80'>
+        <i class='fas fa-times-circle text-xs'>
+        </i>
+    </button>
+    </span>
+    </div>
+<div class='flex'>
+        <input type='text' class='flex-grow px-4 py-3 rounded-lg border border-neutral-200 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all' placeholder='输入标签后按回车添加'/>
+<button type='button' class='ml-2 bg-neutral-100 hover:bg-neutral-200 text-neutral-700 px-4 py-3 rounded-lg transition-colors'>
+        <i class='fas fa-plus'>
+        </i>
+    </button>
+    </div>
+<p class='text-xs text-neutral-500 mt-1'>
+        最多添加5个标签，有助于更多人发现你的话题
+    </p>
+    </div>
+<div class='mb-4'>
+        <label for='topic-content' class='block text-sm font-medium text-neutral-700 mb-1'>
+        话题内容
+    </label>
+<textarea id='topic-content' rows='8' class='w-full px-4 py-3 rounded-lg border border-neutral-200 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all' placeholder='详细描述你的话题内容，可以分享你的经验、提出问题或发起讨论...'>
+        </textarea>
+<p class='text-xs text-neutral-500 mt-1'>
+        内容不少于20个字，详细的描述更容易获得优质回复
+    </p>
+    </div>
+<div class='mb-4'>
+        <label class='block text-sm font-medium text-neutral-700 mb-1'>
+        添加图片（可选）
+    </label>
+<div class='border-2 border-dashed border-neutral-200 rounded-lg p-6 text-center hover:border-primary transition-colors cursor-pointer'>
+        <i class='fas fa-cloud-upload-alt text-3xl text-neutral-400 mb-2'>
+        </i>
+<p class='text-sm text-neutral-500'>
+        点击上传或拖拽文件至此处
+    </p>
+<p class='text-xs text-neutral-400 mt-1'>
+        支持JPG、PNG格式，大小不超过5MB
+    </p>
+    </div>
+    </div>
+<div class='flex items-start mb-6'>
+        <input type='checkbox' id='anonymous-post' class='mt-1'/>
+<label for='anonymous-post' class='ml-2 text-sm text-neutral-600'>
+        匿名发布（发布后仅管理员可见你的身份信息）
+    </label>
+    </div>
+<div class='flex justify-end space-x-3'>
+        <button type='button' id='cancel-post-btn' class='px-5 py-2.5 border border-neutral-200 rounded-lg text-neutral-700 hover:bg-neutral-50 transition-colors'>
+        取消
+    </button>
+<button type='submit' class='px-5 py-2.5 bg-primary hover:bg-primary/90 text-white font-medium rounded-lg transition-all duration-300 shadow-sm hover:shadow'>
+        发布话题
+    </button>
+    </div>
+    </form>
+    </div>
+    </div>
+    </div>
+<!-- [/MODULE] xyz_发布话题弹窗 -- 用于编辑和发布新话题，包含标题、分类、标签、内容和图片上传功能 -->
+<!-- [JSMOD] mob_移动端菜单交互 -->
+<script id='mobile-menu-script'>// 移动端菜单切换
+document.addEventListener('DOMContentLoaded', function () {
+  var mobileMenuButton = document.getElementById('mobile-menu-button');
+  var mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', function () {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+});</script>
+<!-- [/JSMOD] mob_移动端菜单交互 -- 处理移动端菜单的显示和隐藏 -->
+<!-- [JSMOD] modal_发布话题弹窗交互 -->
+<script id='modal-script'>// 发布话题弹窗交互
+document.addEventListener('DOMContentLoaded', function () {
+  var createTopicBtn = document.getElementById('create-topic-btn');
+  var createTopicModal = document.getElementById('create-topic-modal');
+  var closeModalBtn = document.getElementById('close-modal-btn');
+  var cancelPostBtn = document.getElementById('cancel-post-btn');
+  var createTopicForm = document.getElementById('create-topic-form');
+
+  // 打开弹窗
+  if (createTopicBtn && createTopicModal) {
+    createTopicBtn.addEventListener('click', function () {
+      createTopicModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden'; // 防止背景滚动
+    });
+  }
+
+  // 关闭弹窗
+  var closeModal = function closeModal() {
+    createTopicModal.classList.add('hidden');
+    document.body.style.overflow = ''; // 恢复背景滚动
+  };
+  if (closeModalBtn) {
+    closeModalBtn.addEventListener('click', closeModal);
+  }
+  if (cancelPostBtn) {
+    cancelPostBtn.addEventListener('click', closeModal);
+  }
+
+  // 点击弹窗外部关闭
+  if (createTopicModal) {
+    createTopicModal.addEventListener('click', function (e) {
+      if (e.target === createTopicModal) {
+        closeModal();
+      }
+    });
+  }
+
+  // 表单提交处理
+  if (createTopicForm) {
+    createTopicForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      // 模拟表单提交
+      var title = document.getElementById('topic-title').value;
+      if (!title.trim()) {
+        alert('请输入话题标题');
+        return;
+      }
+
+      // 这里可以添加更多表单验证逻辑
+
+      // 模拟提交成功
+      alert('话题发布成功！');
+      closeModal();
+      // 重置表单
+      createTopicForm.reset();
+    });
+  }
+
+  // 标签删除功能
+  var tagRemoveButtons = document.querySelectorAll('.topic-tag button');
+  tagRemoveButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      button.parentElement.remove();
+    });
+  });
+});</script>
+<!-- [/JSMOD] modal_发布话题弹窗交互 -- 处理发布话题弹窗的显示、隐藏和表单提交 -->
+<!-- [JSMOD] chart_创作风向图表 -->
+<script id='chart-script'>// 创作风向图表初始化
+document.addEventListener('DOMContentLoaded', function () {
+  // 初始化创作风向图表（使用echarts）
+  var trendsChartDom = document.getElementById('writing-trends-chart');
+  if (trendsChartDom) {
+    var trendsChart = echarts.init(trendsChartDom);
+    var option = {
+      tooltip: {
+        trigger: 'item'
+      },
+      legend: {
+        orient: 'vertical',
+        left: 'left',
+        textStyle: {
+          fontSize: 12
+        }
+      },
+      series: [{
+        name: '创作类型占比',
+        type: 'pie',
+        radius: ['40%', '70%'],
+        avoidLabelOverlap: false,
+        itemStyle: {
+          borderRadius: 6,
+          borderColor: '#fff',
+          borderWidth: 2
+        },
+        label: {
+          show: false,
+          position: 'center'
+        },
+        emphasis: {
+          label: {
+            show: true,
+            fontSize: 14,
+            fontWeight: 'bold'
+          }
+        },
+        labelLine: {
+          show: false
+        },
+        data: [{
+          value: 32,
+          name: '都市情感',
+          itemStyle: {
+            color: '#3B82F6'
+          }
+        }, {
+          value: 25,
+          name: '科幻悬疑',
+          itemStyle: {
+            color: '#8B5CF6'
+          }
+        }, {
+          value: 18,
+          name: '历史小说',
+          itemStyle: {
+            color: '#EC4899'
+          }
+        }, {
+          value: 12,
+          name: '玄幻奇幻',
+          itemStyle: {
+            color: '#10B981'
+          }
+        }, {
+          value: 8,
+          name: '散文随笔',
+          itemStyle: {
+            color: '#F59E0B'
+          }
+        }, {
+          value: 5,
+          name: '其他类型',
+          itemStyle: {
+            color: '#6B7280'
+          }
+        }]
+      }]
+    };
+    option && trendsChart.setOption(option);
+
+    // 监听窗口大小变化，调整图表尺寸
+    window.addEventListener('resize', function () {
+      trendsChart.resize();
+    });
+  }
+});</script>
+<!-- [/JSMOD] chart_创作风向图表 -- 使用echarts绘制创作类型占比饼图 -->
+<!-- [JSMOD] ui_页面交互效果 -->
+<script id='ui-interactions-script'>// 页面交互效果
+document.addEventListener('DOMContentLoaded', function () {
+  // 话题标签点击效果
+  var topicTags = document.querySelectorAll('.topic-tag');
+  topicTags.forEach(function (tag) {
+    if (!tag.querySelector('button')) {
+      // 排除带删除按钮的标签
+      tag.addEventListener('click', function () {
+        // 这里可以添加标签点击后的筛选逻辑
+        topicTags.forEach(function (t) {
+          return t.classList.remove('ring-2', 'ring-primary');
+        });
+        tag.classList.add('ring-2', 'ring-primary');
+      });
+    }
+  });
+
+  // 话题卡片悬停效果增强
+  var topicCards = document.querySelectorAll('.topic-card');
+  topicCards.forEach(function (card) {
+    card.addEventListener('mouseenter', function () {
+      card.style.transform = 'translateY(-4px)';
+      card.style.boxShadow = '0 10px 25px -5px rgba(0, 0, 0, 0.05)';
+    });
+    card.addEventListener('mouseleave', function () {
+      card.style.transform = '';
+      card.style.boxShadow = '';
+    });
+  });
+
+  // 平滑滚动
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      var targetId = this.getAttribute('href');
+      if (targetId !== '#') {
+        var targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      }
+    });
+  });
+});
+
+// 监听窗口滚动，添加导航栏阴影
+window.addEventListener('scroll', function () {
+  var header = document.querySelector('header');
+  if (header) {
+    if (window.scrollY > 10) {
+      header.classList.add('shadow');
+      header.classList.remove('shadow-sm');
+    } else {
+      header.classList.remove('shadow');
+      header.classList.add('shadow-sm');
+    }
+  }
+});</script>
+<!-- [/JSMOD] ui_页面交互效果 -- 处理话题标签点击、卡片悬停效果和平滑滚动 -->
+    </body>
+    </html>

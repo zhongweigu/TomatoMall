@@ -1,0 +1,1177 @@
+<html lang='zh-CN'>
+        <head >
+        <meta charset='UTF-8'/>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+<title >作家助手 - 投稿中心</title>
+<script src='https://res.gemcoder.com/js/reload.js'></script>
+<script src='https://cdn.tailwindcss.com'></script>
+<link href='https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'/>
+<script >tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#3B82F6',
+        secondary: '#10B981',
+        accent: '#8B5CF6',
+        dark: '#1E293B',
+        light: '#F8FAFC'
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        serif: ['Georgia', 'serif']
+      },
+      spacing: {
+        '72': '18rem',
+        '80': '20rem',
+        '96': '24rem'
+      }
+    }
+  }
+};</script>
+<style type='text/tailwindcss'>
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+            }
+            .btn-primary {
+                @apply bg-primary text-white px-4 py-2 rounded-lg transition-all duration-300 hover:bg-primary/90 focus:ring-2 focus:ring-primary/50 focus:outline-none;
+            }
+            .btn-secondary {
+                @apply bg-secondary text-white px-4 py-2 rounded-lg transition-all duration-300 hover:bg-secondary/90 focus:ring-2 focus:ring-secondary/50 focus:outline-none;
+            }
+            .btn-outline {
+                @apply border border-gray-300 text-gray-700 px-4 py-2 rounded-lg transition-all duration-300 hover:bg-gray-50 focus:ring-2 focus:ring-gray-200 focus:outline-none;
+            }
+            .form-input {
+                @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300;
+            }
+            .form-label {
+                @apply block text-sm font-medium text-gray-700 mb-1;
+            }
+            .form-select {
+                @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 appearance-none bg-white;
+            }
+            .form-textarea {
+                @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 resize-none;
+            }
+        }
+    </style>
+    </head>
+<body class='bg-gray-50 text-gray-800'>
+        <!-- 导航栏 - 保持不变 -->
+<header class='bg-white shadow-sm sticky top-0 z-50'>
+        <div class='container mx-auto px-4 py-3 flex items-center justify-between'>
+        <!-- Logo区域 -->
+<div class='flex items-center space-x-2'>
+        <i class='fas fa-feather-alt text-primary text-2xl'>
+        </i>
+<h1 class='text-xl font-bold text-dark'>
+        作家助手
+    </h1>
+    </div>
+<!-- 导航链接 - 桌面版 -->
+<nav class='hidden md:flex items-center space-x-6'>
+        <a href='javascript:void(0);' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+        首页
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+        灵感素材
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+        作家资讯
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+        话题社区
+    </a>
+<a href='javascript:void(0);' class='font-medium text-primary border-b-2 border-primary pb-1'>
+        投稿中心
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+        AI助手
+    </a>
+    </nav>
+<!-- 用户区域 -->
+<div class='flex items-center space-x-4'>
+        <button class='hidden md:flex items-center space-x-1 text-gray-600 hover:text-primary transition-colors'>
+        <i class='fas fa-bell'>
+        </i>
+<span class='bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center'>
+        3
+    </span>
+    </button>
+<div class='relative group'>
+        <button class='flex items-center space-x-2 focus:outline-none'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/a6f7958bc1c69ae8ce9414161938e6b4.png' alt='用户头像' class='w-8 h-8 rounded-full object-cover border-2 border-gray-200'/>
+<span class='hidden md:inline font-medium'>
+        林作家
+    </span>
+<i class='fas fa-chevron-down text-xs text-gray-500'>
+        </i>
+    </button>
+<!-- 下拉菜单 -->
+<div class='absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-10 hidden group-hover:block transition-all duration-300'>
+        <a href='javascript:void(0);' class='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'>
+        <i class='fas fa-user mr-2 text-gray-500'>
+        </i>
+个人中心
+    </a>
+<a href='javascript:void(0);' class='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'>
+        <i class='fas fa-cog mr-2 text-gray-500'>
+        </i>
+设置
+    </a>
+<div class='border-t border-gray-100 my-1'>
+        </div>
+<a href='javascript:void(0);' class='block px-4 py-2 text-sm text-red-600 hover:bg-gray-100'>
+        <i class='fas fa-sign-out-alt mr-2'>
+        </i>
+退出登录
+    </a>
+    </div>
+    </div>
+<!-- 移动端菜单按钮 -->
+<button class='md:hidden text-gray-700 focus:outline-none' id='mobile-menu-button'>
+        <i class='fas fa-bars text-xl'>
+        </i>
+    </button>
+    </div>
+    </div>
+<!-- 移动端导航菜单 -->
+<div class='md:hidden hidden bg-white border-t border-gray-100' id='mobile-menu'>
+        <div class='container mx-auto px-4 py-2 flex flex-col space-y-3'>
+        <a href='javascript:void(0);' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+        首页
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+        灵感素材
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+        作家资讯
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+        话题社区
+    </a>
+<a href='javascript:void(0);' class='font-medium text-primary py-2 border-l-4 border-primary pl-3'>
+        投稿中心
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+        AI助手
+    </a>
+<div class='border-t border-gray-100 my-1 pt-2 flex items-center space-x-2'>
+        <i class='fas fa-bell text-gray-500'>
+        </i>
+<span class='text-sm text-gray-700'>
+        通知
+    </span>
+<span class='bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center'>
+        3
+    </span>
+    </div>
+    </div>
+    </div>
+    </header>
+<!-- [MODULE] abc_主内容区域 -->
+<main class='container mx-auto px-4 py-8'>
+        <!-- [MODULE] d23_投稿中心页面 -->
+<div id='submission-center-page'>
+        <!-- [MODULE] 33f_投稿中心页面:页面标题 -->
+<div class='mb-8'>
+        <div class='flex flex-col md:flex-row md:items-center md:justify-between'>
+        <div >
+        <h2 class='text-[clamp(1.5rem,3vw,2rem)] font-bold text-dark'>
+        投稿中心
+    </h2>
+<p class='text-gray-500 mt-1'>
+        提交您的作品，开启文学之旅
+    </p>
+    </div>
+<div class='mt-4 md:mt-0 flex space-x-3'>
+        <button class='btn-outline flex items-center' id='save-draft-btn'>
+        <i class='fas fa-save mr-2'>
+        </i>
+<span >
+        保存草稿
+    </span>
+    </button>
+<button class='btn-primary flex items-center' id='submit-btn'>
+        <i class='fas fa-paper-plane mr-2'>
+        </i>
+<span >
+        提交作品
+    </span>
+    </button>
+    </div>
+    </div>
+    </div>
+<!-- [/MODULE] 33f_投稿中心页面:页面标题 -- 包含页面标题、保存草稿按钮和提交作品按钮 -->
+<!-- [MODULE] 78d_投稿中心页面:投稿表单 -->
+<div class='bg-white rounded-xl shadow-md p-6 mb-8'>
+        <!-- 投稿表单步骤指示器 -->
+<div class='flex items-center justify-between mb-8 relative'>
+        <!-- 连接线 -->
+<div class='absolute top-1/2 left-0 right-0 h-1 bg-gray-200 -translate-y-1/2 z-0'>
+        </div>
+<div class='absolute top-1/2 left-0 w-1/3 h-1 bg-primary -translate-y-1/2 z-10 transition-all duration-500' id='progress-bar'>
+        </div>
+<!-- 步骤1 -->
+<div class='relative z-20 flex flex-col items-center' data-step='1'>
+        <div class='w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold mb-2'>
+        1
+    </div>
+<span class='text-sm font-medium text-primary'>
+        作品信息
+    </span>
+    </div>
+<!-- 步骤2 -->
+<div class='relative z-20 flex flex-col items-center' data-step='2'>
+        <div class='w-10 h-10 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center font-bold mb-2 transition-all duration-300'>
+        2
+    </div>
+<span class='text-sm font-medium text-gray-500 transition-all duration-300'>
+        作者信息
+    </span>
+    </div>
+<!-- 步骤3 -->
+<div class='relative z-20 flex flex-col items-center' data-step='3'>
+        <div class='w-10 h-10 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center font-bold mb-2 transition-all duration-300'>
+        3
+    </div>
+<span class='text-sm font-medium text-gray-500 transition-all duration-300'>
+        提交确认
+    </span>
+    </div>
+    </div>
+<!-- 步骤导航按钮 -->
+<div class='flex justify-between mb-8'>
+        <button class='btn-outline flex items-center' id='prev-btn' disabled>
+        <i class='fas fa-arrow-left mr-2'>
+        </i>
+<span >
+        上一步
+    </span>
+    </button>
+<button class='btn-primary flex items-center' id='next-btn'>
+        <span >
+        下一步
+    </span>
+<i class='fas fa-arrow-right ml-2'>
+        </i>
+    </button>
+    </div>
+<!-- 步骤内容区域 -->
+<div class='space-y-6'>
+        <!-- [MODULE] a1b_投稿中心页面:作品信息表单 -->
+<div id='step-1-content'>
+        <h3 class='text-lg font-semibold mb-6 pb-2 border-b border-gray-100'>
+        作品信息
+    </h3>
+<div class='grid grid-cols-1 md:grid-cols-2 gap-6'>
+        <!-- 作品标题 -->
+<div >
+        <label for='work-title' class='form-label'>
+        作品标题
+<span class='text-red-500'>
+        *
+    </span>
+    </label>
+<input type='text' id='work-title' class='form-input' placeholder='请输入作品标题' required/>
+    </div>
+<!-- 作品类型 -->
+<div >
+        <label for='work-category' class='form-label'>
+        作品类型
+<span class='text-red-500'>
+        *
+    </span>
+    </label>
+<select id='work-category' class='form-select' required>
+        <option value>
+        请选择作品类型
+    </option>
+<option value='novel'>
+        小说
+    </option>
+<option value='poetry'>
+        诗歌
+    </option>
+<option value='essay'>
+        散文
+    </option>
+<option value='biography'>
+        传记
+    </option>
+<option value='other'>
+        其他
+    </option>
+    </select>
+    </div>
+<!-- 作品字数 -->
+<div >
+        <label for='word-count' class='form-label'>
+        作品字数
+<span class='text-red-500'>
+        *
+    </span>
+    </label>
+<input type='number' id='word-count' class='form-input' placeholder='请输入作品字数' min='1' required/>
+    </div>
+<!-- 选择编辑 -->
+<div >
+        <label for='editor-select' class='form-label'>
+        选择编辑
+<span class='text-red-500'>
+        *
+    </span>
+    </label>
+<select id='editor-select' class='form-select' required>
+        <option value>
+        请选择负责编辑
+    </option>
+<option value='editor1'>
+        张编辑 (擅长小说)
+    </option>
+<option value='editor2'>
+        李编辑 (擅长散文)
+    </option>
+<option value='editor3'>
+        王编辑 (擅长诗歌)
+    </option>
+<option value='editor4'>
+        赵编辑 (综合类)
+    </option>
+    </select>
+    </div>
+<!-- 是否接受交叉审核 -->
+<div class='md:col-span-2'>
+        <label class='flex items-center'>
+        <input type='checkbox' id='cross-review' class='w-4 h-4 text-primary focus:ring-primary/50 border-gray-300 rounded'/>
+<span class='ml-2 text-gray-700'>
+        是否接受交叉审核
+    </span>
+    </label>
+<p class='text-sm text-gray-500 mt-1'>
+        选择后，您的作品将由多位编辑进行交叉审核，获得更多专业意见
+    </p>
+    </div>
+<!-- 作品简介 -->
+<div class='md:col-span-2'>
+        <label for='work-intro' class='form-label'>
+        作品简介
+<span class='text-red-500'>
+        *
+    </span>
+    </label>
+<textarea id='work-intro' class='form-textarea h-32' placeholder='请简要介绍您的作品内容、创作背景、主题思想等' required>
+        </textarea>
+<p class='text-sm text-gray-500 mt-1'>
+        请控制在500字以内
+    </p>
+    </div>
+<!-- 添加附件 -->
+<div class='md:col-span-2'>
+        <label class='form-label'>
+        添加作品附件
+<span class='text-red-500'>
+        *
+    </span>
+    </label>
+<div class='border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary transition-colors cursor-pointer' id='file-drop-area'>
+        <i class='fas fa-cloud-upload-alt text-3xl text-gray-400 mb-2'>
+        </i>
+<p class='text-gray-500 mb-2'>
+        点击或拖拽文件至此处上传
+    </p>
+<p class='text-xs text-gray-400'>
+        支持格式：doc, docx, pdf, txt (单个文件不超过20MB)
+    </p>
+<input type='file' id='file-upload' class='hidden' accept='.doc,.docx,.pdf,.txt'/>
+    </div>
+<div id='file-list' class='mt-4 hidden'>
+        <div class='flex items-center justify-between p-3 bg-gray-50 rounded-lg'>
+        <div class='flex items-center'>
+        <i class='fas fa-file-alt text-primary mr-3'>
+        </i>
+<div >
+        <p class='font-medium' id='file-name'>
+        作品文档.docx
+    </p>
+<p class='text-xs text-gray-500' id='file-size'>
+        2.4MB
+    </p>
+    </div>
+    </div>
+<button class='text-red-500 hover:text-red-700 transition-colors' id='remove-file'>
+        <i class='fas fa-times'>
+        </i>
+    </button>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+<!-- [/MODULE] a1b_投稿中心页面:作品信息表单 -- 包含作品标题、作品类型、作品字数、选择编辑、是否交叉审核选项、作品简介和添加附件功能 -->
+<!-- [MODULE] b2c_投稿中心页面:作者信息表单 -->
+<div id='step-2-content' class='hidden'>
+        <h3 class='text-lg font-semibold mb-6 pb-2 border-b border-gray-100'>
+        作者信息
+    </h3>
+<div class='grid grid-cols-1 md:grid-cols-2 gap-6'>
+        <!-- 真实姓名 -->
+<div >
+        <label for='real-name' class='form-label'>
+        真实姓名
+<span class='text-red-500'>
+        *
+    </span>
+    </label>
+<input type='text' id='real-name' class='form-input' placeholder='请输入真实姓名' required/>
+    </div>
+<!-- 笔名 -->
+<div >
+        <label for='pen-name' class='form-label'>
+        笔名
+    </label>
+<input type='text' id='pen-name' class='form-input' placeholder='请输入您的笔名（如无则不填）'/>
+    </div>
+<!-- 联系电话 -->
+<div >
+        <label for='contact-phone' class='form-label'>
+        联系电话
+<span class='text-red-500'>
+        *
+    </span>
+    </label>
+<input type='tel' id='contact-phone' class='form-input' placeholder='请输入联系电话' required/>
+    </div>
+<!-- 电子邮箱 -->
+<div >
+        <label for='email' class='form-label'>
+        电子邮箱
+<span class='text-red-500'>
+        *
+    </span>
+    </label>
+<input type='email' id='email' class='form-input' placeholder='请输入电子邮箱' required/>
+    </div>
+<!-- 作者简介 -->
+<div class='md:col-span-2'>
+        <label for='author-intro' class='form-label'>
+        作者简介
+    </label>
+<textarea id='author-intro' class='form-textarea h-24' placeholder='请简要介绍您的创作经历、擅长领域等'>
+        </textarea>
+<p class='text-sm text-gray-500 mt-1'>
+        请控制在300字以内
+    </p>
+    </div>
+<!-- 历史成绩 -->
+<div class='md:col-span-2'>
+        <label class='form-label'>
+        历史成绩
+    </label>
+<div class='border border-gray-200 rounded-lg p-4 bg-gray-50'>
+        <p class='text-sm text-gray-500 mb-3'>
+        请列举您过往的发表经历或获奖情况（选填）
+    </p>
+<div id='achievements-container'>
+        <div class='flex items-end space-x-3 mb-3 achievement-item'>
+        <input type='text' class='form-input flex-1' placeholder='例如：2022年《XX杂志》发表《XXX》'/>
+<button type='button' class='text-gray-400 hover:text-red-500 transition-colors remove-achievement'>
+        <i class='fas fa-times'>
+        </i>
+    </button>
+    </div>
+    </div>
+<button type='button' class='text-primary hover:text-primary/80 transition-colors text-sm flex items-center mt-2' id='add-achievement'>
+        <i class='fas fa-plus-circle mr-1'>
+        </i>
+<span >
+        添加更多
+    </span>
+    </button>
+    </div>
+    </div>
+    </div>
+    </div>
+<!-- [/MODULE] b2c_投稿中心页面:作者信息表单 -- 包含真实姓名、笔名、联系电话、电子邮箱、作者简介和历史成绩等个人信息填写功能 -->
+<!-- [MODULE] c3d_投稿中心页面:提交确认表单 -->
+<div id='step-3-content' class='hidden'>
+        <h3 class='text-lg font-semibold mb-6 pb-2 border-b border-gray-100'>
+        提交确认
+    </h3>
+<div class='bg-gray-50 rounded-lg p-6 mb-6'>
+        <h4 class='font-medium text-lg mb-4'>
+        作品信息确认
+    </h4>
+<div class='grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4'>
+        <div >
+        <p class='text-sm text-gray-500'>
+        作品标题
+    </p>
+<p class='font-medium' id='confirm-title'>
+        -
+    </p>
+    </div>
+<div >
+        <p class='text-sm text-gray-500'>
+        作品类型
+    </p>
+<p class='font-medium' id='confirm-category'>
+        -
+    </p>
+    </div>
+<div >
+        <p class='text-sm text-gray-500'>
+        作品字数
+    </p>
+<p class='font-medium' id='confirm-wordcount'>
+        -
+    </p>
+    </div>
+<div >
+        <p class='text-sm text-gray-500'>
+        负责编辑
+    </p>
+<p class='font-medium' id='confirm-editor'>
+        -
+    </p>
+    </div>
+<div >
+        <p class='text-sm text-gray-500'>
+        交叉审核
+    </p>
+<p class='font-medium' id='confirm-crossreview'>
+        -
+    </p>
+    </div>
+<div >
+        <p class='text-sm text-gray-500'>
+        附件
+    </p>
+<p class='font-medium' id='confirm-file'>
+        -
+    </p>
+    </div>
+<div class='md:col-span-2'>
+        <p class='text-sm text-gray-500'>
+        作品简介
+    </p>
+<p class='font-medium mt-1' id='confirm-intro'>
+        -
+    </p>
+    </div>
+    </div>
+    </div>
+<div class='bg-gray-50 rounded-lg p-6 mb-6'>
+        <h4 class='font-medium text-lg mb-4'>
+        作者信息确认
+    </h4>
+<div class='grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4'>
+        <div >
+        <p class='text-sm text-gray-500'>
+        真实姓名
+    </p>
+<p class='font-medium' id='confirm-realname'>
+        -
+    </p>
+    </div>
+<div >
+        <p class='text-sm text-gray-500'>
+        笔名
+    </p>
+<p class='font-medium' id='confirm-penname'>
+        -
+    </p>
+    </div>
+<div >
+        <p class='text-sm text-gray-500'>
+        联系电话
+    </p>
+<p class='font-medium' id='confirm-phone'>
+        -
+    </p>
+    </div>
+<div >
+        <p class='text-sm text-gray-500'>
+        电子邮箱
+    </p>
+<p class='font-medium' id='confirm-email'>
+        -
+    </p>
+    </div>
+    </div>
+    </div>
+<div class='border border-yellow-200 bg-yellow-50 rounded-lg p-4 mb-6'>
+        <div class='flex'>
+        <i class='fas fa-info-circle text-yellow-500 mt-0.5 mr-3'>
+        </i>
+<div >
+        <h4 class='font-medium text-yellow-800'>
+        投稿须知
+    </h4>
+<ul class='text-sm text-yellow-700 mt-2 space-y-1'>
+        <li >
+        • 请确保所提交作品为原创，不侵犯任何第三方权益
+    </li>
+<li >
+        • 作品提交后，编辑将在3-5个工作日内进行审核
+    </li>
+<li >
+        • 审核结果将通过邮件和站内信通知您
+    </li>
+<li >
+        • 如有疑问，请联系客服：service@writerhelper.com
+    </li>
+    </ul>
+    </div>
+    </div>
+    </div>
+<div class='flex items-start'>
+        <input type='checkbox' id='terms-agree' class='w-4 h-4 text-primary focus:ring-primary/50 border-gray-300 rounded mt-1'/>
+<div class='ml-3'>
+        <label for='terms-agree' class='text-sm font-medium text-gray-700'>
+        我已阅读并同意
+<a href='javascript:void(0);' class='text-primary hover:underline'>
+        《投稿协议》
+    </a>
+和
+<a href='javascript:void(0);' class='text-primary hover:underline'>
+        《版权声明》
+    </a>
+    </label>
+    </div>
+    </div>
+    </div>
+<!-- [/MODULE] c3d_投稿中心页面:提交确认表单 -- 包含作品信息确认、作者信息确认、投稿须知和协议同意等功能 -->
+    </div>
+    </div>
+<!-- [/MODULE] 78d_投稿中心页面:投稿表单 -- 包含多步骤投稿表单，包括作品信息、作者信息和提交确认三个步骤 -->
+    </div>
+<!-- [/MODULE] d23_投稿中心页面 -- 包含完整的投稿页面，包括添加附件，编写简介，选择编辑，是否交叉审核，填写个人信息历史成绩等功能 -->
+    </main>
+<!-- [/MODULE] abc_主内容区域 -- 包含投稿中心页面 -->
+<!-- 底部 - 保持不变 -->
+<footer class='bg-dark text-white py-10 mt-12'>
+        <div class='container mx-auto px-4'>
+        <div class='grid grid-cols-1 md:grid-cols-4 gap-8'>
+        <div >
+        <div class='flex items-center space-x-2 mb-4'>
+        <i class='fas fa-feather-alt text-primary text-2xl'>
+        </i>
+<h2 class='text-xl font-bold'>
+        作家助手
+    </h2>
+    </div>
+<p class='text-gray-400 text-sm mb-4'>
+        为创作者提供灵感、素材和工具支持，让写作变得更简单。
+    </p>
+<div class='flex space-x-4'>
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        <i class='fab fa-weibo'>
+        </i>
+    </a>
+<a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        <i class='fab fa-wechat'>
+        </i>
+    </a>
+<a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        <i class='fab fa-twitter'>
+        </i>
+    </a>
+<a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        <i class='fab fa-instagram'>
+        </i>
+    </a>
+    </div>
+    </div>
+<div >
+        <h3 class='font-bold text-lg mb-4'>
+        功能导航
+    </h3>
+<ul class='space-y-2 text-sm'>
+        <li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        灵感素材
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        AI大纲生成
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        随笔管理
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        作家社区
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        投稿中心
+    </a>
+    </li>
+    </ul>
+    </div>
+<div >
+        <h3 class='font-bold text-lg mb-4'>
+        帮助支持
+    </h3>
+<ul class='space-y-2 text-sm'>
+        <li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        使用指南
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        常见问题
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        联系我们
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        意见反馈
+    </a>
+    </li>
+    </ul>
+    </div>
+<div >
+        <h3 class='font-bold text-lg mb-4'>
+        法律信息
+    </h3>
+<ul class='space-y-2 text-sm'>
+        <li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        服务条款
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        隐私政策
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        版权声明
+    </a>
+    </li>
+    </ul>
+    </div>
+    </div>
+<div class='border-t border-gray-800 mt-8 pt-6 text-center text-gray-500 text-sm'>
+        <p >
+        © 2023 作家助手 - 助力每一位创作者
+    </p>
+    </div>
+    </div>
+    </footer>
+<!-- 成功提交模态框 -->
+<div id='success-modal' class='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden'>
+        <div class='bg-white rounded-xl p-6 max-w-md w-full mx-4 transform transition-all'>
+        <div class='text-center'>
+        <div class='w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4'>
+        <i class='fas fa-check text-2xl text-green-500'>
+        </i>
+    </div>
+<h3 class='text-xl font-bold text-gray-900 mb-2'>
+        投稿成功！
+    </h3>
+<p class='text-gray-500 mb-6'>
+        您的作品已成功提交，编辑将在3-5个工作日内进行审核
+    </p>
+<div class='flex flex-col sm:flex-row gap-3'>
+        <a href='javascript:void(0);' class='btn-primary flex-1' id='view-status-btn'>
+        查看投稿状态
+    </a>
+<a href='javascript:void(0);' class='btn-outline flex-1' id='close-modal-btn'>
+        返回首页
+    </a>
+    </div>
+    </div>
+    </div>
+    </div>
+<!-- [JSMOD] eft_移动端菜单交互 -->
+<script id='mobile-menu-script'>// 移动端菜单交互
+document.addEventListener('DOMContentLoaded', function () {
+  var mobileMenuButton = document.getElementById('mobile-menu-button');
+  var mobileMenu = document.getElementById('mobile-menu');
+  mobileMenuButton.addEventListener('click', function () {
+    mobileMenu.classList.toggle('hidden');
+  });
+});</script>
+<!-- [/JSMOD] eft_移动端菜单交互 -- 实现移动端菜单的展开和收起功能 -->
+<!-- [JSMOD] fgh_文件上传功能 -->
+<script id='file-upload-script'>// 文件上传功能
+document.addEventListener('DOMContentLoaded', function () {
+  var fileDropArea = document.getElementById('file-drop-area');
+  var fileUpload = document.getElementById('file-upload');
+  var fileList = document.getElementById('file-list');
+  var fileName = document.getElementById('file-name');
+  var fileSize = document.getElementById('file-size');
+  var removeFile = document.getElementById('remove-file');
+
+  // 点击上传区域触发文件选择
+  fileDropArea.addEventListener('click', function () {
+    fileUpload.click();
+  });
+
+  // 拖拽功能
+  fileDropArea.addEventListener('dragover', function (e) {
+    e.preventDefault();
+    fileDropArea.classList.add('border-primary');
+    fileDropArea.classList.add('bg-blue-50');
+  });
+  fileDropArea.addEventListener('dragleave', function () {
+    fileDropArea.classList.remove('border-primary');
+    fileDropArea.classList.remove('bg-blue-50');
+  });
+  fileDropArea.addEventListener('drop', function (e) {
+    e.preventDefault();
+    fileDropArea.classList.remove('border-primary');
+    fileDropArea.classList.remove('bg-blue-50');
+    if (e.dataTransfer.files.length) {
+      handleFileUpload(e.dataTransfer.files[0]);
+    }
+  });
+
+  // 文件选择后处理
+  fileUpload.addEventListener('change', function () {
+    if (fileUpload.files.length) {
+      handleFileUpload(fileUpload.files[0]);
+    }
+  });
+
+  // 移除文件
+  removeFile.addEventListener('click', function () {
+    fileList.classList.add('hidden');
+    fileUpload.value = '';
+  });
+
+  // 处理文件上传
+  function handleFileUpload(file) {
+    // 验证文件类型
+    var allowedTypes = ['.doc', '.docx', '.pdf', '.txt'];
+    var fileExtension = file.name.split('.').pop().toLowerCase();
+    var isAllowed = allowedTypes.some(function (type) {
+      return type.includes(fileExtension);
+    });
+    if (!isAllowed) {
+      alert('不支持的文件类型，请上传doc, docx, pdf或txt格式的文件');
+      return;
+    }
+
+    // 验证文件大小 (20MB)
+    if (file.size > 20 * 1024 * 1024) {
+      alert('文件大小不能超过20MB');
+      return;
+    }
+
+    // 显示文件信息
+    fileName.textContent = file.name;
+
+    // 格式化文件大小
+    var sizeText = '';
+    if (file.size < 1024) {
+      sizeText = "".concat(file.size, "B");
+    } else if (file.size < 1024 * 1024) {
+      sizeText = "".concat((file.size / 1024).toFixed(1), "KB");
+    } else {
+      sizeText = "".concat((file.size / (1024 * 1024)).toFixed(1), "MB");
+    }
+    fileSize.textContent = sizeText;
+
+    // 显示文件列表
+    fileList.classList.remove('hidden');
+  }
+});</script>
+<!-- [/JSMOD] fgh_文件上传功能 -- 实现文件上传、拖拽上传、文件验证和文件信息显示功能 -->
+<!-- [JSMOD] hij_历史成绩动态添加 -->
+<script id='achievements-script'>// 历史成绩动态添加
+document.addEventListener('DOMContentLoaded', function () {
+  var achievementsContainer = document.getElementById('achievements-container');
+  var addAchievementBtn = document.getElementById('add-achievement');
+  addAchievementBtn.addEventListener('click', function () {
+    var achievementItem = document.createElement('div');
+    achievementItem.className = 'flex items-end space-x-3 mb-3 achievement-item';
+    achievementItem.innerHTML = "<input type=\"text\" class=\"form-input flex-1\" placeholder=\"\u4F8B\u5982\uFF1A2022\u5E74\u300AXX\u6742\u5FD7\u300B\u53D1\u8868\u300AXXX\u300B\">\n                    <button type=\"button\" class=\"text-gray-400 hover:text-red-500 transition-colors remove-achievement\">\n                        <i class=\"fas fa-times\"></i>\n                    </button>";
+    achievementsContainer.appendChild(achievementItem);
+
+    // 添加删除事件
+    var removeBtn = achievementItem.querySelector('.remove-achievement');
+    removeBtn.addEventListener('click', function () {
+      achievementItem.remove();
+    });
+  });
+
+  // 初始项删除按钮事件
+  var initialRemoveBtn = document.querySelector('.remove-achievement');
+  initialRemoveBtn.addEventListener('click', function () {
+    var achievementItems = document.querySelectorAll('.achievement-item');
+    if (achievementItems.length > 1) {
+      initialRemoveBtn.closest('.achievement-item').remove();
+    } else {
+      // 如果只剩一项，清空内容而不删除
+      initialRemoveBtn.closest('.achievement-item').querySelector('input').value = '';
+    }
+  });
+});</script>
+<!-- [/JSMOD] hij_历史成绩动态添加 -- 实现历史成绩条目的动态添加和删除功能 -->
+<!-- [JSMOD] klm_多步骤表单交互 -->
+<script id='multistep-form-script'>// 多步骤表单交互
+document.addEventListener('DOMContentLoaded', function () {
+  var currentStepElement = document.getElementById('current-step');
+  var totalStepsElement = document.getElementById('total-steps');
+  var prevBtn = document.getElementById('prev-btn');
+  var nextBtn = document.getElementById('next-btn');
+  var submitBtn = document.getElementById('submit-btn');
+  var saveDraftBtn = document.getElementById('save-draft-btn');
+  var progressBar = document.getElementById('progress-bar');
+  var successModal = document.getElementById('success-modal');
+  var closeModalBtn = document.getElementById('close-modal-btn');
+  var viewStatusBtn = document.getElementById('view-status-btn');
+  var termsAgree = document.getElementById('terms-agree');
+  var currentStep = 1;
+  var totalSteps = 3;
+
+  // 更新步骤显示
+  function updateStepUI() {
+    // 隐藏所有步骤内容
+    document.querySelectorAll('[id$="-content"]').forEach(function (content) {
+      content.classList.add('hidden');
+    });
+
+    // 显示当前步骤内容
+    document.getElementById("step-".concat(currentStep, "-content")).classList.remove('hidden');
+
+    // 更新步骤指示器
+    document.querySelectorAll('[data-step]').forEach(function (step) {
+      var stepNum = parseInt(step.dataset.step);
+      var stepCircle = step.querySelector('div');
+      var stepText = step.querySelector('span');
+      if (stepNum < currentStep) {
+        // 已完成步骤
+        stepCircle.classList.remove('bg-gray-200', 'text-gray-500');
+        stepCircle.classList.add('bg-green-500', 'text-white');
+        stepCircle.innerHTML = '<i class="fas fa-check"></i>';
+        stepText.classList.remove('text-gray-500');
+        stepText.classList.add('text-green-500');
+      } else if (stepNum === currentStep) {
+        // 当前步骤
+        stepCircle.classList.remove('bg-gray-200', 'text-gray-500', 'bg-green-500');
+        stepCircle.classList.add('bg-primary', 'text-white');
+        stepCircle.textContent = stepNum;
+        stepText.classList.remove('text-gray-500', 'text-green-500');
+        stepText.classList.add('text-primary');
+      } else {
+        // 未完成步骤
+        stepCircle.classList.remove('bg-primary', 'text-white', 'bg-green-500');
+        stepCircle.classList.add('bg-gray-200', 'text-gray-500');
+        stepCircle.textContent = stepNum;
+        stepText.classList.remove('text-primary', 'text-green-500');
+        stepText.classList.add('text-gray-500');
+      }
+    });
+
+    // 更新进度条
+    progressBar.style.width = "".concat((currentStep - 1) / (totalSteps - 1) * 100, "%");
+
+    // 更新按钮状态
+    if (currentStep === 1) {
+      prevBtn.disabled = true;
+      prevBtn.classList.add('opacity-50', 'cursor-not-allowed');
+    } else {
+      prevBtn.disabled = false;
+      prevBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+    }
+    if (currentStep === totalSteps) {
+      nextBtn.classList.add('hidden');
+      submitBtn.classList.remove('hidden');
+      saveDraftBtn.classList.remove('hidden');
+
+      // 填充确认信息
+      populateConfirmationData();
+    } else {
+      nextBtn.classList.remove('hidden');
+      submitBtn.classList.add('hidden');
+      saveDraftBtn.classList.remove('hidden');
+    }
+  }
+
+  // 填充确认信息
+  function populateConfirmationData() {
+    document.getElementById('confirm-title').textContent = document.getElementById('work-title').value || '未填写';
+    document.getElementById('confirm-category').textContent = document.getElementById('work-category').options[document.getElementById('work-category').selectedIndex].text || '未选择';
+    document.getElementById('confirm-wordcount').textContent = document.getElementById('word-count').value ? "".concat(document.getElementById('word-count').value, "\u5B57") : '未填写';
+    document.getElementById('confirm-editor').textContent = document.getElementById('editor-select').options[document.getElementById('editor-select').selectedIndex].text || '未选择';
+    document.getElementById('confirm-crossreview').textContent = document.getElementById('cross-review').checked ? '是' : '否';
+    document.getElementById('confirm-intro').textContent = document.getElementById('work-intro').value || '未填写';
+    document.getElementById('confirm-file').textContent = document.getElementById('file-list').classList.contains('hidden') ? '未上传' : document.getElementById('file-name').textContent;
+    document.getElementById('confirm-realname').textContent = document.getElementById('real-name').value || '未填写';
+    document.getElementById('confirm-penname').textContent = document.getElementById('pen-name').value || '未填写';
+    document.getElementById('confirm-phone').textContent = document.getElementById('contact-phone').value || '未填写';
+    document.getElementById('confirm-email').textContent = document.getElementById('email').value || '未填写';
+  }
+
+  // 上一步
+  prevBtn.addEventListener('click', function () {
+    if (currentStep > 1) {
+      currentStep--;
+      updateStepUI();
+    }
+  });
+
+  // 下一步
+  nextBtn.addEventListener('click', function () {
+    if (currentStep < totalSteps) {
+      // 验证当前步骤
+      var isValid = true;
+      if (currentStep === 1) {
+        // 验证作品信息步骤
+        var workTitle = document.getElementById('work-title');
+        var workCategory = document.getElementById('work-category');
+        var wordCount = document.getElementById('word-count');
+        var editorSelect = document.getElementById('editor-select');
+        var workIntro = document.getElementById('work-intro');
+        var fileUploaded = !document.getElementById('file-list').classList.contains('hidden');
+        if (!workTitle.value.trim()) {
+          workTitle.classList.add('border-red-500');
+          isValid = false;
+        } else {
+          workTitle.classList.remove('border-red-500');
+        }
+        if (!workCategory.value) {
+          workCategory.classList.add('border-red-500');
+          isValid = false;
+        } else {
+          workCategory.classList.remove('border-red-500');
+        }
+        if (!wordCount.value || wordCount.value <= 0) {
+          wordCount.classList.add('border-red-500');
+          isValid = false;
+        } else {
+          wordCount.classList.remove('border-red-500');
+        }
+        if (!editorSelect.value) {
+          editorSelect.classList.add('border-red-500');
+          isValid = false;
+        } else {
+          editorSelect.classList.remove('border-red-500');
+        }
+        if (!workIntro.value.trim()) {
+          workIntro.classList.add('border-red-500');
+          isValid = false;
+        } else {
+          workIntro.classList.remove('border-red-500');
+        }
+        if (!fileUploaded) {
+          document.getElementById('file-drop-area').classList.add('border-red-500');
+          isValid = false;
+        } else {
+          document.getElementById('file-drop-area').classList.remove('border-red-500');
+        }
+      } else if (currentStep === 2) {
+        // 验证作者信息步骤
+        var realName = document.getElementById('real-name');
+        var contactPhone = document.getElementById('contact-phone');
+        var email = document.getElementById('email');
+        if (!realName.value.trim()) {
+          realName.classList.add('border-red-500');
+          isValid = false;
+        } else {
+          realName.classList.remove('border-red-500');
+        }
+        if (!contactPhone.value.trim()) {
+          contactPhone.classList.add('border-red-500');
+          isValid = false;
+        } else {
+          contactPhone.classList.remove('border-red-500');
+        }
+        if (!email.value.trim() || !isValidEmail(email.value)) {
+          email.classList.add('border-red-500');
+          isValid = false;
+        } else {
+          email.classList.remove('border-red-500');
+        }
+      }
+      if (isValid) {
+        currentStep++;
+        updateStepUI();
+      } else {
+        alert('请填写所有必填字段并确保格式正确');
+      }
+    }
+  });
+
+  // 提交表单
+  submitBtn.addEventListener('click', function () {
+    if (!termsAgree.checked) {
+      alert('请阅读并同意投稿协议和版权声明');
+      return;
+    }
+
+    // 模拟提交
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> 提交中...';
+
+    // 模拟网络请求
+    setTimeout(function () {
+      successModal.classList.remove('hidden');
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<i class="fas fa-paper-plane mr-2"></i> 提交作品';
+    }, 1500);
+  });
+
+  // 保存草稿
+  saveDraftBtn.addEventListener('click', function () {
+    // 模拟保存草稿
+    saveDraftBtn.disabled = true;
+    saveDraftBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> 保存中...';
+
+    // 模拟网络请求
+    setTimeout(function () {
+      alert('草稿已保存');
+      saveDraftBtn.disabled = false;
+      saveDraftBtn.innerHTML = '<i class="fas fa-save mr-2"></i> 保存草稿';
+    }, 1000);
+  });
+
+  // 关闭模态框
+  closeModalBtn.addEventListener('click', function () {
+    successModal.classList.add('hidden');
+    // 重置表单
+    currentStep = 1;
+    updateStepUI();
+  });
+
+  // 查看投稿状态
+  viewStatusBtn.addEventListener('click', function () {
+    successModal.classList.add('hidden');
+    alert('跳转到投稿状态页面');
+  });
+
+  // 邮箱验证
+  function isValidEmail(email) {
+    var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  }
+
+  // 初始化步骤UI
+  updateStepUI();
+});</script>
+<!-- [/JSMOD] klm_多步骤表单交互 -- 实现多步骤投稿表单的步骤切换、表单验证、数据确认和提交功能 -->
+    </body>
+    </html>

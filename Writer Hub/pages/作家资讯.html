@@ -1,0 +1,979 @@
+<html lang='zh-CN'>
+        <head >
+        <meta charset='UTF-8'/>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+<title >作家助手 - 作家资讯</title>
+<script src='https://res.gemcoder.com/js/reload.js'></script>
+<script src='https://cdn.tailwindcss.com'></script>
+<link href='https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'/>
+<script >tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#3B82F6',
+        secondary: '#10B981',
+        accent: '#8B5CF6',
+        dark: '#1E293B',
+        light: '#F8FAFC'
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        serif: ['Georgia', 'serif']
+      },
+      spacing: {
+        '72': '18rem',
+        '80': '20rem',
+        '96': '24rem'
+      }
+    }
+  }
+};</script>
+<style type='text/tailwindcss'>
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+            }
+            .btn-primary {
+                @apply bg-primary text-white px-4 py-2 rounded-lg transition-all duration-300 hover:bg-primary/90 focus:ring-2 focus:ring-primary/50 focus:outline-none;
+            }
+            .btn-secondary {
+                @apply bg-secondary text-white px-4 py-2 rounded-lg transition-all duration-300 hover:bg-secondary/90 focus:ring-2 focus:ring-secondary/50 focus:outline-none;
+            }
+            .btn-outline {
+                @apply border border-gray-300 text-gray-700 px-4 py-2 rounded-lg transition-all duration-300 hover:bg-gray-50 focus:ring-2 focus:ring-gray-200 focus:outline-none;
+            }
+            .news-tag {
+                @apply inline-block px-2 py-1 text-xs font-medium rounded-full mr-2;
+            }
+            .tag-policy {
+                @apply bg-blue-100 text-blue-800;
+            }
+            .tag-award {
+                @apply bg-purple-100 text-purple-800;
+            }
+            .tag-event {
+                @apply bg-green-100 text-green-800;
+            }
+            .tag-workshop {
+                @apply bg-amber-100 text-amber-800;
+            }
+        }
+    </style>
+    </head>
+<body class='bg-gray-50'>
+        <!-- [MODULE] hdr_顶部导航栏 -->
+<header class='bg-white shadow-sm sticky top-0 z-50'>
+        <div class='container mx-auto px-4 py-3 flex items-center justify-between'>
+        <!-- Logo区域 -->
+<div class='flex items-center space-x-2'>
+        <i class='fas fa-feather-alt text-primary text-2xl'>
+        </i>
+<h1 class='text-xl font-bold text-dark'>
+        作家助手
+    </h1>
+    </div>
+<!-- 导航链接 - 桌面版 -->
+<nav class='hidden md:flex items-center space-x-6'>
+        <a href='javascript:void(0);' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+        首页
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+        灵感素材
+    </a>
+<a href='javascript:void(0);' class='font-medium text-primary border-b-2 border-primary pb-1'>
+        作家资讯
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+        话题社区
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+        投稿中心
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+        AI助手
+    </a>
+    </nav>
+<!-- 用户区域 -->
+<div class='flex items-center space-x-4'>
+        <button class='hidden md:flex items-center space-x-1 text-gray-600 hover:text-primary transition-colors'>
+        <i class='fas fa-bell'>
+        </i>
+<span class='bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center'>
+        3
+    </span>
+    </button>
+<div class='relative group'>
+        <button class='flex items-center space-x-2 focus:outline-none'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/a6f7958bc1c69ae8ce9414161938e6b4.png' alt='用户头像' class='w-8 h-8 rounded-full object-cover border-2 border-gray-200'/>
+<span class='hidden md:inline font-medium'>
+        林作家
+    </span>
+<i class='fas fa-chevron-down text-xs text-gray-500'>
+        </i>
+    </button>
+<!-- 下拉菜单 -->
+<div class='absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-10 hidden group-hover:block transition-all duration-300'>
+        <a href='javascript:void(0);' class='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'>
+        <i class='fas fa-user mr-2 text-gray-500'>
+        </i>
+个人中心
+    </a>
+<a href='javascript:void(0);' class='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'>
+        <i class='fas fa-cog mr-2 text-gray-500'>
+        </i>
+设置
+    </a>
+<div class='border-t border-gray-100 my-1'>
+        </div>
+<a href='javascript:void(0);' class='block px-4 py-2 text-sm text-red-600 hover:bg-gray-100'>
+        <i class='fas fa-sign-out-alt mr-2'>
+        </i>
+退出登录
+    </a>
+    </div>
+    </div>
+<!-- 移动端菜单按钮 -->
+<button class='md:hidden text-gray-700 focus:outline-none' id='mobile-menu-button'>
+        <i class='fas fa-bars text-xl'>
+        </i>
+    </button>
+    </div>
+    </div>
+<!-- 移动端导航菜单 -->
+<div class='md:hidden hidden bg-white border-t border-gray-100' id='mobile-menu'>
+        <div class='container mx-auto px-4 py-2 flex flex-col space-y-3'>
+        <a href='javascript:void(0);' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+        首页
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+        灵感素材
+    </a>
+<a href='javascript:void(0);' class='font-medium text-primary py-2 border-l-4 border-primary pl-3'>
+        作家资讯
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+        话题社区
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+        投稿中心
+    </a>
+<a href='javascript:void(0);' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+        AI助手
+    </a>
+<div class='border-t border-gray-100 my-1 pt-2 flex items-center space-x-2'>
+        <i class='fas fa-bell text-gray-500'>
+        </i>
+<span class='text-sm text-gray-700'>
+        通知
+    </span>
+<span class='bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center'>
+        3
+    </span>
+    </div>
+    </div>
+    </div>
+    </header>
+<!-- [/MODULE] hdr_顶部导航栏 -- 包含网站logo、主导航链接、用户信息和移动端菜单 -->
+<!-- [MODULE] cnt_主内容区域 -->
+<main class='container mx-auto px-4 py-8'>
+        <!-- [MODULE] pgt_页面标题区域 -->
+<div class='mb-8'>
+        <h2 class='text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-2'>
+        作家资讯
+    </h2>
+<p class='text-gray-600'>
+        最新的作家相关福利政策、奖项赛事、官方活动等信息
+    </p>
+    </div>
+<!-- [/MODULE] pgt_页面标题区域 -- 显示页面标题和简短描述 -->
+<!-- [MODULE] flt_筛选区域 -->
+<div class='bg-white rounded-lg shadow-sm p-4 mb-8'>
+        <div class='flex flex-col md:flex-row md:items-center justify-between gap-4'>
+        <div class='flex flex-wrap items-center gap-2'>
+        <button class='btn-primary'>
+        全部资讯
+    </button>
+<button class='btn-outline'>
+        福利政策
+    </button>
+<button class='btn-outline'>
+        奖项赛事
+    </button>
+<button class='btn-outline'>
+        官方活动
+    </button>
+<button class='btn-outline'>
+        写作工坊
+    </button>
+    </div>
+<div class='relative w-full md:w-64'>
+        <input type='text' placeholder='搜索资讯...' class='w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all'/>
+<i class='fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400'>
+        </i>
+    </div>
+    </div>
+    </div>
+<!-- [/MODULE] flt_筛选区域 -- 包含资讯分类筛选按钮和搜索框 -->
+<!-- [MODULE] cnt_内容区域 -->
+<div class='grid grid-cols-1 lg:grid-cols-3 gap-8'>
+        <!-- [MODULE] mnc_主要内容 -->
+<div class='lg:col-span-2 space-y-6'>
+        <!-- [MODULE] fts_焦点新闻 -->
+<div class='bg-white rounded-xl shadow-sm overflow-hidden card-hover'>
+        <div class='relative'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/c7314aa32777918459cff03d00770e4e.png' alt='全国作家创作扶持政策发布会' class='w-full h-64 object-cover'/>
+<div class='absolute top-4 left-4'>
+        <span class='news-tag tag-policy'>
+        福利政策
+    </span>
+    </div>
+    </div>
+<div class='p-6'>
+        <h3 class='text-xl font-bold mb-3 hover:text-primary transition-colors'>
+        <a href='javascript:void(0);'>
+        2023年全国作家创作扶持政策正式发布，最高可获50万元创作基金
+    </a>
+    </h3>
+<p class='text-gray-600 mb-4 line-clamp-2'>
+        国家新闻出版署今日召开新闻发布会，正式发布2023年度全国作家创作扶持政策。本年度扶持计划将重点支持现实题材、历史题材和科幻题材创作，符合条件的作家可申请最高50万元的创作基金...
+    </p>
+<div class='flex items-center justify-between'>
+        <div class='flex items-center'>
+        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/ed01e886917d1070beab34ce7d753440.png' alt='发布人头像' class='w-8 h-8 rounded-full object-cover mr-2'/>
+<span class='text-sm text-gray-600'>
+        国家新闻出版署
+    </span>
+    </div>
+<div class='text-sm text-gray-500'>
+        <i class='far fa-clock mr-1'>
+        </i>
+2023-11-15
+    </div>
+    </div>
+    </div>
+    </div>
+<!-- [/MODULE] fts_焦点新闻 -- 展示重要的全国作家创作扶持政策发布新闻，包含标题、简介、发布机构和日期 -->
+<!-- [MODULE] lst_新闻列表 -->
+<div class='space-y-6'>
+        <!-- 新闻项1 -->
+<div class='bg-white rounded-xl shadow-sm overflow-hidden card-hover'>
+        <div class='md:flex'>
+        <div class='md:w-1/3'>
+        <img src='./api/searchImage?literary award ceremony with golden trophy, elegant venue, red carpet, professional photography&width=400&height=300' alt='文学奖评选' class='w-full h-full object-cover'/>
+    </div>
+<div class='md:w-2/3 p-6'>
+        <div class='flex items-center mb-3'>
+        <span class='news-tag tag-award'>
+        奖项赛事
+    </span>
+<span class='text-sm text-gray-500'>
+        <i class='far fa-eye mr-1'>
+        </i>
+2.4k阅读
+    </span>
+    </div>
+<h3 class='text-lg font-bold mb-2 hover:text-primary transition-colors'>
+        <a href='javascript:void(0);'>
+        第十届茅盾文学奖开始征集作品，新增网络文学类别
+    </a>
+    </h3>
+<p class='text-gray-600 mb-4 line-clamp-2'>
+        第十届茅盾文学奖今日起正式启动作品征集，本届评选首次将网络文学纳入参评范围，引发文学界广泛关注。评委会表示，此举旨在更好地反映当代文学创作的全貌...
+    </p>
+<div class='flex items-center justify-between'>
+        <div class='flex items-center'>
+        <img src='./api/searchImage?portrait of literary committee member, serious expression, intellectual appearance&width=40&height=40' alt='发布人头像' class='w-8 h-8 rounded-full object-cover mr-2'/>
+<span class='text-sm text-gray-600'>
+        茅盾文学奖评委会
+    </span>
+    </div>
+<div class='text-sm text-gray-500'>
+        <i class='far fa-clock mr-1'>
+        </i>
+2023-11-10
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+<!-- 新闻项2 -->
+<div class='bg-white rounded-xl shadow-sm overflow-hidden card-hover'>
+        <div class='md:flex'>
+        <div class='md:w-1/3'>
+        <img src='./api/searchImage?international book fair with many books and readers, modern exhibition hall, vibrant atmosphere&width=400&height=300' alt='国际书展' class='w-full h-full object-cover'/>
+    </div>
+<div class='md:w-2/3 p-6'>
+        <div class='flex items-center mb-3'>
+        <span class='news-tag tag-event'>
+        官方活动
+    </span>
+<span class='text-sm text-gray-500'>
+        <i class='far fa-eye mr-1'>
+        </i>
+1.8k阅读
+    </span>
+    </div>
+<h3 class='text-lg font-bold mb-2 hover:text-primary transition-colors'>
+        <a href='javascript:void(0);'>
+        2023上海国际书展将于12月举办，预计吸引30万读者
+    </a>
+    </h3>
+<p class='text-gray-600 mb-4 line-clamp-2'>
+        2023上海国际书展组委会今日召开发布会，宣布本届书展将于12月15日至22日在上海展览中心举办。据介绍，本届书展将有来自50多个国家和地区的千余家出版机构参展...
+    </p>
+<div class='flex items-center justify-between'>
+        <div class='flex items-center'>
+        <img src='./api/searchImage?portrait of book fair organizer, professional appearance, smiling&width=40&height=40' alt='发布人头像' class='w-8 h-8 rounded-full object-cover mr-2'/>
+<span class='text-sm text-gray-600'>
+        上海国际书展组委会
+    </span>
+    </div>
+<div class='text-sm text-gray-500'>
+        <i class='far fa-clock mr-1'>
+        </i>
+2023-11-08
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+<!-- 新闻项3 -->
+<div class='bg-white rounded-xl shadow-sm overflow-hidden card-hover'>
+        <div class='md:flex'>
+        <div class='md:w-1/3'>
+        <img src='./api/searchImage?writers workshop with people discussing, cozy environment, bookshelves, creative atmosphere&width=400&height=300' alt='写作工坊' class='w-full h-full object-cover'/>
+    </div>
+<div class='md:w-2/3 p-6'>
+        <div class='flex items-center mb-3'>
+        <span class='news-tag tag-workshop'>
+        写作工坊
+    </span>
+<span class='text-sm text-gray-500'>
+        <i class='far fa-eye mr-1'>
+        </i>
+1.2k阅读
+    </span>
+    </div>
+<h3 class='text-lg font-bold mb-2 hover:text-primary transition-colors'>
+        <a href='javascript:void(0);'>
+        著名作家莫言将主持"文学与时代"高级写作工坊，招募50名青年作家
+    </a>
+    </h3>
+<p class='text-gray-600 mb-4 line-clamp-2'>
+        中国作家协会今日宣布，将邀请诺贝尔文学奖得主莫言先生主持"文学与时代"高级写作工坊，旨在培养具有时代精神的青年作家。本次工坊为期三个月，面向全国招募50名有潜力的青年写作者...
+    </p>
+<div class='flex items-center justify-between'>
+        <div class='flex items-center'>
+        <img src='./api/searchImage?portrait of literature association official, formal attire, serious expression&width=40&height=40' alt='发布人头像' class='w-8 h-8 rounded-full object-cover mr-2'/>
+<span class='text-sm text-gray-600'>
+        中国作家协会
+    </span>
+    </div>
+<div class='text-sm text-gray-500'>
+        <i class='far fa-clock mr-1'>
+        </i>
+2023-11-05
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+<!-- 新闻项4 -->
+<div class='bg-white rounded-xl shadow-sm overflow-hidden card-hover'>
+        <div class='md:flex'>
+        <div class='md:w-1/3'>
+        <img src='./api/searchImage?government policy announcement document with official seal, formal layout, important document style&width=400&height=300' alt='出版政策' class='w-full h-full object-cover'/>
+    </div>
+<div class='md:w-2/3 p-6'>
+        <div class='flex items-center mb-3'>
+        <span class='news-tag tag-policy'>
+        福利政策
+    </span>
+<span class='text-sm text-gray-500'>
+        <i class='far fa-eye mr-1'>
+        </i>
+3.1k阅读
+    </span>
+    </div>
+<h3 class='text-lg font-bold mb-2 hover:text-primary transition-colors'>
+        <a href='javascript:void(0);'>
+        国家新闻出版署发布《青年作家扶持计划》，提供创作、出版、推广全链条支持
+    </a>
+    </h3>
+<p class='text-gray-600 mb-4 line-clamp-2'>
+        国家新闻出版署近日发布《青年作家扶持计划（2023-2025）》，计划三年内投入2亿元专项资金，为青年作家提供创作资助、出版补贴、推广支持等全方位扶持。该计划面向40岁以下青年作家...
+    </p>
+<div class='flex items-center justify-between'>
+        <div class='flex items-center'>
+        <img src='./api/searchImage?government official in publishing department, formal attire, serious expression&width=40&height=40' alt='发布人头像' class='w-8 h-8 rounded-full object-cover mr-2'/>
+<span class='text-sm text-gray-600'>
+        国家新闻出版署
+    </span>
+    </div>
+<div class='text-sm text-gray-500'>
+        <i class='far fa-clock mr-1'>
+        </i>
+2023-11-01
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+<!-- 新闻项5 -->
+<div class='bg-white rounded-xl shadow-sm overflow-hidden card-hover'>
+        <div class='md:flex'>
+        <div class='md:w-1/3'>
+        <img src='./api/searchImage?international literary festival with diverse audience, stage with author speaking, multicultural atmosphere&width=400&height=300' alt='文学节' class='w-full h-full object-cover'/>
+    </div>
+<div class='md:w-2/3 p-6'>
+        <div class='flex items-center mb-3'>
+        <span class='news-tag tag-event'>
+        官方活动
+    </span>
+<span class='text-sm text-gray-500'>
+        <i class='far fa-eye mr-1'>
+        </i>
+986阅读
+    </span>
+    </div>
+<h3 class='text-lg font-bold mb-2 hover:text-primary transition-colors'>
+        <a href='javascript:void(0);'>
+        2023北京国际文学节将于下月开幕，20国作家将参与交流
+    </a>
+    </h3>
+<p class='text-gray-600 mb-4 line-clamp-2'>
+        2023北京国际文学节组委会今日宣布，本届文学节将于12月10日至17日在北京举办，主题为"文学的桥梁：沟通与理解"。据介绍，将有来自20个国家的50余位著名作家参加本次文学节...
+    </p>
+<div class='flex items-center justify-between'>
+        <div class='flex items-center'>
+        <img src='./api/searchImage?portrait of international literary festival organizer, friendly smile, cultural exchange advocate&width=40&height=40' alt='发布人头像' class='w-8 h-8 rounded-full object-cover mr-2'/>
+<span class='text-sm text-gray-600'>
+        北京国际文学节组委会
+    </span>
+    </div>
+<div class='text-sm text-gray-500'>
+        <i class='far fa-clock mr-1'>
+        </i>
+2023-10-28
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+<!-- [/MODULE] lst_新闻列表 -- 展示多个作家相关资讯，包含奖项赛事、官方活动、写作工坊等类型的新闻 -->
+<!-- [MODULE] pgn_分页 -->
+<div class='flex justify-center mt-10'>
+        <nav class='flex items-center space-x-1'>
+        <a href='javascript:void(0);' class='px-3 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed' aria-disabled='true'>
+        <i class='fas fa-chevron-left text-sm'>
+        </i>
+    </a>
+<a href='javascript:void(0);' class='px-4 py-2 rounded-lg bg-primary text-white font-medium'>
+        1
+    </a>
+<a href='javascript:void(0);' class='px-4 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50'>
+        2
+    </a>
+<a href='javascript:void(0);' class='px-4 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50'>
+        3
+    </a>
+<span class='px-2 text-gray-500'>
+        ...
+    </span>
+<a href='javascript:void(0);' class='px-4 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50'>
+        8
+    </a>
+<a href='javascript:void(0);' class='px-3 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50'>
+        <i class='fas fa-chevron-right text-sm'>
+        </i>
+    </a>
+    </nav>
+    </div>
+<!-- [/MODULE] pgn_分页 -- 提供新闻分页导航，包含上一页、页码和下一页按钮 -->
+    </div>
+<!-- [/MODULE] mnc_主要内容 -- 包含焦点新闻、新闻列表和分页控件 -->
+<!-- [MODULE] sbr_侧边栏 -->
+<div class='lg:col-span-1 space-y-6'>
+        <!-- [MODULE] ctc_即将截止 -->
+<div class='bg-white rounded-xl shadow-sm p-6'>
+        <h3 class='text-lg font-bold mb-4 flex items-center'>
+        <i class='fas fa-hourglass-half text-amber-500 mr-2'>
+        </i>
+即将截止
+    </h3>
+<div class='space-y-4'>
+        <div class='border-l-4 border-amber-500 pl-4 py-1'>
+        <h4 class='font-medium hover:text-primary transition-colors'>
+        <a href='javascript:void(0);'>
+        青年文学创作大赛投稿
+    </a>
+    </h4>
+<p class='text-sm text-gray-500 mt-1'>
+        截止日期: 2023-11-20
+    </p>
+<div class='w-full bg-gray-200 rounded-full h-1.5 mt-2'>
+        <div class='bg-amber-500 h-1.5 rounded-full' style='width: 25%'>
+        </div>
+    </div>
+    </div>
+<div class='border-l-4 border-amber-500 pl-4 py-1'>
+        <h4 class='font-medium hover:text-primary transition-colors'>
+        <a href='javascript:void(0);'>
+        作家扶持基金申请
+    </a>
+    </h4>
+<p class='text-sm text-gray-.500 mt-1'>
+        截止日期: 2023-11-25
+    </p>
+<div class='w-full bg-gray-200 rounded-full h-1.5 mt-2'>
+        <div class='bg-amber-500 h-1.5 rounded-full' style='width: 40%'>
+        </div>
+    </div>
+    </div>
+<div class='border-l-4 border-amber-500 pl-4 py-1'>
+        <h4 class='font-medium hover:text-primary transition-colors'>
+        <a href='javascript:void(0);'>
+        上海国际书展参展报名
+    </a>
+    </h4>
+<p class='text-sm text-gray-500 mt-1'>
+        截止日期: 2023-12-05
+    </p>
+<div class='w-full bg-gray-200 rounded-full h-1.5 mt-2'>
+        <div class='bg-amber-500 h-1.5 rounded-full' style='width: 70%'>
+        </div>
+    </div>
+    </div>
+    </div>
+<a href='javascript:void(0);' class='text-primary text-sm font-medium flex items-center justify-center mt-4 hover:underline'>
+        查看全部
+<i class='fas fa-angle-right ml-1'>
+        </i>
+    </a>
+    </div>
+<!-- [/MODULE] ctc_即将截止 -- 显示即将截止的重要事项，包含青年文学创作大赛投稿、作家扶持基金申请等，并显示截止倒计时进度条 -->
+<!-- [MODULE] cln_日历 -->
+<div class='bg-white rounded-xl shadow-sm p-6'>
+        <h3 class='text-lg font-bold mb-4 flex items-center'>
+        <i class='fas fa-calendar-alt text-primary mr-2'>
+        </i>
+活动日历
+    </h3>
+<div class='text-center mb-4'>
+        <h4 class='font-medium text-lg'>
+        2023年11月
+    </h4>
+    </div>
+<div class='grid grid-cols-7 gap-1 text-center text-sm mb-2'>
+        <div class='text-gray-500 py-1'>
+        日
+    </div>
+<div class='text-gray-500 py-1'>
+        一
+    </div>
+<div class='text-gray-500 py-1'>
+        二
+    </div>
+<div class='text-gray-500 py-1'>
+        三
+    </div>
+<div class='text-gray-500 py-1'>
+        四
+    </div>
+<div class='text-gray-500 py-1'>
+        五
+    </div>
+<div class='text-gray-500 py-1'>
+        六
+    </div>
+    </div>
+<div class='grid grid-cols-7 gap-1 text-center'>
+        <div class='py-2 text-gray-400'>
+        29
+    </div>
+<div class='py-2 text-gray-400'>
+        30
+    </div>
+<div class='py-2 text-gray-400'>
+        31
+    </div>
+<div class='py-2'>
+        1
+    </div>
+<div class='py-2'>
+        2
+    </div>
+<div class='py-2'>
+        3
+    </div>
+<div class='py-2'>
+        4
+    </div>
+<div class='py-2'>
+        5
+    </div>
+<div class='py-2'>
+        6
+    </div>
+<div class='py-2'>
+        7
+    </div>
+<div class='py-2'>
+        8
+    </div>
+<div class='py-2'>
+        9
+    </div>
+<div class='py-2'>
+        10
+    </div>
+<div class='py-2'>
+        11
+    </div>
+<div class='py-2'>
+        12
+    </div>
+<div class='py-2'>
+        13
+    </div>
+<div class='py-2'>
+        14
+    </div>
+<div class='py-2 relative'>
+        15
+<div class='absolute bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-primary rounded-full'>
+        </div>
+    </div>
+<div class='py-2'>
+        16
+    </div>
+<div class='py-2'>
+        17
+    </div>
+<div class='py-2'>
+        18
+    </div>
+<div class='py-2'>
+        19
+    </div>
+<div class='py-2 relative'>
+        20
+<div class='absolute bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-red-500 rounded-full'>
+        </div>
+    </div>
+<div class='py-2'>
+        21
+    </div>
+<div class='py-2'>
+        22
+    </div>
+<div class='py-2'>
+        23
+    </div>
+<div class='py-2'>
+        24
+    </div>
+<div class='py-2 relative'>
+        25
+<div class='absolute bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-red-500 rounded-full'>
+        </div>
+    </div>
+<div class='py-2'>
+        26
+    </div>
+<div class='py-2'>
+        27
+    </div>
+<div class='py-2'>
+        28
+    </div>
+<div class='py-2'>
+        29
+    </div>
+<div class='py-2'>
+        30
+    </div>
+<div class='py-2 text-gray-400'>
+        1
+    </div>
+<div class='py-2 text-gray-400'>
+        2
+    </div>
+    </div>
+<div class='mt-4 space-y-2'>
+        <div class='flex items-start'>
+        <div class='w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5'>
+        <div class='w-2 h-2 rounded-full bg-primary'>
+        </div>
+    </div>
+<div class='ml-2 text-sm'>
+        <p class='font-medium'>
+        全国作家创作扶持政策发布会
+    </p>
+<p class='text-gray-500'>
+        11月15日
+    </p>
+    </div>
+    </div>
+<div class='flex items-start'>
+        <div class='w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5'>
+        <div class='w-2 h-2 rounded-full bg-red-500'>
+        </div>
+    </div>
+<div class='ml-2 text-sm'>
+        <p class='font-medium'>
+        青年文学创作大赛截稿
+    </p>
+<p class='text-gray-500'>
+        11月20日
+    </p>
+    </div>
+    </div>
+    </div>
+    </div>
+<!-- [/MODULE] cln_日历 -- 显示包含作家相关活动的日历，标记有活动的日期并展示活动详情 -->
+<!-- [MODULE] tgs_热门标签 -->
+<div class='bg-white rounded-xl shadow-sm p-6'>
+        <h3 class='text-lg font-bold mb-4 flex items-center'>
+        <i class='fas fa-tags text-secondary mr-2'>
+        </i>
+热门标签
+    </h3>
+<div class='flex flex-wrap gap-2'>
+        <a href='javascript:void(0);' class='px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm hover:bg-gray-200 transition-colors'>
+        #创作扶持
+    </a>
+<a href='javascript:void(0);' class='px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm hover:bg-gray-200 transition-colors'>
+        #文学奖项
+    </a>
+<a href='javascript:void(0);' class='px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm hover:bg-gray-200 transition-colors'>
+        #作家培训
+    </a>
+<a href='javascript:void(0);' class='px-xl-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm hover:bg-gray-200 transition-colors'>
+        #出版政策
+    </a>
+<a href='javascript:void(0);' class='px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm hover:bg-gray-200 transition-colors'>
+        #国际书展
+    </a>
+<a href='javascript:void(0);' class='px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm hover:bg-gray-200 transition-colors'>
+        #写作工坊
+    </a>
+<a href='javascript:void(0);' class='px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm hover:bg-gray-200 transition-colors'>
+        #网络文学
+    </a>
+<a href='javascript:void(0);' class='px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm hover:bg-gray-200 transition-colors'>
+        #茅盾文学奖
+    </a>
+<a href='javascript:void(0);' class='px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm hover:bg-gray-200 transition-colors'>
+        #青年作家
+    </a>
+<a href='javascript:void(0);' class='px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm hover:bg-gray-200 transition-colors'>
+        #文学节
+    </a>
+    </div>
+    </div>
+<!-- [/MODULE] tgs_热门标签 -- 展示作家资讯相关的热门标签，如创作扶持、文学奖项、作家培训等 -->
+<!-- [MODULE] nws_订阅区域 -->
+<div class='bg-gradient-to-br from-primary to-accent rounded-xl shadow-sm p-6 text-white'>
+        <h3 class='text-lg font-bold mb-2'>
+        订阅资讯推送
+    </h3>
+<p class='text-white/80 text-sm mb-4'>
+        第一时间获取最新的作家福利政策和活动信息
+    </p>
+<form class='space-y-3'>
+        <input type='email' placeholder='输入您的邮箱' class='w-full px-4 py-2 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-white/50'/>
+<button type='submit' class='w-full bg-white text-primary font-medium py-2 rounded-lg hover:bg-gray-100 transition-colors'>
+        立即订阅
+    </button>
+    </form>
+<p class='text-white/60 text-xs mt-3 text-center'>
+        我们尊重您的隐私，不会向第三方分享您的信息
+    </p>
+    </div>
+<!-- [/MODULE] nws_订阅区域 -- 提供资讯推送订阅功能，包含邮箱输入框和订阅按钮 -->
+    </div>
+<!-- [/MODULE] sbr_侧边栏 -- 包含即将截止事项、活动日历、热门标签和订阅区域 -->
+    </div>
+<!-- [/MODULE] cnt_主内容区域 -- 包含页面标题、筛选区域、主要内容和侧边栏 -->
+<!-- [MODULE] ftr_底部 -->
+<footer class='bg-dark text-white py-10 mt-16'>
+        <div class='container mx-auto px-4'>
+        <div class='grid grid-cols-1 md:grid-cols-4 gap-8'>
+        <div >
+        <div class='flex items-center space-x-2 mb-4'>
+        <i class='fas fa-feather-alt text-primary text-2xl'>
+        </i>
+<h2 class='text-xl font-bold'>
+        作家助手
+    </h2>
+    </div>
+<p class='text-gray-400 text-sm mb-4'>
+        为创作者提供灵感、素材和工具支持，让写作变得更简单。
+    </p>
+<div class='flex space-x-4'>
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        <i class='fab fa-weibo'>
+        </i>
+    </a>
+<a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        <i class='fab fa-wechat'>
+        </i>
+    </a>
+<a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        <i class='fab fa-twitter'>
+        </i>
+    </a>
+<a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        <i class='fab fa-instagram'>
+        </i>
+    </a>
+    </div>
+    </div>
+<div >
+        <h3 class='font-bold text-lg mb-4'>
+        功能导航
+    </h3>
+<ul class='space-y-2 text-sm'>
+        <li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        灵感素材
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        AI大纲生成
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        随笔管理
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        作家社区
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        投稿中心
+    </a>
+    </li>
+    </ul>
+    </div>
+<div >
+        <h3 class='font-bold text-lg mb-4'>
+        帮助支持
+    </h3>
+<ul class='space-y-2 text-sm'>
+        <li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        使用指南
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        常见问题
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        联系我们
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        意见反馈
+    </a>
+    </li>
+    </ul>
+    </div>
+<div >
+        <h3 class='font-bold text-lg mb-4'>
+        法律信息
+    </h3>
+<ul class='space-y-2 text-sm'>
+        <li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        服务条款
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        隐私政策
+    </a>
+    </li>
+<li >
+        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
+        版权声明
+    </a>
+    </li>
+    </ul>
+    </div>
+    </div>
+<div class='border-t border-gray-800 mt-8 pt-6 text-center text-gray-500 text-sm'>
+        <p >
+        © 2023 作家助手 - 助力每一位创作者
+    </p>
+    </div>
+    </div>
+    </footer>
+<!-- [/MODULE] ftr_底部 -- 包含网站信息、功能导航、帮助支持和法律信息 -->
+<!-- [JSMOD] mnu_移动端菜单 -->
+<script id='mobile-menu-script'>// 移动端菜单切换
+document.addEventListener('DOMContentLoaded', function () {
+  var menuButton = document.getElementById('mobile-menu-button');
+  var mobileMenu = document.getElementById('mobile-menu');
+  if (menuButton && mobileMenu) {
+    menuButton.addEventListener('click', function () {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+});</script>
+<!-- [/JSMOD] mnu_移动端菜单 -- 处理移动端菜单的显示和隐藏 -->
+<!-- [JSMOD] ftr_平滑滚动 -->
+<script id='smooth-scroll-script'>// 平滑滚动
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      var targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      var targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+});</script>
+<!-- [/JSMOD] ftr_平滑滚动 -- 实现页面内锚点的平滑滚动效果 -->
+<!-- [JSMOD] cld_日历交互 -->
+<script id='calendar-script'>// 日历交互效果
+document.addEventListener('DOMContentLoaded', function () {
+  var calendarDays = document.querySelectorAll('.grid-cols-7 > div:not(.text-gray-400):not(.text-gray-500)');
+  calendarDays.forEach(function (day) {
+    if (day.textContent.trim() !== '') {
+      day.classList.add('cursor-pointer', 'rounded-full', 'hover:bg-gray-100', 'transition-colors');
+      day.addEventListener('click', function () {
+        // 在实际应用中，这里可以打开当天活动详情模态框
+        var date = day.textContent.trim();
+        alert("\u67E5\u770B2023\u5E7411\u6708".concat(date, "\u65E5\u7684\u6D3B\u52A8\u8BE6\u60C5"));
+      });
+    }
+  });
+});</script>
+<!-- [/JSMOD] cld_日历交互 -- 为日历添加点击交互效果，点击日期可查看当天活动详情 -->
+    </main>
+    </body>
+    </html>
