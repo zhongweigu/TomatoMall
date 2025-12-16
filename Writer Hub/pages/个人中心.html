@@ -1,46 +1,49 @@
-<html lang='zh-CN'>
-        <head >
-        <meta charset='UTF-8'/>
-<meta name='viewport' content='width=device-width, initial-scale=1.0'/>
-<title >作家助手 - 个人中心</title>
-<script src='https://res.gemcoder.com/js/reload.js'></script>
-<script src='https://cdn.tailwindcss.com'></script>
-<link href='https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'/>
-<script >tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        primary: '#3B82F6',
-        secondary: '#10B981',
-        accent: '#8B5CF6',
-        dark: '#1E293B',
-        light: '#F8FAFC',
-        'neutral-100': '#F3F4F6',
-        'neutral-200': '#E5E7EB',
-        'neutral-300': '#D1D5DB',
-        'neutral-400': '#9CA3AF',
-        'neutral-500': '#6B7280',
-        'neutral-600': '#4B5563',
-        'neutral-700': '#374151',
-        'neutral-800': '#1F2937',
-        'neutral-900': '#111827'
-      },
-      fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        serif: ['Georgia', 'serif']
-      },
-      spacing: {
-        '72': '18rem',
-        '80': '20rem',
-        '96': '24rem',
-        '104': '26rem',
-        '112': '28rem',
-        '120': '30rem'
-      }
-    }
-  }
-};</script>
-<style type='text/tailwindcss'>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>作家助手 - 个人中心</title>
+    <script src="https://res.gemcoder.com/js/reload.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981',
+                        accent: '#8B5CF6',
+                        dark: '#1E293B',
+                        light: '#F8FAFC',
+                        'neutral-100': '#F3F4F6',
+                        'neutral-200': '#E5E7EB',
+                        'neutral-300': '#D1D5DB',
+                        'neutral-400': '#9CA3AF',
+                        'neutral-500': '#6B7280',
+                        'neutral-600': '#4B5563',
+                        'neutral-700': '#374151',
+                        'neutral-800': '#1F2937',
+                        'neutral-900': '#111827'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Georgia', 'serif']
+                    },
+                    spacing: {
+                        '72': '18rem',
+                        '80': '20rem',
+                        '96': '24rem',
+                        '104': '26rem',
+                        '112': '28rem',
+                        '120': '30rem'
+                    }
+                }
+            }
+        };
+    </script>
+    <style type="text/tailwindcss">
         @layer utilities {
             .content-auto {
                 content-visibility: auto;
@@ -77,1258 +80,1982 @@
             }
         }
     </style>
-    </head>
-<body class='bg-neutral-100 text-neutral-800'>
-        <!-- [MODULE] abc_顶部导航栏 -->
+</head>
+<body class="bg-neutral-100 text-neutral-800">
+<!-- [MODULE] abc_顶部导航栏 -->
 <header class='bg-white shadow-sm sticky top-0 z-50'>
-        <div class='container mx-auto px-4 py-3 flex items-center justify-between'>
+    <div class='container mx-auto px-4 py-3 flex items-center justify-between'>
         <!-- Logo区域 -->
-<div class='flex items-center space-x-2'>
-        <i class='fas fa-feather-alt text-primary text-2xl'>
-        </i>
-<h1 class='text-xl font-bold text-dark'>
-        作家助手
-    </h1>
-    </div>
-<!-- 导航链接 - 桌面版 -->
-<nav class='hidden md:flex items-center space-x-6'>
-        <a href='首页.html' class='font-medium text-gray-600 hover:text-primary transition-colors'>
-        首页
-    </a>
-<a href='灵感素材.html' class='font-medium text-gray-600 hover:text-primary transition-colors'>
-        灵感素材
-    </a>
-<a href='作家资讯.html' class='font-medium text-gray-600 hover:text-primary transition-colors'>
-        作家资讯
-    </a>
-<a href='话题社区.html' class='font-medium text-gray-600 hover:text-primary transition-colors'>
-        话题社区
-    </a>
-<a href='投稿中心.html' class='font-medium text-gray-600 hover:text-primary transition-colors'>
-        投稿中心
-    </a>
-<a href='AI助手.html' class='font-medium text-gray-600 hover:text-primary transition-colors'>
-        AI助手
-    </a>
-    </nav>
-<!-- 用户区域 -->
-            <div class='flex items-center space-x-4'>
-                <button class='hidden md:flex items-center space-x-1 text-gray-600 hover:text-primary transition-colors'>
-                    <i class='fas fa-bell'>
-                    </i>
-                    <span class='bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center'>
+        <div class='flex items-center space-x-2'>
+            <i class='fas fa-feather-alt text-primary text-2xl'>
+            </i>
+            <h1 class='text-xl font-bold text-dark'>
+                作家助手
+            </h1>
+        </div>
+        <!-- 导航链接 - 桌面版 -->
+        <nav class='hidden md:flex items-center space-x-6'>
+            <a href='首页.html' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+                首页
+            </a>
+            <a href='灵感素材.html' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+                灵感素材
+            </a>
+            <a href='作家资讯.html' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+                作家资讯
+            </a>
+            <a href='话题社区.html' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+                话题社区
+            </a>
+            <a href='投稿中心.html' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+                投稿中心
+            </a>
+            <a href='AI助手.html' class='font-medium text-gray-600 hover:text-primary transition-colors'>
+                AI助手
+            </a>
+        </nav>
+        <!-- 用户区域 -->
+        <div class='flex items-center space-x-4'>
+            <button class='hidden md:flex items-center space-x-1 text-gray-600 hover:text-primary transition-colors'>
+                <i class='fas fa-bell'>
+                </i>
+                <span class='bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center'>
         3
     </span>
-                </button>
-                <div class="relative group inline-block">
-                    <!-- hover 容器内容整体 -->
-                    <div class="flex items-center space-x-2 cursor-pointer">
-                        <img
-                                src="https://design.gemcoder.com/staticResource/echoAiSystemImages/a6f7958bc1c69ae8ce9414161938e6b4.png"
-                                alt="用户头像"
-                                class="w-8 h-8 rounded-full object-cover border-2 border-gray-200" />
+            </button>
+            <div class="relative group inline-block">
+                <!-- hover 容器内容整体 -->
+                <div class="flex items-center space-x-2 cursor-pointer">
+                    <img
+                            src="https://design.gemcoder.com/staticResource/echoAiSystemImages/a6f7958bc1c69ae8ce9414161938e6b4.png"
+                            alt="用户头像"
+                            class="w-8 h-8 rounded-full object-cover border-2 border-gray-200" />
 
-                        <span class="hidden md:inline font-medium">
+                    <span class="hidden md:inline font-medium">
             林作家
         </span>
 
-                        <i class="fas fa-chevron-down text-xs text-gray-500"></i>
-                    </div>
+                    <i class="fas fa-chevron-down text-xs text-gray-500"></i>
+                </div>
 
-                    <!-- 下拉菜单：不再用 mt-2 -->
-                    <div
-                            class="absolute right-0 top-full pt-2
+                <!-- 下拉菜单：不再用 mt-2 -->
+                <div
+                        class="absolute right-0 top-full pt-2
                w-48 bg-white rounded-lg shadow-lg py-2 z-50
                opacity-0 invisible
                group-hover:opacity-100 group-hover:visible
                transition-opacity duration-200">
 
-                        <a href="个人中心.html"
-                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                            <i class="fas fa-user mr-2 text-gray-500"></i>
-                            个人中心
-                        </a>
+                    <a href="个人中心.html"
+                       class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                        <i class="fas fa-user mr-2 text-gray-500"></i>
+                        个人中心
+                    </a>
 
-                        <a href="#"
-                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                            <i class="fas fa-cog mr-2 text-gray-500"></i>
-                            设置
-                        </a>
+                    <a href="#"
+                       class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                        <i class="fas fa-cog mr-2 text-gray-500"></i>
+                        设置
+                    </a>
 
-                        <div class="border-t border-gray-100 my-1"></div>
+                    <div class="border-t border-gray-100 my-1"></div>
 
-                        <a href="#"
-                           class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
-                            <i class="fas fa-sign-out-alt mr-2"></i>
-                            退出登录
-                        </a>
-                    </div>
+                    <a href="#"
+                       class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
+                        <i class="fas fa-sign-out-alt mr-2"></i>
+                        退出登录
+                    </a>
                 </div>
-<!-- 移动端菜单按钮 -->
-<button class='md:hidden text-gray-700 focus:outline-none' id='mobile-menu-button'>
-        <i class='fas fa-bars text-xl'>
-        </i>
-    </button>
+            </div>
+            <!-- 移动端菜单按钮 -->
+            <button class='md:hidden text-gray-700 focus:outline-none' id='mobile-menu-button'>
+                <i class='fas fa-bars text-xl'>
+                </i>
+            </button>
+        </div>
     </div>
-    </div>
-<!-- 移动端导航菜单 -->
-<div class='md:hidden hidden bg-white border-t border-gray-100' id='mobile-menu'>
+    <!-- 移动端导航菜单 -->
+    <div class='md:hidden hidden bg-white border-t border-gray-100' id='mobile-menu'>
         <div class='container mx-auto px-4 py-2 flex flex-col space-y-3'>
-        <a href='首页.html' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
-        首页
-    </a>
-<a href='灵感素材.html' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
-        灵感素材
-    </a>
-<a href='作家资讯.html' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
-        作家资讯
-    </a>
-<a href='话题社区.html' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
-        话题社区
-    </a>
-<a href='投稿中心.html' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
-        投稿中心
-    </a>
-<a href='AI助手.html' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
-        AI助手
-    </a>
-<div class='border-t border-gray-100 my-1 pt-2 flex items-center space-x-2'>
-        <i class='fas fa-bell text-gray-500'>
-        </i>
-<span class='text-sm text-gray-700'>
+            <a href='首页.html' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+                首页
+            </a>
+            <a href='灵感素材.html' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+                灵感素材
+            </a>
+            <a href='作家资讯.html' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+                作家资讯
+            </a>
+            <a href='话题社区.html' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+                话题社区
+            </a>
+            <a href='投稿中心.html' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+                投稿中心
+            </a>
+            <a href='AI助手.html' class='font-medium text-gray-600 py-2 hover:text-primary transition-colors pl-3'>
+                AI助手
+            </a>
+            <div class='border-t border-gray-100 my-1 pt-2 flex items-center space-x-2'>
+                <i class='fas fa-bell text-gray-500'>
+                </i>
+                <span class='text-sm text-gray-700'>
         通知
     </span>
-<span class='bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center'>
+                <span class='bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center'>
         3
     </span>
+            </div>
+        </div>
     </div>
-    </div>
-    </div>
-    </header>
+</header>
 <!-- [/MODULE] abc_顶部导航栏 -->
+
 <!-- [MODULE] def_主内容区域 -->
-<main class='container mx-auto px-4 py-6'>
-        <!-- [MODULE] ghi_个人中心页面 -->
-<div class='grid grid-cols-1 lg:grid-cols-4 gap-6'>
+<main class="container mx-auto px-4 py-6">
+    <!-- [MODULE] ghi_个人中心页面 -->
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
         <!-- [MODULE] jkl_侧边栏导航 -->
-<div class='lg:col-span-1'>
-        <div class='bg-white rounded-xl shadow-sm p-5 sticky top-24'>
-        <div class='flex flex-col items-center mb-6'>
-        <div class='relative mb-3'>
-        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/c3a201450bf7faece07514669553b4cc.png' alt='用户头像' class='w-24 h-24 rounded-full object-cover border-4 border-white shadow-md'/>
-<button class='absolute bottom-0 right-0 bg-primary text-white rounded-full p-2 shadow-md hover:bg-primary/90 transition-colors'>
-        <i class='fas fa-camera text-sm'>
-        </i>
-    </button>
-    </div>
-<h2 class='text-xl font-bold text-center'>
-        林作家
-    </h2>
-<p class='text-neutral-500 text-sm text-center'>
-        资深小说创作者
-    </p>
-    </div>
-<nav class='space-y-1'>
-        <a href='javascript:void(0);' class='flex items-center space-x-3 px-4 py-3 rounded-lg bg-primary/10 text-primary font-medium'>
-        <i class='fas fa-user-circle w-5 text-center'>
-        </i>
-<span >
-        个人中心
-    </span>
-    </a>
-<a href='javascript:void(0);' class='flex items-center space-x-3 px-4 py-3 rounded-lg text-neutral-700 hover:bg-neutral-100 transition-colors'>
-        <i class='fas fa-book w-5 text-center'>
-        </i>
-<span >
-        我的作品
-    </span>
-    </a>
-<a href='javascript:void(0);' class='flex items-center space-x-3 px-4 py-3 rounded-lg text-neutral-700 hover:bg-neutral-100 transition-colors'>
-        <i class='fas fa-lightbulb w-5 text-center'>
-        </i>
-<span >
-        灵感素材
-    </span>
-    </a>
-<a href='javascript:void(0);' class='flex items-center space-x-3 px-4 py-3 rounded-lg text-neutral-700 hover:bg-neutral-100 transition-colors'>
-        <i class='fas fa-pen w-5 text-center'>
-        </i>
-<span >
-        我的随笔
-    </span>
-    </a>
-<a href='javascript:void(0);' class='flex items-center space-x-3 px-4 py-3 rounded-lg text-neutral-700 hover:bg-neutral-100 transition-colors'>
-        <i class='fas fa-star w-5 text-center'>
-        </i>
-<span >
-        我的收藏
-    </span>
-    </a>
-<a href='javascript:void(0);' class='flex items-center space-x-3 px-4 py-3 rounded-lg text-neutral-700 hover:bg-neutral-100 transition-colors'>
-        <i class='fas fa-trophy w-5 text-center'>
-        </i>
-<span >
-        我的成就
-    </span>
-    </a>
-<a href='javascript:void(0);' class='flex items-center space-x-3 px-4 py-3 rounded-lg text-neutral-700 hover:bg-neutral-100 transition-colors'>
-        <i class='fas fa-cog w-5 text-center'>
-        </i>
-<span >
-        账户设置
-    </span>
-    </a>
-    </nav>
-    </div>
-    </div>
-<!-- [/MODULE] jkl_侧边栏导航 -->
-<!-- [MODULE] mno_个人中心内容 -->
-<div class='lg:col-span-3 space-y-6'>
-        <!-- [MODULE] pqr_基本信息 -->
-<div class='bg-white rounded-xl shadow-sm overflow-hidden'>
-        <!-- 背景大图 -->
-<div class='relative h-48'>
-        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/bd621f8ce0fc138c9d3470bbffdee791.png' alt='个人背景' class='w-full h-full object-cover'/>
-<button class='absolute bottom-4 right-4 bg-black/50 text-white rounded-lg px-3 py-1.5 text-sm hover:bg-black/70 transition-colors'>
-        <i class='fas fa-image mr-1'>
-        </i>
-更换封面
-    </button>
-    </div>
-<!-- 个人资料卡片 -->
-<div class='p-6'>
-        <div class='flex flex-col md:flex-row md:items-center justify-between mb-6'>
-        <div >
-        <h2 class='text-2xl font-bold'>
-        个人资料
-    </h2>
-<p class='text-neutral-500'>
-        管理您的个人信息和偏好
-    </p>
-    </div>
-<button class='mt-4 md:mt-0 btn-primary'>
-        <i class='fas fa-edit mr-2'>
-        </i>
-编辑资料
-    </button>
-    </div>
-<div class='grid grid-cols-1 md:grid-cols-2 gap-6'>
-        <div >
-        <h3 class='text-sm font-medium text-neutral-500 mb-1'>
-        昵称
-    </h3>
-<p class='font-medium'>
-        林作家
-    </p>
-    </div>
-<div >
-        <h3 class='text-sm font-medium text-neutral-500 mb-1'>
-        头衔
-    </h3>
-<p class='font-medium'>
-        资深小说创作者
-    </p>
-    </div>
-<div >
-        <h3 class='text-sm font-medium text-neutral-500 mb-1'>
-        阅历
-    </h3>
-<p class='font-medium'>
-        5年创作经验
-    </p>
-    </div>
-<div >
-        <h3 class='text-sm font-medium text-neutral-500 mb-1'>
-        IP属地
-    </h3>
-<p class='font-medium'>
-        中国 · 北京
-    </p>
-    </div>
-<div >
-        <h3 class='text-sm font-medium text-neutral-500 mb-1'>
-        注册时间
-    </h3>
-<p class='font-medium'>
-        2018年6月15日
-    </p>
-    </div>
-<div >
-        <h3 class='text-sm font-medium text-neutral-500 mb-1'>
-        最后登录
-    </h3>
-<p class='font-medium'>
-        今天 09:42
-    </p>
-    </div>
-<div class='md:col-span-2'>
-        <h3 class='text-sm font-medium text-neutral-500 mb-1'>
-        个人简介
-    </h3>
-<p class='text-neutral-700'>
-        热爱文学创作，擅长都市情感与悬疑推理类小说。已出版《城市微光》《迷雾追踪》等作品，累计创作字数超过200万字。
-    </p>
-    </div>
-    </div>
-    </div>
-    </div>
-<!-- [/MODULE] pqr_基本信息 -->
-<!-- [MODULE] stu_数据统计 -->
-<div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
-        <div class='stat-card'>
-        <div class='flex items-start justify-between'>
-        <div >
-        <p class='text-neutral-500 text-sm'>
-        作品总数
-    </p>
-<h3 class='text-2xl font-bold mt-1'>
-        8
-    </h3>
-    </div>
-<div class='bg-primary/10 p-2 rounded-lg'>
-        <i class='fas fa-book text-primary'>
-        </i>
-    </div>
-    </div>
-<div class='mt-4'>
-        <div class='flex justify-between text-xs mb-1'>
-        <span class='text-neutral-500'>
-        完成进度
-    </span>
-<span class='font-medium'>
-        80%
-    </span>
-    </div>
-<div class='progress-bar'>
-        <div class='progress-value' style='width: 80%'>
+        <div class="lg:col-span-1">
+            <div class="bg-white rounded-xl shadow-sm p-5 sticky top-24">
+                <div class="flex flex-col items-center mb-6">
+                    <div class="relative mb-3">
+                        <img alt="用户头像" class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md" src="https://design.gemcoder.com/api/searchImage?query=portrait of a writer with thoughtful expression, soft lighting, professional headshot style&amp;width=120&amp;height=120"/>
+                        <button class="absolute bottom-0 right-0 bg-primary text-white rounded-full p-2 shadow-md hover:bg-primary/90 transition-colors">
+                            <i class="fas fa-camera text-sm"></i>
+                        </button>
+                    </div>
+                    <h2 class="text-xl font-bold text-center">林作家</h2>
+                    <p class="text-neutral-500 text-sm text-center">资深小说创作者</p>
+                </div>
+                <nav class="space-y-1">
+                    <a class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg bg-primary/10 text-primary font-medium" data-page="profile-page" href="javascript:void(0);">
+                        <i class="fas fa-user-circle w-5 text-center"></i>
+                        <span>个人中心</span>
+                    </a>
+                    <a class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-neutral-700 hover:bg-neutral-100 transition-colors" data-page="works-page" href="javascript:void(0);">
+                        <i class="fas fa-book w-5 text-center"></i>
+                        <span>我的作品</span>
+                    </a>
+                    <a class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-neutral-700 hover:bg-neutral-100 transition-colors" data-page="publications-page" href="javascript:void(0);">
+                        <i class="fas fa-paper-plane w-5 text-center"></i>
+                        <span>我的发布</span>
+                    </a>
+                    <a class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-neutral-700 hover:bg-neutral-100 transition-colors" data-page="notes-page" href="javascript:void(0);">
+                        <i class="fas fa-pen w-5 text-center"></i>
+                        <span>我的随笔</span>
+                    </a>
+                    <a class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-neutral-700 hover:bg-neutral-100 transition-colors" data-page="collections-page" href="javascript:void(0);">
+                        <i class="fas fa-star w-5 text-center"></i>
+                        <span>我的收藏</span>
+                    </a>
+                    <a class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-neutral-700 hover:bg-neutral-100 transition-colors" data-page="achievements-page" href="javascript:void(0);">
+                        <i class="fas fa-trophy w-5 text-center"></i>
+                        <span>我的成就</span>
+                    </a>
+                    <a class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-neutral-700 hover:bg-neutral-100 transition-colors" data-page="settings-page" href="javascript:void(0);">
+                        <i class="fas fa-cog w-5 text-center"></i>
+                        <span>账户设置</span>
+                    </a>
+                </nav>
+            </div>
         </div>
-    </div>
-    </div>
-    </div>
-<div class='stat-card'>
-        <div class='flex items-start justify-between'>
-        <div >
-        <p class='text-neutral-500 text-sm'>
-        累计字数
-    </p>
-<h3 class='text-2xl font-bold mt-1'>
-        246万
-    </h3>
-    </div>
-<div class='bg-secondary/10 p-2 rounded-lg'>
-        <i class='fas fa-file-alt text-secondary'>
-        </i>
-    </div>
-    </div>
-<div class='mt-4'>
-        <div class='flex justify-between text-xs mb-1'>
-        <span class='text-neutral-500'>
-        年度目标
-    </span>
-<span class='font-medium'>
-        62%
-    </span>
-    </div>
-<div class='progress-bar'>
-        <div class='progress-value bg-secondary' style='width: 62%'>
+        <!-- [/MODULE] jkl_侧边栏导航 -->
+
+        <!-- [MODULE] mno_个人中心内容 -->
+        <div class="lg:col-span-3 space-y-6">
+            <!-- [MODULE] pqr_个人中心页面:个人资料 -->
+            <div class="page-content" id="profile-page">
+                <div class="bg-white rounded-xl shadow-sm p-6">
+                    <div class="section-title">
+                        <h2>个人资料</h2>
+                        <button class="btn-primary" id="edit-profile-btn">
+                            <i class="fas fa-edit mr-2"></i>
+                            <span>编辑资料</span>
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                        <div>
+                            <label class="block text-sm font-medium text-neutral-700 mb-1">基本信息</label>
+                            <div class="bg-neutral-50 rounded-lg p-4">
+                                <div class="grid grid-cols-3 gap-4 mb-4">
+                                    <div class="col-span-1">
+                                        <p class="text-sm text-neutral-500">笔名</p>
+                                    </div>
+                                    <div class="col-span-2">
+                                        <p class="font-medium profile-value" data-field="penname">林作家</p>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-3 gap-4 mb-4">
+                                    <div class="col-span-1">
+                                        <p class="text-sm text-neutral-500">真实姓名</p>
+                                    </div>
+                                    <div class="col-span-2">
+                                        <p class="font-medium profile-value" data-field="realname">林文学</p>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-3 gap-4 mb-4">
+                                    <div class="col-span-1">
+                                        <p class="text-sm text-neutral-500">邮箱</p>
+                                    </div>
+                                    <div class="col-span-2">
+                                        <p class="font-medium profile-value" data-field="email">writer@example.com</p>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-3 gap-4">
+                                    <div class="col-span-1">
+                                        <p class="text-sm text-neutral-500">电话</p>
+                                    </div>
+                                    <div class="col-span-2">
+                                        <p class="font-medium profile-value" data-field="phone">138****6789</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-neutral-700 mb-1">作家信息</label>
+                            <div class="bg-neutral-50 rounded-lg p-4">
+                                <div class="grid grid-cols-3 gap-4 mb-4">
+                                    <div class="col-span-1">
+                                        <p class="text-sm text-neutral-500">作家等级</p>
+                                    </div>
+                                    <div class="col-span-2">
+                                        <p class="font-medium profile-value" data-field="level">资深作家</p>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-3 gap-4 mb-4">
+                                    <div class="col-span-1">
+                                        <p class="text-sm text-neutral-500">创作领域</p>
+                                    </div>
+                                    <div class="col-span-2">
+                                        <p class="font-medium profile-value" data-field="field">都市小说、科幻小说</p>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-3 gap-4 mb-4">
+                                    <div class="col-span-1">
+                                        <p class="text-sm text-neutral-500">已发布作品</p>
+                                    </div>
+                                    <div class="col-span-2">
+                                        <p class="font-medium profile-value" data-field="works">8部</p>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-3 gap-4">
+                                    <div class="col-span-1">
+                                        <p class="text-sm text-neutral-500">注册时间</p>
+                                    </div>
+                                    <div class="col-span-2">
+                                        <p class="font-medium profile-value" data-field="regtime">2018-05-12</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <label class="block text-sm font-medium text-neutral-700 mb-1">个人简介</label>
+                        <div class="bg-neutral-50 rounded-lg p-4">
+                            <p class="text-neutral-700 leading-relaxed profile-value" data-field="bio">资深小说创作者，专注都市与科幻题材，曾获全国优秀小说奖。创作理念：用文字构建平行世界，探索人性与科技的边界。已出版《未来都市》《时间旅行者》等多部作品，累计销量超百万册。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 编辑资料弹窗 -->
+                <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden" id="edit-profile-modal">
+                    <div class="bg-white rounded-xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-auto">
+                        <div class="p-6 border-b border-neutral-200 flex justify-between items-center">
+                            <h3 class="text-xl font-bold">编辑个人资料</h3>
+                            <button class="text-neutral-500 hover:text-neutral-700" id="close-edit-modal">
+                                <i class="fas fa-times text-xl"></i>
+                            </button>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-neutral-700 mb-1">笔名</label>
+                                    <input type="text" id="edit-penname" class="w-full border border-neutral-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none" value="">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-neutral-700 mb-1">真实姓名</label>
+                                    <input type="text" id="edit-realname" class="w-full border border-neutral-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none" value="">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-neutral-700 mb-1">邮箱</label>
+                                    <input type="email" id="edit-email" class="w-full border border-neutral-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none" value="">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-neutral-700 mb-1">电话</label>
+                                    <input type="tel" id="edit-phone" class="w-full border border-neutral-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none" value="">
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label class="block text-sm font-medium text-neutral-700 mb-1">创作领域</label>
+                                    <input type="text" id="edit-field" class="w-full border border-neutral-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none" value="">
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label class="block text-sm font-medium text-neutral-700 mb-1">个人简介</label>
+                                    <textarea id="edit-bio" rows="4" class="w-full border border-neutral-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6 border-t border-neutral-200 flex justify-end space-x-3">
+                            <button class="btn-outline" id="cancel-edit-btn">取消</button>
+                            <button class="btn-primary" id="save-edit-btn">保存修改</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [/MODULE] pqr_个人中心页面:个人资料 -- 显示和编辑用户的基本信息和作家信息 -->
+
+            <!-- [MODULE] stu_我的作品页面 -->
+            <div class="page-content hidden" id="works-page">
+                <div class="bg-white rounded-xl shadow-sm p-6">
+                    <div class="section-title">
+                        <h2>我的作品</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+                        <!-- 作品卡片1 -->
+                        <div class="border border-neutral-200 rounded-xl overflow-hidden card-hover">
+                            <div class="relative">
+                                <img alt="都市迷踪" class="w-full h-48 object-cover" src="https://design.gemcoder.com/api/searchImage?query=urban novel book cover with city skyline at night, modern design, bestseller style&amp;width=300&amp;height=200"/>
+                                <div class="absolute top-3 right-3">
+                                    <span class="badge bg-primary text-white">连载中</span>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold text-lg mb-1">都市迷踪</h3>
+                                <p class="text-neutral-500 text-sm mb-3">都市小说 &middot; 28万字</p>
+                                <div class="flex items-center text-sm text-neutral-500 mb-4">
+                                    <span class="mr-4"><i class="fas fa-eye mr-1"></i> 125.3万</span>
+                                    <span class="mr-4"><i class="fas fa-comment mr-1"></i> 8.7万</span>
+                                    <span><i class="fas fa-star mr-1"></i> 4.8</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 作品卡片2 -->
+                        <div class="border border-neutral-200 rounded-xl overflow-hidden card-hover">
+                            <div class="relative">
+                                <img alt="星际穿越" class="w-full h-48 object-cover" src="https://design.gemcoder.com/api/searchImage?query=sci-fi novel cover with space scene, futuristic design, epic style&amp;width=300&amp;height=200"/>
+                                <div class="absolute top-3 right-3">
+                                    <span class="badge bg-secondary text-white">已完结</span>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold text-lg mb-1">星际穿越</h3>
+                                <p class="text-neutral-500 text-sm mb-3">科幻小说 &middot; 56万字</p>
+                                <div class="flex items-center text-sm text-neutral-500 mb-4">
+                                    <span class="mr-4"><i class="fas fa-eye mr-1"></i> 342.6万</span>
+                                    <span class="mr-4"><i class="fas fa-comment mr-1"></i> 23.4万</span>
+                                    <span><i class="fas fa-star mr-1"></i> 4.9</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 作品卡片3 -->
+                        <div class="border border-neutral-200 rounded-xl overflow-hidden card-hover">
+                            <div class="relative">
+                                <img alt="古老的秘密" class="w-full h-48 object-cover" src="https://design.gemcoder.com/api/searchImage?query=mystery novel cover with old book and candle, dark atmospheric style&amp;width=300&amp;height=200"/>
+                                <div class="absolute top-3 right-3">
+                                    <span class="badge bg-neutral-500 text-white">构思中</span>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold text-lg mb-1">古老的秘密</h3>
+                                <p class="text-neutral-500 text-sm mb-3">悬疑小说 &middot; 5万字</p>
+                                <div class="flex items-center text-sm text-neutral-500 mb-4">
+                                    <span class="mr-4"><i class="fas fa-eye mr-1"></i> 12.8万</span>
+                                    <span class="mr-4"><i class="fas fa-comment mr-1"></i> 1.5万</span>
+                                    <span><i class="fas fa-star mr-1"></i> 4.7</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 作品管理表格 -->
+                    <div class="mt-8">
+                        <h3 class="font-bold text-lg mb-4">作品管理</h3>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-neutral-200">
+                                <thead>
+                                <tr>
+                                    <th class="px-4 py-3 bg-neutral-50 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">作品名称</th>
+                                    <th class="px-4 py-3 bg-neutral-50 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">类型</th>
+                                    <th class="px-4 py-3 bg-neutral-50 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">状态</th>
+                                    <th class="px-4 py-3 bg-neutral-50 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">字数</th>
+                                    <th class="px-4 py-3 bg-neutral-50 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">更新时间</th>
+                                    <th class="px-4 py-3 bg-neutral-50 text-right text-xs font-medium text-neutral-500 uppercase tracking-wider">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-neutral-200">
+                                <tr>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="font-medium">都市迷踪</div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="text-neutral-500">都市小说</div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <span class="badge bg-primary text-white">连载中</span>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="text-neutral-500">28万字</div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="text-neutral-500">2023-06-15</div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-right text-sm">
+                                        <button class="text-neutral-500 hover:text-neutral-700 view-work-details" data-comments="8.7万" data-id="1" data-rating="4.8" data-status="连载中" data-title="都市迷踪" data-type="都市小说" data-views="125.3万" data-words="28万字">更多</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="font-medium">星际穿越</div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="text-neutral-500">科幻小说</div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <span class="badge bg-secondary text-white">已完结</span>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="text-neutral-500">56万字</div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="text-neutral-500">2023-01-28</div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-right text-sm">
+                                        <button class="text-neutral-500 hover:text-neutral-700 view-work-details" data-comments="23.4万" data-id="2" data-rating="4.9" data-status="已完结" data-title="星际穿越" data-type="科幻小说" data-views="342.6万" data-words="56万字">更多</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="font-medium">古老的秘密</div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="text-neutral-500">悬疑小说</div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <span class="badge bg-neutral-500 text-white">构思中</span>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="text-neutral-500">5万字</div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="text-neutral-500">2023-05-10</div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-right text-sm">
+                                        <button class="text-neutral-500 hover:text-neutral-700 view-work-details" data-comments="1.5万" data-id="3" data-rating="4.7" data-status="构思中" data-title="古老的秘密" data-type="悬疑小说" data-views="12.8万" data-words="5万字">更多</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- 分页 -->
+                        <div class="flex items-center justify-between mt-6">
+                            <div class="text-sm text-neutral-500">显示 1 至 3 条，共 8 条</div>
+                            <div class="flex space-x-1">
+                                <button class="px-3 py-1 rounded border border-neutral-300 text-neutral-500 hover:bg-neutral-50 disabled:opacity-50" disabled><i class="fas fa-chevron-left text-xs"></i></button>
+                                <button class="px-3 py-1 rounded border border-primary bg-primary text-white">1</button>
+                                <button class="px-3 py-1 rounded border border-neutral-300 text-neutral-700 hover:bg-neutral-50">2</button>
+                                <button class="px-3 py-1 rounded border border-neutral-300 text-neutral-700 hover:bg-neutral-50">3</button>
+                                <button class="px-3 py-1 rounded border border-neutral-300 text-neutral-500 hover:bg-neutral-50"><i class="fas fa-chevron-right text-xs"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 作品信息弹窗 -->
+            <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden" id="work-details-modal">
+                <div class="bg-white rounded-xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-auto">
+                    <div class="p-6 border-b border-neutral-200 flex justify-between items-center">
+                        <h3 class="text-xl font-bold" id="work-modal-title">作品详情</h3>
+                        <button class="text-neutral-500 hover:text-neutral-700" id="close-work-modal">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="md:col-span-1">
+                                <img alt="作品封面" class="w-full h-48 object-cover rounded-lg" id="work-modal-image" src="https://design.gemcoder.com/api/searchImage?query=urban novel book cover with city skyline at night, modern design, bestseller style&amp;width=300&amp;height=200"/>
+                            </div>
+                            <div class="md:col-span-2">
+                                <h4 class="text-2xl font-bold mb-2" id="work-modal-name">都市迷踪</h4>
+                                <div class="flex items-center mb-4">
+                                    <span class="badge bg-primary text-white mr-2" id="work-modal-status">连载中</span>
+                                    <span class="text-neutral-500" id="work-modal-type">都市小说 &middot; 28万字</span>
+                                </div>
+                                <div class="mb-4">
+                                    <h5 class="font-medium text-neutral-700 mb-1">作品简介</h5>
+                                    <p class="text-neutral-600 text-sm" id="work-modal-description">探索城市中的神秘事件，揭示隐藏在繁华背后的秘密。</p>
+                                </div>
+                                <div class="grid grid-cols-3 gap-4 mb-6">
+                                    <div class="text-center">
+                                        <div class="text-2xl font-bold text-neutral-800" id="work-modal-views">125.3万</div>
+                                        <div class="text-neutral-500 text-sm">阅读量</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-2xl font-bold text-neutral-800" id="work-modal-comments">8.7万</div>
+                                        <div class="text-neutral-500 text-sm">评论数</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-2xl font-bold text-neutral-800" id="work-modal-rating">4.8</div>
+                                        <div class="text-neutral-500 text-sm">评分</div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-end space-x-3">
+                                    <button class="btn-outline" id="close-work-details-btn">关闭</button>
+                                    <a class="btn-primary" href="javascript:void(0);" id="goto-work-details">
+                                        <i class="fas fa-arrow-right mr-2"></i>
+                                        <span>查看详情页</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [/MODULE] stu_我的作品页面 -- 展示和管理用户创建的所有作品 -->
+
+            <!-- [MODULE] yz1_我的随笔页面 -->
+            <div class="page-content hidden" id="notes-page">
+                <div class="bg-white rounded-xl shadow-sm p-6">
+                    <div class="section-title">
+                        <h2>我的随笔</h2>
+                    </div>
+                    <div class="space-y-4 mt-6">
+                        <!-- 随笔1 -->
+                        <div class="border border-neutral-200 rounded-xl overflow-hidden card-hover">
+                            <div class="p-5">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="font-bold text-lg">创作心得：如何塑造立体人物</h3>
+                                    <span class="text-neutral-400 text-sm">2023-06-10</span>
+                                </div>
+                                <p class="text-neutral-600 text-sm mb-4 line-clamp-2">
+                                    最近在创作《都市迷踪》的过程中，我尝试了一种新的人物塑造方法：先确定角色的核心矛盾，再围绕这个矛盾设计行为模式和语言风格...
+                                </p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center text-sm">
+                                            <span class="text-neutral-500 mr-4">
+                                                <i class="fas fa-folder mr-1"></i>
+                                                创作心得
+                                            </span>
+                                        <span class="text-neutral-500">
+                                                <i class="fas fa-eye mr-1"></i>
+                                                12
+                                            </span>
+                                    </div>
+                                    <button class="bg-primary text-white px-4 py-2 rounded-full text-sm detail-note" data-id="1">
+                                        详情
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 随笔2 -->
+                        <div class="border border-neutral-200 rounded-xl overflow-hidden card-hover">
+                            <div class="p-5">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="font-bold text-lg">阅读笔记：《叙事的艺术》</h3>
+                                    <span class="text-neutral-400 text-sm">2023-05-28</span>
+                                </div>
+                                <p class="text-neutral-600 text-sm mb-4 line-clamp-2">
+                                    这本书提出了一个很有意思的观点：故事的节奏应该像呼吸一样有张有弛。紧张的情节之后需要适当的缓和，给读者消化情绪的空间...
+                                </p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center text-sm">
+                                            <span class="text-neutral-500 mr-4">
+                                                <i class="fas fa-folder mr-1"></i>
+                                                阅读笔记
+                                            </span>
+                                        <span class="text-neutral-500">
+                                                <i class="fas fa-eye mr-1"></i>
+                                                8
+                                            </span>
+                                    </div>
+                                    <button class="bg-primary text-white px-4 py-2 rounded-full text-sm detail-note" data-id="2">
+                                        详情
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 随笔3 -->
+                        <div class="border border-neutral-200 rounded-xl overflow-hidden card-hover">
+                            <div class="p-5">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="font-bold text-lg">2023年上半年创作总结</h3>
+                                    <span class="text-neutral-400 text-sm">2023-06-30</span>
+                                </div>
+                                <p class="text-neutral-600 text-sm mb-4 line-clamp-2">
+                                    上半年完成了《都市迷踪》的15-20章节，共计12万字。写作效率较去年有所提升，主要得益于新尝试的番茄工作法和提前一周规划情节的方式...
+                                </p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center text-sm">
+                                            <span class="text-neutral-500 mr-4">
+                                                <i class="fas fa-folder mr-1"></i>
+                                                创作总结
+                                            </span>
+                                        <span class="text-neutral-500">
+                                                <i class="fas fa-eye mr-1"></i>
+                                                5
+                                            </span>
+                                    </div>
+                                    <button class="bg-primary text-white px-4 py-2 rounded-full text-sm detail-note" data-id="3">
+                                        详情
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 随笔4 -->
+                        <div class="border border-neutral-200 rounded-xl overflow-hidden card-hover">
+                            <div class="p-5">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="font-bold text-lg">角色发展笔记：李警官</h3>
+                                    <span class="text-neutral-400 text-sm">2023-06-05</span>
+                                </div>
+                                <p class="text-neutral-600 text-sm mb-4 line-clamp-2">
+                                    李警官这个角色最初设定为标准的硬汉形象，但在写作过程中，我发现给他添加一些小缺点会让人物更真实。现在他有恐高症，并且对甜食毫无抵抗力...
+                                </p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center text-sm">
+                                            <span class="text-neutral-500 mr-4">
+                                                <i class="fas fa-folder mr-1"></i>
+                                                角色笔记
+                                            </span>
+                                        <span class="text-neutral-500">
+                                                <i class="fas fa-eye mr-1"></i>
+                                                9
+                                            </span>
+                                    </div>
+                                    <button class="bg-primary text-white px-4 py-2 rounded-full text-sm detail-note" data-id="4">
+                                        详情
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [/MODULE] yz1_我的随笔页面 -- 记录和管理用户的创作心得和随笔 -->
+
+            <!-- 随笔详情弹窗 -->
+            <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden" id="note-modal">
+                <div class="bg-white rounded-xl shadow-xl w-full max-w-xl max-h-[90vh] overflow-auto">
+                    <div class="p-6 border-b border-neutral-200 flex justify-between items-center">
+                        <h3 class="text-xl font-bold" id="note-modal-title">随笔详情</h3>
+                        <button class="text-neutral-500 hover:text-neutral-700" id="close-note-modal">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <div id="note-content-container">
+                            <h3 class="text-xl font-bold mb-2" id="note-view-title">创作心得：如何塑造立体人物</h3>
+                            <div class="flex items-center text-sm text-neutral-500 mb-4">
+                                    <span id="note-view-category" class="mr-4">
+                                        <i class="fas fa-folder mr-1"></i>
+                                        创作心得
+                                    </span>
+                                <span id="note-view-date">
+                                        <i class="fas fa-calendar mr-1"></i>
+                                        2023-06-10
+                                    </span>
+                            </div>
+                            <div class="prose max-w-none text-neutral-700 mb-6" id="note-content">
+                                最近在创作《都市迷踪》的过程中，我尝试了一种新的人物塑造方法：先确定角色的核心矛盾，再围绕这个矛盾设计行为模式和语言风格...
+                                <br><br>
+                                这种方法让角色更加立体，也更容易产生戏剧冲突。例如主角李警官，他的核心矛盾是'追求正义但受体制束缚'，这导致他在处理案件时常常需要在规则与良知之间做出选择。这个矛盾体现在他的语言上就是经常欲言又止，行动上则是在规则允许的范围内尽可能帮助他人。
+                            </div>
+                        </div>
+
+                        <div id="note-edit-fields" class="hidden">
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-neutral-700 mb-1">标题</label>
+                                <input type="text" id="note-title-input" class="w-full border border-neutral-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-neutral-700 mb-1">分类</label>
+                                <input type="text" id="note-category-input" class="w-full border border-neutral-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none">
+                            </div>
+                            <div class="mb-6">
+                                <label class="block text-sm font-medium text-neutral-700 mb-1">内容</label>
+                                <textarea id="note-content-input" rows="8" class="w-full border border-neutral-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 border-t border-neutral-200 flex justify-end space-x-3">
+                        <button class="btn-outline" id="toggle-edit-mode">
+                            <i class="fas fa-edit mr-1"></i>
+                            编辑
+                        </button>
+                        <button class="btn-outline" id="cancel-note-btn">取消</button>
+                        <button class="btn-primary hidden" id="save-note-btn">
+                            <i class="fas fa-save mr-1"></i>
+                            保存
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 其他页面内容保持不变 -->
+            <!-- [MODULE] abc_我的发布页面 -->
+            <div class="page-content hidden" id="publications-page">
+                <div class="bg-white rounded-xl shadow-sm p-6">
+                    <div class="section-title">
+                        <h2>我的发布</h2>
+                    </div>
+                    <!-- 标签页 -->
+                    <div class="border-b border-neutral-200 mt-6">
+                        <nav aria-label="Tabs" class="-mb-px flex space-x-8">
+                            <button class="publication-tab active whitespace-nowrap py-4 px-1 border-b-2 border-primary font-medium text-sm text-primary" data-tab="materials">
+                                素材
+                            </button>
+                            <button class="publication-tab whitespace-nowrap py-4 px-1 border-b-2 border-transparent font-medium text-sm text-neutral-500 hover:text-neutral-700 hover:border-neutral-300" data-tab="posts">
+                                帖子
+                            </button>
+                            <button class="publication-tab whitespace-nowrap py-4 px-1 border-b-2 border-transparent font-medium text-sm text-neutral-500 hover:text-neutral-700 hover:border-neutral-300" data-tab="comments">
+                                评论
+                            </button>
+                        </nav>
+                    </div>
+                    <!-- 素材标签页内容 -->
+                    <div class="publication-content active" id="materials-content">
+                        <div class="overflow-x-auto mt-6">
+                            <table class="min-w-full divide-y divide-neutral-200">
+                                <thead>
+                                <tr>
+                                    <th class="px-4 py-3 bg-neutral-50 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">素材名称</th>
+                                    <th class="px-4 py-3 bg-neutral-50 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">类型</th>
+                                    <th class="px-4 py-3 bg-neutral-50 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">上传时间</th>
+                                    <th class="px-4 py-3 bg-neutral-50 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">大小</th>
+                                    <th class="px-4 py-3 bg-neutral-50 text-right text-xs font-medium text-neutral-500 uppercase tracking-wider">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-neutral-200">
+                                <tr>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10 bg-neutral-100 rounded flex items-center justify-center text-neutral-500">
+                                                <i class="fas fa-image"></i>
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="font-medium">都市夜景参考图</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="text-neutral-500">图片</div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="text-neutral-500">2023-06-15</div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="text-neutral-500">2.4MB</div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-right text-sm">
+                                        <button class="text-red-500 hover:text-red-700 delete-publication">删除</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10 bg-neutral-100 rounded flex items-center justify-center text-neutral-500">
+                                                <i class="fas fa-file-audio"></i>
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="font-medium">环境音效合集</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="text-neutral-500">音频</div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="text-neutral-500">2023-06-10</div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="text-neutral-500">15.8MB</div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-right text-sm">
+                                        <button class="text-red-500 hover:text-red-700 delete-publication">删除</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- 分页 -->
+                        <div class="flex items-center justify-between mt-6">
+                            <div class="text-sm text-neutral-500">显示 1 至 2 条，共 5 条</div>
+                            <div class="flex space-x-1">
+                                <button class="px-3 py-1 rounded border border-neutral-300 text-neutral-500 hover:bg-neutral-50 disabled:opacity-50" disabled><i class="fas fa-chevron-left text-xs"></i></button>
+                                <button class="px-3 py-1 rounded border border-primary bg-primary text-white">1</button>
+                                <button class="px-3 py-1 rounded border border-neutral-300 text-neutral-700 hover:bg-neutral-50">2</button>
+                                <button class="px-3 py-1 rounded border border-neutral-300 text-neutral-700 hover:bg-neutral-50">3</button>
+                                <button class="px-3 py-1 rounded border border-neutral-300 text-neutral-500 hover:bg-neutral-50"><i class="fas fa-chevron-right text-xs"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 帖子标签页内容 (默认隐藏) -->
+                    <div class="publication-content hidden" id="posts-content">
+                        <div class="overflow-x-auto mt-6">
+                            <table class="min-w-full divide-y divide-neutral-200">
+                                <thead>
+                                <tr>
+                                    <th class="px-4 py-3 bg-neutral-50 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">标题</th>
+                                    <th class="px-4 py-3 bg-neutral-50 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">发布时间</th>
+                                    <th class="px-4 py-3 bg-neutral-50 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">阅读量</th>
+                                    <th class="px-4 py-3 bg-neutral-50 text-right text-xs font-medium text-neutral-500 uppercase tracking-wider">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-neutral-200">
+                                <tr>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="font-medium">创作瓶颈如何突破</div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="text-neutral-500">2023-06-05</div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="text-neutral-500">128</div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-right text-sm">
+                                        <button class="text-red-500 hover:text-red-700 delete-publication">删除</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- 分页 -->
+                        <div class="flex items-center justify-between mt-6">
+                            <div class="text-sm text-neutral-500">显示 1 至 1 条，共 1 条</div>
+                            <div class="flex space-x-1">
+                                <button class="px-3 py-1 rounded border border-neutral-300 text-neutral-500 hover:bg-neutral-50 disabled:opacity-50" disabled><i class="fas fa-chevron-left text-xs"></i></button>
+                                <button class="px-3 py-1 rounded border border-primary bg-primary text-white">1</button>
+                                <button class="px-3 py-1 rounded border border-neutral-300 text-neutral-500 hover:bg-neutral-50 disabled:opacity-50" disabled><i class="fas fa-chevron-right text-xs"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 评论标签页内容 (默认隐藏) -->
+                    <div class="publication-content hidden" id="comments-content">
+                        <div class="overflow-x-auto mt-6">
+                            <table class="min-w-full divide-y divide-neutral-200">
+                                <thead>
+                                <tr>
+                                    <th class="px-4 py-3 bg-neutral-50 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">内容</th>
+                                    <th class="px-4 py-3 bg-neutral-50 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">所在作品</th>
+                                    <th class="px-4 py-3 bg-neutral-50 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">发布时间</th>
+                                    <th class="px-4 py-3 bg-neutral-50 text-right text-xs font-medium text-neutral-500 uppercase tracking-wider">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-neutral-200">
+                                <tr>
+                                    <td class="px-4 py-4">
+                                        <div class="text-sm text-neutral-600 max-w-xs truncate">这个角色的塑造非常成功，尤其是内心挣扎的描写很到位</div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="text-neutral-500">都市迷踪</div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="text-neutral-500">2023-06-20</div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-right text-sm">
+                                        <button class="text-red-500 hover:text-red-700 delete-publication">删除</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-4">
+                                        <div class="text-sm text-neutral-600 max-w-xs truncate">期待后续剧情发展，作者大大加油！</div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="text-neutral-500">星际穿越</div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="text-neutral-500">2023-06-18</div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-right text-sm">
+                                        <button class="text-red-500 hover:text-red-700 delete-publication">删除</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- 分页 -->
+                        <div class="flex items-center justify-between mt-6">
+                            <div class="text-sm text-neutral-500">显示 1 至 2 条，共 3 条</div>
+                            <div class="flex space-x-1">
+                                <button class="px-3 py-1 rounded border border-neutral-300 text-neutral-500 hover:bg-neutral-50 disabled:opacity-50" disabled><i class="fas fa-chevron-left text-xs"></i></button>
+                                <button class="px-3 py-1 rounded border border-primary bg-primary text-white">1</button>
+                                <button class="px-3 py-1 rounded border border-neutral-300 text-neutral-700 hover:bg-neutral-50">2</button>
+                                <button class="px-3 py-1 rounded border border-neutral-300 text-neutral-500 hover:bg-neutral-50"><i class="fas fa-chevron-right text-xs"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [/MODULE] abc_我的发布页面 -- 管理用户发布的素材、帖子和评论 -->
+            <!-- [MODULE] 234_我的收藏页面 -->
+            <div class="page-content hidden" id="collections-page">
+                <div class="bg-white rounded-xl shadow-sm p-6">
+                    <div class="section-title">
+                        <h2>我的收藏</h2>
+                        <div class="flex space-x-3">
+                            <div class="relative">
+                                <input class="pl-10 pr-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none" placeholder="搜索收藏..." type="text"/>
+                                <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400"></i>
+                            </div>
+                            <div class="relative">
+                                <button class="btn-outline flex items-center">
+                                    <i class="fas fa-filter mr-2"></i>
+                                    <span>分类</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                        <!-- 收藏项1 -->
+                        <div class="border border-neutral-200 rounded-xl overflow-hidden card-hover">
+                            <div class="flex">
+                                <img alt="写作技巧" class="w-24 h-24 object-cover" src="https://design.gemcoder.com/api/searchImage?query=writing tips article cover, minimalist design, knowledge sharing style&amp;width=120&amp;height=120"/>
+                                <div class="p-4 flex-1">
+                                    <h3 class="font-bold text-base mb-1">如何写出令人难忘的开场白</h3>
+                                    <p class="text-neutral-600 text-sm mb-2 line-clamp-2">详细分析了20部经典小说的开场段落，总结出五种有效的开篇方式和各自适用的场景...</p>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center text-xs text-neutral-500">
+                                            <span class="mr-3"><i class="fas fa-bookmark mr-1"></i>写作技巧</span>
+                                            <span><i class="fas fa-calendar mr-1"></i>2023-04-15</span>
+                                        </div>
+                                        <button class="text-red-500 hover:text-red-700 delete-collection" data-id="1">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 收藏项2 -->
+                        <div class="border border-neutral-200 rounded-xl overflow-hidden card-hover">
+                            <div class="flex">
+                                <img alt="角色设定模板" class="w-24 h-24 object-cover" src="https://design.gemcoder.com/api/searchImage?query=character development worksheet, creative writing resource, template style&amp;width=120&amp;height=120"/>
+                                <div class="p-4 flex-1">
+                                    <h3 class="font-bold text-base mb-1">角色深度设定工作表</h3>
+                                    <p class="text-neutral-600 text-sm mb-2 line-clamp-2">包含50个问题的角色设定模板，从基本信息到深层动机，帮助创作者构建立体人物...</p>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center text-xs text-neutral-500">
+                                            <span class="mr-3"><i class="fas fa-bookmark mr-1"></i>写作工具</span>
+                                            <span><i class="fas fa-calendar mr-1"></i>2023-03-22</span>
+                                        </div>
+                                        <button class="text-red-500 hover:text-red-700 delete-collection" data-id="2">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 收藏项3 -->
+                        <div class="border border-neutral-200 rounded-xl overflow-hidden card-hover">
+                            <div class="flex">
+                                <img alt="三幕剧结构解析" class="w-24 h-24 object-cover" src="https://design.gemcoder.com/api/searchImage?query=plot structure diagram, three act structure, storytelling guide&amp;width=120&amp;height=120"/>
+                                <div class="p-4 flex-1">
+                                    <h3 class="font-bold text-base mb-1">三幕剧结构的现代应用</h3>
+                                    <p class="text-neutral-600 text-sm mb-2 line-clamp-2">传统三幕剧结构在当代小说中的变形与创新，结合近年热门作品分析结构演变...</p>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center text-xs text-neutral-500">
+                                            <span class="mr-3"><i class="fas fa-bookmark mr-1"></i>结构技巧</span>
+                                            <span><i class="fas fa-calendar mr-1"></i>2023-05-08</span>
+                                        </div>
+                                        <button class="text-red-500 hover:text-red-700 delete-collection" data-id="3">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 收藏项4 -->
+                        <div class="border border-neutral-200 rounded-xl overflow-hidden card-hover">
+                            <div class="flex">
+                                <img alt="对话写作范例" class="w-24 h-24 object-cover" src="https://design.gemcoder.com/api/searchImage?query=dialogue writing examples, conversation between two characters, script style&amp;width=120&amp;height=120"/>
+                                <div class="p-4 flex-1">
+                                    <h3 class="font-bold text-base mb-1">如何写出符合角色身份的对话</h3>
+                                    <p class="text-neutral-600 text-sm mb-2 line-clamp-2">从词汇选择、句式结构、语气词使用三个方面分析如何让不同背景的角色拥有独特的语言风格...</p>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center text-xs text-neutral-500">
+                                            <span class="mr-3"><i class="fas fa-bookmark mr-1"></i>对话技巧</span>
+                                            <span><i class="fas fa-calendar mr-1"></i>2023-02-17</span>
+                                        </div>
+                                        <button class="text-red-500 hover:text-red-700 delete-collection" data-id="4">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 收藏分类 -->
+                    <div class="mt-8">
+                        <h3 class="font-bold text-lg mb-4">收藏分类</h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                            <div class="border border-neutral-200 rounded-lg p-4 text-center hover:border-primary cursor-pointer transition-colors">
+                                <div class="text-2xl text-primary mb-2">
+                                    <i class="fas fa-pen-fancy"></i>
+                                </div>
+                                <div class="font-medium">写作技巧</div>
+                                <div class="text-neutral-500 text-xs mt-1">12项</div>
+                            </div>
+                            <div class="border border-neutral-200 rounded-lg p-4 text-center hover:border-primary cursor-pointer transition-colors">
+                                <div class="text-2xl text-secondary mb-2">
+                                    <i class="fas fa-tools"></i>
+                                </div>
+                                <div class="font-medium">写作工具</div>
+                                <div class="text-neutral-500 text-xs mt-1">8项</div>
+                            </div>
+                            <div class="border border-neutral-200 rounded-lg p-4 text-center hover:border-primary cursor-pointer transition-colors">
+                                <div class="text-2xl text-accent mb-2">
+                                    <i class="fas fa-sitemap"></i>
+                                </div>
+                                <div class="font-medium">结构技巧</div>
+                                <div class="text-neutral-500 text-xs mt-1">5项</div>
+                            </div>
+                            <div class="border border-neutral-200 rounded-lg p-4 text-center hover:border-primary cursor-pointer transition-colors">
+                                <div class="text-2xl text-amber-500 mb-2">
+                                    <i class="fas fa-comments"></i>
+                                </div>
+                                <div class="font-medium">对话技巧</div>
+                                <div class="text-neutral-500 text-xs mt-1">7项</div>
+                            </div>
+                            <div class="border border-neutral-200 rounded-lg p-4 text-center hover:border-primary cursor-pointer transition-colors">
+                                <div class="text-2xl text-red-500 mb-2">
+                                    <i class="fas fa-theater-masks"></i>
+                                </div>
+                                <div class="font-medium">角色塑造</div>
+                                <div class="text-neutral-500 text-xs mt-1">9项</div>
+                            </div>
+                            <div class="border border-neutral-200 rounded-lg p-4 text-center hover:border-primary cursor-pointer transition-colors">
+                                <div class="text-2xl text-neutral-700 mb-2">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </div>
+                                <div class="font-medium">其他</div>
+                                <div class="text-neutral-500 text-xs mt-1">4项</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [/MODULE] 234_我的收藏页面 -- 管理用户收藏的写作资源和参考资料 -->
+            <!-- [MODULE] 567_我的成就页面 -->
+            <div class="page-content hidden" id="achievements-page">
+                <div class="bg-white rounded-xl shadow-sm p-6">
+                    <div class="section-title">
+                        <h2>我的成就</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                        <div class="col-span-2">
+                            <h3 class="font-bold text-lg mb-4">已获得成就</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <!-- 成就1 -->
+                                <div class="border border-neutral-200 rounded-xl p-4 flex items-center card-hover">
+                                    <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary text-2xl mr-4">
+                                        <i class="fas fa-trophy"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold">畅销书作者</h4>
+                                        <p class="text-neutral-500 text-sm">作品《星际穿越》销量突破100万册</p>
+                                        <p class="text-xs text-neutral-400 mt-1">获得于 2022-08-15</p>
+                                    </div>
+                                </div>
+                                <!-- 成就2 -->
+                                <div class="border border-neutral-200 rounded-xl p-4 flex items-center card-hover">
+                                    <div class="w-14 h-14 rounded-full bg-secondary/10 flex items-center justify-center text-secondary text-2xl mr-4">
+                                        <i class="fas fa-pen-fancy"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold">prolific writer</h4>
+                                        <p class="text-neutral-500 text-sm">累计创作字数超过100万字</p>
+                                        <p class="text-xs text-neutral-400 mt-1">获得于 2023-01-20</p>
+                                    </div>
+                                </div>
+                                <!-- 成就3 -->
+                                <div class="border border-neutral-200 rounded-xl p-4 flex items-center card-hover">
+                                    <div class="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center text-accent text-2xl mr-4">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold">人气作家</h4>
+                                        <p class="text-neutral-500 text-sm">作品总阅读量超过500万次</p>
+                                        <p class="text-xs text-neutral-400 mt-1">获得于 2023-03-10</p>
+                                    </div>
+                                </div>
+                                <!-- 成就4 -->
+                                <div class="border border-neutral-200 rounded-xl p-4 flex items-center card-hover">
+                                    <div class="w-14 h-14 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-500 text-2xl mr-4">
+                                        <i class="fas fa-calendar-check"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold">坚持不懈</h4>
+                                        <p class="text-neutral-500 text-sm">连续100天保持创作更新</p>
+                                        <p class="text-xs text-neutral-400 mt-1">获得于 2023-05-05</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg mb-4">作家等级</h3>
+                            <div class="bg-neutral-50 rounded-xl p-6 text-center">
+                                <div class="relative inline-block">
+                                    <div class="w-24 h-24 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white text-3xl font-bold mx-auto">
+                                        Lv.5
+                                    </div>
+                                    <div class="absolute -bottom-2 -right-2 bg-secondary text-white rounded-full w-8 h-8 flex items-center justify-center text-xs font-bold">
+                                        资深
+                                    </div>
+                                </div>
+                                <h4 class="font-bold text-xl mt-4">金牌作家</h4>
+                                <p class="text-neutral-500 text-sm mb-4">距离下一等级还需 350 经验值</p>
+                                <div class="progress-bar mb-2">
+                                    <div class="progress-value" style="width: 65%"></div>
+                                </div>
+                                <div class="flex justify-between text-xs text-neutral-500 mb-6">
+                                    <span>650/1000</span>
+                                    <span>经验值</span>
+                                </div>
+                                <div class="grid grid-cols-2 gap-2 text-sm">
+                                    <div class="bg-white rounded-lg p-3">
+                                        <div class="text-2xl font-bold text-primary">8</div>
+                                        <div class="text-neutral-500">已发布作品</div>
+                                    </div>
+                                    <div class="bg-white rounded-lg p-3">
+                                        <div class="text-2xl font-bold text-secondary">156</div>
+                                        <div class="text-neutral-500">累计创作天数</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h3 class="font-bold text-lg mb-4 mt-6">近期获得</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center text-sm">
+                                    <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-500 mr-3">
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="font-medium">人气作家</div>
+                                        <div class="text-neutral-500 text-xs">3天前</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 mr-3">
+                                        <i class="fas fa-medal"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="font-medium">章节达人</div>
+                                        <div class="text-neutral-500 text-xs">1周前</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 成就进度 -->
+                    <div class="mt-8">
+                        <h3 class="font-bold text-lg mb-4">近期成就进度</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <div class="font-medium text-sm">万人评论</div>
+                                    <div class="text-sm text-neutral-500">8,752/10,000</div>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-value bg-secondary" style="width: 87%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <div class="font-medium text-sm">完本大师</div>
+                                    <div class="text-sm text-neutral-500">2/5 部作品</div>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-value bg-accent" style="width: 40%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <div class="font-medium text-sm">全勤作家</div>
+                                    <div class="text-sm text-neutral-500">28/30 天</div>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-value bg-amber-500" style="width: 93%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [/MODULE] 567_我的成就页面 -- 展示用户获得的成就、等级和创作进度 -->
+            <!-- [MODULE] def_账户设置页面 -->
+            <div class="page-content hidden" id="settings-page">
+                <div class="bg-white rounded-xl shadow-sm p-6">
+                    <div class="section-title">
+                        <h2>账户设置</h2>
+                    </div>
+                    <!-- 标签页 -->
+                    <div class="border-b border-neutral-200 mt-6">
+                        <nav aria-label="Tabs" class="-mb-px flex space-x-8">
+                            <button class="settings-tab active whitespace-nowrap py-4 px-1 border-b-2 border-primary font-medium text-sm text-primary" data-tab="basic">
+                                基本设置
+                            </button>
+                            <button class="settings-tab whitespace-nowrap py-4 px-1 border-b-2 border-transparent font-medium text-sm text-neutral-500 hover:text-neutral-700 hover:border-neutral-300" data-tab="privacy">
+                                隐私设置
+                            </button>
+                            <button class="settings-tab whitespace-nowrap py-4 px-1 border-b-2 border-transparent font-medium text-sm text-neutral-500 hover:text-neutral-700 hover:border-neutral-300" data-tab="security">
+                                安全设置
+                            </button>
+                        </nav>
+                    </div>
+                    <!-- 基本设置内容 -->
+                    <div class="settings-content active" id="basic-settings">
+                        <div class="mt-6 space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+                                <label class="text-sm font-medium text-neutral-700">通知设置</label>
+                                <div class="md:col-span-2 flex items-center">
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input checked="" class="sr-only peer" id="notification-email" type="checkbox"/>
+                                        <div class='w-11 h-6 bg-neutral-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/50 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[""] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-neutral-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary'></div>
+                                        <span class="ml-3 text-sm font-medium text-neutral-700">邮件通知</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+                                <label class="text-sm font-medium text-neutral-700">主题模式</label>
+                                <div class="md:col-span-2 flex items-center">
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input class="sr-only peer" id="dark-mode" type="checkbox"/>
+                                        <div class='w-11 h-6 bg-neutral-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/50 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[""] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-neutral-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary'></div>
+                                        <span class="ml-3 text-sm font-medium text-neutral-700">深色模式</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+                                <label class="text-sm font-medium text-neutral-700">界面缩放</label>
+                                <div class="md:col-span-2 flex items-center">
+                                    <input class="w-full h-2 bg-neutral-200 rounded-lg appearance-none cursor-pointer accent-primary" id="interface-scale" max="120" min="80" type="range" value="100"/>
+                                    <span class="ml-4 text-sm font-medium text-neutral-700" id="scale-value">100%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 隐私设置内容 (默认隐藏) -->
+                    <div class="settings-content hidden" id="privacy-settings">
+                        <div class="mt-6 space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+                                <label class="text-sm font-medium text-neutral-700">作品可见性</label>
+                                <div class="md:col-span-2">
+                                    <select class="w-full border border-neutral-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none">
+                                        <option value="public">公开</option>
+                                        <option value="followers">仅关注者可见</option>
+                                        <option value="private">私密</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+                                <label class="text-sm font-medium text-neutral-700">个人资料可见性</label>
+                                <div class="md:col-span-2 flex items-center">
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input checked="" class="sr-only peer" id="profile-visible" type="checkbox"/>
+                                        <div class='w-11 h-6 bg-neutral-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/50 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[""] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-neutral-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary'></div>
+                                        <span class="ml-3 text-sm font-medium text-neutral-700">允许其他用户查看我的个人资料</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 安全设置内容 (默认隐藏) -->
+                    <div class="settings-content hidden" id="security-settings">
+                        <div class="mt-6 space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+                                <label class="text-sm font-medium text-neutral-700">两步验证</label>
+                                <div class="md:col-span-2 flex items-center">
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input class="sr-only peer" id="two-factor" type="checkbox"/>
+                                        <div class='w-11 h-6 bg-neutral-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/50 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[""] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-neutral-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary'></div>
+                                        <span class="ml-3 text-sm font-medium text-neutral-700">启用两步验证</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+                                <label class="text-sm font-medium text-neutral-700">更改密码</label>
+                                <div class="md:col-span-2">
+                                    <button class="btn-outline">
+                                        <i class="fas fa-key mr-2"></i>
+                                        <span>修改密码</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+                                <label class="text-sm font-medium text-neutral-700">登录历史</label>
+                                <div class="md:col-span-2">
+                                    <button class="btn-outline">
+                                        <i class="fas fa-history mr-2"></i>
+                                        <span>查看登录记录</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center pt-6 border-t border-neutral-200">
+                                <label class="text-sm font-medium text-neutral-700">账户操作</label>
+                                <div class="md:col-span-2">
+                                    <button class="bg-red-500 text-white px-4 py-2 rounded-lg transition-all duration-300 hover:bg-red-600 focus:ring-2 focus:ring-red-500/50 focus:outline-none" id="logout-btn">
+                                        <i class="fas fa-sign-out-alt mr-2"></i>
+                                        <span>退出登录</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [/MODULE] def_账户设置页面 -- 管理用户的账户设置选项 -->
         </div>
+        <!-- [/MODULE] mno_个人中心内容 -->
     </div>
-    </div>
-    </div>
-<div class='stat-card'>
-        <div class='flex items-start justify-between'>
-        <div >
-        <p class='text-neutral-500 text-sm'>
-        粉丝数量
-    </p>
-<h3 class='text-2xl font-bold mt-1'>
-        12.5k
-    </h3>
-    </div>
-<div class='bg-accent/10 p-2 rounded-lg'>
-        <i class='fas fa-users text-accent'>
-        </i>
-    </div>
-    </div>
-<div class='mt-4 text-xs text-neutral-500'>
-        <span class='flex items-center'>
-        <i class='fas fa-arrow-up text-green-500 mr-1'>
-        </i>
-较上月增长 12%
-    </span>
-    </div>
-    </div>
-<div class='stat-card'>
-        <div class='flex items-start justify-between'>
-        <div >
-        <p class='text-neutral-500 text-sm'>
-        获得点赞
-    </p>
-<h3 class='text-2xl font-bold mt-1'>
-        45.8k
-    </h3>
-    </div>
-<div class='bg-amber-500/10 p-2 rounded-lg'>
-        <i class='fas fa-heart text-amber-500'>
-        </i>
-    </div>
-    </div>
-<div class='mt-4 text-xs text-neutral-500'>
-        <span class='flex items-center'>
-        <i class='fas fa-arrow-up text-green-500 mr-1'>
-        </i>
-较上月增长 8%
-    </span>
-    </div>
-    </div>
-    </div>
-<!-- [/MODULE] stu_数据统计 -->
-<!-- [MODULE] vwx_我的作品 -->
-<div class='bg-white rounded-xl shadow-sm p-6'>
-        <div class='section-title'>
-        <h2 >
-        我的作品
-    </h2>
-<a href='javascript:void(0);' class='text-primary text-sm font-medium hover:underline'>
-        查看全部
-    </a>
-    </div>
-<div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-        <!-- 作品卡片1 -->
-<div class='border border-neutral-200 rounded-lg overflow-hidden hover:shadow-md transition-shadow'>
-        <div class='relative'>
-        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/efe0a5e49b52c21cd15156cff5939f0d.png' alt='城市微光' class='w-full h-40 object-cover'/>
-<span class='absolute top-2 left-2 badge bg-green-500 text-white'>
-        已完结
-    </span>
-    </div>
-<div class='p-4'>
-        <h3 class='font-bold text-lg mb-1'>
-        城市微光
-    </h3>
-<p class='text-neutral-500 text-sm mb-3'>
-        都市情感 · 42万字
-    </p>
-<div class='flex justify-between items-center'>
-        <div class='flex items-center text-sm text-neutral-500'>
-        <span class='flex items-center mr-3'>
-        <i class='fas fa-eye mr-1'>
-        </i>
-125.3k
-    </span>
-<span class='flex items-center'>
-        <i class='fas fa-heart mr-1'>
-        </i>
-8.7k
-    </span>
-    </div>
-<button class='text-primary hover:text-primary/80'>
-        <i class='fas fa-ellipsis-v'>
-        </i>
-    </button>
-    </div>
-    </div>
-    </div>
-<!-- 作品卡片2 -->
-<div class='border border-neutral-200 rounded-lg overflow-hidden hover:shadow-md transition-shadow'>
-        <div class='relative'>
-        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/0c0568b47ba9450ef70292562b761017.png' alt='迷雾追踪' class='w-full h-40 object-cover'/>
-<span class='absolute top-2 left-2 badge bg-green-500 text-white'>
-        已完结
-    </span>
-    </div>
-<div class='p-4'>
-        <h3 class='font-bold text-lg mb-1'>
-        迷雾追踪
-    </h3>
-<p class='text-neutral-500 text-sm mb-3'>
-        悬疑推理 · 58万字
-    </p>
-<div class='flex justify-between items-center'>
-        <div class='flex items-center text-sm text-neutral-500'>
-        <span class='flex items-center mr-3'>
-        <i class='fas fa-eye mr-1'>
-        </i>
-210.5k
-    </span>
-<span class='flex items-center'>
-        <i class='fas fa-heart mr-1'>
-        </i>
-15.2k
-    </span>
-    </div>
-<button class='text-primary hover:text-primary/80'>
-        <i class='fas fa-ellipsis-v'>
-        </i>
-    </button>
-    </div>
-    </div>
-    </div>
-<!-- 作品卡片3 -->
-<div class='border border-neutral-200 rounded-lg overflow-hidden hover:shadow-md transition-shadow'>
-        <div class='relative'>
-        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/2d19f1b35454b014e69cfafa893ec515.png' alt='星辰之旅' class='w-full h-40 object-cover'/>
-<span class='absolute top-2 left-2 badge bg-blue-500 text-white'>
-        连载中
-    </span>
-    </div>
-<div class='p-4'>
-        <h3 class='font-bold text-lg mb-1'>
-        星辰之旅
-    </h3>
-<p class='text-neutral-500 text-sm mb-3'>
-        奇幻冒险 · 76万字
-    </p>
-<div class='flex justify-between items-center'>
-        <div class='flex items-center text-sm text-neutral-500'>
-        <span class='flex items-center mr-3'>
-        <i class='fas fa-eye mr-1'>
-        </i>
-89.2k
-    </span>
-<span class='flex items-center'>
-        <i class='fas fa-heart mr-1'>
-        </i>
-6.3k
-    </span>
-    </div>
-<button class='text-primary hover:text-primary/80'>
-        <i class='fas fa-ellipsis-v'>
-        </i>
-    </button>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-<!-- [/MODULE] vwx_我的作品 -->
-<!-- [MODULE] yza_素材与随笔 -->
-<div class='grid grid-cols-1 lg:grid-cols-2 gap-6'>
-        <!-- 我上传的素材 -->
-<div class='bg-white rounded-xl shadow-sm p-6'>
-        <div class='section-title'>
-        <h2 >
-        我上传的素材
-    </h2>
-<a href='javascript:void(0);' class='text-primary text-sm font-medium hover:underline'>
-        查看全部
-    </a>
-    </div>
-<div class='space-y-4'>
-        <div class='flex items-center p-3 border border-neutral-200 rounded-lg hover:border-primary/50 transition-colors'>
-        <div class='bg-blue-100 p-3 rounded mr-4'>
-        <i class='fas fa-image text-blue-500 text-xl'>
-        </i>
-    </div>
-<div class='flex-1 min-w-0'>
-        <h3 class='font-medium text-neutral-800 truncate'>
-        都市夜景摄影集
-    </h3>
-<p class='text-neutral-500 text-sm truncate'>
-        24张图片 · 上传于 3天前
-    </p>
-    </div>
-<button class='text-neutral-400 hover:text-neutral-600'>
-        <i class='fas fa-ellipsis-v'>
-        </i>
-    </button>
-    </div>
-<div class='flex items-center p-3 border border-neutral-200 rounded-lg hover:border-primary/50 transition-colors'>
-        <div class='bg-purple-100 p-3 rounded mr-4'>
-        <i class='fas fa-file-alt text-purple-500 text-xl'>
-        </i>
-    </div>
-<div class='flex-1 min-w-0'>
-        <h3 class='font-medium text-neutral-800 truncate'>
-        人物对话素材库
-    </h3>
-<p class='text-neutral-500 text-sm truncate'>
-        文本文档 · 上传于 1周前
-    </p>
-    </div>
-<button class='text-neutral-400 hover:text-neutral-600'>
-        <i class='fas fa-ellipsis-v'>
-        </i>
-    </button>
-    </div>
-<div class='flex items-center p-3 border border-neutral-200 rounded-lg hover:border-primary/50 transition-colors'>
-        <div class='bg-green-100 p-3 rounded mr-4'>
-        <i class='fas fa-map-marker-alt text-green-500 text-xl'>
-        </i>
-    </div>
-<div class='flex-1 min-w-0'>
-        <h3 class='font-medium text-neutral-800 truncate'>
-        老城区场景描写
-    </h3>
-<p class='text-neutral-500 text-sm truncate'>
-        12张图片 · 上传于 2周前
-    </p>
-    </div>
-<button class='text-neutral-400 hover:text-neutral-600'>
-        <i class='fas fa-ellipsis-v'>
-        </i>
-    </button>
-    </div>
-    </div>
-    </div>
-<!-- 我的随笔 -->
-<div class='bg-white rounded-xl shadow-sm p-6'>
-        <div class='section-title'>
-        <h2 >
-        我的随笔
-    </h2>
-<a href='javascript:void(0);' class='text-primary text-sm font-medium hover:underline'>
-        查看全部
-    </a>
-    </div>
-<div class='space-y-4'>
-        <div class='p-4 border border-neutral-200 rounded-lg hover:border-primary/50 transition-colors'>
-        <h3 class='font-medium text-neutral-800 mb-1'>
-        关于《星辰之旅》的创作思路
-    </h3>
-<p class='text-neutral-600 text-sm line-clamp-2 mb-3'>
-        本章将重点描写主角在神秘森林中的遭遇，引入新的角色和世界观设定，为后续剧情发展埋下伏笔...
-    </p>
-<div class='flex justify-between items-center text-xs text-neutral-500'>
-        <span >
-        2023-06-15
-    </span>
-<span >
-        关联作品: 星辰之旅
-    </span>
-    </div>
-    </div>
-<div class='p-4 border border-neutral-200 rounded-lg hover:border-primary/50 transition-colors'>
-        <h3 class='font-medium text-neutral-800 mb-1'>
-        人物塑造的几点思考
-    </h3>
-<p class='text-neutral-600 text-sm line-clamp-2 mb-3'>
-        好的角色应该有自己的成长弧线和内在矛盾，不是简单的"好人"或"坏人"，而是具有复杂性和多面性...
-    </p>
-<div class='flex justify-between items-center text-xs text-neutral-500'>
-        <span >
-        2023-06-10
-    </span>
-<span >
-        创作笔记
-    </span>
-    </div>
-    </div>
-<div class='p-4 border border-neutral-200 rounded-lg hover:border-primary/50 transition-colors'>
-        <h3 class='font-medium text-neutral-800 mb-1'>
-        新故事构思：时间旅行者
-    </h3>
-<p class='text-neutral-600 text-sm line-clamp-2 mb-3'>
-        一个能够在时间中穿梭的图书馆管理员，每次穿越都会改变历史，但必须付出相应的代价...
-    </p>
-<div class='flex justify-between items-center text-xs text-neutral-500'>
-        <span >
-        2023-06-05
-    </span>
-<span >
-        灵感随笔
-    </span>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-<!-- [/MODULE] yza_素材与随笔 -->
-<!-- [MODULE] bcd_审核与消息 -->
-<div class='grid grid-cols-1 lg:grid-cols-2 gap-6'>
-        <!-- 审核进度 -->
-<div class='bg-white rounded-xl shadow-sm p-6'>
-        <div class='section-title'>
-        <h2 >
-        审核进度
-    </h2>
-<a href='javascript:void(0);' class='text-primary text-sm font-medium hover:underline'>
-        查看全部
-    </a>
-    </div>
-<div class='space-y-6'>
-        <div >
-        <div class='flex justify-between mb-2'>
-        <h3 class='font-medium'>
-        《星辰之旅》第45章
-    </h3>
-<span class='badge bg-yellow-100 text-yellow-800'>
-        审核中
-    </span>
-    </div>
-<div class='progress-bar'>
-        <div class='progress-value bg-yellow-500' style='width: 65%'>
-        </div>
-    </div>
-<p class='text-neutral-500 text-xs mt-2'>
-        预计完成时间：2023-06-20 18:00
-    </p>
-    </div>
-<div >
-        <div class='flex justify-between mb-2'>
-        <h3 class='font-medium'>
-        短篇小说《雨夜》
-    </h3>
-<span class='badge bg-green-100 text-green-800'>
-        已通过
-    </span>
-    </div>
-<div class='progress-bar'>
-        <div class='progress-value bg-green-500' style='width: 100%'>
-        </div>
-    </div>
-<p class='text-neutral-500 text-xs mt-2'>
-        完成时间：2023-06-18 09:32
-    </p>
-    </div>
-<div >
-        <div class='flex justify-between mb-2'>
-        <h3 class='font-medium'>
-        新作品《时间旅行者》申请
-    </h3>
-<span class='badge bg-red-100 text-red-800'>
-        需修改
-    </span>
-    </div>
-<div class='progress-bar'>
-        <div class='progress-value bg-red-500' style='width: 40%'>
-        </div>
-    </div>
-<p class='text-neutral-500 text-xs mt-2'>
-        修改意见已发送，请于7天内完成修改
-    </p>
-    </div>
-    </div>
-    </div>
-<!-- 消息评论 -->
-<div class='bg-white rounded-xl shadow-sm p-6'>
-        <div class='section-title'>
-        <h2 >
-        消息评论
-    </h2>
-<a href='javascript:void(0);' class='text-primary text-sm font-medium hover:underline'>
-        查看全部
-    </a>
-    </div>
-<div class='space-y-4'>
-        <div class='flex items-start p-3 border border-neutral-200 rounded-lg hover:border-primary/50 transition-colors'>
-        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/bb181ac802adf0fae91d733b54d7948e.png' alt='用户头像' class='w-10 h-10 rounded-full object-cover mr-3'/>
-<div class='flex-1 min-w-0'>
-        <div class='flex items-center justify-between'>
-        <h3 class='font-medium text-neutral-800'>
-        张读者
-    </h3>
-<span class='text-neutral-400 text-xs'>
-        2小时前
-    </span>
-    </div>
-<p class='text-neutral-600 text-sm mt-1'>
-        《星辰之旅》最新章节太精彩了！期待后续发展！
-    </p>
-<div class='flex mt-2 space-x-3'>
-        <button class='text-sm text-primary hover:text-primary/80'>
-        回复
-    </button>
-<button class='text-sm text-neutral-500 hover:text-neutral-700'>
-        点赞
-    </button>
-    </div>
-    </div>
-    </div>
-<div class='flex items-start p-3 border border-neutral-200 rounded-lg hover:border-primary/50 transition-colors'>
-        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/524968d109044c761999d0c45c9c2c0e.png' alt='编辑头像' class='w-10 h-10 rounded-full object-cover mr-3'/>
-<div class='flex-1 min-w-0'>
-        <div class='flex items-center justify-between'>
-        <h3 class='font-medium text-neutral-800'>
-        李编辑
-    </h3>
-<span class='text-neutral-400 text-xs'>
-        昨天
-    </span>
-    </div>
-<p class='text-neutral-600 text-sm mt-1'>
-        您的短篇小说《雨夜》已通过审核，将在本周内发布。
-    </p>
-<div class='flex mt-2 space-x-3'>
-        <button class='text-sm text-primary hover:text-primary/80'>
-        回复
-    </button>
-    </div>
-    </div>
-    </div>
-<div class='flex items-start p-3 border border-neutral-200 rounded-lg hover:border-primary/50 transition-colors'>
-        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/866ca2dd2f3d7d813fc9004a54e7209b.png' alt='用户头像' class='w-10 h-10 rounded-full object-cover mr-3'/>
-<div class='flex-1 min-w-0'>
-        <div class='flex items-center justify-between'>
-        <h3 class='font-medium text-neutral-800'>
-        王读者
-    </h3>
-<span class='text-neutral-400 text-xs'>
-        3天前
-    </span>
-    </div>
-<p class='text-neutral-600 text-sm mt-1'>
-        请问《城市微光》会有续集吗？非常喜欢这个故事！
-    </p>
-<div class='flex mt-2 space-x-3'>
-        <button class='text-sm text-primary hover:text-primary/80'>
-        回复
-    </button>
-<button class='text-sm text-neutral-500 hover:text-neutral-700'>
-        点赞
-    </button>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-<!-- [/MODULE] bcd_审核与消息 -->
-<!-- [MODULE] efg_收藏与关注 -->
-<div class='grid grid-cols-1 lg:grid-cols-2 gap-6'>
-        <!-- 我的收藏 -->
-<div class='bg-white rounded-xl shadow-sm p-6'>
-        <div class='section-title'>
-        <h2 >
-        我的收藏
-    </h2>
-<a href='javascript:void(0);' class='text-primary text-sm font-medium hover:underline'>
-        查看全部
-    </a>
-    </div>
-<div class='grid grid-cols-2 sm:grid-cols-3 gap-3'>
-        <div class='group relative rounded-lg overflow-hidden'>
-        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/55d7a31f55388fe219dabb4ed0f80ad5.png' alt='写作灵感' class='w-full h-24 object-cover'/>
-<div class='absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center'>
-        <button class='text-white hover:text-primary transition-colors'>
-        <i class='fas fa-heart'>
-        </i>
-    </button>
-    </div>
-    </div>
-<div class='group relative rounded-lg overflow-hidden'>
-        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/7c6c2e4ae6a1fc45d79eb8c7ef5b8f3e.png' alt='角色设定模板' class='w-full h-24 object-cover'/>
-<div class='absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center'>
-        <button class='text-white hover:text-primary transition-colors'>
-        <i class='fas fa-heart'>
-        </i>
-    </button>
-    </div>
-    </div>
-<div class='group relative rounded-lg overflow-hidden'>
-        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/e7b3c2dbfab53bd6afd6efa54c4ea24f.png' alt='情节结构图' class='w-full h-24 object-cover'/>
-<div class='absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center'>
-        <button class='text-white hover:text-primary transition-colors'>
-        <i class='fas fa-heart'>
-        </i>
-    </button>
-    </div>
-    </div>
-<div class='group relative rounded-lg overflow-hidden'>
-        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/a8d50c9b6f47ef2690e7e96a5d126fd6.png' alt='古建筑参考' class='w-full h-24 object-cover'/>
-<div class='absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center'>
-        <button class='text-white hover:text-primary transition-colors'>
-        <i class='fas fa-heart'>
-        </i>
-    </button>
-    </div>
-    </div>
-<div class='group relative rounded-lg overflow-hidden'>
-        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/386624c7f9e3787468d812398314b114.png' alt='对话写作技巧' class='w-full h-24 object-cover'/>
-<div class='absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center'>
-        <button class='text-white hover:text-primary transition-colors'>
-        <i class='fas fa-heart'>
-        </i>
-    </button>
-    </div>
-    </div>
-<div class='group relative rounded-lg overflow-hidden'>
-        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/9edcf1294b74cd5989ea34976109b5c3.png' alt='世界观地图模板' class='w-full h-24 object-cover'/>
-<div class='absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center'>
-        <button class='text-white hover:text-primary transition-colors'>
-        <i class='fas fa-heart'>
-        </i>
-    </button>
-    </div>
-    </div>
-    </div>
-    </div>
-<!-- 我关注的 -->
-<div class='bg-white rounded-xl shadow-sm p-6'>
-        <div class='section-title'>
-        <h2 >
-        我关注的
-    </h2>
-<a href='javascript:void(0);' class='text-primary text-sm font-medium hover:underline'>
-        查看全部
-    </a>
-    </div>
-<div class='space-y-4'>
-        <div class='flex items-center justify-between'>
-        <div class='flex items-center'>
-        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/5fd67dc0f9bad1830d651ae55ba4b4f4.png' alt='陈作家' class='w-12 h-12 rounded-full object-cover mr-4'/>
-<div >
-        <h3 class='font-medium'>
-        陈作家
-    </h3>
-<p class='text-neutral-500 text-sm'>
-        悬疑小说作家
-    </p>
-    </div>
-    </div>
-<button class='btn-outline text-sm px-3 py-1'>
-        已关注
-    </button>
-    </div>
-<div class='flex items-center justify-between'>
-        <div class='flex items-center'>
-        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/f3323e630c1db0e5a0a21200885e8d6a.png' alt='王诗人' class='w-12 h-12 rounded-full object-cover mr-4'/>
-<div >
-        <h3 class='font-medium'>
-        王诗人
-    </h3>
-<p class='text-neutral-500 text-sm'>
-        现代诗人
-    </p>
-    </div>
-    </div>
-<button class='btn-outline text-sm px-3 py-1'>
-        已关注
-    </button>
-    </div>
-<div class='flex items-center justify-between'>
-        <div class='flex items-center'>
-        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/ce1c76924c8754e23f72c504a5ddffcc.png' alt='刘幻想' class='w-12 h-12 rounded-full object-cover mr-4'/>
-<div >
-        <h3 class='font-medium'>
-        刘幻想
-    </h3>
-<p class='text-neutral-500 text-sm'>
-        奇幻文学作家
-    </p>
-    </div>
-    </div>
-<button class='btn-outline text-sm px-3 py-1'>
-        已关注
-    </button>
-    </div>
-<div class='flex items-center justify-between'>
-        <div class='flex items-center'>
-        <img src='https://design.gemcoder.com/staticResource/echoAiSystemImages/09de0febad52e76642b53d1bb575630c.png' alt='赵新锐' class='w-12 h-12 rounded-full object-cover mr-4'/>
-<div >
-        <h3 class='font-medium'>
-        赵新锐
-    </h3>
-<p class='text-neutral-500 text-sm'>
-        新锐作家
-    </p>
-    </div>
-    </div>
-<button class='btn-outline text-sm px-3 py-1'>
-        已关注
-    </button>
-    </div>
-    </div>
-    </div>
-    </div>
-<!-- [/MODULE] efg_收藏与关注 -->
-<!-- [MODULE] hij_我的成就 -->
-<div class='bg-white rounded-xl shadow-sm p-6'>
-        <div class='section-title'>
-        <h2 >
-        我的成就
-    </h2>
-<a href='javascript:void(0);' class='text-primary text-sm font-medium hover:underline'>
-        查看全部
-    </a>
-    </div>
-<div class='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4'>
-        <!-- 成就徽章1 -->
-<div class='flex flex-col items-center p-3 border border-neutral-200 rounded-lg'>
-        <div class='w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-2'>
-        <i class='fas fa-trophy text-yellow-500 text-2xl'>
-        </i>
-    </div>
-<h3 class='font-medium text-center text-sm'>
-        畅销书作家
-    </h3>
-<p class='text-neutral-500 text-xs text-center'>
-        作品阅读量超100万
-    </p>
-    </div>
-<!-- 成就徽章2 -->
-<div class='flex flex-col items-center p-3 border border-neutral-200 rounded-lg'>
-        <div class='w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-2'>
-        <i class='fas fa-pen-fancy text-blue-500 text-2xl'>
-        </i>
-    </div>
-<h3 class='font-medium text-center text-sm'>
-        prolific writer
-    </h3>
-<p class='text-neutral-500 text-xs text-center'>
-        累计创作超200万字
-    </p>
-    </div>
-<!-- 成就徽章3 -->
-<div class='flex flex-col items-center p-3 border border-neutral-200 rounded-lg'>
-        <div class='w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-2'>
-        <i class='fas fa-users text-green-500 text-2xl'>
-        </i>
-    </div>
-<h3 class='font-medium text-center text-sm'>
-        人气作者
-    </h3>
-<p class='text-neutral-500 text-xs text-center'>
-        粉丝数量超1万
-    </p>
-    </div>
-<!-- 成就徽章4 -->
-<div class='flex flex-col items-center p-3 border border-neutral-200 rounded-lg'>
-        <div class='w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-2'>
-        <i class='fas fa-calendar-check text-purple-500 text-2xl'>
-        </i>
-    </div>
-<h3 class='font-medium text-center text-sm'>
-        坚持不懈
-    </h3>
-<p class='text-neutral-500 text-xs text-center'>
-        连续创作365天
-    </p>
-    </div>
-<!-- 成就徽章5 -->
-<div class='flex flex-col items-center p-3 border border-neutral-300 rounded-lg opacity-50'>
-        <div class='w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-2'>
-        <i class='fas fa-award text-gray-400 text-2xl'>
-        </i>
-    </div>
-<h3 class='font-medium text-center text-sm'>
-        获奖作家
-    </h3>
-<p class='text-neutral-500 text-xs text-center'>
-        获得文学奖项
-    </p>
-    </div>
-<!-- 成就徽章6 -->
-<div class='flex flex-col items-center p-3 border border-neutral-300 rounded-lg opacity-50'>
-        <div class='w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-2'>
-        <i class='fas fa-globe-asia text-gray-400 text-2xl'>
-        </i>
-    </div>
-<h3 class='font-medium text-center text-sm'>
-        国际影响力
-    </h3>
-<p class='text-neutral-500 text-xs text-center'>
-        作品被翻译成3种语言
-    </p>
-    </div>
-    </div>
-    </div>
-<!-- [/MODULE] hij_我的成就 -->
-    </div>
-<!-- [/MODULE] mno_个人中心内容 -->
-    </div>
-<!-- [/MODULE] ghi_个人中心页面 -->
-    </main>
+    <!-- [/MODULE] ghi_个人中心页面 -->
+</main>
 <!-- [/MODULE] def_主内容区域 -->
 <!-- [MODULE] jkl_底部 -->
-<footer class='bg-dark text-white py-10 mt-12'>
-        <div class='container mx-auto px-4'>
-        <div class='grid grid-cols-1 md:grid-cols-4 gap-8'>
-        <div >
-        <div class='flex items-center space-x-2 mb-4'>
-        <i class='fas fa-feather-alt text-primary text-2xl'>
-        </i>
-<h2 class='text-xl font-bold'>
-        作家助手
-    </h2>
+<footer class="bg-dark text-white py-10 mt-12">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <div class="flex items-center space-x-2 mb-4">
+                    <i class="fas fa-feather-alt text-primary text-2xl"></i>
+                    <h2 class="text-xl font-bold">作家助手</h2>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">为创作者提供灵感、素材和工具支持，让写作变得更简单。</p>
+                <div class="flex space-x-4">
+                    <a class="text-gray-400 hover:text-white transition-colors" href="javascript:void(0);"><i class="fab fa-weibo"></i></a>
+                    <a class="text-gray-400 hover:text-white transition-colors" href="javascript:void(0);"><i class="fab fa-wechat"></i></a>
+                    <a class="text-gray-400 hover:text-white transition-colors" href="javascript:void(0);"><i class="fab fa-twitter"></i></a>
+                    <a class="text-gray-400 hover:text-white transition-colors" href="javascript:void(0);"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3 class="font-bold text-lg mb-4">功能导航</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a class="text-gray-400 hover:text-white transition-colors" href="javascript:void(0);">灵感素材</a></li>
+                    <li><a class="text-gray-400 hover:text-white transition-colors" href="javascript:void(0);">AI大纲生成</a></li>
+                    <li><a class="text-gray-400 hover:text-white transition-colors" href="javascript:void(0);">随笔管理</a></li>
+                    <li><a class="text-gray-400 hover:text-white transition-colors" href="javascript:void(0);">作家社区</a></li>
+                    <li><a class="text-gray-400 hover:text-white transition-colors" href="javascript:void(0);">投稿中心</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-bold text-lg mb-4">帮助支持</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a class="text-gray-400 hover:text-white transition-colors" href="javascript:void(0);">使用指南</a></li>
+                    <li><a class="text-gray-400 hover:text-white transition-colors" href="javascript:void(0);">常见问题</a></li>
+                    <li><a class="text-gray-400 hover:text-white transition-colors" href="javascript:void(0);">联系我们</a></li>
+                    <li><a class="text-gray-400 hover:text-white transition-colors" href="javascript:void(0);">意见反馈</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-bold text-lg mb-4">法律信息</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a class="text-gray-400 hover:text-white transition-colors" href="javascript:void(0);">服务条款</a></li>
+                    <li><a class="text-gray-400 hover:text-white transition-colors" href="javascript:void(0);">隐私政策</a></li>
+                    <li><a class="text-gray-400 hover:text-white transition-colors" href="javascript:void(0);">版权声明</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 mt-8 pt-6 text-center text-gray-500 text-sm">
+            <p>&copy; 2023 作家助手 - 助力每一位创作者</p>
+        </div>
     </div>
-<p class='text-gray-400 text-sm mb-4'>
-        为创作者提供灵感、素材和工具支持，让写作变得更简单。
-    </p>
-<div class='flex space-x-4'>
-        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
-        <i class='fab fa-weibo'>
-        </i>
-    </a>
-<a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
-        <i class='fab fa-wechat'>
-        </i>
-    </a>
-<a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
-        <i class='fab fa-twitter'>
-        </i>
-    </a>
-<a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
-        <i class='fab fa-instagram'>
-        </i>
-    </a>
-    </div>
-    </div>
-<div >
-        <h3 class='font-bold text-lg mb-4'>
-        功能导航
-    </h3>
-<ul class='space-y-2 text-sm'>
-        <li >
-        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
-        灵感素材
-    </a>
-    </li>
-<li >
-        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
-        AI大纲生成
-    </a>
-    </li>
-<li >
-        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
-        随笔管理
-    </a>
-    </li>
-<li >
-        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
-        作家社区
-    </a>
-    </li>
-<li >
-        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
-        投稿中心
-    </a>
-    </li>
-    </ul>
-    </div>
-<div >
-        <h3 class='font-bold text-lg mb-4'>
-        帮助支持
-    </h3>
-<ul class='space-y-2 text-sm'>
-        <li >
-        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
-        使用指南
-    </a>
-    </li>
-<li >
-        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
-        常见问题
-    </a>
-    </li>
-<li >
-        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
-        联系我们
-    </a>
-    </li>
-<li >
-        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
-        意见反馈
-    </a>
-    </li>
-    </ul>
-    </div>
-<div >
-        <h3 class='font-bold text-lg mb-4'>
-        法律信息
-    </h3>
-<ul class='space-y-2 text-sm'>
-        <li >
-        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
-        服务条款
-    </a>
-    </li>
-<li >
-        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
-        隐私政策
-    </a>
-    </li>
-<li >
-        <a href='javascript:void(0);' class='text-gray-400 hover:text-white transition-colors'>
-        版权声明
-    </a>
-    </li>
-    </ul>
-    </div>
-    </div>
-<div class='border-t border-gray-800 mt-8 pt-6 text-center text-gray-500 text-sm'>
-        <p >
-        © 2023 作家助手 - 助力每一位创作者
-    </p>
-    </div>
-    </div>
-    </footer>
+</footer>
 <!-- [/MODULE] jkl_底部 -->
 <!-- [JSMOD] mobmenu_移动端菜单交互 -->
-<script id='mobile-menu-script'>document.addEventListener('DOMContentLoaded', function () {
-  // 移动端菜单切换
-  var mobileMenuButton = document.getElementById('mobile-menu-button');
-  var mobileMenu = document.getElementById('mobile-menu');
-  mobileMenuButton.addEventListener('click', function () {
-    mobileMenu.classList.toggle('hidden');
-  });
+<script id="mobile-menu-script">
+    document.addEventListener('DOMContentLoaded', function () {
+        // 移动端菜单切换
+        var mobileMenuButton = document.getElementById('mobile-menu-button');
+        var mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', function () {
+            mobileMenu.classList.toggle('hidden');
 
-  // 点击页面其他地方关闭移动端菜单
-  document.addEventListener('click', function (e) {
-    if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
-      mobileMenu.classList.add('hidden');
-    }
-  });
+            // 切换图标
+            var icon = mobileMenuButton.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
 
-  // 平滑滚动
-  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      var targetId = this.getAttribute('href');
-      if (targetId !== '#') {
-        var targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 80,
-            behavior: 'smooth'
-          });
+        // 点击页面其他地方关闭移动端菜单
+        document.addEventListener('click', function (e) {
+            if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+                var icon = mobileMenuButton.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
 
-          // 如果是移动端，点击后关闭菜单
-          if (window.innerWidth < 768) {
-            mobileMenu.classList.add('hidden');
-          }
-        }
-      }
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                var targetId = this.getAttribute('href');
+                if (targetId !== '#') {
+                    var targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        // 如果是移动端，点击后关闭菜单
+                        if (window.innerWidth < 768) {
+                            mobileMenu.classList.add('hidden');
+                            var icon = mobileMenuButton.querySelector('i');
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                }
+            });
+        });
     });
-  });
-});</script>
+</script>
 <!-- [/JSMOD] mobmenu_移动端菜单交互 -->
+<!-- [JSMOD] page-switch_页面切换逻辑 -->
+<script id="page-switch-script">
+    document.addEventListener('DOMContentLoaded', function () {
+        // 获取所有导航链接和内容页面
+        var navLinks = document.querySelectorAll('.nav-link');
+        var contentPages = document.querySelectorAll('.page-content');
+
+        // 默认显示个人中心页面
+        document.getElementById('profile-page').classList.remove('hidden');
+
+        // 为每个导航链接添加点击事件监听器
+        navLinks.forEach(function (link) {
+            link.addEventListener('click', function () {
+                // 获取目标页面ID
+                var targetPageId = this.getAttribute('data-page');
+
+                // 隐藏所有内容页面
+                contentPages.forEach(function (page) {
+                    page.classList.add('hidden');
+                });
+
+                // 显示目标页面
+                var targetPage = document.getElementById(targetPageId);
+                if (targetPage) {
+                    targetPage.classList.remove('hidden');
+                }
+
+                // 更新导航链接样式
+                navLinks.forEach(function (navLink) {
+                    navLink.classList.remove('bg-primary/10', 'text-primary');
+                    navLink.classList.add('text-neutral-700', 'hover:bg-neutral-100');
+                });
+
+                this.classList.add('bg-primary/10', 'text-primary');
+                this.classList.remove('text-neutral-700', 'hover:bg-neutral-100');
+            });
+        });
+    });
+</script>
+<!-- [/JSMOD] page-switch_页面切换逻辑 -- 实现点击导航链接切换显示不同内容页面 -->
+<!-- [JSMOD] work-details-modal_作品详情弹窗逻辑 -->
+<script id="work-details-modal-script">
+    document.addEventListener('DOMContentLoaded', function () {
+        // 获取模态框元素
+        var modal = document.getElementById('work-details-modal');
+        var closeModal = document.getElementById('close-work-modal');
+        var closeDetailsBtn = document.getElementById('close-work-details-btn');
+        var gotoDetailsBtn = document.getElementById('goto-work-details');
+
+        // 获取模态框中的内容元素
+        var modalTitle = document.getElementById('work-modal-title');
+        var modalName = document.getElementById('work-modal-name');
+        var modalImage = document.getElementById('work-modal-image');
+        var modalStatus = document.getElementById('work-modal-status');
+        var modalType = document.getElementById('work-modal-type');
+        var modalViews = document.getElementById('work-modal-views');
+        var modalComments = document.getElementById('work-modal-comments');
+        var modalRating = document.getElementById('work-modal-rating');
+        var modalDescription = document.getElementById('work-modal-description');
+
+        // 作品简介数据
+        var workDescriptions = {
+            '1': '探索城市中的神秘事件，揭示隐藏在繁华背后的秘密。故事围绕一名经验丰富的侦探展开，他在调查一系列看似无关的案件时，发现了一个涉及城市高层的巨大阴谋。',
+            '2': '当地球面临资源枯竭，一群勇敢的宇航员踏上了寻找新家园的旅程。在穿越星际的过程中，他们不仅要面对宇宙的险恶环境，还要处理团队内部的矛盾与信任危机。',
+            '3': '一本古老的日记引发的悬疑故事，主角在整理祖母遗物时发现了这本日记，里面记载的神秘符号和地点指引他踏上了解开家族秘密的冒险之旅。'
+        };
+
+        // 获取所有"更多"按钮并添加点击事件
+        document.querySelectorAll('.view-work-details').forEach(function (button) {
+            button.addEventListener('click', function () {
+                var workId = this.getAttribute('data-id');
+                var title = this.getAttribute('data-title');
+                var type = this.getAttribute('data-type');
+                var status = this.getAttribute('data-status');
+                var words = this.getAttribute('data-words');
+                var views = this.getAttribute('data-views');
+                var comments = this.getAttribute('data-comments');
+                var rating = this.getAttribute('data-rating');
+
+                // 设置模态框内容
+                modalTitle.textContent = title + '- 作品详情';
+                modalName.textContent = title;
+
+                // 根据状态设置不同的徽章颜色
+                if (status === '连载中') {
+                    modalStatus.className = 'badge bg-primary text-white mr-2';
+                } else if (status === '已完结') {
+                    modalStatus.className = 'badge bg-secondary text-white mr-2';
+                } else {
+                    modalStatus.className = 'badge bg-neutral-500 text-white mr-2';
+                }
+
+                modalStatus.textContent = status;
+                modalType.textContent = type + ' · ' + words;
+                modalViews.textContent = views;
+                modalComments.textContent = comments;
+                modalRating.textContent = rating;
+                modalDescription.textContent = workDescriptions[workId] || '该作品暂无详细简介';
+
+                // 根据作品ID设置不同的封面图
+                var imageQueries = {
+                    '1': 'urban novel book cover with city skyline at night, modern design, bestseller style',
+                    '2': 'sci-fi novel cover with space scene, futuristic design, epic style',
+                    '3': 'mystery novel cover with old book and candle, dark atmospheric style'
+                };
+                var query = imageQueries[workId] || imageQueries['1'];
+                modalImage.src = "https://design.gemcoder.com/api/searchImage?query=" + encodeURIComponent(query) + "&width=300&height=200";
+
+                // 显示模态框
+                modal.classList.remove('hidden');
+
+                // 设置详情页跳转链接
+                gotoDetailsBtn.setAttribute('data-work-id', workId);
+            });
+        });
+
+        // 关闭模态框的事件监听
+        closeModal.addEventListener('click', function () {
+            modal.classList.add('hidden');
+        });
+
+        closeDetailsBtn.addEventListener('click', function () {
+            modal.classList.add('hidden');
+        });
+
+        // 跳转到详情页
+        gotoDetailsBtn.addEventListener('click', function () {
+            var workId = this.getAttribute('data-work-id');
+            // 这里可以添加实际的跳转逻辑
+            alert('跳转到作品ID为 ' + workId + ' 的详情页');
+            modal.classList.add('hidden');
+        });
+
+        // 点击模态框外部关闭
+        window.addEventListener('click', function (event) {
+            if (event.target === modal) {
+                modal.classList.add('hidden');
+            }
+        });
+    });
+</script>
+<!-- [/JSMOD] work-details-modal_作品详情弹窗逻辑 -- 实现作品详情弹窗的显示、隐藏及内容填充 -->
+<!-- [JSMOD] note-modal_随笔弹窗逻辑 -->
+<script id="note-modal-script">
+    document.addEventListener('DOMContentLoaded', function () {
+        // 随笔数据
+        var notesData = [
+            {
+                id: 1,
+                title: "创作心得：如何塑造立体人物",
+                category: "创作心得",
+                date: "2023-06-10",
+                content: "最近在创作《都市迷踪》的过程中，我尝试了一种新的人物塑造方法：先确定角色的核心矛盾，再围绕这个矛盾设计行为模式和语言风格...\n\n这种方法让角色更加立体，也更容易产生戏剧冲突。例如主角李警官，他的核心矛盾是'追求正义但受体制束缚'，这导致他在处理案件时常常需要在规则与良知之间做出选择。这个矛盾体现在他的语言上就是经常欲言又止，行动上则是在规则允许的范围内尽可能帮助他人。"
+            },
+            {
+                id: 2,
+                title: "阅读笔记：《叙事的艺术》",
+                category: "阅读笔记",
+                date: "2023-05-28",
+                content: "这本书提出了一个很有意思的观点：故事的节奏应该像呼吸一样有张有弛。紧张的情节之后需要适当的缓和，给读者消化情绪的空间...\n\n作者分析了《百年孤独》中的叙事节奏，指出马尔克斯如何在紧张的家族冲突后插入对马孔多自然环境的描写，这种张弛有度的节奏让读者能够持续投入而不感到疲惫。这对我当前正在创作的《都市迷踪》很有启发，我计划在第25章尝试这种节奏控制。"
+            },
+            {
+                id: 3,
+                title: "2023年上半年创作总结",
+                category: "创作总结",
+                date: "2023-06-30",
+                content: "上半年完成了《都市迷踪》的15-20章节，共计12万字。写作效率较去年有所提升，主要得益于新尝试的番茄工作法和提前一周规划情节的方式...\n\n番茄工作法让我能够专注写作25分钟后休息5分钟，每天完成8个番茄钟就能写出约4000字。提前规划情节则避免了写作瓶颈，每周日我会花2小时规划下周的情节走向和关键场景，这让日常写作更加顺畅。"
+            },
+            {
+                id: 4,
+                title: "角色发展笔记：李警官",
+                category: "角色笔记",
+                date: "2023-06-05",
+                content: "李警官这个角色最初设定为标准的硬汉形象，但在写作过程中，我发现给他添加一些小缺点会让人物更真实。现在他有恐高症，并且对甜食毫无抵抗力...\n\n这些小缺点在剧情中可以制造很多有趣的场景。比如在第18章，李警官为了调查案件必须爬上高楼，他的恐高症让这个简单的场景变得紧张而有趣。而对甜食的喜爱则成为他与女主角建立关系的契机，女主角经营着一家甜品店，李警官经常以查案为借口去光顾。"
+            }
+        ];
+
+        // 获取DOM元素
+        var noteModal = document.getElementById('note-modal');
+        var noteModalTitle = document.getElementById('note-modal-title');
+        var noteViewTitle = document.getElementById('note-view-title');
+        var noteViewCategory = document.getElementById('note-view-category');
+        var noteViewDate = document.getElementById('note-view-date');
+        var noteContent = document.getElementById('note-content');
+        var noteEditFields = document.getElementById('note-edit-fields');
+        var noteTitleInput = document.getElementById('note-title-input');
+        var noteCategoryInput = document.getElementById('note-category-input');
+        var noteContentInput = document.getElementById('note-content-input');
+        var closeNoteModal = document.getElementById('close-note-modal');
+        var cancelNoteBtn = document.getElementById('cancel-note-btn');
+        var saveNoteBtn = document.getElementById('save-note-btn');
+        var toggleEditBtn = document.getElementById('toggle-edit-mode');
+
+        var currentNoteId = null;
+        var isEditMode = false;
+
+        // 绑定详情按钮事件
+        document.querySelectorAll('.detail-note').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var noteId = parseInt(this.getAttribute('data-id'));
+                var note = notesData.find(function (n) { return n.id === noteId; });
+
+                if (note) {
+                    currentNoteId = noteId;
+                    isEditMode = false;
+                    updateNoteModal(note);
+                    noteModal.classList.remove('hidden');
+                }
+            });
+        });
+
+        // 更新随笔弹窗内容
+        function updateNoteModal(note) {
+            if (isEditMode) {
+                noteModalTitle.textContent = '编辑随笔';
+                noteTitleInput.value = note.title;
+                noteCategoryInput.value = note.category;
+                noteContentInput.value = note.content;
+
+                // 显示编辑模式
+                noteEditFields.classList.remove('hidden');
+                noteContent.classList.add('hidden');
+                saveNoteBtn.classList.remove('hidden');
+            } else {
+                noteModalTitle.textContent = '随笔详情';
+                noteViewTitle.textContent = note.title;
+                noteViewCategory.innerHTML = '<i class="fas fa-folder mr-1"></i>' + note.category;
+                noteViewDate.innerHTML = '<i class="fas fa-calendar mr-1"></i>' + note.date;
+
+                // 处理换行符
+                noteContent.innerHTML = note.content.replace(/\n/g, '<br>');
+
+                // 显示查看模式
+                noteEditFields.classList.add('hidden');
+                noteContent.classList.remove('hidden');
+                saveNoteBtn.classList.add('hidden');
+            }
+
+            // 更新切换按钮文本
+            toggleEditBtn.innerHTML = isEditMode ?
+                '<i class="fas fa-eye mr-1"></i> 查看' :
+                '<i class="fas fa-edit mr-1"></i> 编辑';
+        }
+
+        // 切换编辑/查看模式
+        toggleEditBtn.addEventListener('click', function() {
+            if (currentNoteId) {
+                isEditMode = !isEditMode;
+                var note = notesData.find(function(n) { return n.id === currentNoteId; });
+                if (note) {
+                    updateNoteModal(note);
+                }
+            }
+        });
+
+        // 关闭随笔弹窗
+        closeNoteModal.addEventListener('click', function () {
+            noteModal.classList.add('hidden');
+        });
+
+        cancelNoteBtn.addEventListener('click', function () {
+            if (isEditMode) {
+                // 如果在编辑模式下取消，回到查看模式
+                isEditMode = false;
+                var note = notesData.find(function(n) { return n.id === currentNoteId; });
+                if (note) {
+                    updateNoteModal(note);
+                }
+            } else {
+                noteModal.classList.add('hidden');
+            }
+        });
+
+        // 保存随笔编辑
+        saveNoteBtn.addEventListener('click', function () {
+            if (!noteTitleInput.value.trim()) {
+                alert('请输入随笔标题');
+                return;
+            }
+
+            if (!noteContentInput.value.trim()) {
+                alert('请输入随笔内容');
+                return;
+            }
+
+            var noteIndex = notesData.findIndex(function (n) { return n.id === currentNoteId; });
+            if (noteIndex !== -1) {
+                // 更新数据
+                notesData[noteIndex].title = noteTitleInput.value;
+                notesData[noteIndex].category = noteCategoryInput.value;
+                notesData[noteIndex].content = noteContentInput.value;
+
+                // 更新界面显示
+                var noteElement = document.querySelector('.detail-note[data-id="' + currentNoteId + '"]').closest('.border-neutral-200');
+                noteElement.querySelector('h3').textContent = noteTitleInput.value;
+                noteElement.querySelector('.text-neutral-500.mr-4').innerHTML = '<i class="fas fa-folder mr-1"></i>' + noteCategoryInput.value;
+
+                // 更新预览内容
+                var previewText = noteContentInput.value.length > 100 ?
+                    noteContentInput.value.substring(0, 100) + '...' :
+                    noteContentInput.value;
+                noteElement.querySelector('p.text-neutral-600').textContent = previewText;
+
+                // 切换回查看模式
+                isEditMode = false;
+                updateNoteModal(notesData[noteIndex]);
+
+                alert('随笔已保存！');
+            }
+        });
+
+        // 点击模态框外部关闭弹窗
+        noteModal.addEventListener('click', function (e) {
+            if (e.target === noteModal) {
+                noteModal.classList.add('hidden');
+            }
+        });
+    });
+</script>
+<!-- [/JSMOD] note-modal_随笔弹窗逻辑 -- 处理随笔的查看和编辑功能 -->
+<!-- [JSMOD] edit-profile_编辑资料逻辑 -->
+<script id="edit-profile-script">
+    document.addEventListener('DOMContentLoaded', function() {
+        // 获取DOM元素
+        const editProfileBtn = document.getElementById('edit-profile-btn');
+        const editProfileModal = document.getElementById('edit-profile-modal');
+        const closeEditModal = document.getElementById('close-edit-modal');
+        const cancelEditBtn = document.getElementById('cancel-edit-btn');
+        const saveEditBtn = document.getElementById('save-edit-btn');
+
+        // 打开编辑资料弹窗
+        if (editProfileBtn) {
+            editProfileBtn.addEventListener('click', function() {
+                editProfileModal.classList.remove('hidden');
+
+                // 从页面元素获取当前值并填充表单
+                const profileValues = {};
+                document.querySelectorAll('.profile-value').forEach(el => {
+                    const field = el.getAttribute('data-field');
+                    profileValues[field] = el.textContent.trim();
+                });
+
+                // 填充表单数据
+                document.getElementById('edit-penname').value = profileValues.penname || '';
+                document.getElementById('edit-realname').value = profileValues.realname || '';
+                document.getElementById('edit-email').value = profileValues.email || '';
+                document.getElementById('edit-phone').value = profileValues.phone || '';
+                document.getElementById('edit-field').value = profileValues.field || '';
+                document.getElementById('edit-bio').value = profileValues.bio || '';
+            });
+        }
+
+        // 关闭编辑资料弹窗
+        function closeModal() {
+            editProfileModal.classList.add('hidden');
+        }
+
+        if (closeEditModal) closeEditModal.addEventListener('click', closeModal);
+        if (cancelEditBtn) cancelEditBtn.addEventListener('click', closeModal);
+
+        // 点击模态框外部关闭弹窗
+        if (editProfileModal) {
+            editProfileModal.addEventListener('click', function(e) {
+                if (e.target === editProfileModal) {
+                    closeModal();
+                }
+            });
+        }
+
+        // 保存编辑资料
+        if (saveEditBtn) {
+            saveEditBtn.addEventListener('click', function() {
+                // 获取表单值
+                const formData = {
+                    penname: document.getElementById('edit-penname').value.trim(),
+                    realname: document.getElementById('edit-realname').value.trim(),
+                    email: document.getElementById('edit-email').value.trim(),
+                    phone: document.getElementById('edit-phone').value.trim(),
+                    field: document.getElementById('edit-field').value.trim(),
+                    bio: document.getElementById('edit-bio').value.trim()
+                };
+
+                // 简单验证
+                if (!formData.penname) {
+                    alert('请输入笔名');
+                    return;
+                }
+
+                if (!formData.email) {
+                    alert('请输入邮箱');
+                    return;
+                }
+
+                // 更新页面显示
+                for (const [field, value] of Object.entries(formData)) {
+                    const element = document.querySelector(`.profile-value[data-field="${field}"]`);
+                    if (element) {
+                        element.textContent = value;
+                    }
+                }
+
+                // 更新导航栏和个人信息区的笔名
+                document.querySelector('.nav-link.bg-primary/10 + div .font-medium').textContent = formData.penname;
+                document.querySelector('.relative.group .font-medium').textContent = formData.penname;
+
+                // 关闭弹窗并提示
+                closeModal();
+                alert('个人资料更新成功！');
+            });
+        }
+    });
+</script>
+<!-- [/JSMOD] edit-profile_编辑资料逻辑 -- 处理编辑个人资料的弹窗显示、表单提交和数据更新 -->
+<!-- [JSMOD] collection-delete_收藏删除逻辑 -->
+<script id="collection-delete-script">
+    document.addEventListener('DOMContentLoaded', function () {
+        // 收藏删除功能
+        document.querySelectorAll('.delete-collection').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var collectionId = this.getAttribute('data-id');
+                if (confirm('确定要删除这个收藏吗？')) {
+                    // 隐藏收藏项（实际应用中应该发送请求到服务器）
+                    this.closest('.border-neutral-200').classList.add('hidden');
+                    alert('收藏已删除！');
+                }
+            });
+        });
+
+        // 发布内容删除功能
+        document.querySelectorAll('.delete-publication').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                if (confirm('确定要删除这条内容吗？')) {
+                    // 隐藏发布项（实际应用中应该发送请求到服务器）
+                    this.closest('tr').classList.add('hidden');
+                    alert('内容已删除！');
+                }
+            });
+        });
+    });
+</script>
+<!-- [/JSMOD] collection-delete_收藏删除逻辑 -- 处理收藏项和发布内容的删除功能 -->
 <!-- [JSMOD] progress_进度条动画 -->
-<script id='progress-animation-script'>document.addEventListener('DOMContentLoaded', function () {
-  // 为进度条添加动画效果
-  var progressBars = document.querySelectorAll('.progress-value');
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        var width = entry.target.style.width;
-        entry.target.style.width = '0';
-        setTimeout(function () {
-          entry.target.style.width = width;
-        }, 300);
-        observer.unobserve(entry.target);
-      }
+<script id="progress-animation-script">
+    document.addEventListener('DOMContentLoaded', function () {
+        // 为进度条添加动画效果
+        var progressBars = document.querySelectorAll('.progress-value');
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    var width = entry.target.style.width;
+                    entry.target.style.width = '0';
+                    setTimeout(function () {
+                        entry.target.style.width = width;
+                    }, 300);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        progressBars.forEach(function (bar) {
+            observer.observe(bar);
+        });
     });
-  }, {
-    threshold: 0.1
-  });
-  progressBars.forEach(function (bar) {
-    observer.observe(bar);
-  });
-});</script>
+</script>
 <!-- [/JSMOD] progress_进度条动画 -->
-<!-- [JSMOD] hover_卡片悬停效果 -->
-<script id='hover-effects-script'>document.addEventListener('DOMContentLoaded', function () {
-  // 为卡片添加悬停效果
-  var cards = document.querySelectorAll('.card-hover');
-  cards.forEach(function (card) {
-    card.addEventListener('mouseenter', function () {
-      card.classList.add('shadow-lg', '-translate-y-1');
+<!-- [JSMOD] tab-switch_标签页切换逻辑 -->
+<script id="tab-switch-script">
+    document.addEventListener('DOMContentLoaded', function () {
+        // 我的发布页面标签切换
+        var publicationTabs = document.querySelectorAll('.publication-tab');
+        var publicationContents = document.querySelectorAll('.publication-content');
+
+        if (publicationTabs.length && publicationContents.length) {
+            publicationTabs.forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                    var tabId = this.getAttribute('data-tab');
+
+                    // 更新标签样式
+                    publicationTabs.forEach(function (t) {
+                        t.classList.remove('active', 'border-primary', 'text-primary');
+                        t.classList.add('border-transparent', 'text-neutral-500');
+                    });
+                    this.classList.add('active', 'border-primary', 'text-primary');
+                    this.classList.remove('border-transparent', 'text-neutral-500');
+
+                    // 显示对应内容
+                    publicationContents.forEach(function (content) {
+                        content.classList.add('hidden');
+                    });
+                    document.getElementById(tabId + "-content").classList.remove('hidden');
+                });
+            });
+        }
+
+        // 账户设置页面标签切换
+        var settingsTabs = document.querySelectorAll('.settings-tab');
+        var settingsContents = document.querySelectorAll('.settings-content');
+
+        if (settingsTabs.length && settingsContents.length) {
+            settingsTabs.forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                    var tabId = this.getAttribute('data-tab');
+
+                    // 更新标签样式
+                    settingsTabs.forEach(function (t) {
+                        t.classList.remove('active', 'border-primary', 'text-primary');
+                        t.classList.add('border-transparent', 'text-neutral-500');
+                    });
+                    this.classList.add('active', 'border-primary', 'text-primary');
+                    this.classList.remove('border-transparent', 'text-neutral-500');
+
+                    // 显示对应内容
+                    settingsContents.forEach(function (content) {
+                        content.classList.add('hidden');
+                    });
+                    document.getElementById(tabId + "-settings").classList.remove('hidden');
+                });
+            });
+        }
+
+        // 界面缩放功能
+        var interfaceScale = document.getElementById('interface-scale');
+        var scaleValue = document.getElementById('scale-value');
+
+        if (interfaceScale && scaleValue) {
+            interfaceScale.addEventListener('input', function () {
+                var value = this.value;
+                scaleValue.textContent = value + '%';
+                document.documentElement.style.fontSize = value + '%';
+            });
+        }
+
+        // 退出登录功能
+        document.getElementById('logout-btn').addEventListener('click', function () {
+            if (confirm('确定要退出登录吗？')) {
+                alert('退出登录成功！');
+                // 这里可以添加实际的退出登录逻辑
+            }
+        });
     });
-    card.addEventListener('mouseleave', function () {
-      card.classList.remove('shadow-lg', '-translate-y-1');
-    });
-  });
-});</script>
-<!-- [/JSMOD] hover_卡片悬停效果 -->
-    </body>
-    </html>
+</script>
+<!-- [/JSMOD] tab-switch_标签页切换逻辑 -- 处理页面内标签页切换功能 -->
+</body>
+</html>
